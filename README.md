@@ -1,4 +1,0 @@
-TCC
-===
-
-Repositorio do tcc
