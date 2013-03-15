@@ -4,7 +4,7 @@ TCC
 Repositorio do tcc
 
 ------------------------------------
-Links uteis com informaçãos sobre fisioterapia
+Links uteis com informacaos sobre fisioterapia
 
 http://www.scielo.br/scielo.php?pid=S1806-37132007000800010&script=sci_arttext
 
