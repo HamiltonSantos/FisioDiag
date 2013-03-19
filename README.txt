@@ -27,3 +27,4 @@ Calculadora de idv: http://www.medicinaintensiva.com.br/idv-calculo2.html
 Calculadora de idv*explicação: http://www.medicinaintensiva.com.br/idv-informacoes.htm
 Descrição uti: http://pt.wikipedia.org/wiki/Unidade_de_terapia_intensiva
 Descrição diagnostico fisioterapeutico: http://www.ebah.com.br/content/ABAAABrVkAE/diagnostico-funcional
+Desmame da ventilação mecânica - UFSP: http://www.moreirajr.com.br/revistas.asp?id_materia=1031&fase=imprime
