@@ -1,0 +1,79 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="817" measuredH="582" mockupW="719" mockupH="559">
+  <controls>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="238" y="232" w="-1" h="-1" measuredW="46" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variavel</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="295" y="229" w="182" h="-1" measuredW="79" measuredH="26" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="255" y="286" w="-1" h="-1" measuredW="29" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Peso</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="295" y="283" w="182" h="-1" measuredW="79" measuredH="26" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::FieldSet" x="223" y="213" w="447" h="260" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variaveis</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="238" y="362" w="239" h="81" measuredW="147" measuredH="81" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Variavel%20%2C%20Peso%0ABatimento%20%3E%2020%2C%2010%0ABatimento%20%3C%2030%2C%2030</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="508" y="362" w="-1" h="-1" measuredW="62" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Excluir</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="508" y="416" w="-1" h="-1" measuredW="58" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Editar</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Button" x="515" y="259" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Salvar</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Button" x="610" y="508" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Salvar</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="521" y="508" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cancelar</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="98" y="23" w="719" h="559" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="22" controlTypeID="__group__" x="223" y="171" w="331" h="27" measuredW="331" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="35" h="-1" measuredW="35" measuredH="21" zOrder="0" locked="false" isInGroup="22">
+          <controlProperties>
+            <text>Regra</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="43" y="0" w="288" h="-1" measuredW="146" measuredH="27" zOrder="1" locked="false" isInGroup="22">
+          <controlProperties>
+            <text>Batimento%20do%20Paciente</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::LinkBar" x="223" y="102" w="-1" h="-1" measuredW="214" measuredH="19" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pagina%20Inicial%2C%20Relatorios%2C%20Regras</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
