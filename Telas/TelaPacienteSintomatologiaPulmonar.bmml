@@ -1,0 +1,333 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1045" measuredH="848" mockupW="1024" mockupH="841">
+  <controls>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="21" y="7" w="1024" h="841" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Paciente%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Accordion" x="36" y="149" w="150" h="226" measuredW="150" measuredH="294" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Regras%0A-%20Intercorrencias%0ARelatorios</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::FieldSet" x="201" y="149" w="827" h="124" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <text>Informa%E7%F5es%20Paciente</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TabBar" x="201" y="281" w="827" h="525" measuredW="599" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>3</selectedIndex>
+        <text>Hist%F3rico%2CAnamnese%2CExame%20Fisico%2C%20Sintomatologica%20Pulmonar%2C%20Gasometria%2C%20Intercorrencias</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::FieldSet" x="814" y="79" w="214" h="62" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Op%E7%F5es%20de%20Login</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="74" y="40" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="823" y="94" w="-1" h="-1" measuredW="178" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Seja%20bem%20Vindo%3A%20Fulano%20de%20Tal</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Link" x="976" y="116" w="-1" h="-1" measuredW="25" measuredH="19" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sair</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Link" x="879" y="116" w="-1" h="-1" measuredW="84" measuredH="19" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Configura%E7%F5es</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="215" y="168" w="-1" h="-1" measuredW="137" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nome%3A%20Sicrano%20Da%20Silva</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="215" y="189" w="-1" h="-1" measuredW="178" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20Nascimento%3A%2023/10/1962</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="215" y="210" w="-1" h="-1" measuredW="172" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Codigo%20Registro%3A%200148177412</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Label" x="539" y="168" w="-1" h="-1" measuredW="150" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Encaminhamento%20M%E9dico%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Label" x="539" y="189" w="-1" h="-1" measuredW="183" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Diagn%F3stico%3A%20Cancer%20no%20Pulm%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="539" y="210" w="-1" h="-1" measuredW="145" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Raz%E3o%20Encaminhamento%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Label" x="215" y="231" w="-1" h="-1" measuredW="220" measuredH="21" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20entrada%20Hospitalar%3A%2025/12/2000</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="215" y="252" w="-1" h="-1" measuredW="183" measuredH="21" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20entrada%20UTI%3A%2027/12/2000</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::FieldSet" x="201" y="79" w="607" h="62" measuredW="200" measuredH="170" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Informa%E7%F5es</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Label" x="215" y="94" w="-1" h="-1" measuredW="152" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>PACIENTE%20EM%20DESMAME</text>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Label" x="215" y="115" w="-1" h="-1" measuredW="142" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Data%20Inicio%3A%2030/12/2000</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Label" x="387" y="115" w="-1" h="-1" measuredW="169" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>M%E9todo%3A%20Gradual%20com%20Tubo%20T</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Label" x="387" y="94" w="-1" h="-1" measuredW="103" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hora%20Inicio%3A%2009%3A28</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::FieldSet" x="215" y="315" w="247" h="75" measuredW="200" measuredH="170" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tosse</text>
+      </controlProperties>
+    </control>
+    <control controlID="69" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="331" w="-1" h="-1" measuredW="54" measuredH="22" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Eficaz</text>
+      </controlProperties>
+    </control>
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::RadioButton" x="319" y="331" w="-1" h="-1" measuredW="79" measuredH="22" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>N%E3o%20eficaz</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="353" w="-1" h="-1" measuredW="71" measuredH="22" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Produtiva</text>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::RadioButton" x="319" y="353" w="-1" h="-1" measuredW="96" measuredH="22" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>N%E3o%20produtiva</text>
+      </controlProperties>
+    </control>
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::FieldSet" x="215" y="395" w="247" h="152" measuredW="200" measuredH="170" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Expectora%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="409" w="-1" h="-1" measuredW="62" measuredH="22" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Mucosa</text>
+      </controlProperties>
+    </control>
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="431" w="-1" h="-1" measuredW="108" measuredH="22" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Muco%20purulenta</text>
+      </controlProperties>
+    </control>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="453" w="-1" h="-1" measuredW="73" measuredH="22" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Purulenta</text>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="475" w="-1" h="-1" measuredW="59" measuredH="22" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Serosa</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="497" w="-1" h="-1" measuredW="222" measuredH="22" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hemoptoica%20com%20estria%20n%E3o%20maci%E7a</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::RadioButton" x="233" y="519" w="-1" h="-1" measuredW="198" measuredH="22" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hemoptoica%20com%20estria%20maci%E7a</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::FieldSet" x="470" y="315" w="242" h="210" measuredW="200" measuredH="170" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Padr%E3o%20Respiratorio</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::RadioButton" x="485" y="331" w="-1" h="-1" measuredW="198" measuredH="22" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dispn%E9ia%20aos%20minimos%20esfor%E7os</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::RadioButton" x="485" y="353" w="-1" h="-1" measuredW="215" measuredH="22" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dispn%E9ia%20aos%20esfor%E7os%20moderados</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::RadioButton" x="485" y="375" w="-1" h="-1" measuredW="198" measuredH="22" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dispn%E9ia%20aos%20grandes%20esfor%E7os</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::RadioButton" x="485" y="397" w="-1" h="-1" measuredW="216" measuredH="22" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dispn%E9ia%20de%20repouso%20%28%20Ortopn%E9ia%20%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::RadioButton" x="486" y="417" w="-1" h="-1" measuredW="57" measuredH="22" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Apn%E9ia</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::RadioButton" x="486" y="437" w="-1" h="-1" measuredW="64" measuredH="22" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Eupn%E9ia</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::RadioButton" x="486" y="457" w="-1" h="-1" measuredW="79" measuredH="22" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hiperpn%E9ia</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::RadioButton" x="486" y="476" w="-1" h="-1" measuredW="74" measuredH="22" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hipopn%E9ia</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::RadioButton" x="486" y="495" w="-1" h="-1" measuredW="191" measuredH="22" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Panopn%E9ia%20%28%20Dor%20ao%20Respirar%20%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::FieldSet" x="470" y="525" w="242" h="274" measuredW="200" measuredH="170" zOrder="44" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Respira%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="539" w="-1" h="-1" measuredW="53" measuredH="22" zOrder="45" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Apical</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="556" w="-1" h="-1" measuredW="55" measuredH="22" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Costal</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="574" w="-1" h="-1" measuredW="48" measuredH="22" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Misto</text>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="593" w="-1" h="-1" measuredW="98" measuredH="22" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Diafragm%E1tica</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="611" w="-1" h="-1" measuredW="141" measuredH="22" zOrder="49" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Respira%E7%E3o%20Paradoxal</text>
+      </controlProperties>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="629" w="-1" h="-1" measuredW="218" measuredH="22" zOrder="50" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Batimento%20de%20asa%20de%20nariz%20%28%20BAN%20%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::RadioButton" x="484" y="648" w="-1" h="-1" measuredW="76" measuredH="22" zOrder="51" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gemencia</text>
+      </controlProperties>
+    </control>
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::FieldSet" x="484" y="670" w="200" h="121" measuredW="200" measuredH="170" zOrder="52" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tiragem</text>
+      </controlProperties>
+    </control>
+    <control controlID="100" controlTypeID="com.balsamiq.mockups::RadioButton" x="492" y="683" w="-1" h="-1" measuredW="98" measuredH="22" zOrder="53" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Diafragm%E1tica</text>
+      </controlProperties>
+    </control>
+    <control controlID="101" controlTypeID="com.balsamiq.mockups::RadioButton" x="493" y="703" w="-1" h="-1" measuredW="96" measuredH="22" zOrder="54" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Internacostal</text>
+      </controlProperties>
+    </control>
+    <control controlID="102" controlTypeID="com.balsamiq.mockups::RadioButton" x="493" y="723" w="-1" h="-1" measuredW="107" measuredH="22" zOrder="55" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Supraclavicular</text>
+      </controlProperties>
+    </control>
+    <control controlID="103" controlTypeID="com.balsamiq.mockups::RadioButton" x="494" y="743" w="-1" h="-1" measuredW="100" measuredH="22" zOrder="56" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Infraclavicular</text>
+      </controlProperties>
+    </control>
+    <control controlID="104" controlTypeID="com.balsamiq.mockups::RadioButton" x="494" y="762" w="-1" h="-1" measuredW="104" measuredH="22" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Supra%20esternal</text>
+      </controlProperties>
+    </control>
+    <control controlID="105" controlTypeID="com.balsamiq.mockups::FieldSet" x="722" y="315" w="256" h="141" measuredW="200" measuredH="170" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dor%20tor%E1cica</text>
+      </controlProperties>
+    </control>
+    <control controlID="106" controlTypeID="com.balsamiq.mockups::RadioButton" x="738" y="331" w="-1" h="-1" measuredW="70" measuredH="22" zOrder="59" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Presente</text>
+      </controlProperties>
+    </control>
+    <control controlID="107" controlTypeID="com.balsamiq.mockups::RadioButton" x="823" y="331" w="-1" h="-1" measuredW="65" measuredH="22" zOrder="60" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ausente</text>
+      </controlProperties>
+    </control>
+    <control controlID="108" controlTypeID="com.balsamiq.mockups::Label" x="737" y="354" w="-1" h="-1" measuredW="100" measuredH="21" zOrder="61" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Escala%20de%200%20a%2010</text>
+      </controlProperties>
+    </control>
+    <control controlID="109" controlTypeID="com.balsamiq.mockups::TextInput" x="844" y="351" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="62" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="110" controlTypeID="com.balsamiq.mockups::FieldSet" x="735" y="382" w="228" h="57" measuredW="200" measuredH="170" zOrder="63" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Origem%20da%20dor</text>
+      </controlProperties>
+    </control>
+    <control controlID="111" controlTypeID="com.balsamiq.mockups::RadioButton" x="748" y="402" w="-1" h="-1" measuredW="71" measuredH="22" zOrder="64" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pleuritica</text>
+      </controlProperties>
+    </control>
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::RadioButton" x="844" y="403" w="-1" h="-1" measuredW="97" measuredH="22" zOrder="65" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>N%E3o%20pleuritica</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
