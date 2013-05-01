@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1045" measuredH="848" mockupW="1024" mockupH="841">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1045" measuredH="877" mockupW="1024" mockupH="870">
   <controls>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="21" y="7" w="1024" h="841" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="21" y="7" w="1024" h="870" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Paciente%0Ahttp%3A//</text>
       </controlProperties>
@@ -8,7 +8,7 @@
     <control controlID="41" controlTypeID="com.balsamiq.mockups::Accordion" x="36" y="149" w="150" h="226" measuredW="150" measuredH="294" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>2</selectedIndex>
-        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Regras%0A-%20Intercorrencias%0ARelatorios</text>
+        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Categoria%0A-%20Intercorrencias%0ARelatorios</text>
       </controlProperties>
     </control>
     <control controlID="42" controlTypeID="com.balsamiq.mockups::FieldSet" x="201" y="149" w="827" h="124" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
@@ -17,10 +17,10 @@
         <text>Informa%E7%F5es%20Paciente</text>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::TabBar" x="201" y="281" w="827" h="525" measuredW="599" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TabBar" x="201" y="281" w="827" h="525" measuredW="665" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>3</selectedIndex>
-        <text>Hist%F3rico%2CAnamnese%2CExame%20Fisico%2C%20Sintomatologica%20Pulmonar%2C%20Gasometria%2C%20Intercorrencias</text>
+        <text>Hist%F3rico%2CAnamnese%2CExame%20Fisico%2C%20Sintomatologica%20Pulmonar%2C%20Gasometria%2C%20Intercorrencias%2COcorrencia</text>
       </controlProperties>
     </control>
     <control controlID="49" controlTypeID="com.balsamiq.mockups::FieldSet" x="814" y="79" w="214" h="62" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
@@ -327,6 +327,16 @@
     <control controlID="112" controlTypeID="com.balsamiq.mockups::RadioButton" x="844" y="403" w="-1" h="-1" measuredW="97" measuredH="22" zOrder="65" locked="false" isInGroup="-1">
       <controlProperties>
         <text>N%E3o%20pleuritica</text>
+      </controlProperties>
+    </control>
+    <control controlID="113" controlTypeID="com.balsamiq.mockups::Button" x="737" y="91" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="66" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buscar</text>
+      </controlProperties>
+    </control>
+    <control controlID="114" controlTypeID="com.balsamiq.mockups::Button" x="963" y="815" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="67" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Salvar</text>
       </controlProperties>
     </control>
   </controls>

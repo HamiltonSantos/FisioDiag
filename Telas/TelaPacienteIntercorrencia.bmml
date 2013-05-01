@@ -8,7 +8,7 @@
     <control controlID="41" controlTypeID="com.balsamiq.mockups::Accordion" x="36" y="149" w="150" h="226" measuredW="150" measuredH="294" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>2</selectedIndex>
-        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Regras%0A-%20Intercorrencias%0ARelatorios</text>
+        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Categoria%0A-%20Intercorrencias%0ARelatorios</text>
       </controlProperties>
     </control>
     <control controlID="42" controlTypeID="com.balsamiq.mockups::FieldSet" x="201" y="149" w="827" h="124" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
@@ -17,10 +17,10 @@
         <text>Informa%E7%F5es%20Paciente</text>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::TabBar" x="201" y="281" w="827" h="440" measuredW="591" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TabBar" x="201" y="281" w="827" h="425" measuredW="657" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <selectedIndex>5</selectedIndex>
-        <text>Hist%F3rico%2CAnamnese%2CExame%20Fisico%2CSintomatologia%20Pulmonar%2C%20Gasometria%2C%20Intercorrencias</text>
+        <text>Hist%F3rico%2CAnamnese%2CExame%20Fisico%2CSintomatologia%20Pulmonar%2C%20Gasometria%2C%20Intercorrencias%2COcorrencia</text>
       </controlProperties>
     </control>
     <control controlID="49" controlTypeID="com.balsamiq.mockups::FieldSet" x="814" y="79" w="214" h="62" measuredW="200" measuredH="170" zOrder="4" locked="false" isInGroup="-1">
@@ -114,7 +114,7 @@
         <text>Intercorrencia%2C%20Data%2C%20Hora%0ATosse%20com%20Sangue%2C%2012/02/2000%2C%2017%3A00%0ADificuldade%20de%20Respira%E7%E3o%2C%2013/02/2000%2C%2023%3A53</text>
       </controlProperties>
     </control>
-    <control controlID="84" controlTypeID="com.balsamiq.mockups::ComboBox" x="240" y="461" w="171" h="-1" measuredW="145" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::ComboBox" x="291" y="460" w="171" h="-1" measuredW="145" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Tosse%20com%20Sangue</text>
       </controlProperties>
@@ -147,6 +147,21 @@
     <control controlID="90" controlTypeID="com.balsamiq.mockups::Button" x="240" y="567" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Adicionar</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Button" x="737" y="91" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Buscar</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::Label" x="240" y="462" w="-1" h="-1" measuredW="37" measuredH="21" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nome%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Button" x="964" y="712" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Salvar</text>
       </controlProperties>
     </control>
   </controls>
