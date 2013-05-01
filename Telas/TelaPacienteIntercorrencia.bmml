@@ -124,7 +124,7 @@
         <text>Data%3A</text>
       </controlProperties>
     </control>
-    <control controlID="86" controlTypeID="com.balsamiq.mockups::DateChooser" x="275" y="497" w="-1" h="-1" measuredW="136" measuredH="25" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::DateChooser" x="291" y="497" w="-1" h="-1" measuredW="136" measuredH="25" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>13/02/2000%20%20%20%20</text>
       </controlProperties>
