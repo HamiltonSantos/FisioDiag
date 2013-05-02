@@ -274,7 +274,12 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="1594" ColName="COR" PrevColName="" Pos="1" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<COLUMN ID="1663" ColName="NUM_REG_HOSP" PrevColName="" Pos="5" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1594" ColName="COR" PrevColName="" Pos="1" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
@@ -301,6 +306,7 @@
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="1393" LengthParam="0" />
 <INDEXCOLUMN idColumn="1626" LengthParam="0" />
+<INDEXCOLUMN idColumn="1663" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1627" IndexName="PACIENTE_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1625">
@@ -621,6 +627,11 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
+<COLUMN ID="1664" ColName="PACIENTE_NUM_REG_HOSP" PrevColName="" Pos="1" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
 </COLUMNS>
 <RELATIONS_END>
 <RELATION_END ID="1648" />
@@ -633,6 +644,7 @@
 <INDEXCOLUMN idColumn="1653" LengthParam="0" />
 <INDEXCOLUMN idColumn="1658" LengthParam="0" />
 <INDEXCOLUMN idColumn="1651" LengthParam="0" />
+<INDEXCOLUMN idColumn="1664" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1652" IndexName="PACIENTE_has_VARIAVEL_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1648">
@@ -650,6 +662,7 @@
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="1650" LengthParam="0" />
 <INDEXCOLUMN idColumn="1651" LengthParam="0" />
+<INDEXCOLUMN idColumn="1664" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1661" IndexName="HISTORICO_FKIndex4" IndexKind="1" FKRefDef_Obj_id="1649">
@@ -667,7 +680,7 @@
 <RELATION ID="1634" RelationName="POSSUI" Kind="2" SrcTable="1597" DestTable="1603" FKFields="ID_CATEGORIA=CATEGORIA_ID_CATEGORIA\n" FKFieldsComments="\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="-1" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1636" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="12" />
 <RELATION ID="1640" RelationName="POSSUI" Kind="5" SrcTable="1550" DestTable="1565" FKFields="ID_PESSOA=PESSOA_ID_PESSOA\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1642" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="13" />
 <RELATION ID="1643" RelationName="POSSUI" Kind="2" SrcTable="1550" DestTable="1580" FKFields="ID_PESSOA=PESSOA_ID_PESSOA\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1645" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="14" />
-<RELATION ID="1648" RelationName="POSSUI" Kind="1" SrcTable="1387" DestTable="1647" FKFields="ID_PACIENTE=PACIENTE_ID_PACIENTE\nPESSOA_ID_PESSOA=PACIENTE_PESSOA_ID_PESSOA\n" FKFieldsComments="\n\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1660" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="16" />
+<RELATION ID="1648" RelationName="POSSUI" Kind="1" SrcTable="1387" DestTable="1647" FKFields="ID_PACIENTE=PACIENTE_ID_PACIENTE\nPESSOA_ID_PESSOA=PACIENTE_PESSOA_ID_PESSOA\nNUM_REG_HOSP=PACIENTE_NUM_REG_HOSP\n" FKFieldsComments="\n\n\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1660" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="16" />
 <RELATION ID="1649" RelationName="POSSUI" Kind="1" SrcTable="1603" DestTable="1647" FKFields="ID_VARIAVEL=VARIAVEL_ID_VARIAVEL\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1661" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="17" />
 </RELATIONS>
 <NOTES>
