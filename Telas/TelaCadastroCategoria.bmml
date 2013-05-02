@@ -43,16 +43,16 @@
         <text>Categoria%0AFrequencia%20Respiratoria%0AFrequencia%20Cardiaca%0ATipo%20de%20t%F3rax%0ATosse%0AExpectora%E7%E3o</text>
       </controlProperties>
     </control>
-    <control controlID="97" controlTypeID="com.balsamiq.mockups::Button" x="512" y="215" w="136" h="27" measuredW="121" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::Button" x="512" y="215" w="136" h="27" measuredW="120" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
-        <text>Editar%20Container</text>
+        <text>Editar%20Categoria</text>
       </controlProperties>
     </control>
     <control controlID="98" controlTypeID="com.balsamiq.mockups::Button" x="512" y="251" w="136" h="27" measuredW="124" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
-        <text>Excluir%20Container</text>
+        <text>Excluir%20Categoria</text>
       </controlProperties>
     </control>
     <control controlID="99" controlTypeID="com.balsamiq.mockups::FieldSet" x="253" y="334" w="717" h="333" measuredW="200" measuredH="170" zOrder="14" locked="false" isInGroup="-1">
@@ -74,7 +74,7 @@
     <control controlID="102" controlTypeID="com.balsamiq.mockups::Button" x="512" y="179" w="136" h="27" measuredW="113" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
-        <text>Novo%20Container</text>
+        <text>Nova%20Categoria</text>
       </controlProperties>
     </control>
     <control controlID="103" controlTypeID="com.balsamiq.mockups::DataGrid" x="703" y="170" w="-1" h="-1" measuredW="241" measuredH="141" zOrder="8" locked="false" isInGroup="-1">
@@ -108,7 +108,7 @@
     </control>
     <control controlID="110" controlTypeID="com.balsamiq.mockups::Button" x="512" y="284" w="136" h="27" measuredW="128" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Sugerir%20Container</text>
+        <text>Sugerir%20Categoria</text>
       </controlProperties>
     </control>
     <control controlID="112" controlTypeID="com.balsamiq.mockups::Label" x="277" y="366" w="-1" h="-1" measuredW="37" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
@@ -171,7 +171,7 @@
         <text>Container</text>
       </controlProperties>
     </control>
-    <control controlID="123" controlTypeID="com.balsamiq.mockups::FieldSet" x="267" y="470" w="688" h="129" measuredW="200" measuredH="170" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="123" controlTypeID="com.balsamiq.mockups::FieldSet" x="267" y="470" w="688" h="142" measuredW="200" measuredH="170" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Variavel</text>
       </controlProperties>
@@ -185,6 +185,11 @@
       <controlProperties>
         <state>disabled</state>
         <text>Op%E7%E3o</text>
+      </controlProperties>
+    </control>
+    <control controlID="126" controlTypeID="com.balsamiq.mockups::Button" x="458" y="556" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Salvar</text>
       </controlProperties>
     </control>
   </controls>
