@@ -1,0 +1,61 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1045" measuredH="686" mockupW="1024" mockupH="679">
+  <controls>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="21" y="7" w="1024" h="679" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Relatorios%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Accordion" x="36" y="149" w="150" h="226" measuredW="150" measuredH="294" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>Pagina%20Inicial%0APacientes%0ACadastros%0A-%20Paciente%0A-%20Fisioterapeutas%0A-%20Regras%0A-%20Intercorrencias%0ARelatorios</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::FieldSet" x="814" y="79" w="214" h="62" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Op%E7%F5es%20de%20Login</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="74" y="40" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="823" y="94" w="-1" h="-1" measuredW="178" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Seja%20bem%20Vindo%3A%20Fulano%20de%20Tal</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Link" x="976" y="116" w="-1" h="-1" measuredW="25" measuredH="19" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sair</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Link" x="879" y="116" w="-1" h="-1" measuredW="84" measuredH="19" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Configura%E7%F5es</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::FieldSet" x="238" y="149" w="790" h="501" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Relatorios</text>
+      </controlProperties>
+    </control>
+    <control controlID="138" controlTypeID="com.balsamiq.mockups::FieldSet" x="253" y="171" w="761" h="129" measuredW="200" measuredH="170" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gerais</text>
+      </controlProperties>
+    </control>
+    <control controlID="139" controlTypeID="com.balsamiq.mockups::Button" x="267" y="192" w="-1" h="-1" measuredW="240" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Relatorio%20de%20pacientes%20em%20Desmame</text>
+      </controlProperties>
+    </control>
+    <control controlID="140" controlTypeID="com.balsamiq.mockups::Button" x="267" y="227" w="-1" h="-1" measuredW="290" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Relatorio%20de%20pacientes%20indicados%20a%20Desmame</text>
+      </controlProperties>
+    </control>
+    <control controlID="141" controlTypeID="com.balsamiq.mockups::Button" x="268" y="263" w="-1" h="-1" measuredW="235" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Relatorio%20de%20Sucesso%20de%20desmames</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

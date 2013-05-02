@@ -111,42 +111,42 @@
         <text>Sugerir%20Categoria</text>
       </controlProperties>
     </control>
-    <control controlID="112" controlTypeID="com.balsamiq.mockups::Label" x="277" y="366" w="-1" h="-1" measuredW="37" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::Label" x="277" y="366" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nome%3A</text>
+        <text>Nome%20Categoria%3A</text>
       </controlProperties>
     </control>
-    <control controlID="113" controlTypeID="com.balsamiq.mockups::TextInput" x="366" y="363" w="311" h="-1" measuredW="153" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="113" controlTypeID="com.balsamiq.mockups::TextInput" x="380" y="363" w="311" h="-1" measuredW="153" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Frequ%EAncia%20Respirat%F3ria</text>
       </controlProperties>
     </control>
-    <control controlID="114" controlTypeID="com.balsamiq.mockups::Label" x="277" y="491" w="-1" h="-1" measuredW="37" measuredH="21" zOrder="31" locked="false" isInGroup="-1">
+    <control controlID="114" controlTypeID="com.balsamiq.mockups::Label" x="277" y="491" w="-1" h="-1" measuredW="86" measuredH="21" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nome%3A</text>
+        <text>Nome%20Variavel%3A</text>
       </controlProperties>
     </control>
-    <control controlID="115" controlTypeID="com.balsamiq.mockups::TextInput" x="320" y="488" w="310" h="-1" measuredW="176" measuredH="27" zOrder="32" locked="false" isInGroup="-1">
+    <control controlID="115" controlTypeID="com.balsamiq.mockups::TextInput" x="372" y="488" w="310" h="-1" measuredW="176" measuredH="27" zOrder="32" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Taquipn%E9ia%3A%20mais%20de%2020%20ipm</text>
       </controlProperties>
     </control>
-    <control controlID="116" controlTypeID="com.balsamiq.mockups::Label" x="277" y="553" w="-1" h="-1" measuredW="29" measuredH="21" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="116" controlTypeID="com.balsamiq.mockups::Label" x="277" y="553" w="-1" h="-1" measuredW="81" measuredH="21" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Peso</text>
+        <text>Peso%20Variavel%3A</text>
       </controlProperties>
     </control>
-    <control controlID="117" controlTypeID="com.balsamiq.mockups::TextInput" x="320" y="550" w="88" h="-1" measuredW="31" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="117" controlTypeID="com.balsamiq.mockups::TextInput" x="372" y="550" w="88" h="-1" measuredW="31" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>36</text>
       </controlProperties>
     </control>
-    <control controlID="118" controlTypeID="com.balsamiq.mockups::Label" x="277" y="422" w="-1" h="-1" measuredW="28" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="118" controlTypeID="com.balsamiq.mockups::Label" x="277" y="422" w="-1" h="-1" measuredW="90" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Tipo%3A</text>
+        <text>Tipo%20Categoria%3A</text>
       </controlProperties>
     </control>
     <control controlID="119" controlTypeID="com.balsamiq.mockups::Label" x="277" y="394" w="-1" h="-1" measuredW="83" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
@@ -159,13 +159,13 @@
         <text>Categoria</text>
       </controlProperties>
     </control>
-    <control controlID="121" controlTypeID="com.balsamiq.mockups::ComboBox" x="366" y="393" w="-1" h="-1" measuredW="81" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="121" controlTypeID="com.balsamiq.mockups::ComboBox" x="380" y="393" w="-1" h="-1" measuredW="81" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Principal</text>
       </controlProperties>
     </control>
-    <control controlID="122" controlTypeID="com.balsamiq.mockups::ComboBox" x="366" y="420" w="-1" h="-1" measuredW="89" measuredH="24" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="122" controlTypeID="com.balsamiq.mockups::ComboBox" x="380" y="420" w="-1" h="-1" measuredW="89" measuredH="24" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Container</text>
@@ -176,18 +176,18 @@
         <text>Variavel</text>
       </controlProperties>
     </control>
-    <control controlID="124" controlTypeID="com.balsamiq.mockups::Label" x="277" y="522" w="-1" h="-1" measuredW="28" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
+    <control controlID="124" controlTypeID="com.balsamiq.mockups::Label" x="277" y="522" w="-1" h="-1" measuredW="78" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Tipo%3A</text>
+        <text>Tipo%20Variavel%3A</text>
       </controlProperties>
     </control>
-    <control controlID="125" controlTypeID="com.balsamiq.mockups::ComboBox" x="320" y="522" w="-1" h="-1" measuredW="67" measuredH="24" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="125" controlTypeID="com.balsamiq.mockups::ComboBox" x="372" y="522" w="-1" h="-1" measuredW="67" measuredH="24" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Op%E7%E3o</text>
       </controlProperties>
     </control>
-    <control controlID="126" controlTypeID="com.balsamiq.mockups::Button" x="458" y="556" w="-1" h="-1" measuredW="110" measuredH="27" zOrder="35" locked="false" isInGroup="-1">
+    <control controlID="126" controlTypeID="com.balsamiq.mockups::Button" x="502" y="552" w="-1" h="-1" measuredW="110" measuredH="27" zOrder="35" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
         <text>Salvar%20Variavel</text>

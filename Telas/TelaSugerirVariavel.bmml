@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="666" measuredH="668" mockupW="544" mockupH="668">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="666" measuredH="263" mockupW="544" mockupH="263">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="122" y="0" w="544" h="668" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TitleWindow" x="122" y="0" w="544" h="263" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Sugerir%20Variavel</text>
       </controlProperties>
@@ -16,94 +16,49 @@
         <text>Frequ%EAncia%20Respirat%F3ria</text>
       </controlProperties>
     </control>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="153" y="83" w="-1" h="-1" measuredW="252" measuredH="141" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <selectedIndex>2</selectedIndex>
-        <text>Variavel%2C%20Pontos%0AFrequencia%20normal%3A%2016%20a%2022%20ipm%2C%2018%0ABradipneia%3A%20menos%20de%2012%20ipm%20%2C%2050%0ATaquipn%E9ia%3A%20mais%20de%2020%20ipm%2C%2036%0AApn%E9ia%3A%20parada%20da%20respira%E7%E3o%2C%204</text>
-      </controlProperties>
-    </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="420" y="140" w="-1" h="-1" measuredW="108" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
-        <state>up</state>
-        <text>Editar%20Variavel</text>
-      </controlProperties>
-    </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="420" y="173" w="-1" h="-1" measuredW="112" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
-      <controlProperties>
-        <state>up</state>
-        <text>Excluir%20Variavel</text>
-      </controlProperties>
-    </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="420" y="106" w="108" h="27" measuredW="101" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
-      <controlProperties>
-        <state>up</state>
-        <text>Nova%20Variavel</text>
-      </controlProperties>
-    </control>
-    <control controlID="7" controlTypeID="com.balsamiq.mockups::FieldSet" x="138" y="254" w="513" h="149" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::FieldSet" x="138" y="82" w="513" h="116" measuredW="200" measuredH="170" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Parametros</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="153" y="272" w="49" h="-1" measuredW="49" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="153" y="100" w="49" h="-1" measuredW="49" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Variavel%3A</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="211" y="269" w="310" h="-1" measuredW="176" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="211" y="97" w="310" h="-1" measuredW="176" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <state>up</state>
         <text>Taquipn%E9ia%3A%20mais%20de%2020%20ipm</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="153" y="334" w="43" h="-1" measuredW="32" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="153" y="162" w="43" h="-1" measuredW="32" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Peso%3A</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="206" y="331" w="88" h="-1" measuredW="31" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::TextInput" x="206" y="159" w="88" h="-1" measuredW="31" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <state>up</state>
         <text>36</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Button" x="206" y="370" w="60" h="27" measuredW="60" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="499" y="206" w="-1" h="-1" measuredW="66" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <state>up</state>
-        <text>Salvar</text>
+        <text>Sugerir</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Button" x="277" y="370" w="77" h="27" measuredW="77" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Cancelar</text>
-      </controlProperties>
-    </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="506" y="605" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Salvar</text>
-      </controlProperties>
-    </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="574" y="605" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="574" y="206" w="-1" h="-1" measuredW="77" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Cancelar</text>
       </controlProperties>
     </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::FieldSet" x="139" y="420" w="512" h="170" measuredW="200" measuredH="170" zOrder="16" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Explica%E7%E3o</text>
-      </controlProperties>
-    </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::TextArea" x="148" y="442" w="488" h="133" measuredW="200" measuredH="140" zOrder="17" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Foram%20alterado%20os%20pesos%20das%20variavies%2C%20porque%20....%0AFoi%20tambem%20adicionada%20uma%20nova%20variavel%20porque%20...</text>
-      </controlProperties>
-    </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="153" y="301" w="-1" h="-1" measuredW="28" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Label" x="153" y="129" w="-1" h="-1" measuredW="28" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Tipo%3A</text>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::ComboBox" x="210" y="301" w="-1" h="-1" measuredW="67" measuredH="24" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::ComboBox" x="210" y="129" w="-1" h="-1" measuredW="67" measuredH="24" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Op%E7%E3o</text>
       </controlProperties>
