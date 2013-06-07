@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient_id: 1
+  variable_id: 1
+
+two:
+  patient_id: 1
+  variable_id: 1

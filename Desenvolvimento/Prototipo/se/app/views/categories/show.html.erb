@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Filha de:</b>
+  <% if @category.category_id != 0 %>
+    <%= link_to  Category.find(@category.category_id).description , Category.find(@category.category_id) %>
+  <% end %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @category.description %>
+</p>
+
+<p>
+  <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
+</p>
+
+<p>
+  <%= render :partial=>"new_subcategory" %>
+</p>
+
+<p>
+  <%= render :partial=>"variable_index", :locals => { :variables => @category.variables } %>
+</p>
+
+<p>
+  <%= render :partial=>"form_variables", :locals => {:variable => Variable.new(:category_id => @category.id) } %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

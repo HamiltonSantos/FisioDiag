@@ -29,3 +29,6 @@ Descri��o uti: http://pt.wikipedia.org/wiki/Unidade_de_terapia_intensiva
 Descri��o diagnostico fisioterapeutico: http://www.ebah.com.br/content/ABAAABrVkAE/diagnostico-funcional
 Desmame da ventila��o mec�nica - UFSP: http://www.moreirajr.com.br/revistas.asp?id_materia=1031&fase=imprime
 http://www.concursoefisioterapia.com/2010/06/desmame-da-ventilacao-mecanica.html
+------------------------------------
+
+Prototipo em Rails usando Twitter BootStrap

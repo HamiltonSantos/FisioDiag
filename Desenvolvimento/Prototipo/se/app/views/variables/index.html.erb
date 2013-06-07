@@ -1,0 +1,27 @@
+<h1>Listing variables</h1>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @variables.each do |variable| %>
+  <tr>
+    <td><%= variable.category_id %></td>
+    <td><%= variable.description %></td>
+    <td><%= variable.value %></td>
+    <td><%= link_to 'Show', variable %></td>
+    <td><%= link_to 'Edit', edit_variable_path(variable) %></td>
+    <td><%= link_to 'Destroy', variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Variable', new_variable_path %>
