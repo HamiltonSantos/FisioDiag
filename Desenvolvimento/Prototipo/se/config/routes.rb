@@ -1,16 +1,30 @@
 Se::Application.routes.draw do
-  get "history/selecionar_paciente"
+  
+
+  # Controller Login
+  match 'login/config_login'
+  match 'login/sair' => 'login#sair'
+  match 'login' => 'login#login'
+
+  # Controller History
+  match "history/home"
+  match 'history/home/:id' => 'history#home'
+  match "history/selecionar_paciente"
+
+  resources :physiotherapists
 
   resources :patients
 
-  get "history/home"
-  match 'history/home/:id' => 'history#home'
-
   resources :variables
 
-
+  # Controller Categories
+  match 'categories/sugerir'
+  match 'categories/sugeridas'
+  match 'categories/intercorrencias'
+  match 'categories/intercorrencias/new' => 'categories#new_intercorrencia'
+  match 'categories/ocorrencias'
+  match 'categories/ocorrencias/new' => 'categories#new_ocorrencia'
   resources :categories
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

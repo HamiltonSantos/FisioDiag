@@ -1,6 +1,6 @@
-<h1>Listing patients</h1>
+<h1>Selecionar Paciente</h1>
 
-<table>
+<table class="table table-hover">
   <tr>
     <th>Nome</th>
     <th>Cpf</th>
@@ -9,12 +9,12 @@
   </tr>
 
   <% @patients.each do |patient| %>
-      <tr>
-        <td><%= patient.nome %></td>
-        <td><%= patient.cpf %></td>
-        <td><%= patient.data_nasc %></td>
-        <td><%= link_to 'Selecionar', "home/#{patient.id}" %></td>
-      </tr>
+  <tr>
+    <td><%= patient.nome %></td>
+    <td><%= patient.cpf %></td>
+    <td><%= patient.data_nasc %></td>
+    <td><%= link_to 'Selecionar', "home/#{patient.id}" %></td>
+  </tr>
   <% end %>
 </table>
 

@@ -1,0 +1,27 @@
+<h1>Fisioterapeutas</h1>
+
+<table class="table">
+  <tr>
+    <th>Nome</th>
+    <th>Login</th>
+    <th>Senha</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @physiotherapists.each do |physiotherapist| %>
+  <tr>
+    <td><%= physiotherapist.nome %></td>
+    <td><%= physiotherapist.login %></td>
+    <td>******</td>
+    <td><%= link_to 'Mostrar', physiotherapist %></td>
+    <td><%= link_to 'Edit', edit_physiotherapist_path(physiotherapist) %></td>
+    <td><%= link_to 'Excluir', physiotherapist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Fisioterapeuta', new_physiotherapist_path, :class => 'btn' %>

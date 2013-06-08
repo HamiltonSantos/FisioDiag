@@ -1,6 +1,6 @@
-<h1>Listing patients</h1>
+<h1>Pacientes</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Nome</th>
     <th>Cpf</th>
@@ -15,13 +15,13 @@
     <td><%= patient.nome %></td>
     <td><%= patient.cpf %></td>
     <td><%= patient.data_nasc %></td>
-    <td><%= link_to 'Show', patient %></td>
-    <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-    <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', patient %></td>
+    <td><%= link_to 'Editar', edit_patient_path(patient) %></td>
+    <td><%= link_to 'Excluir', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Patient', new_patient_path %>
+<%= link_to 'Novo Paciente', new_patient_path, :class => 'btn' %>

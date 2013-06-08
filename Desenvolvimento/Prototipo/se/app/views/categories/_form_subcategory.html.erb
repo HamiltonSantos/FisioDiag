@@ -14,10 +14,10 @@
   <%= f.hidden_field :category_id %>
   
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label 'Descrição' %><br />
     <%= f.text_field :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Criar Categoria', :class => 'btn' %>
   </div>
 <% end %>

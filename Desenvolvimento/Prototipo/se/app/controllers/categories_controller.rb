@@ -81,4 +81,40 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # /categories/sugerir
+  def sugerir
+    @category = Category.new
+    
+  end
+
+  # /categories/sugeridas
+  def sugeridas
+    @categories = Category.where(:status => 3)
+
+    render 'index_sugeridas'
+  end
+
+  # /categories/intercorrencias
+  def intercorrencias
+
+    render 'index_intercorrencias', :locals => { :variables => Variable.where( :category_id => 69)
+}
+  end
+
+  # /categories/ocorrencias
+  def ocorrencias
+
+    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 70) }
+  end
+
+  # /categories/intercorrencias/new
+  def new_intercorrencia
+    render 'new_variable_intercorrencia'
+  end
+
+  # /categories/ocorrencias/new
+  def new_ocorrencia
+    render 'new_variable_ocorrencia'
+  end
 end

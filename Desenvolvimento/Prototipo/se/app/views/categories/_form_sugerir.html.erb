@@ -16,17 +16,20 @@
     <%= select_tag 'category[category_id]', options_for_select(Category.all.collect{ |c| [c.description, c.id] }) %>
     
   </div>
+
   <div class="field">
     <%= f.label 'Descrição' %><br />
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
     <%= f.label 'Tipo' %><br />
     <%= select_tag 'category[tipo]', options_for_select([["Container", "0"], ["Grupo", "1"]]) %>
 
   </div>
+
   <div class="actions">
-    <%= f.hidden_field :status, :value => '1' %>
+    <%= f.hidden_field :status, :value => '3' %>
     <%= f.submit 'Criar', :class => 'btn' %>
   </div>
 <% end %>

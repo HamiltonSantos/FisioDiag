@@ -8,27 +8,40 @@
 </head>
 <body>
 
-<div class="container-fluid">
+  <div class="clearfix">
+    <div class="well pull-right div-config">
 
-  <div class="row-fluid">
-
-    <div class="span2">
-
-      <div class="well sidebar-nav">
-        <ul class="nav nav-list">
-          <li class="nav-header">Menu</li>
-          <li> <%= link_to 'Categorias', categories_path%> </li>
-          <li> <%= link_to 'Pacientes', patients_path%> </li>
-          <li> <%= link_to 'Manter Paciente', "/history/home"%> </li>
-        </ul>
-      </div>
+      <p> Seja bem vindo, <%= session["usuario"] %> </p>
+      <%= link_to 'Configuracoes', :controller => 'login', :action => 'config_login' %> 
+      <%= link_to 'Sair', :controller => 'login', :action => 'sair' %>
     </div>
-
-    <div class="span10 well">
-      <%= yield %>
-    </div>
-
   </div>
-</div>
+
+  <div class="container-fluid">
+
+    <div class="row-fluid">
+
+      <div class="span2">
+
+        <div class="well sidebar-nav">
+          <ul class="nav nav-list">
+            <li class="nav-header">Menu</li>
+            <li> <%= link_to 'Pacientes', patients_path%> </li>
+            <li> <%= link_to 'Manter Paciente', "/history/home"%> </li>
+            <li class="nav-header">Administrativo</li>
+            <li> <%= link_to 'Fisioterapeutas', physiotherapists_path %> </li>
+            <li> <%= link_to 'Categorias', categories_path%> </li>
+            <li> <%= link_to 'Intercorrencias', '/categories/intercorrencias'%> </li>
+            <li> <%= link_to 'Ocorrencias', '/categories/ocorrencias'%> </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="span10 well">
+        <%= yield %>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>

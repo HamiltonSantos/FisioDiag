@@ -1,24 +1,25 @@
-<h3>Sub-Categorias</h3>
+<h1>Categorias Sugeridas</h1>
 
 <table class="table">
   <tr>
-    <th>Categoria</th>
+    <th>Categoria Pai</th>
     <th>Descrição</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% categories.each do |category| %>
+<% @categories.each do |category| %>
   <tr>
     <td><%= category.category_id %></td>
     <td><%= category.description %></td>
     <td><%= link_to 'Mostrar', category %></td>
     <td><%= link_to 'Editar', edit_category_path(category) %></td>
     <td><%= link_to 'Excluir', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Aprovar', category %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-

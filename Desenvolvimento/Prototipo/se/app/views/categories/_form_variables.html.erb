@@ -1,4 +1,3 @@
-<h1> Nova Variavel </h1>
 <%= form_for(variable) do |f| %>
   <% if variable.errors.any? %>
     <div id="error_explanation">
@@ -15,14 +14,14 @@
   <%= f.hidden_field :category_id %>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label 'Descrição' %><br />
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :value %><br />
+    <%= f.label 'Valor' %><br />
     <%= f.number_field :value %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Criar Variavel ', :class => 'btn'%>
   </div>
 <% end %>

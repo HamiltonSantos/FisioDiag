@@ -1,44 +1,42 @@
 <div>
-  <h1>Manter Paciente</h1>
-
-  <%= link_to 'Selecionar paciente', "/history/selecionar_paciente" %>
 
   <div>
+    <%= link_to 'Selecionar paciente', "/history/selecionar_paciente", :class => "btn btn-slc" %>
+  </div>
 
-    <%= field_set_tag 'Dados Paciente' do %>
+  <%= content_tag(:div, :class => "well" ) do %>
 
-        <%=  content_tag(:div) do %>
+    <%= content_tag(:div) do %>
 
-            <%= content_tag :span, "Nome Paciente: #{@patient.nome}" %>
-            <br>
-            <%= content_tag :span, "Prognostico: " %>
-
-        <% end %>
+      <%= label_tag "Nome Paciente: #{@patient.nome}" %>
+      <%= label_tag "Prognostico: " %>
+      <%= label_tag "Data Nascimento: #{@patient.data_nasc}" %>
+      <%= label_tag "Codigo Registro" %>
 
     <% end %>
 
-  </div>
-
-  <%= content_tag(:div, :class => "tabs") do %>
-      <%= content_tag(:ul) do %>
-          <% Category.where(:category_id => @principal.id).each do |c| %>
-              <%= content_tag(:li, content_tag(:a, c.description, :href => "#tabs-#{c.id}") ) %>
-          <% end %>
-      <% end %>
-
-      <% Category.where(:category_id => @principal.id).each do |c| %>
-          <%= content_tag(:div, :id => "tabs-#{c.id}") do %>
-              <%= field_set_tag c.description do %>
-                  <% c.variables.each do |variable| %>
-                      <%= content_tag(:div) do %>
-                          <%= radio_button_tag c.description, variable.description %>
-                          <%= label_tag c.description + ' ' + variable.description, variable.description %>
-                      <% end %>
-                  <% end %>
-              <% end %>
-          <% end %>
-      <% end %>
   <% end %>
 
-  <%= link_to 'Salvar Dados' %>
+  <%= content_tag(:div, :class => "tabs") do %>
+    <%= content_tag(:ul) do %>
+      <% Category.where(:category_id => @principal.id).each do |c| %>
+        <%= content_tag(:li, content_tag(:a, c.description, :href => "#tabs-#{c.id}") ) %>
+      <% end %>
+    <% end %>
+
+    <% Category.where(:category_id => @principal.id).each do |c| %>
+      <%= content_tag(:div, :id => "tabs-#{c.id}") do %>
+        <%= field_set_tag c.description do %>
+          <% c.variables.each do |variable| %>
+            <%= content_tag(:div) do %>
+              <%= radio_button_tag c.description, variable.description %>
+              <%= label_tag c.description + ' ' + variable.description, variable.description %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Salvar Dados', '/home', :class => 'btn' %>
 </div>

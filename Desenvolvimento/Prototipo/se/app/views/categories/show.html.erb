@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <%= link_to 'Editar Categoria', edit_category_path(@category) %> |
+  <%= link_to 'Voltar', categories_path %>
+</p>
+
+<h4>
+  <b>Categoria:</b>
+  <%= @category.description %>
+</h4>
 
 <p>
   <b>Filha de:</b>
@@ -7,26 +16,24 @@
   <% end %>
 </p>
 
-<p>
-  <b>Description:</b>
-  <%= @category.description %>
-</p>
+<div class="well">
 
-<p>
-  <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
-</p>
+  <p>
+    <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
+  </p>
 
-<p>
-  <%= render :partial=>"new_subcategory" %>
-</p>
+  <p>
+    <%= render :partial=>"new_subcategory" %>
+  </p>
 
-<p>
-  <%= render :partial=>"variable_index", :locals => { :variables => @category.variables } %>
-</p>
+</div>
 
-<p>
-  <%= render :partial=>"form_variables", :locals => {:variable => Variable.new(:category_id => @category.id) } %>
-</p>
+<div class="well">
+  <p>
+    <%= render :partial=>"variable_index", :locals => { :variables => @category.variables } %>
+  </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  <p>
+    <%= render :partial=>"form_variables", :locals => {:variable => Variable.new(:category_id => @category.id) } %>
+  </p>
+</div>

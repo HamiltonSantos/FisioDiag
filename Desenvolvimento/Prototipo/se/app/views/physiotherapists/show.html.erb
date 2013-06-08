@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @physiotherapist.nome %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%= @physiotherapist.login %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%= @physiotherapist.senha %>
+</p>
+
+
+<%= link_to 'Editar', edit_physiotherapist_path(@physiotherapist) %> |
+<%= link_to 'Voltar', physiotherapists_path %>

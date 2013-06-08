@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Se</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div class='container'>
+		
+		<%= form_tag( {:action => 'login'} , :class => 'form-signin' ) do %>
+
+	        <h2 class="form-signin-heading">Login</h2>
+	        <input name="usuario" type="text" placeholder="usuario" class="input-block-level">
+	        <input name="senha" type="password" placeholder="senha" class="input-block-level">
+	        <button type="submit" class="btn btn-large btn-primary">Login</button>
+
+	  	<% end %>      
+
+	</div>
+</body>
+</html>
