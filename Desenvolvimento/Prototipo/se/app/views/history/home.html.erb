@@ -19,12 +19,12 @@
 
   <%= content_tag(:div, :class => "tabs") do %>
     <%= content_tag(:ul) do %>
-      <% Category.where(:category_id => @principal.id).each do |c| %>
+      <% @categories.each do |c| %>
         <%= content_tag(:li, content_tag(:a, c.description, :href => "#tabs-#{c.id}") ) %>
       <% end %>
     <% end %>
 
-    <% Category.where(:category_id => @principal.id).each do |c| %>
+    <% @categories.each do |c| %>
       <%= content_tag(:div, :id => "tabs-#{c.id}") do %>
         <%= field_set_tag c.description do %>
           <% c.variables.each do |variable| %>

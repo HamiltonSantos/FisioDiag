@@ -22,8 +22,12 @@ Se::Application.routes.draw do
   match 'categories/sugeridas'
   match 'categories/intercorrencias'
   match 'categories/intercorrencias/new' => 'categories#new_intercorrencia'
+  match 'categories/intercorrencias/sugeridas' => 'categories#sugeridas_intercorrencia'
+  match 'categories/intercorrencias/sugerir' => 'categories#sugerir_intercorrencia'
   match 'categories/ocorrencias'
   match 'categories/ocorrencias/new' => 'categories#new_ocorrencia'
+  match 'categories/ocorrencias/sugerir' => 'categories#sugerir_ocorrencia'
+  match 'categories/ocorrencias/sugeridas' => 'categories#sugeridas_ocorrencia'
   resources :categories
 
   # The priority is based upon order of creation:

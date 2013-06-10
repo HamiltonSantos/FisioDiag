@@ -1,9 +1,10 @@
-<h1>Ocorrencias</h1>
+<h1>Intercorrencias Sugeridas</h1>
 
 <table class="table">
   <tr>
-    <th>Description</th>
-    <th>Value</th>
+    <th>Descrição</th>
+    <th>Valor</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,12 +17,9 @@
     <td><%= link_to 'Mostrar', variable %></td>
     <td><%= link_to 'Editar', edit_variable_path(variable) %></td>
     <td><%= link_to 'Excluir', variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Aprovar', variable %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'Nova Ocorrencia', {:action => 'new_ocorrencia'} , :class => 'btn' %>
-<%= link_to 'Sugerir Ocorrencia', {:action => 'sugerir_ocorrencia'} , :class => 'btn' %>
-<%= link_to 'Ocorrencias Sugeridas', {:action => 'sugeridas_ocorrencia'} , :class => 'btn' %>

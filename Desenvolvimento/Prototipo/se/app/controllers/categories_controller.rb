@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.where(:status => 1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,7 +84,7 @@ class CategoriesController < ApplicationController
 
   # /categories/sugerir
   def sugerir
-    @category = Category.new
+    @category = Category.new(:status => 3)
     
   end
 
@@ -95,26 +95,45 @@ class CategoriesController < ApplicationController
     render 'index_sugeridas'
   end
 
-  # /categories/intercorrencias
-  def intercorrencias
-
-    render 'index_intercorrencias', :locals => { :variables => Variable.where( :category_id => 69)
-}
-  end
-
-  # /categories/ocorrencias
-  def ocorrencias
-
-    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 70) }
-  end
+  #### Intercorrencias
 
   # /categories/intercorrencias/new
   def new_intercorrencia
     render 'new_variable_intercorrencia'
   end
+  # /categories/intercorrencias/sugeridas
+  def sugeridas_intercorrencia
+    render 'index_intercorrencias_sugeridas', :locals => { :variables => Variable.where(:category_id => 69, :status => 3) }
+  end
+  # /categories/intercorrencias
+  def intercorrencias
+    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => 69, :status => 1) }
+  end
+  # /categories/intercorrencias/sugerir
+  def sugerir_intercorrencia
+    render 'sugerir_intercorrencia'
+  end
+
+  #### Fim Intercorrencais
+  #### Ocorrencias
 
   # /categories/ocorrencias/new
   def new_ocorrencia
     render 'new_variable_ocorrencia'
   end
+  # /categories/ocorrencias/sugerir
+  def sugerir_ocorrencia
+    render 'sugerir_ocorrencia'
+  end
+  # /categories/ocorrencias
+  def ocorrencias
+    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 70, :status => 1) }
+  end
+  # /categories/ocorrencias/sugeridas
+  def sugeridas_ocorrencia
+    render 'index_ocorrencias_sugeridas', :locals => { :variables => Variable.where( :category_id => 70, :status => 3) }
+  end
+
+  #### Fim Ocorrencias
+
 end

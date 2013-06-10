@@ -6,6 +6,7 @@ class HistoryController < ApplicationController
     else
       @patient = Patient.find(params[:id])
     end
+    @categories = Category.where(:category_id => @principal.id, :status => 1)
   end
 
   def selecionar_paciente

@@ -23,5 +23,6 @@
 <br />
 
 
-<%= link_to 'Nova Intercorrencia', '/categories/intercorrencias/new', :class => 'btn' %>
-<%= link_to 'Sugerir Intercorrencia', {:action => 'sugerir'} , :class => 'btn' %>
+<%= link_to 'Nova Intercorrencia', {:action => 'new_intercorrencia'}, :class => 'btn' %>
+<%= link_to 'Sugerir Intercorrencia', {:action => 'sugerir_intercorrencia'} , :class => 'btn' %>
+<%= link_to 'Intercorencias Sugeridas', {:action => 'sugeridas_intercorrencia'} , :class => 'btn' %>
