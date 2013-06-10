@@ -1,6 +1,10 @@
 Se::Application.routes.draw do
   
 
+  get "relatorios/home"
+
+  get "relatorio/home"
+
   # Controller Login
   match 'login/config_login'
   match 'login/sair' => 'login#sair'

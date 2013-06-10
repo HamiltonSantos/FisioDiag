@@ -103,11 +103,11 @@ class CategoriesController < ApplicationController
   end
   # /categories/intercorrencias/sugeridas
   def sugeridas_intercorrencia
-    render 'index_intercorrencias_sugeridas', :locals => { :variables => Variable.where(:category_id => 69, :status => 3) }
+    render 'index_intercorrencias_sugeridas', :locals => { :variables => Variable.where(:category_id => 77, :status => 3) }
   end
   # /categories/intercorrencias
   def intercorrencias
-    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => 69, :status => 1) }
+    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => 77, :status => 1) }
   end
   # /categories/intercorrencias/sugerir
   def sugerir_intercorrencia
@@ -127,11 +127,11 @@ class CategoriesController < ApplicationController
   end
   # /categories/ocorrencias
   def ocorrencias
-    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 70, :status => 1) }
+    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 78, :status => 1) }
   end
   # /categories/ocorrencias/sugeridas
   def sugeridas_ocorrencia
-    render 'index_ocorrencias_sugeridas', :locals => { :variables => Variable.where( :category_id => 70, :status => 3) }
+    render 'index_ocorrencias_sugeridas', :locals => { :variables => Variable.where( :category_id => 78, :status => 3) }
   end
 
   #### Fim Ocorrencias

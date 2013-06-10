@@ -33,6 +33,8 @@
             <li> <%= link_to 'Categorias', categories_path%> </li>
             <li> <%= link_to 'Intercorrencias', '/categories/intercorrencias'%> </li>
             <li> <%= link_to 'Ocorrencias', '/categories/ocorrencias'%> </li>
+            <li class="nav-header">Relatorios</li>
+            <li> <%= link_to 'Desmames', '/relatorios/home'%> </li>
           </ul>
         </div>
       </div>
@@ -42,6 +44,10 @@
       </div>
 
     </div>
+  </div>
+
+  <div>
+    <%= debug(params) if Rails.env.development? %>
   </div>
 </body>
 </html>

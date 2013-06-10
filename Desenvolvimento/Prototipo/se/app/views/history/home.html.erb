@@ -19,9 +19,13 @@
 
   <%= content_tag(:div, :class => "tabs") do %>
     <%= content_tag(:ul) do %>
+
+      <%= content_tag(:li, content_tag(:a, 'Historico', :href => "#tabs-historico") ) %>
       <% @categories.each do |c| %>
         <%= content_tag(:li, content_tag(:a, c.description, :href => "#tabs-#{c.id}") ) %>
       <% end %>
+      <%= content_tag(:li, content_tag(:a, 'Intercorrencia', :href => "#tabs-intercorrencia") ) %>
+      <%= content_tag(:li, content_tag(:a, 'Ocorrencia', :href => "#tabs-ocorrencia") ) %>
     <% end %>
 
     <% @categories.each do |c| %>
@@ -29,12 +33,56 @@
         <%= field_set_tag c.description do %>
           <% c.variables.each do |variable| %>
             <%= content_tag(:div) do %>
-              <%= radio_button_tag c.description, variable.description %>
+
               <%= label_tag c.description + ' ' + variable.description, variable.description %>
+              <%= radio_button_tag c.description, variable.description %>
+
             <% end %>
           <% end %>
         <% end %>
       <% end %>
+    <% end %>
+
+    <%= content_tag(:div, :id => "tabs-intercorrencia") do %>
+      <%= field_set_tag "Intercorrencias" do %>
+        <% Variable.where(:category_id => 77, :status => 1).each do |variable| %>
+          <%= content_tag(:div) do %>
+            <%= radio_button_tag 'intercorrencias', variable.description %>
+            <%= label_tag 'intercorrencias' + ' ' + variable.description, variable.description %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= content_tag(:div, :id => "tabs-ocorrencia") do %>
+      <%= field_set_tag "Ocorrencias" do %>
+        <% Variable.where(:category_id => 77, :status => 1).each do |variable| %>
+          <%= content_tag(:div) do %>
+            <%= radio_button_tag 'ocorrencias', variable.description %>
+            <%= label_tag 'ocorrencias' + ' ' + variable.description, variable.description %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= content_tag(:div, :id => "tabs-historico") do %>
+      <table class="table">
+        <tr>
+          <th>Descrição</th>
+          <th>Fisioterapeuta</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th></th>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     <% end %>
   <% end %>
 

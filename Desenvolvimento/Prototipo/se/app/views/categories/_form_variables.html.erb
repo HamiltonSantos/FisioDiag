@@ -13,15 +13,17 @@
 
   <%= f.hidden_field :category_id %>
   <%= f.hidden_field :status %>
-  
+
   <div class="field">
     <%= f.label 'Descrição' %><br />
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
     <%= f.label 'Valor' %><br />
     <%= f.number_field :value %>
   </div>
+
   <div class="actions">
     <%= f.submit 'Criar Variavel ', :class => 'btn'%>
   </div>

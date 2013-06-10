@@ -11,7 +11,7 @@
 
 <p>
   <b>Filha de:</b>
-  <% if @category.category_id != 0 %>
+  <% if @category.category_id? %>
     <%= link_to  Category.find(@category.category_id).description , Category.find(@category.category_id) %>
   <% end %>
 </p>
