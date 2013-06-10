@@ -23,6 +23,16 @@
     <%= f.label :data_nasc %><br />
     <%= f.date_select :data_nasc %>
   </div>
+  <div class="field">
+    <%= f.label 'Numero de Registro' %><br />
+    <%= f.text_field :numRegistro %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sexo' %><br />
+    <%= select_tag 'patient[sexo]', options_for_select([["Masculino", "0"], ["Feminino", "1"]]) %>
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

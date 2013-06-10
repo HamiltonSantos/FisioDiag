@@ -9,9 +9,9 @@
     <%= content_tag(:div) do %>
 
       <%= label_tag "Nome Paciente: #{@patient.nome}" %>
-      <%= label_tag "Prognostico: " %>
       <%= label_tag "Data Nascimento: #{@patient.data_nasc}" %>
-      <%= label_tag "Codigo Registro" %>
+      <%= label_tag "CPF: #{@patient.cpf}" %>
+      <%= label_tag "Codigo Registro: #{@patient.numRegistro}" %>
 
     <% end %>
 
