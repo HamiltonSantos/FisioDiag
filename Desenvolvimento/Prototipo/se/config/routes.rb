@@ -1,7 +1,8 @@
 Se::Application.routes.draw do
   
-
-  get "relatorios/home"
+  # controller relatorios
+  match "relatorios/home"
+  match "relatorios/estatistica"
 
   # Controller Login
   match 'login/config_login'

@@ -12,6 +12,7 @@
       <%= label_tag "Data Nascimento: #{@patient.data_nasc}" %>
       <%= label_tag "CPF: #{@patient.cpf}" %>
       <%= label_tag "Codigo Registro: #{@patient.numRegistro}" %>
+      <h4>Indicação :</h4>
 
     <% end %>
 
@@ -72,15 +73,13 @@
           <th>Fisioterapeuta</th>
           <th>Data</th>
           <th>Hora</th>
-          <th></th>
         </tr>
 
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>Glasgow > 8</td>
+          <td>Ze</td>
+          <td>25/02/1992</td>
+          <td>17:44</td>
         </tr>
       </table>
     <% end %>

@@ -11,7 +11,7 @@
 
 <% @categories.each do |category| %>
   <tr>
-    <td><%= category.category_id %></td>
+    <td><%= Category.find(category.category_id).description %></td>
     <td><%= category.description %></td>
     <td><%= link_to 'Mostrar', category %></td>
     <td><%= link_to 'Editar', edit_category_path(category) %></td>
