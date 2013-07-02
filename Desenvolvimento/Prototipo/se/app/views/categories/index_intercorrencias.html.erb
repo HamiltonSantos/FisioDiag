@@ -2,8 +2,8 @@
 
 <table class="table">
   <tr>
-    <th>Description</th>
-    <th>Value</th>
+    <th>Descrição</th>
+    <th>Peso</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +13,9 @@
   <tr>
     <td><%= variable.description %></td>
     <td><%= variable.value %></td>
-    <td><%= link_to 'Mostrar', variable %></td>
-    <td><%= link_to 'Editar', edit_variable_path(variable) %></td>
-    <td><%= link_to 'Excluir', variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', variable, :class => 'btn' %></td>
+    <td><%= link_to 'Editar', edit_variable_path(variable), :class => 'btn' %></td>
+    <td><%= link_to 'Excluir', variable, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>
   </tr>
 <% end %>
 </table>

@@ -15,6 +15,31 @@
   <%= @patient.data_nasc %>
 </p>
 
+<p>
+  <b>Numero de Registro:</b>
+  <%= @patient.numRegistro %>
+</p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<p>
+	<h3>Historico</h3>
+	<div>
+		<table class="table table-striped">
+		  <tr>
+		    <th>Operação <i class="icon-circle-arrow-down"></th>
+		    <th>Fisioterapeuta <i class="icon-circle-arrow-down"></th>
+		    <th>Data <i class="icon-circle-arrow-down"></th>
+		    <th>Hora <i class="icon-circle-arrow-down"></th>
+		  </tr>
+
+		  <tr>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		  </tr>
+		</table>
+	</div>
+</p>
+<%= link_to 'Atender', "/history/home/#{@patient.id}", :class => 'btn btn-primary' %> 
+<%= link_to 'Editar', edit_patient_path(@patient), :class => 'btn btn-warning' %> 
+<%= link_to 'Voltar', patients_path, :class => 'btn' %>

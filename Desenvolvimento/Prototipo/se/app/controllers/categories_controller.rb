@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+
+
   # GET /categories
   # GET /categories.json
   def index
@@ -13,13 +15,20 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
-    @subcategory = Category.new(:category_id => @category.id)
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
+    if params[:id] == $id_intercorrencia.to_s
+      intercorrencias
+    elsif params[:id] == $id_ocorrencia.to_s
+      ocorrencias
+    else
+      @category = Category.find(params[:id])
+      @subcategory = Category.new(:category_id => @category.id)
+      @variable = Variable.new(:category_id => @category.id)
+
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @category }
+      end
+    end 
   end
 
   # GET /categories/new
@@ -99,18 +108,20 @@ class CategoriesController < ApplicationController
 
   # /categories/intercorrencias/new
   def new_intercorrencia
+    @variable = Variable.new(:category_id => $id_intercorrencia, :status => 1)
     render 'new_variable_intercorrencia'
   end
   # /categories/intercorrencias/sugeridas
   def sugeridas_intercorrencia
-    render 'index_intercorrencias_sugeridas', :locals => { :variables => Variable.where(:category_id => 77, :status => 3) }
+    render 'index_intercorrencias_sugeridas', :locals => { :variables => Variable.where(:category_id => $id_intercorrencia, :status => 3) }
   end
   # /categories/intercorrencias
   def intercorrencias
-    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => 77, :status => 1) }
+    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => $id_intercorrencia, :status => 1) }
   end
   # /categories/intercorrencias/sugerir
   def sugerir_intercorrencia
+    @variable = Variable.new(:category_id => $id_intercorrencia, :status => 3)
     render 'sugerir_intercorrencia'
   end
 
@@ -119,19 +130,21 @@ class CategoriesController < ApplicationController
 
   # /categories/ocorrencias/new
   def new_ocorrencia
+    @variable = Variable.new(:category_id => $id_ocorrencia, :status => 1)
     render 'new_variable_ocorrencia'
   end
   # /categories/ocorrencias/sugerir
   def sugerir_ocorrencia
+    @variable = Variable.new(:category_id => $id_ocorrencia, :status => 3)
     render 'sugerir_ocorrencia'
   end
   # /categories/ocorrencias
   def ocorrencias
-    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => 78, :status => 1) }
+    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => $id_ocorrencia, :status => 1) }
   end
   # /categories/ocorrencias/sugeridas
   def sugeridas_ocorrencia
-    render 'index_ocorrencias_sugeridas', :locals => { :variables => Variable.where( :category_id => 78, :status => 3) }
+    render 'index_ocorrencias_sugeridas', :locals => { :variables => Variable.where( :category_id => $id_ocorrencia, :status => 3) }
   end
 
   #### Fim Ocorrencias

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value_min: 1
+  value_max: 1
+  value: 1
+  description: MyString
+
+two:
+  value_min: 1
+  value_max: 1
+  value: 1
+  description: MyString

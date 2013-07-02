@@ -1,8 +1,4 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <%= link_to 'Editar Categoria', edit_category_path(@category) %> |
-  <%= link_to 'Voltar', categories_path %>
-</p>
 
 <h4>
   <b>Categoria:</b>
@@ -16,24 +12,30 @@
   <% end %>
 </p>
 
-<div class="well">
+<div class="well clearfix">
+  <div class ="well pull-left">
+    <p>
+      <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
+    </p>
+  </div>
 
-  <p>
-    <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
-  </p>
-
-  <p>
-    <%= render :partial=>"new_subcategory" %>
-  </p>
-
+  <div class="well pull-left">
+    <p>
+      <%= render :partial=>"new_subcategory" %>
+    </p>
+  </div>
 </div>
 
-<div class="well">
-  <p>
-    <%= render :partial=>"variable_index", :locals => { :variables => @category.variables } %>
-  </p>
+<div class="well clearfix">
+  <div class="well pull-left">
+    <p>
+      <%= render :partial=>"variable_index", :locals => { :variables => @category.variables } %>
+    </p>
+  </div>
 
-  <p>
-    <%= render :partial=>"form_variables", :locals => {:variable => Variable.new(:category_id => @category.id) } %>
-  </p>
+  <div class="well pull-left">
+    <p>
+      <%= render :partial=>"form_variables" %>
+    </p>
+  </div>
 </div>

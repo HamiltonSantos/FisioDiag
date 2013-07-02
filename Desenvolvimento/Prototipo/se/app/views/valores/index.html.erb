@@ -1,0 +1,29 @@
+<h1>Listing valores</h1>
+
+<table>
+  <tr>
+    <th>Value min</th>
+    <th>Value max</th>
+    <th>Value</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @valores.each do |valore| %>
+  <tr>
+    <td><%= valore.value_min %></td>
+    <td><%= valore.value_max %></td>
+    <td><%= valore.value %></td>
+    <td><%= valore.description %></td>
+    <td><%= link_to 'Show', valore %></td>
+    <td><%= link_to 'Edit', edit_valore_path(valore) %></td>
+    <td><%= link_to 'Destroy', valore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Valore', new_valore_path %>

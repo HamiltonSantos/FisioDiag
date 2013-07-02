@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610080622) do
+ActiveRecord::Schema.define(:version => 20130702054154) do
 
   create_table "categories", :force => true do |t|
     t.integer  "category_id"
@@ -20,13 +20,6 @@ ActiveRecord::Schema.define(:version => 20130610080622) do
     t.datetime "updated_at",  :null => false
     t.integer  "tipo"
     t.integer  "status"
-  end
-
-  create_table "cellphones", :force => true do |t|
-    t.string   "tipo"
-    t.integer  "preco"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "histories", :force => true do |t|
@@ -54,6 +47,16 @@ ActiveRecord::Schema.define(:version => 20130610080622) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "valores", :force => true do |t|
+    t.integer  "value_min"
+    t.integer  "value_max"
+    t.integer  "value"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "id_variable"
+  end
+
   create_table "variables", :force => true do |t|
     t.integer  "category_id"
     t.string   "description"
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130610080622) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "status"
+    t.integer  "tipo"
   end
 
 end

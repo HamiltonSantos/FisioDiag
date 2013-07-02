@@ -14,7 +14,26 @@
   <b>Senha:</b>
   <%= @physiotherapist.senha %>
 </p>
+<p>
+	<h3>Historico de Atendimentos</h3>
+	<div>
+		<table class="table table-striped">
+		  <tr>
+		    <th>Operação <i class="icon-circle-arrow-down"></th>
+		    <th>Paciente <i class="icon-circle-arrow-down"></th>
+		    <th>Data <i class="icon-circle-arrow-down"></th>
+		    <th>Hora <i class="icon-circle-arrow-down"></th>
+		  </tr>
 
+		  <tr>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		  </tr>
+		</table>
+	</div>
+</p>
 
-<%= link_to 'Editar', edit_physiotherapist_path(@physiotherapist) %> |
-<%= link_to 'Voltar', physiotherapists_path %>
+<%= link_to 'Editar', edit_physiotherapist_path(@physiotherapist), :class => 'btn' %>
+<%= link_to 'Voltar', physiotherapists_path, :class => 'btn' %>

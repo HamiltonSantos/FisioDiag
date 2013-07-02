@@ -15,9 +15,9 @@
     <td><%= physiotherapist.nome %></td>
     <td><%= physiotherapist.login %></td>
     <td>******</td>
-    <td><%= link_to 'Mostrar', physiotherapist %></td>
-    <td><%= link_to 'Edit', edit_physiotherapist_path(physiotherapist) %></td>
-    <td><%= link_to 'Excluir', physiotherapist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', physiotherapist, :class => 'btn btn-info' %></td>
+    <td><%= link_to 'Editar', edit_physiotherapist_path(physiotherapist), :class => 'btn btn-warning' %></td>
+    <td><%= link_to 'Excluir', physiotherapist, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>

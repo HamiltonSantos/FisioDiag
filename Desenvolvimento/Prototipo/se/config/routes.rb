@@ -1,5 +1,8 @@
 Se::Application.routes.draw do
   
+  resources :valores
+
+
   # controller relatorios
   match "relatorios/home"
   match "relatorios/estatistica"

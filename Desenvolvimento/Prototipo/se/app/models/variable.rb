@@ -1,3 +1,3 @@
 class Variable < ActiveRecord::Base
-  attr_accessible :category_id, :description, :value, :status
+  attr_accessible :category_id, :description, :value, :status, :tipo
 end

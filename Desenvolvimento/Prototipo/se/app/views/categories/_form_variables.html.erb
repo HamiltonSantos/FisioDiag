@@ -1,7 +1,7 @@
-<%= form_for(variable) do |f| %>
-  <% if variable.errors.any? %>
+<%= form_for(@variable) do |f| %>
+  <% if @variable.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(variable.errors.count, "error") %> prohibited this variable from being saved:</h2>
+      <h2><%= pluralize(@variable.errors.count, "error") %> prohibited this variable from being saved:</h2>
 
       <ul>
       <% @variable.errors.full_messages.each do |msg| %>
@@ -15,16 +15,16 @@
   <%= f.hidden_field :status %>
 
   <div class="field">
-    <%= f.label 'Descrição' %><br />
+    <%= 'Descrição' %><br />
     <%= f.text_field :description %>
   </div>
 
   <div class="field">
-    <%= f.label 'Valor' %><br />
-    <%= f.number_field :value %>
+    <%= 'Tipo' %><br />
+    <%= select_tag 'variable[tipo]', options_for_select([["Opção", "0"], ["Valor", "1"]]) %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Criar Variavel ', :class => 'btn'%>
+    <%= f.submit 'Criar Variavel ', :class => 'btn btn-success'%>
   </div>
 <% end %>

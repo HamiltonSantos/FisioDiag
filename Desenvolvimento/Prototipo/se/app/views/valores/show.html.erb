@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value min:</b>
+  <%= @valore.value_min %>
+</p>
+
+<p>
+  <b>Value max:</b>
+  <%= @valore.value_max %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @valore.value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @valore.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_valore_path(@valore) %> |
+<%= link_to 'Back', valores_path %>

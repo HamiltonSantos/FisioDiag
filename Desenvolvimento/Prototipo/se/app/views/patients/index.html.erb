@@ -1,10 +1,23 @@
 <h1>Pacientes</h1>
-
-<table class="table">
+<div class='well'>
+  <input type="text" placeholder="Filtrar"> <br/>
+  <label class="checkbox ">
+    <input type="checkbox" id="inlineCheckbox1" value="option1" CHECKED> Todos
+  </label>
+  <label class="checkbox ">
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> Indicados a Desmame
+  </label>
+  <label class="checkbox ">
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> Desfavoravel a Desmame
+  </label>  
+</div>
+<table class="table table-striped">
   <tr>
     <th>Nome</th>
-    <th>Cpf</th>
-    <th>Data nasc</th>
+    <th>CPF</th>
+    <th>Data Nascimento</th>
+    <th>Data Ultimo Atendimento <i class="icon-circle-arrow-down"></i></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,9 +28,11 @@
     <td><%= patient.nome %></td>
     <td><%= patient.cpf %></td>
     <td><%= patient.data_nasc %></td>
-    <td><%= link_to 'Mostrar', patient %></td>
-    <td><%= link_to 'Editar', edit_patient_path(patient) %></td>
-    <td><%= link_to 'Excluir', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>16/01/2010</td>
+    <td><%= link_to 'Atender', "/history/home/#{patient.id}", :class => 'btn btn-primary' %></td>
+    <td><%= link_to 'Mostrar', patient, :class => 'btn btn-info' %></td>
+    <td><%= link_to 'Editar', edit_patient_path(patient), :class => 'btn btn-warning' %></td>
+    <td><%= link_to 'Excluir', patient, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
