@@ -18,12 +18,6 @@
     <%= f.text_field :description %>
   </div>
 
-  <div class="field">
-    <%= 'Tipo' %><br />
-    <%= select_tag 'subcategory[tipo]', options_for_select([["Container", "0"], ["Grupo", "1"]]) %>
-
-  </div>
-
   <div class="actions">
     <%= f.submit 'Criar Categoria', :class => 'btn btn-success' %>
   </div>

@@ -44,7 +44,16 @@ class ValoresController < ApplicationController
 
     respond_to do |format|
       if @valore.save
-        format.html { redirect_to @valore, notice: 'Valore was successfully created.' }
+
+        if @valore.id_variable == $id_intercorrencia
+          format.html { redirect_to "/categories/intercorrencias" }
+        elsif @valore.id_variable == $id_ocorrencia
+          format.html { redirect_to "/categories/ocorrencias" }  
+        elsif @valore.id_variable == $id_prognostico
+          format.html { redirect_to "/prognostico/home" }
+        else
+          format.html { redirect_to "/variables/#{@valore.id_variable}" }
+        end
         format.json { render json: @valore, status: :created, location: @valore }
       else
         format.html { render action: "new" }

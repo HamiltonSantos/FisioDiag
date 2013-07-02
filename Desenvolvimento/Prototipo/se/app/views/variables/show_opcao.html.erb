@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <p>
   <b>Categoria:</b>
   <%= @variable.category_id %>
@@ -11,19 +12,19 @@
 
 <p>
   <b>Tipo:</b>
-  <%= "Faixa" %>
+  <%= "Opção" %>
 </p>
 
 <div class="well clearfix">
   <div class="well pull-left">
     <p>
-      <%= render :partial=> "index_valores" %>
+      <%= render :partial=> "index_valores_opcao" %>
     </p>
   </div>
 
   <div class="well pull-left">
     <p>
-      <%= render :partial=> "form_valores" %>
+      <%= render :partial=> "form_valores_opcao" %>
     </p>
   </div>
 </div>

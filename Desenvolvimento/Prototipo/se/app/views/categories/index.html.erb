@@ -13,9 +13,9 @@
   <tr>
     <td><%= Category.find(category.category_id).description %></td>
     <td><%= category.description %></td>
-    <td><%= link_to 'Mostrar', category %></td>
-    <td><%= link_to 'Editar', edit_category_path(category) %></td>
-    <td><%= link_to 'Excluir', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Detalhes', category, :class => 'btn btn-primary' %></td>
+    <td><%= link_to 'Editar', edit_category_path(category),:class =>  'btn btn-warning' %></td>
+    <td><%= link_to 'Excluir', category, method: :delete, data: { confirm: 'Você tem certeza?' },:class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>

@@ -108,7 +108,7 @@ class CategoriesController < ApplicationController
 
   # /categories/intercorrencias/new
   def new_intercorrencia
-    @variable = Variable.new(:category_id => $id_intercorrencia, :status => 1)
+    @valore = Valore.new(:id_variable => $id_intercorrencia)
     render 'new_variable_intercorrencia'
   end
   # /categories/intercorrencias/sugeridas
@@ -117,7 +117,8 @@ class CategoriesController < ApplicationController
   end
   # /categories/intercorrencias
   def intercorrencias
-    render 'index_intercorrencias', :locals => { :variables => Variable.where(:category_id => $id_intercorrencia, :status => 1) }
+    @valores = Valore.where(:id_variable => $id_intercorrencia)
+    render 'index_intercorrencias'
   end
   # /categories/intercorrencias/sugerir
   def sugerir_intercorrencia
@@ -130,7 +131,7 @@ class CategoriesController < ApplicationController
 
   # /categories/ocorrencias/new
   def new_ocorrencia
-    @variable = Variable.new(:category_id => $id_ocorrencia, :status => 1)
+    @valore = Valore.new(:id_variable => $id_ocorrencia)
     render 'new_variable_ocorrencia'
   end
   # /categories/ocorrencias/sugerir
@@ -140,7 +141,8 @@ class CategoriesController < ApplicationController
   end
   # /categories/ocorrencias
   def ocorrencias
-    render 'index_ocorrencias', :locals => { :variables => Variable.where( :category_id => $id_ocorrencia, :status => 1) }
+    @valores = Valore.where(:id_variable => $id_ocorrencia)
+    render 'index_ocorrencias'
   end
   # /categories/ocorrencias/sugeridas
   def sugeridas_ocorrencia

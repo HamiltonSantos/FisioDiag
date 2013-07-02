@@ -12,10 +12,14 @@
 <% variables.each do |variable| %>
   <tr>
     <td><%= variable.description %></td>
-    <td><%= variable.tipo %></td>
-    <td><%= link_to 'Mostrar', variable %></td>
-    <td><%= link_to 'Editar', edit_variable_path(variable) %></td>
-    <td><%= link_to 'Excluir', variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if variable.tipo == 0 %>
+    <td>Opção</td>
+    <% else %>
+    <td>Faixa </td>
+    <% end %>
+    <td><%= link_to 'Detalhes', variable , :class => "btn btn-primary"%></td>
+    <td><%= link_to 'Editar', edit_variable_path(variable), :class => "btn btn-warning" %></td>
+    <td><%= link_to 'Excluir', variable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,27 @@
+<h1>Prognostico</h1>
+
+<table class ="table">
+  <tr>
+    <th>Descrição</th>
+    <th>Pontos Minimo</th>
+    <th>Pontos Maximo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @valores.each do |valore| %>
+  <tr>
+    <td><%= valore.description %></td>
+    <td><%= valore.value_min %></td>
+    <td><%= valore.value_max %></td>
+    <td><%= link_to 'Detalhes', "/prognostico/show/#{valore.id}", :class => "btn btn-primary" %></td>
+    <td><%= link_to 'Editar', edit_valore_path(valore), :class => "btn btn-warning" %></td>
+    <td><%= link_to 'Excluir', valore, method: :delete, data: { confirm: 'Voce tem certeza?' }, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Prognostico', 'new', :class => "btn" %>

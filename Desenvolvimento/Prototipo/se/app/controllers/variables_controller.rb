@@ -14,18 +14,26 @@ class VariablesController < ApplicationController
   # GET /variables/1.json
   def show
     @variable = Variable.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @variable }
+    @valores = Valore.where(:id_variable => @variable.id)
+    @valore = Valore.new(:id_variable => @variable.id)
+    if @variable.tipo == 0
+      respond_to do |format|
+        format.html { render "show_opcao" }
+        format.json { render json: @variable }
+      end
+    elsif @variable.tipo == 1
+      respond_to do |format|
+        format.html { render "show" }
+        format.json { render json: @variable }
+      end
     end
+
   end
 
   # GET /variables/new
   # GET /variables/new.json
   def new
     @variable = Variable.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @variable }

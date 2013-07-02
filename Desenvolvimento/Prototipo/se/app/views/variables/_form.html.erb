@@ -12,18 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
+    <%= "Descrição" %><br />
     <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.number_field :value %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to 'Salvar', '/categories/6' , :class => "btn" %>
   </div>
 <% end %>

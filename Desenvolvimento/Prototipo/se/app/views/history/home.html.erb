@@ -1,7 +1,7 @@
 <div>
 
   <div>
-    <%= link_to 'Selecionar paciente', "/patients", :class => "btn btn-slc" %>
+    <%= link_to 'Selecionar outro paciente', "/patients", :class => "btn btn-slc" %>
   </div>
 
   <%= content_tag(:div, :class => "well clearfix" ) do %>
@@ -22,17 +22,18 @@
     <% end %>
 
     <%= content_tag(:div, :class => "well pull-left") do %>
-      <p>
-        <b>Nome Paciente:</b>
-        <%= @patient.nome %>
+      <p class= "alert alert-info">
+        <b>Prognostico:</b>
+        <%= "Indicado" %> <br>
+        <%= link_to "Detalhes", "/history/show/#{@patient.id}" ,:class => "btn btn-primary" %>
       </p>
       <p>
-        <b>Numero de Registro:</b>
-        <%= @patient.numRegistro %>
+        <b>Data Ultimo Atendimento:</b>
+        <%= "25/1/2010" %>
       </p>
       <p>
-        <b>Codigo de Registro:</b>
-        <%= @patient.numRegistro %>
+        <b>Fisioterapeuta: </b>
+        <%= "Fulano de " %>
       </p>
     <% end %>
 
@@ -70,15 +71,30 @@
         <%= content_tag(:div, :class => 'well') do %>
           <%= field_set_tag c.description do %>
             <% c.variables.each do |variable| %>
-              <%= content_tag(:div) do %>
+              <% if variable.tipo == 0 %>
 
-                <%= label_tag c.description + ' ' + variable.description, variable.description %>
-                <%= radio_button_tag c.description, variable.description %>
-
+                <%= content_tag(:div, :class => 'well pull-left') do %>
+                  <p><b> <%= variable.description %> </b></p>
+                  <% Valore.where(:id_variable => variable.id).each do |valore| %>
+                    <%= radio_button_tag variable.description , valore.description %>
+                    <%= label_tag variable.description + ' ' + valore.description, valore.description %>
+                  <% end %>
+                  
+                <% end %>
+                
+              <% elsif variable.tipo == 1 %>
+                <%= label_tag c.description + ' ' + variable.description, variable.description %> 
+                <%= number_field_tag c.description %>
+                <br/>
               <% end %>
             <% end %>
           <% end %>
         <% end %>
+
+        <%= date_select "article", "written_on"  %><br/>
+        <%= time_select "article", "written_on"  %><br/>
+        <%= link_to 'Salvar', '/home', :class => 'btn btn-success' %>
+
       <% end %>
     <% end %>
 
@@ -101,15 +117,17 @@
 
       <%= content_tag(:div, :class => 'well') do %>
         <%= field_set_tag "Intercorrencias" do %>
-          <% @intercorrencia_variables.each do |variable| %>
+          <% @intercorrencia_valores.each do |valore| %>
             <%= content_tag(:div) do %>
-              <%= radio_button_tag 'intercorrencias', variable.description %>
-              <%= label_tag 'intercorrencias' + ' ' + variable.description, variable.description %>
+              <%= radio_button_tag 'intercorrencias', valore.description %>
+              <%= label_tag 'intercorrencias' + ' ' + valore.description, valore.description %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-      <%= link_to 'Salvar', '/home', :class => 'btn' %>
+      <%= date_select "article", "written_on"  %><br/>
+      <%= time_select "article", "written_on"  %><br/>
+      <%= link_to 'Salvar', '/home', :class => 'btn btn-success' %>
     <% end %>
 
     <%= content_tag(:div, :id => "tabs-ocorrencia") do %>
@@ -131,15 +149,17 @@
 
       <%= content_tag(:div, :class => 'well') do %>
         <%= field_set_tag "Ocorrencias" do %>
-          <% @ocorrencia_variables.each do |variable| %>
+          <% @ocorrencia_valores.each do |valore| %>
             <%= content_tag(:div) do %>
-              <%= radio_button_tag 'ocorrencias', variable.description %>
-              <%= label_tag 'ocorrencias' + ' ' + variable.description, variable.description %>
+              <%= radio_button_tag 'ocorrencias', valore.description %>
+              <%= label_tag 'ocorrencias' + ' ' + valore.description, valore.description %>
             <% end %>
           <% end %>
         <% end %>
         <% end %>
-      <%= link_to 'Salvar', '/home', :class => 'btn' %>
+      <%= date_select "article", "written_on"  %><br/>
+      <%= time_select "article", "written_on"  %><br/>
+      <%= link_to 'Salvar', '/home', :class => 'btn btn-success' %>
     <% end %>
 
     <%= content_tag(:div, :id => "tabs-historico") do %>

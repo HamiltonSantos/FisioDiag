@@ -5,7 +5,7 @@ class LoginController < ApplicationController
   	senha = params[:senha]
   	if usuario == senha && !usuario.nil?
   		session[:usuario] = usuario
-  		redirect_to :controller => 'categories'
+  		redirect_to '/physiotherapists/1'
   	else
   		render :action => 'login', :layout => false
   	end

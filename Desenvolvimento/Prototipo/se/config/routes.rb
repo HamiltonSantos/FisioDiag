@@ -1,5 +1,9 @@
 Se::Application.routes.draw do
   
+  # Controller Prognostico
+  match "prognostico/home"
+  match "prognostico/new"
+  match "prognostico/show/:id" => "prognostico#show"
   resources :valores
 
 
@@ -15,6 +19,7 @@ Se::Application.routes.draw do
   # Controller History
   match "history/home"
   match 'history/home/:id' => 'history#home'
+  match 'history/show/:id' => 'history#show'
   match "history/selecionar_paciente"
 
   resources :physiotherapists

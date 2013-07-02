@@ -6,26 +6,13 @@
 </h4>
 
 <p>
-  <b>Filha de:</b>
   <% if @category.category_id? %>
+    <b>Filha de:</b>
     <%= link_to  Category.find(@category.category_id).description , Category.find(@category.category_id) %>
   <% end %>
 </p>
 
-<div class="well clearfix">
-  <div class ="well pull-left">
-    <p>
-      <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
-    </p>
-  </div>
-
-  <div class="well pull-left">
-    <p>
-      <%= render :partial=>"new_subcategory" %>
-    </p>
-  </div>
-</div>
-
+<% if @category.id != $id_principal %>
 <div class="well clearfix">
   <div class="well pull-left">
     <p>
@@ -36,6 +23,21 @@
   <div class="well pull-left">
     <p>
       <%= render :partial=>"form_variables" %>
+    </p>
+  </div>
+</div>
+
+<% end %>
+<div class="well clearfix">
+  <div class ="well pull-left">
+    <p>
+      <%= render :partial => "subcatindex", :locals =>{:categories => Category.where( :category_id => @category.id) } %> 
+    </p>
+  </div>
+
+  <div class="well pull-left">
+    <p>
+      <%= render :partial=>"new_subcategory" %>
     </p>
   </div>
 </div>

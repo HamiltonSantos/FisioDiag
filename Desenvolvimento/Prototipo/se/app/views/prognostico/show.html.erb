@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<h1> Detalhes </h1>
+
+<p>
+  <b>Descrição:</b>
+  <%= @valore.description %>
+</p>
+<p>
+  <b>Valor Minimo:</b>
+  <%= @valore.value_min %>
+</p>
+
+<p>
+  <b>Valor Maximo:</b>
+  <%= @valore.value_max %>
+</p>
+
+<h2>Pacientes com o Prognostico</h2>
+
+<table class ="table">
+  <tr>
+  	<th>Nome Paciente</th>
+    <th>Pontos</th>
+    <th></th>
+  </tr>
+
+  <tr>
+  	<td>Fulano de Tal</td>
+    <td>123</td>
+    <td><%= link_to 'Ver Paciente', '/patients/2', :class => "btn btn-primary" %></td>
+  </tr>
+</table>
+
+<br />
