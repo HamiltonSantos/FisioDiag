@@ -39,6 +39,7 @@ Se::Application.routes.draw do
   match 'categories/ocorrencias/new' => 'categories#new_ocorrencia'
   match 'categories/ocorrencias/sugerir' => 'categories#sugerir_ocorrencia'
   match 'categories/ocorrencias/sugeridas' => 'categories#sugeridas_ocorrencia'
+  match 'categories/ocorrencias/detalhes/:id' => 'categories#ocorrencia_detalhes'
   resources :categories
 
   # The priority is based upon order of creation:
