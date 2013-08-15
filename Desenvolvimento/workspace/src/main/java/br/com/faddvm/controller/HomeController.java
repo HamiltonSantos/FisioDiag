@@ -1,4 +1,4 @@
-package br.com.faddvm;
+package br.com.faddvm.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
