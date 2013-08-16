@@ -3,6 +3,7 @@ package br.com.faddvm.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,7 +18,7 @@ public class Variavel {
 	private String nome;
 	private Character tipo;
 	private Character status;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Categoria categoria;
 	@OneToMany(mappedBy = "variavel")
 	private List<FaixaValor> faixaValores;

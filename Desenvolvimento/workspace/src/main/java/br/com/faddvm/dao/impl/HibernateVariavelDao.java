@@ -22,4 +22,12 @@ public class HibernateVariavelDao implements VariavelDao {
 		return variavel;
 	}
 
+	@Override
+	public Variavel get(Long long1) {
+		
+		Variavel variavel = manager.find(Variavel.class, long1);
+		
+		return variavel;
+	}
+
 }

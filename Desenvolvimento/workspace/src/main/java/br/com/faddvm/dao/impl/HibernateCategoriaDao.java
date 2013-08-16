@@ -21,4 +21,10 @@ public class HibernateCategoriaDao implements CategoriaDao {
 		return categoria;
 	}
 
+	@Override
+	public Categoria get(Long categoria_id) {
+		
+		return manager.find(Categoria.class, categoria_id);
+	}
+
 }
