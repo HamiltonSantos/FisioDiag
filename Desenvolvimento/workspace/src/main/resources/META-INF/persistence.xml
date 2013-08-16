@@ -5,14 +5,12 @@
 	version="2.0">
 
 	<!-- Tabela Fisioterapeuta -->
-	<persistence-unit name="fisioterapeuta">
+	<persistence-unit name="faddvm">
 
 		<!-- provedor/implementacao do JPA -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<!-- entidade mapaeada -->
-		<class>br.com.faddvm.model.Fisioterapeuta</class>
-
+		
 		<properties>
 			<!-- propriedades do hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />

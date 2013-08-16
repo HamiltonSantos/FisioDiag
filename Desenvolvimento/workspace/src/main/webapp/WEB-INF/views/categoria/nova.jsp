@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Fisioterapeuta Adicionado</title>
+<title>Nova Categoria</title>
 </head>
 <body>
-	Fisioterapeuta ${fisioterapeuta.nome} e id ${fisioterapeuta.id} adicionado com sucesso!
+	<h3>Adicionar Categoria</h3>
+	<form action="adicionaCategoria" method="post">
+		Descricao: <input type="text" name="descricao"> <br />
+		<input type="submit" value="Adicionar">
+	</form>
 </body>
 </html>

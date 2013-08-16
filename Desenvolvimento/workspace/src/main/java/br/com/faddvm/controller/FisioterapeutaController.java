@@ -1,14 +1,11 @@
 package br.com.faddvm.controller;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import br.com.faddvm.dao.FisioterapeutaDao;
 import br.com.faddvm.model.Fisioterapeuta;
@@ -28,12 +25,12 @@ public class FisioterapeutaController {
 
 		model.addAttribute("fisioterapeuta", fisioterapeuta);
 		
-		return "fisioterapeuta/adicionado";
+		return "/fisioterapeuta/adicionado";
 	}
 	
 	@RequestMapping("/fisioterapeuta/novo")
 	public String novo() {
-		return "fisioterapeuta/novo";
+		return "/fisioterapeuta/novo";
 	}
 
 }
