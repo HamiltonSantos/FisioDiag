@@ -14,6 +14,12 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- commons pool -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<!-- AOP dependency -->
 		<dependency>
 			<groupId>cglib</groupId>
