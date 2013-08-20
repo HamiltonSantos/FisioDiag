@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
       ocorrencias
     else
       @category = Category.find(params[:id])
-      @subcategory = Category.new(:category_id => @category.id)
+      @subcategory = Category.new(:category_id => @category.id, :status => 1)
       @variable = Variable.new(:category_id => @category.id)
 
       respond_to do |format|
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
-    @category = Category.new
+    @category = Category.new(:status => 1)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to Category.find(@category.category_id), notice: 'Category was successfully created.' }
+        format.html { redirect_to Category.find(@category.id), notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }
@@ -143,6 +143,10 @@ class CategoriesController < ApplicationController
   def ocorrencias
     @valores = Valore.where(:id_variable => $id_ocorrencia)
     render 'index_ocorrencias'
+  end
+  def ocorrencia_detalhes
+
+    render 'detalhes_ocorrencias'
   end
   # /categories/ocorrencias/sugeridas
   def sugeridas_ocorrencia

@@ -1,9 +1,10 @@
-<h1>Ocorrencias</h1>
+<h1>Ocorrências</h1>
 
 <table class= "table">
   <tr>
-    <th>Descricao</th>
+    <th>Descrição</th>
     <th>Peso</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= valore.description %></td>
     <td><%= valore.value %></td>
+    <td><%= link_to 'Detalhes', "ocorrencias/detalhes/#{valore.id}", :class => "btn btn-primary" %></td>
     <td><%= link_to 'Editar', edit_valore_path(valore), :class => "btn btn-warning" %></td>
     <td><%= link_to 'Deletar', valore, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => "btn btn-danger" %></td>
   </tr>
@@ -21,6 +23,6 @@
 
 <br />
 
-<%= link_to 'Nova Ocorrencia', {:action => 'new_ocorrencia'} , :class => 'btn' %>
-<%= link_to 'Sugerir Ocorrencia', {:action => 'sugerir_ocorrencia'} , :class => 'btn' %>
-<%= link_to 'Ocorrencias Sugeridas', {:action => 'sugeridas_ocorrencia'} , :class => 'btn' %>
+<%= link_to 'Nova Ocorrência', {:action => 'new_ocorrencia'} , :class => 'btn' %>
+<%= link_to 'Sugerir Ocorrência', {:action => 'sugerir_ocorrencia'} , :class => 'btn' %>
+<%= link_to 'Ocorrências Sugeridas', {:action => 'sugeridas_ocorrencia'} , :class => 'btn' %>
