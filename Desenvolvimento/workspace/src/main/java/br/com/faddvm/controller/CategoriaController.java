@@ -48,8 +48,6 @@ public class CategoriaController {
 
 		model.addAttribute("categoria", categoria);
 
-		model.addAttribute("variaveis", categoria.getVariaveis());
-
 		return "/categoria/mostra";
 	}
 

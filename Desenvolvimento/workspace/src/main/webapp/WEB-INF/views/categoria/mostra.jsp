@@ -12,20 +12,32 @@
 
 	<div>
 		Lista de Variaveis
-		<c:forEach items="${variaveis}" var="variavel">
+		<c:forEach items="${categoria.variaveis}" var="variavel">
 			<tr>
 				<td>
-					<div>${variavel.nome}
-						Faixas de Valores <br /> Adicionar nova Faixa<br />
-						<form action="/faddvm/categoria/${categoria.id}/${variavel.id}/adicionaFaixa" method="post">
-						
-							descricao: <input type="text" name="descricao"> <br />
-							valorMin: <input type="text" name="valorMin"> <br />
-							valorMax: <input type="text" name="valorMax"> <br />
-							peso: <input type="text" name="peso"> <br />
-							
-							<input type="submit" value="Adicionar Variavel">
-						</form>
+					<div class="well">
+						${variavel.nome} <br>
+						<div class="well">
+							Faixas de Valores <br />
+							<c:forEach items="${variavel.faixaValores}" var="faixa">
+								<tr>
+									<td>${faixa.descricao}</td>
+								</tr>
+							</c:forEach>
+						</div>
+						<div class="well">
+							Adicionar nova Faixa<br />
+							<form
+								action="/faddvm/categoria/${categoria.id}/${variavel.id}/adicionaFaixa"
+								method="post">
+
+								descricao: <input type="text" name="descricao"> <br />
+								valorMin: <input type="text" name="valorMin"> <br />
+								valorMax: <input type="text" name="valorMax"> <br />
+								peso: <input type="text" name="peso"> <br /> <input
+									type="submit" value="Adicionar Faixa">
+							</form>
+						</div>
 					</div>
 				</td>
 
@@ -38,8 +50,8 @@
 		<form action="/faddvm/categoria/${categoria.id}/adicionaVariavel"
 			method="post">
 			nome: <input type="text" name="nome"> <br /> Tipo: <input
-				type="text" name="tipo"> <br /> <input
-				type="submit" value="Adicionar Variavel">
+				type="text" name="tipo"> <br /> <input type="submit"
+				value="Adicionar Variavel">
 		</form>
 	</div>
 </body>

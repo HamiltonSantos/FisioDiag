@@ -2,12 +2,16 @@ package br.com.faddvm.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Variavel {
@@ -20,7 +24,8 @@ public class Variavel {
 	private Character status;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Categoria categoria;
-	@OneToMany(mappedBy = "variavel")
+	@OneToMany(mappedBy = "variavel", cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<FaixaValor> faixaValores;
 
 	public Long getId() {

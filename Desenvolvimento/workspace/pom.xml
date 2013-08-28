@@ -14,11 +14,18 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-		<!-- commons pool -->
+		<!-- BootStrap -->
 		<dependency>
-			<groupId>commons-pool</groupId>
-			<artifactId>commons-pool</artifactId>
-			<version>1.0</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<!-- SiteMesh -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 		<!-- AOP dependency -->
 		<dependency>
@@ -47,7 +54,7 @@
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
-			<version>1.6</version>
+			<version>1.5.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
