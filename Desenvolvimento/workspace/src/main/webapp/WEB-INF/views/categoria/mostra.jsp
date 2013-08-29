@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-lg-2 control-label" for="tipo">Tipo:</label>
+				<label class="col-lg-2 control-label" for="tipo">Tipovisc:</label>
 				<div class="col-lg-10">
 					<input type="text" name="tipo" id="tipo" class="form-control">
 				</div>
