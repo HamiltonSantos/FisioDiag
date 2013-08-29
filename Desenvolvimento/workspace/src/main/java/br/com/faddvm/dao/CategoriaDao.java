@@ -6,6 +6,6 @@ public interface CategoriaDao {
 
 	public Categoria salva(Categoria categoria);
 
-	public Categoria get(Long long1);
+	public Categoria get(Long id);
 	
 }

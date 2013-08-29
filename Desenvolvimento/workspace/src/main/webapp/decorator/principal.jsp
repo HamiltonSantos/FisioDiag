@@ -19,6 +19,7 @@
 				<div class="well">
 					<ul class="nav">
 						<li><a href="/faddvm">Home</a></li>
+						<li><a href="/faddvm/pacientes">Pacientes</a></li>
 						<li><a href="/faddvm/categoria/nova">Categorias</a></li>
 						<li><a href="/faddvm/fisioterapeuta/novo">Fisioterapeutas</a></li>
 					</ul>
