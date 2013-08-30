@@ -14,6 +14,19 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- Joda-Time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<!-- Jquery-ui -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery-ui</artifactId>
+			<version>1.10.2-1</version>
+		</dependency>
+
 		<!-- BootStrap -->
 		<dependency>
 			<groupId>org.webjars</groupId>
