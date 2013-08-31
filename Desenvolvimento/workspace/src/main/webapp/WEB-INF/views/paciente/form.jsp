@@ -9,33 +9,44 @@
 </head>
 <body>
 
-	<h3>Paciente</h3>
-	<form:form action="/faddvm/pacientes" commandName="paciente">
-		<div>
-			<form:errors path="*" class="alert alert-danger" element="div"/>
-			<%-- <form:errors path="cpf" class="alert alert-danger" element="div"/>
-			<form:errors path="sexo" class="alert alert-danger" element="div"/> --%>
+	<h3 align="center">Paciente</h3>
+	<form:form action="/faddvm/pacientes" commandName="paciente"
+		class="form-horizontal">
+		<div class="form-group">
+			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
 		<div class="form-group">
-			<form:label path="nome">Nome</form:label>
-			<form:input path="nome" class="form-control" />
+			<form:label path="nome" class="col-lg-4 control-label">Nome</form:label>
+			<div class="col-lg-6">
+				<form:input path="nome" class="form-control" />
+			</div>
 		</div>
-		<form:label path="dataNascimento">Data de Nascimento</form:label>
-		<form:input path="dataNascimento" />
-		<br />
-		<form:label path="cpf">CPF</form:label>
-		<form:input path="cpf" />
-		<br />
-		<form:label path="numRegistro">Numero de Registro Hospitalar</form:label>
-		<form:input path="numRegistro" />
-		<br />
-		Sexo <br />
+		<div class="form-group">
+			<form:label path="dataNascimento" class="col-lg-4 control-label">Data de Nascimento</form:label>
+			<div class="col-lg-3">
+				<form:input path="dataNascimento" type="date" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label path="cpf" class="col-lg-4 control-label">CPF</form:label>
+			<div class="col-lg-3">
+				<form:input path="cpf" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label path="numRegistro" class="col-lg-4 control-label">Registro Hospitalar</form:label>
+			<div class="col-lg-3">
+				<form:input path="numRegistro" class="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
+		<h4 align="center">Sexo</h4> 
 		<form:label path="sexo">Masculino</form:label>
 		<form:radiobutton path="sexo" value="M" />
 		<form:label path="sexo">Feminino</form:label>
 		<form:radiobutton path="sexo" value="F" />
-		<br />
-		<input type="submit" value="Savar">
+		</div>
+		<input type="submit" value="Salvar">
 
 	</form:form>
 

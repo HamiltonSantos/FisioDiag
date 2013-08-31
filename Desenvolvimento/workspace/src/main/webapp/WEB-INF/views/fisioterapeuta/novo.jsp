@@ -8,12 +8,33 @@
 </head>
 <body>
 
-	<h3>Adicionar Fisioterapeuta</h3>
-	<form action="adicionaFisioterapeuta" method="post">
-		Nome: <input type="text" name="nome"> <br />
-		Login: <input type="text" name="login"> <br />
-		Senha: <input type="text" name="senha"> <br />
-		<input type="submit" value="Adicionar">
+	<h3 align="center">Adicionar Fisioterapeuta</h3>
+	<form action="adicionaFisioterapeuta" method="post"
+		class="form-horizontal">
+		<div class="form-group">
+			<form:label path="nome" class="col-lg-4 control-label">Nome</form:label>
+			<div class="col-lg-4">
+				<form:input path="nome" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label path="login" class="col-lg-4 control-label">Login</form:label>
+			<div class="col-lg-4">
+				<form:input path="login" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<form:label path="senha" class="col-lg-4 control-label">Senha</form:label>
+			<div class="col-lg-4">
+				<form:input path="senha" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group" align="center">
+			<button type="submit" class="btn btn-primary btn-lg">
+				<span class="glyphicon glyphicon-user"></span> Adicionar
+			</button>
+			</div>
+		</div>
 	</form>
 </body>
 </html>

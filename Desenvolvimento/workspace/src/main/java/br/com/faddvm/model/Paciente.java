@@ -36,7 +36,6 @@ public class Paciente {
 	private String numRegistro;
 	@NotNull(message="Data deve ser preenchida")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
-	@Pattern(regexp="/^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$/", message="data em formato invalido, deve ser (dd/MM/yyyy)")
 	@Past(message="Data de nascimento deve estar no passado")
 	private Date dataNascimento;
 
