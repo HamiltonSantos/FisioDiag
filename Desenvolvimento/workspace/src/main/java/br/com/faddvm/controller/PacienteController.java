@@ -16,7 +16,7 @@ import br.com.faddvm.model.Paciente;
 
 @Transactional
 @Controller
-@RequestMapping("/pacientes")
+@RequestMapping("/paciente")
 public class PacienteController {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class PacienteController {
 		}
 
 		dao.salvar(paciente);
-		return "redirect:/pacientes";
+		return "redirect:/paciente";
 	}
 
 	@RequestMapping(value = "/novo", method = RequestMethod.GET)

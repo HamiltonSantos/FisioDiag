@@ -34,4 +34,10 @@ public class HibernatePacienteDao implements PacienteDao {
 		return (List<Paciente>) manager.createQuery("FROM Paciente").getResultList();
 	}
 
+	@Override
+	public Paciente atualiza(Paciente paciente) {
+		manager.merge(paciente);
+		return paciente;
+	}
+
 }

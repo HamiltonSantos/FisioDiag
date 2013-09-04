@@ -1,5 +1,7 @@
 package br.com.faddvm.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -23,8 +25,14 @@ public class HibernateCategoriaDao implements CategoriaDao {
 
 	@Override
 	public Categoria get(Long categoria_id) {
-		
+
 		return manager.find(Categoria.class, categoria_id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Categoria> lista() {
+		return (List<Categoria>) manager.createQuery("FROM Categoria").getResultList();
 	}
 
 }

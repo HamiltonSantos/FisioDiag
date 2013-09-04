@@ -9,7 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
-<title>Insert title here</title>
+<script type="text/javascript"
+	src="/faddvm/webjars/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript"
+	src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
+<title><decorator:title default="Welcome!" /></title>
 </head>
 <body>
 	<div class="container">
@@ -19,8 +23,8 @@
 				<div class="well">
 					<ul class="nav">
 						<li><a href="/faddvm">Home</a></li>
-						<li><a href="/faddvm/pacientes">Pacientes</a></li>
-						<li><a href="/faddvm/categoria/nova">Categorias</a></li>
+						<li><a href="/faddvm/paciente">Pacientes</a></li>
+						<li><a href="/faddvm/categoria">Categorias</a></li>
 						<li><a href="/faddvm/fisioterapeuta/novo">Fisioterapeutas</a></li>
 					</ul>
 				</div>
@@ -28,8 +32,10 @@
 
 			<!--div para o conteudo gerado-->
 			<div id="conteudo" class="col-md-9">
-				<div class="well">
-					<decorator:body />
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<decorator:body />
+					</div>
 				</div>
 			</div>
 		</div>

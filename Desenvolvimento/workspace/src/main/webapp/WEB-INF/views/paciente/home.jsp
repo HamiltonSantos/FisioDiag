@@ -22,11 +22,11 @@
 				<td>${paciente.cpf}</td>
 				<td>${paciente.sexo}</td>
 				<td>${paciente.numRegistro}</td>
-				<td><a>Atender</a></td>
+				<td><a href="/faddvm/atendimento/${paciente.id}">Atender</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 
-	<a href="/faddvm/pacientes/novo" class="btn btn-primary">Novo</a>
+	<a href="/faddvm/paciente/novo" class="btn btn-primary">Novo</a>
 </body>
 </html>

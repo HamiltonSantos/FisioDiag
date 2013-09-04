@@ -19,7 +19,7 @@ public class Variavel {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String nome;
+	private String descricao;
 	private Character tipo;
 	private Character status;
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -36,12 +36,12 @@ public class Variavel {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Character getTipo() {

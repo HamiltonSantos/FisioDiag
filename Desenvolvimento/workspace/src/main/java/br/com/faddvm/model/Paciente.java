@@ -1,10 +1,14 @@
 package br.com.faddvm.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -14,6 +18,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 
 @Entity
 public class Paciente {
@@ -25,7 +30,8 @@ public class Paciente {
 	@NotNull
 	@Size(min=1, max=100,message="Nome deve ser preenchido")
 	private String nome;
-	
+	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Historico> historico;
 	@NotNull
 	@CPF
 	private String cpf;
@@ -85,6 +91,14 @@ public class Paciente {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public List<Historico> getHistorico() {
+		return historico;
+	}
+
+	public void setHistorico(List<Historico> historico) {
+		this.historico = historico;
 	}
 
 }
