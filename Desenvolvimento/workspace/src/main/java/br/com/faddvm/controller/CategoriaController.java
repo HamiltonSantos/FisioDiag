@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import java.util.ArrayList;
+
 import javassist.expr.NewArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,4 +99,70 @@ public class CategoriaController {
 		return "redirect:/categoria/" + categoriaId;
 	}
 
+	@RequestMapping(value="/ocorrencia", method=RequestMethod.GET)
+	public String ocorrencia(Model model) {
+		
+		model.addAttribute("ocorrencias", daoFaixaValor.listOcorrencias());
+		
+		return "/ocorrencia/home";
+	}
+	
+	@RequestMapping(value="/ocorrencia", method=RequestMethod.POST)
+	public String salvaOcorrencia(FaixaValor ocorrencia) {
+		
+		//Peso min e Max
+		ocorrencia.setValorMin(ocorrencia.getPeso());
+		ocorrencia.setValorMax(ocorrencia.getPeso());
+		
+		//Variavel
+		//Variavel
+		ocorrencia.setVariavel(daoVariavel.get(14l));
+		//Insere banco
+		daoFaixaValor.salvar(ocorrencia);
+		
+		return "redirect:/categoria/ocorrencia";
+	}
+	
+	@RequestMapping(value="/ocorrencia/nova", method=RequestMethod.GET)
+	public String novaOcorrencia(Model model) {
+		
+		FaixaValor ocorrencia = new FaixaValor();
+
+		model.addAttribute("ocorrencia", ocorrencia);
+		return "/ocorrencia/form";
+	}
+	
+	@RequestMapping(value="/intercorrencia", method=RequestMethod.GET)
+	public String intercorrencia(Model model) {
+		
+		model.addAttribute("intercorrencias", daoFaixaValor.listaIntercorrencias());
+		
+		return "/intercorrencia/home";
+	}
+	
+	@RequestMapping(value="/intercorrencia", method=RequestMethod.POST)
+	public String salvaIntercorrencia(FaixaValor intercorrencia) {
+		
+		//Peso min e Max
+		intercorrencia.setValorMin(intercorrencia.getPeso());
+		intercorrencia.setValorMax(intercorrencia.getPeso());
+		
+		//Variavel
+		//Variavel
+		intercorrencia.setVariavel(daoVariavel.get(15l));
+		//Insere banco
+		daoFaixaValor.salvar(intercorrencia);
+		
+		return "redirect:/categoria/intercorrencia";
+	}
+	
+	@RequestMapping(value="/intercorrencia/nova", method=RequestMethod.GET)
+	public String novaIntercorrencia(Model model) {
+		
+		FaixaValor intercorrencia = new FaixaValor();
+
+		model.addAttribute("intercorrencia", intercorrencia);
+		return "/intercorrencia/form";
+	}
+	
 }

@@ -12,7 +12,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 
 		String uri = request.getRequestURI();
-		if (uri.endsWith("login") || uri.contains("resources")) {
+		if (uri.endsWith("login") || uri.contains("resources") | uri.contains("webjars")) {
 			return true;
 		}
 		if (request.getSession().getAttribute("fisioterapeutaLogado") != null) {
