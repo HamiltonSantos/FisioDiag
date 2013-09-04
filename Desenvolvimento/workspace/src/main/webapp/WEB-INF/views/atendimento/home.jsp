@@ -22,12 +22,15 @@
 			<table class="table">
 			<tr>
 				<th>Data</th>
+				<th>Fisioterapeuta</th>
 				<th>Operação</th>
 				<th>Valor</th>
+				
 			</tr>
 			<c:forEach items="${paciente.historico}" var="historico">
 				<tr>
 					<td>${historico.data}</td>
+					<td>${historico.fisioterapeuta.nome}</td>
 					<td>${historico.variavel.descricao}</td>
 					<c:if test="${historico.variavel.tipo eq 79}">
 						<c:forEach items="${historico.variavel.faixaValores}" var="faixa">

@@ -3,5 +3,9 @@
 	<decorator name="principal" page="principal.jsp">
 		<pattern>/*</pattern>
 	</decorator>
+	
+	<excludes>
+		<pattern>/login</pattern>
+	</excludes>
 
 </decorators>

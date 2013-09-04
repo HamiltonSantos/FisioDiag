@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" session="true"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,6 +19,17 @@
 <body>
 	<div class="container">
 		<div class="row">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<div class="panel well">
+					
+					Seja bem vindo, <c:out value="${sessionScope.fisioterapeutaLogado.nome}"/> <br> <a href="/faddvm/sair">Sair</a>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row">
 			<!--div para o menu esquerdo-->
 			<div id="menu" class="col-md-2">
 				<div class="well">
@@ -25,13 +37,16 @@
 						<li><a href="/faddvm">Home</a></li>
 						<li><a href="/faddvm/paciente">Pacientes</a></li>
 						<li><a href="/faddvm/categoria">Categorias</a></li>
-						<li><a href="/faddvm/fisioterapeuta/novo">Fisioterapeutas</a></li>
+						<li><a href="/faddvm/fisioterapeuta">Fisioterapeutas</a></li>
+						<li><a href="/faddvm/ocorrencia">Ocorrências</a></li>
+						<li><a href="/faddvm/intercorrencia">Intercorrências</a></li>
+						<li><a href="/faddvm/indice">Índices</a></li>
 					</ul>
 				</div>
 			</div>
 
 			<!--div para o conteudo gerado-->
-			<div id="conteudo" class="col-md-9">
+			<div id="conteudo" class="col-md-10">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<decorator:body />
