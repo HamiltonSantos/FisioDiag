@@ -11,4 +11,6 @@ public interface FaixaValorDao {
 	public List<FaixaValor> listOcorrencias();
 	
 	public List<FaixaValor> listaIntercorrencias();
+	
+	public List<FaixaValor> listaIndices();
 }

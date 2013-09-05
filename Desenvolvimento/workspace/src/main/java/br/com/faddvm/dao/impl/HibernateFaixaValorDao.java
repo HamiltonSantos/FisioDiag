@@ -39,4 +39,13 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 				.setParameter(1, 15l).getResultList();
 		return intercorrencias;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FaixaValor> listaIndices() {
+		List<FaixaValor> indices = manager
+				.createQuery("From FaixaValor as f where f.variavel.id = ?1")
+				.setParameter(1, 16l).getResultList();
+		return indices;
+	}
 }

@@ -32,7 +32,7 @@ public class HibernateCategoriaDao implements CategoriaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Categoria> lista() {
-		return (List<Categoria>) manager.createQuery("FROM Categoria").getResultList();
+		return (List<Categoria>) manager.createQuery("FROM Categoria as c where c.status = ?1").setParameter(1, 'C').getResultList();
 	}
 
 }

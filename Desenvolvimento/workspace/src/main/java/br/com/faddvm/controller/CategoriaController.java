@@ -126,9 +126,7 @@ public class CategoriaController {
 	@RequestMapping(value="/ocorrencia/nova", method=RequestMethod.GET)
 	public String novaOcorrencia(Model model) {
 		
-		FaixaValor ocorrencia = new FaixaValor();
-
-		model.addAttribute("ocorrencia", ocorrencia);
+		model.addAttribute("ocorrencia", new FaixaValor());
 		return "/ocorrencia/form";
 	}
 	
@@ -159,10 +157,31 @@ public class CategoriaController {
 	@RequestMapping(value="/intercorrencia/nova", method=RequestMethod.GET)
 	public String novaIntercorrencia(Model model) {
 		
-		FaixaValor intercorrencia = new FaixaValor();
-
-		model.addAttribute("intercorrencia", intercorrencia);
+		model.addAttribute("intercorrencia", new FaixaValor());
 		return "/intercorrencia/form";
 	}
 	
+	@RequestMapping(value="/indice",method=RequestMethod.GET)
+	public String indice(Model model) {
+		
+		model.addAttribute("indices", daoFaixaValor.listaIndices());
+		return "/indice/home";
+	}
+	
+	@RequestMapping(value="/indice",method=RequestMethod.POST)
+	public String salvaIndice(FaixaValor faixa) {
+		
+		faixa.setVariavel(daoVariavel.get(16l));
+		
+		faixa.setPeso(0);
+		
+		daoFaixaValor.salvar(faixa);
+		return "redirect:/categoria/indice";
+	}
+	
+	@RequestMapping(value="/indice/novo", method=RequestMethod.GET)
+	public String novoIndice(Model model) {
+		model.addAttribute("indice", new FaixaValor());
+		return "/indice/form";
+	}
 }

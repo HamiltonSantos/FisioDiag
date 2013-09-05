@@ -19,7 +19,7 @@
 				<form:form action="/faddvm/login" commandName="fisioterapeuta">
 					<h2>Favor fazer o Login</h2>
 					<form:input path="login" class="form-control" placeholder="Login"/>
-					<form:input  path="senha" class="form-control" placeholder="Senha"/>
+					<form:password  path="senha" class="form-control" placeholder="Senha"/>
 					<input type="submit" value="Login" class="btn btn-primary">
 				</form:form>
 			</div>
