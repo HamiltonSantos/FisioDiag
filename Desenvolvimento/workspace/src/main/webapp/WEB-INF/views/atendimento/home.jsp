@@ -6,8 +6,11 @@
 <title>Atendimento</title>
 </head>
 <body>
-	<h1>Atendimento ao paciente: ${paciente.nome}</h1>
-
+	<div class="well">
+		Paciente: ${paciente.nome} <br>
+		Pontos: ${paciente.pontos} <br>
+		Indicação: ${indicacao}
+	</div>
 	<ul id="myTab" class="nav nav-tabs nav-justified">
 		<li><a href="#historico">Histórico</a></li>
 		<c:forEach items="${categorias}" var="categoria">

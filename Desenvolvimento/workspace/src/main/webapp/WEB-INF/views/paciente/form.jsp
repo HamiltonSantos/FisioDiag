@@ -10,7 +10,7 @@
 <body>
 
 	<h3 align="center">Paciente</h3>
-	<form:form action="/faddvm/pacientes" commandName="paciente"
+	<form:form action="/faddvm/paciente" commandName="paciente"
 		class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />

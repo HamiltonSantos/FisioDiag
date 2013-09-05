@@ -11,14 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 
 @Entity
 public class Paciente {
@@ -26,9 +22,9 @@ public class Paciente {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@NotNull
-	@Size(min=1, max=100,message="Nome deve ser preenchido")
+	@Size(min = 1, max = 100, message = "Nome deve ser preenchido")
 	private String nome;
 	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Historico> historico;
@@ -38,12 +34,13 @@ public class Paciente {
 	@NotNull
 	private char sexo;
 	@NotNull
-	@Size(min=1, message="Favor preencher o numero do registro")
+	@Size(min = 1, message = "Favor preencher o numero do registro")
 	private String numRegistro;
-	@NotNull(message="Data deve ser preenchida")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
-	@Past(message="Data de nascimento deve estar no passado")
+	@NotNull(message = "Data deve ser preenchida")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Past(message = "Data de nascimento deve estar no passado")
 	private Date dataNascimento;
+	private int pontos;
 
 	public Long getId() {
 		return id;
@@ -99,6 +96,14 @@ public class Paciente {
 
 	public void setHistorico(List<Historico> historico) {
 		this.historico = historico;
+	}
+
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
 	}
 
 }
