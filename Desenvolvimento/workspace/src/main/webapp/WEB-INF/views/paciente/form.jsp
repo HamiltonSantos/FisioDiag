@@ -36,15 +36,17 @@
 		<div class="form-group">
 			<form:label path="numRegistro" class="col-lg-4 control-label">Registro Hospitalar</form:label>
 			<div class="col-lg-3">
-				<form:input path="numRegistro" class="form-control"/>
+				<form:input path="numRegistro" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
-		<h4 align="center">Sexo</h4> 
-		<form:label path="sexo">Masculino</form:label>
-		<form:radiobutton path="sexo" value="M" />
-		<form:label path="sexo">Feminino</form:label>
-		<form:radiobutton path="sexo" value="F" />
+			<label class="col-lg-4 control-label">Sexo</label>
+			<div class="col-lg-3">
+				<form:label path="sexo">Masculino</form:label>
+				<form:radiobutton path="sexo" value="M" />
+				<form:label path="sexo">Feminino</form:label>
+				<form:radiobutton path="sexo" value="F" />
+			</div>
 		</div>
 		<input type="submit" value="Salvar">
 

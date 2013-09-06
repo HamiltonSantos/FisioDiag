@@ -2,6 +2,8 @@ package br.com.faddvm.controller;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import javassist.expr.NewArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,8 +45,10 @@ public class CategoriaController {
 	}
 
 	@RequestMapping("/adicionaCategoria")
-	public String adicionaCategoria(Categoria categoria) {
-
+	public String adicionaCategoria(@Valid Categoria categoria, BindingResult result) {
+		if (result.hasErrors()) {
+			return "/categoria/nova";
+		}
 		dao.salva(categoria);
 
 		return "redirect:/categoria/" + categoria.getId();

@@ -8,6 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Categoria {
@@ -15,6 +19,7 @@ public class Categoria {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Size(min = 1, max = 100, message = "Nome deve ser preenchido")
 	private String descricao;
 	private Character status;
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

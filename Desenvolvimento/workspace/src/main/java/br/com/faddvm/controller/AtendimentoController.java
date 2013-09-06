@@ -53,13 +53,17 @@ public class AtendimentoController {
 
 		model.addAttribute("categorias", categoriaDao.lista());
 
+		model.addAttribute("ocorrencias", faixaValorDao.listOcorrencias());
+		
+		model.addAttribute("intercorrencias", faixaValorDao.listaIntercorrencias());
+		
+		model.addAttribute("indicacao", "Indicação não encontrada.");
+		
 		for(FaixaValor f : faixaValorDao.listaIndices()) {
 			if(paciente.getPontos() >= f.getValorMin() && paciente.getPontos() <= f.getValorMax()) {
 				model.addAttribute("indicacao", f.getDescricao());
 			}
 		}
-		
-		
 		
 		return "/atendimento/home";
 	}
