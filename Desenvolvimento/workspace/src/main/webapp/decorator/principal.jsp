@@ -11,9 +11,11 @@
 <link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
 <script type="text/javascript"
-	src="/faddvm/webjars/jquery/1.9.1/jquery.js"></script>
+	src="/faddvm/webjars/jquery/1.8.2/jquery.js"></script>
 <script type="text/javascript"
 	src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js"></script>
 <title><decorator:title default="Welcome!" /></title>
 </head>
 <body>
@@ -22,8 +24,10 @@
 			<div class="col-md-8"></div>
 			<div class="col-md-4">
 				<div class="panel well">
-					
-					Seja bem vindo, <c:out value="${sessionScope.fisioterapeutaLogado.nome}"/> <br> <a href="/faddvm/sair">Sair</a>
+
+					Seja bem vindo,
+					<c:out value="${sessionScope.fisioterapeutaLogado.nome}" />
+					<br> <a href="/faddvm/sair">Sair</a>
 				</div>
 
 			</div>

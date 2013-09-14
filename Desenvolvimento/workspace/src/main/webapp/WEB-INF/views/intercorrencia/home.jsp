@@ -7,20 +7,28 @@
 <body>
 	<h1>Intercorrencias</h1>
 
-	<table class="table">
-		<tr>
-			<th>Descricao</th>
-			<th>Peso</th>
-		</tr>
-		<c:forEach items="${intercorrencias}" var="intercorrencia">
+	<table id ="tabela" class="table">
+		<thead>
 			<tr>
-				<td>${intercorrencia.descricao}</td>
-				<td>${intercorrencia.peso}</td>
+				<th>Descricao</th>
+				<th>Peso</th>
 			</tr>
-		</c:forEach>
-
+		</thead>
+		<tbody>
+			<c:forEach items="${intercorrencias}" var="intercorrencia">
+				<tr>
+					<td>${intercorrencia.descricao}</td>
+					<td>${intercorrencia.peso}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 
 	<a href="/faddvm/categoria/intercorrencia/nova" class="btn btn-primary">Nova</a>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#tabela').dataTable();
+		});
+	</script>
 </body>
 </html>

@@ -6,21 +6,30 @@
 </head>
 <body>
 	<h1>Fisioterapeutas</h1>
-	<table class="table">
-		<tr>
-			<th>Nome</th>
-			<th>Login</th>
-			<th>Senha</th>
-		</tr>
-		<c:forEach items="${fisioterapeutas}" var="fisioterapeuta">
+	<table id="tabela" class="table">
+		<thead>
 			<tr>
-				<td>${fisioterapeuta.nome}</td>
-				<td>${fisioterapeuta.login}</td>
-				<td>*****</td>
+				<th>Nome</th>
+				<th>Login</th>
+				<th>Senha</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		<tbody>
+			<c:forEach items="${fisioterapeutas}" var="fisioterapeuta">
+				<tr>
+					<td>${fisioterapeuta.nome}</td>
+					<td>${fisioterapeuta.login}</td>
+					<td>*****</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 
 	<a href="/faddvm/fisioterapeuta/novo" class="btn btn-primary">Novo</a>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#tabela').dataTable();
+		});
+	</script>
 </body>
 </html>

@@ -1,10 +1,6 @@
 package br.com.faddvm.controller;
 
-import java.util.ArrayList;
-
 import javax.validation.Valid;
-
-import javassist.expr.NewArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,10 +40,10 @@ public class CategoriaController {
 		return "/categoria/home";
 	}
 
-	@RequestMapping("/adicionaCategoria")
+	@RequestMapping(method = RequestMethod.POST)
 	public String adicionaCategoria(@Valid Categoria categoria, BindingResult result) {
 		if (result.hasErrors()) {
-			return "/categoria/nova";
+			return "/categoria/form";
 		}
 		dao.salva(categoria);
 
@@ -55,9 +51,14 @@ public class CategoriaController {
 	}
 
 	@RequestMapping("/nova")
-	public String nova() {
-
-		return "/categoria/nova";
+	public String nova(Model model) {
+		
+		Categoria categoria = new Categoria();
+		categoria.setStatus('C');
+		
+		model.addAttribute("categoria", categoria);
+		
+		return "/categoria/form";
 	}
 
 	@RequestMapping("/{categoriaId}")

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -18,8 +18,14 @@
 			<div class="col-md-4">
 				<form:form action="/faddvm/login" commandName="fisioterapeuta">
 					<h2>Favor fazer o Login</h2>
-					<form:input path="login" class="form-control" placeholder="Login"/>
-					<form:password  path="senha" class="form-control" placeholder="Senha"/>
+					<div class="form-group">
+						<form:input path="login" class="form-control" placeholder="Login" />
+					</div>
+					<div class="form-group">
+						<form:password path="senha" class="form-control"
+							placeholder="Senha" />
+					</div>
+
 					<input type="submit" value="Login" class="btn btn-primary">
 				</form:form>
 			</div>

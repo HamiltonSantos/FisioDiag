@@ -7,22 +7,30 @@
 <body>
 	<h1>Indices</h1>
 
-	<table class="table">
-		<tr>
-			<th>Descricao</th>
-			<th>ValorMinimo</th>
-			<th>ValorMaximo</th>
-		</tr>
-		<c:forEach items="${indices}" var="indice">
+	<table id="tabela" class="table">
+		<thead>
 			<tr>
-				<td>${indice.descricao}</td>
-				<td>${indice.valorMin}</td>
-				<td>${indice.valorMax}</td>
+				<th>Descricao</th>
+				<th>ValorMinimo</th>
+				<th>ValorMaximo</th>
 			</tr>
-		</c:forEach>
-
+		</thead>
+		<tbody>
+			<c:forEach items="${indices}" var="indice">
+				<tr>
+					<td>${indice.descricao}</td>
+					<td>${indice.valorMin}</td>
+					<td>${indice.valorMax}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 
 	<a href="/faddvm/categoria/indice/novo" class="btn btn-primary">Novo</a>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#tabela').dataTable();
+		});
+	</script>
 </body>
 </html>

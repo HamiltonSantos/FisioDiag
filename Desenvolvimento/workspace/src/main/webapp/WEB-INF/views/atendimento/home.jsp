@@ -21,42 +21,17 @@
 
 	<div class="tab-content">
 		<div class="tab-pane" id="historico">
-			<table class="table">
-				<tr>
-					<th>Data</th>
-					<th>Fisioterapeuta</th>
-					<th>Operação</th>
-					<th>Valor</th>
-				</tr>
-				<c:forEach items="${paciente.historico}" var="historico">
+			<table id="tabelaHistorico" class="table table-condensed">
+				<thead>
 					<tr>
-						<td>${historico.data}</td>
-						<td>${historico.fisioterapeuta.nome}</td>
-						<td>${historico.variavel.descricao}</td>
-						<c:if test="${historico.variavel.tipo eq 79}">
-							<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
-								<c:if test="${faixa.valorMin eq historico.valor}">
-									<td>${faixa.descricao}</td>
-								</c:if>
-							</c:forEach>
-						</c:if>
-						<c:if test="${historico.variavel.tipo eq 82}">
-							<td>${historico.valor}</td>
-						</c:if>
+						<th>Data</th>
+						<th>Fisioterapeuta</th>
+						<th>Operação</th>
+						<th>Valor</th>
 					</tr>
-				</c:forEach>
-			</table>
-		</div>
-		<div class="tab-pane" id="ocorrencias">
-			<table class="table table-condensed">
-				<tr>
-					<th>Data</th>
-					<th>Fisioterapeuta</th>
-					<th>Operação</th>
-					<th>Valor</th>
-				</tr>
-				<c:forEach items="${paciente.historico}" var="historico">
-					<c:if test="${14 == historico.variavel.id}">
+				</thead>
+				<tbody>
+					<c:forEach items="${paciente.historico}" var="historico">
 						<tr>
 							<td>${historico.data}</td>
 							<td>${historico.fisioterapeuta.nome}</td>
@@ -73,8 +48,42 @@
 								<td>${historico.valor}</td>
 							</c:if>
 						</tr>
-					</c:if>
-				</c:forEach>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="ocorrencias">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Fisioterapeuta</th>
+						<th>Operação</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${paciente.historico}" var="historico">
+						<c:if test="${14 == historico.variavel.id}">
+							<tr>
+								<td>${historico.data}</td>
+								<td>${historico.fisioterapeuta.nome}</td>
+								<td>${historico.variavel.descricao}</td>
+								<c:if test="${historico.variavel.tipo eq 79}">
+									<c:forEach items="${historico.variavel.faixaValores}"
+										var="faixa">
+										<c:if test="${faixa.valorMin eq historico.valor}">
+											<td>${faixa.descricao}</td>
+										</c:if>
+									</c:forEach>
+								</c:if>
+								<c:if test="${historico.variavel.tipo eq 82}">
+									<td>${historico.valor}</td>
+								</c:if>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</tbody>
 			</table>
 
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
@@ -90,32 +99,36 @@
 		</div>
 		<div class="tab-pane" id="intercorrencias">
 			<table class="table table-condensed">
-				<tr>
-					<th>Data</th>
-					<th>Fisioterapeuta</th>
-					<th>Operação</th>
-					<th>Valor</th>
-				</tr>
-				<c:forEach items="${paciente.historico}" var="historico">
-					<c:if test="${15 == historico.variavel.id}">
-						<tr>
-							<td>${historico.data}</td>
-							<td>${historico.fisioterapeuta.nome}</td>
-							<td>${historico.variavel.descricao}</td>
-							<c:if test="${historico.variavel.tipo eq 79}">
-								<c:forEach items="${historico.variavel.faixaValores}"
-									var="faixa">
-									<c:if test="${faixa.valorMin eq historico.valor}">
-										<td>${faixa.descricao}</td>
-									</c:if>
-								</c:forEach>
-							</c:if>
-							<c:if test="${historico.variavel.tipo eq 82}">
-								<td>${historico.valor}</td>
-							</c:if>
-						</tr>
-					</c:if>
-				</c:forEach>
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Fisioterapeuta</th>
+						<th>Operação</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${paciente.historico}" var="historico">
+						<c:if test="${15 == historico.variavel.id}">
+							<tr>
+								<td>${historico.data}</td>
+								<td>${historico.fisioterapeuta.nome}</td>
+								<td>${historico.variavel.descricao}</td>
+								<c:if test="${historico.variavel.tipo eq 79}">
+									<c:forEach items="${historico.variavel.faixaValores}"
+										var="faixa">
+										<c:if test="${faixa.valorMin eq historico.valor}">
+											<td>${faixa.descricao}</td>
+										</c:if>
+									</c:forEach>
+								</c:if>
+								<c:if test="${historico.variavel.tipo eq 82}">
+									<td>${historico.valor}</td>
+								</c:if>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</tbody>
 			</table>
 
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
@@ -132,34 +145,38 @@
 		<c:forEach items="${categorias}" var="categoria">
 			<div class="tab-pane" id="cat_${categoria.id}">
 				<table class="table table-condensed">
-					<tr>
-						<th>Data</th>
-						<th>Fisioterapeuta</th>
-						<th>Operação</th>
-						<th>Valor</th>
-					</tr>
-					<c:forEach items="${paciente.historico}" var="historico">
-						<c:forEach items="${categoria.variaveis}" var="variavel">
-							<c:if test="${variavel.id == historico.variavel.id}">
-								<tr>
-									<td>${historico.data}</td>
-									<td>${historico.fisioterapeuta.nome}</td>
-									<td>${historico.variavel.descricao}</td>
-									<c:if test="${historico.variavel.tipo eq 79}">
-										<c:forEach items="${historico.variavel.faixaValores}"
-											var="faixa">
-											<c:if test="${faixa.valorMin eq historico.valor}">
-												<td>${faixa.descricao}</td>
-											</c:if>
-										</c:forEach>
-									</c:if>
-									<c:if test="${historico.variavel.tipo eq 82}">
-										<td>${historico.valor}</td>
-									</c:if>
-								</tr>
-							</c:if>
+					<thead>
+						<tr>
+							<th>Data</th>
+							<th>Fisioterapeuta</th>
+							<th>Operação</th>
+							<th>Valor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${paciente.historico}" var="historico">
+							<c:forEach items="${categoria.variaveis}" var="variavel">
+								<c:if test="${variavel.id == historico.variavel.id}">
+									<tr>
+										<td>${historico.data}</td>
+										<td>${historico.fisioterapeuta.nome}</td>
+										<td>${historico.variavel.descricao}</td>
+										<c:if test="${historico.variavel.tipo eq 79}">
+											<c:forEach items="${historico.variavel.faixaValores}"
+												var="faixa">
+												<c:if test="${faixa.valorMin eq historico.valor}">
+													<td>${faixa.descricao}</td>
+												</c:if>
+											</c:forEach>
+										</c:if>
+										<c:if test="${historico.variavel.tipo eq 82}">
+											<td>${historico.valor}</td>
+										</c:if>
+									</tr>
+								</c:if>
+							</c:forEach>
 						</c:forEach>
-					</c:forEach>
+					</tbody>
 				</table>
 
 				<c:forEach items="${categoria.variaveis}" var="variavel">
@@ -200,6 +217,11 @@
 		$(function() {
 			$('#myTab a:first').tab('show')
 		})
+		$(document).ready(function() {
+			for ( var i = 0; i < $('.table').length; i++) {
+				$('.table').dataTable();
+			}
+		});
 	</script>
 </body>
 </html>
