@@ -22,23 +22,13 @@ public class Paciente {
 	@Id
 	@GeneratedValue
 	private Long id;
-
-	@NotNull
-	@Size(min = 1, max = 100, message = "Nome deve ser preenchido")
 	private String nome;
 	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Historico> historico;
-	@NotNull
 	@CPF
 	private String cpf;
-	@NotNull
 	private char sexo;
-	@NotNull
-	@Size(min = 1, message = "Favor preencher o numero do registro")
 	private String numRegistro;
-	@NotNull(message = "Data deve ser preenchida")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past(message = "Data de nascimento deve estar no passado")
 	private Date dataNascimento;
 	private int pontos;
 

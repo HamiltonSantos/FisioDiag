@@ -6,6 +6,7 @@
 	
 	<excludes>
 		<pattern>/login</pattern>
+		<pattern>/erro</pattern>
 	</excludes>
 
 </decorators>

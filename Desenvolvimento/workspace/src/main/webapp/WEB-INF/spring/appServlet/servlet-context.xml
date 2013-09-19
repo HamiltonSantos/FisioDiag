@@ -8,6 +8,11 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<beans:bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<beans:property name="basename" value="br.com.faddvm.util.messages" />
+	</beans:bean>
+
 	<!-- DataSource -->
 	<beans:bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="org.mariadb.jdbc.Driver" />

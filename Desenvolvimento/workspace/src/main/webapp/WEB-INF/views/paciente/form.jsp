@@ -24,7 +24,7 @@
 		<div class="form-group">
 			<form:label path="dataNascimento" class="col-lg-4 control-label">Data de Nascimento</form:label>
 			<div class="col-lg-3">
-				<form:input path="dataNascimento" type="date" class="form-control" />
+				<form:input path="dataNascimento" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">

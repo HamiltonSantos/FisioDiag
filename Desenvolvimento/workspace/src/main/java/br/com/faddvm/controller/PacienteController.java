@@ -1,18 +1,25 @@
 package br.com.faddvm.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.Paciente;
+import br.com.faddvm.util.validator.PacienteValidator;
 
 @Transactional
 @Controller
@@ -23,6 +30,15 @@ public class PacienteController {
 	@Qualifier("hibernatePacienteDao")
 	PacienteDao dao;
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		
+		binder.addValidators(new PacienteValidator());
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String get(Model model) {
 		model.addAttribute("pacientes", dao.lista());
@@ -31,10 +47,11 @@ public class PacienteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String add(@Valid Paciente paciente, BindingResult result) {
+		
 		if (result.hasErrors()) {
 			return "/paciente/form";
 		}
-
+		
 		dao.salvar(paciente);
 		return "redirect:/paciente";
 	}

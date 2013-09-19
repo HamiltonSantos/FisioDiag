@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +24,12 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
+	@ExceptionHandler(Exception.class)
+	public String handleExceptions(Exception anExc) {
+		logger.error("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFUUUUUUUUUUUUUUUUUUUU");
+		return "redirect:/erro";
+	}
+
 	@Autowired
 	@Qualifier("hibernateFisioterapeutaDao")
 	FisioterapeutaDao fisioterapeutaDao;
@@ -32,7 +39,7 @@ public class HomeController {
 		model.addAttribute("fisioterapeuta", new Fisioterapeuta());
 		return "/login/home";
 	}
-	
+
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
 	public String sair(HttpSession session) {
 		session.setAttribute("fisioterapeutaLogado", null);
@@ -53,6 +60,11 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		return "home";
+	}
+	
+	@RequestMapping(value = "/erro", method = RequestMethod.GET)
+	public String erro() {
+		return "erro";
 	}
 
 }
