@@ -24,10 +24,8 @@
 				<label class="col-lg-2 control-label" for="tipo">Tipo
 					Variavel:</label>
 				<div class="col-lg-10">
-					Opção
-					<form:radiobutton path="tipo" value="O" />
-					Range
-					<form:radiobutton path="tipo" value="R" />
+					<form:radiobutton path="tipo" value="O" label="Opção" />
+					<form:radiobutton path="tipo" value="R" label="Range" />
 				</div>
 			</div>
 			<input type="submit" value="Adicionar Variavel"

@@ -10,7 +10,8 @@
 <body>
 
 	<h3 align="center">Adicionar Fisioterapeuta</h3>
-	<form:form action="/faddvm/fisioterapeuta" commandName="fisioterapeuta" class="form-horizontal">
+	<form:form action="/faddvm/fisioterapeuta" commandName="fisioterapeuta"
+		class="form-horizontal">
 		<div class="form-group">
 			<form:label path="nome" class="col-lg-4 control-label">Nome</form:label>
 			<div class="col-lg-4">
@@ -29,12 +30,18 @@
 				<form:input path="senha" class="form-control" />
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="contrasenha" class="col-lg-4 control-label">Repita a Senha</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control" name="contrasenha" />
+			</div>
+		</div>
 		<div class="form-group" align="center">
 			<button type="submit" class="btn btn-primary btn-lg">
 				<span class="glyphicon glyphicon-user"></span> Adicionar
 			</button>
 		</div>
-		
+
 	</form:form>
 </body>
 </html>

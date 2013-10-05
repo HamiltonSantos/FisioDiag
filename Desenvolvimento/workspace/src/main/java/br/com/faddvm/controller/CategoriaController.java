@@ -122,7 +122,7 @@ public class CategoriaController {
 		
 		//Variavel
 		//Variavel
-		ocorrencia.setVariavel(daoVariavel.get(14l));
+		ocorrencia.setVariavel(daoVariavel.get(1l));
 		//Insere banco
 		daoFaixaValor.salvar(ocorrencia);
 		
@@ -153,7 +153,7 @@ public class CategoriaController {
 		
 		//Variavel
 		//Variavel
-		intercorrencia.setVariavel(daoVariavel.get(15l));
+		intercorrencia.setVariavel(daoVariavel.get(2l));
 		//Insere banco
 		daoFaixaValor.salvar(intercorrencia);
 		
@@ -177,7 +177,7 @@ public class CategoriaController {
 	@RequestMapping(value="/indice",method=RequestMethod.POST)
 	public String salvaIndice(FaixaValor faixa) {
 		
-		faixa.setVariavel(daoVariavel.get(16l));
+		faixa.setVariavel(daoVariavel.get(3l));
 		
 		faixa.setPeso(0);
 		

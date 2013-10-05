@@ -64,7 +64,7 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${paciente.historico}" var="historico">
-						<c:if test="${14 == historico.variavel.id}">
+						<c:if test="${1 == historico.variavel.id}">
 							<tr>
 								<td>${historico.data}</td>
 								<td>${historico.fisioterapeuta.nome}</td>
@@ -93,7 +93,7 @@
 						value="${faixa.valorMin}">
 					<br>
 				</c:forEach>
-				<br> <input type="hidden" name="variavelId" value="${14}">
+				<br> <input type="hidden" name="variavelId" value="${1}">
 				<input type="submit" value="Salvar">
 			</form>
 		</div>
@@ -109,7 +109,7 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${paciente.historico}" var="historico">
-						<c:if test="${15 == historico.variavel.id}">
+						<c:if test="${2 == historico.variavel.id}">
 							<tr>
 								<td>${historico.data}</td>
 								<td>${historico.fisioterapeuta.nome}</td>
@@ -138,7 +138,7 @@
 						value="${faixa.valorMin}">
 					<br>
 				</c:forEach>
-				<br> <input type="hidden" name="variavelId" value="${15}">
+				<br> <input type="hidden" name="variavelId" value="${2}">
 				<input type="submit" value="Salvar">
 			</form>
 		</div>

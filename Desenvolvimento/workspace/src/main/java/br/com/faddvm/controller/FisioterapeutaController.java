@@ -21,11 +21,15 @@ public class FisioterapeutaController {
 	FisioterapeutaDao fisioterapeutaDao;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String adiciona(Fisioterapeuta fisioterapeuta) {
+	public String adiciona(Fisioterapeuta fisioterapeuta, String contrasenha) {
 
-		fisioterapeutaDao.salvar(fisioterapeuta);
+		if(fisioterapeuta.getSenha().equals(contrasenha)){
+			fisioterapeutaDao.salvar(fisioterapeuta);
 
-		return "redirect:/fisioterapeuta";
+			return "redirect:/fisioterapeuta";
+		}
+		
+		return "/fisioterapeuta/form";
 	}
 
 	@RequestMapping(method = RequestMethod.GET)

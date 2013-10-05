@@ -40,12 +40,10 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-4 control-label">Sexo</label>
+			<form:label class="col-lg-4 control-label" path="sexo">Sexo</form:label>
 			<div class="col-lg-3">
-				<form:label path="sexo">Masculino</form:label>
-				<form:radiobutton path="sexo" value="M" />
-				<form:label path="sexo">Feminino</form:label>
-				<form:radiobutton path="sexo" value="F" />
+				<form:radiobutton path="sexo" value="M" label=" Masculino" />
+				<form:radiobutton path="sexo" value="F" label=" Feminino" />
 			</div>
 		</div>
 		<input type="submit" value="Salvar">

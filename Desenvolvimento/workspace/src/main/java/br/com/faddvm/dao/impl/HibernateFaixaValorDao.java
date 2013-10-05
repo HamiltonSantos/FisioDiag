@@ -27,7 +27,7 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	public List<FaixaValor> listOcorrencias() {
 		List<FaixaValor> ocorrencias = manager
 				.createQuery("From FaixaValor as f where f.variavel.id = ?1")
-				.setParameter(1, 14l).getResultList();
+				.setParameter(1, 1l).getResultList();
 		return ocorrencias;
 	}
 
@@ -36,7 +36,7 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	public List<FaixaValor> listaIntercorrencias() {
 		List<FaixaValor> intercorrencias = manager
 				.createQuery("From FaixaValor as f where f.variavel.id = ?1")
-				.setParameter(1, 15l).getResultList();
+				.setParameter(1, 2l).getResultList();
 		return intercorrencias;
 	}
 
@@ -45,7 +45,7 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	public List<FaixaValor> listaIndices() {
 		List<FaixaValor> indices = manager
 				.createQuery("From FaixaValor as f where f.variavel.id = ?1")
-				.setParameter(1, 16l).getResultList();
+				.setParameter(1, 3l).getResultList();
 		return indices;
 	}
 }
