@@ -46,6 +46,8 @@
 				<form:radiobutton path="sexo" value="F" label=" Feminino" />
 			</div>
 		</div>
+		
+		<form:hidden path="id" />
 		<input type="submit" value="Salvar">
 
 	</form:form>

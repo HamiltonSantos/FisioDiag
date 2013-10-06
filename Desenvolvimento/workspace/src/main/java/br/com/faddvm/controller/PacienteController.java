@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,13 +53,32 @@ public class PacienteController {
 			return "/paciente/form";
 		}
 		
-		dao.salvar(paciente);
+		if(paciente.getId() == null){
+			dao.salvar(paciente);
+		}else{
+			dao.atualiza(paciente);
+		}
+		
 		return "redirect:/paciente";
 	}
 
 	@RequestMapping(value = "/novo", method = RequestMethod.GET)
 	public String novo(Model model) {
 		model.addAttribute("paciente", new Paciente());
+		return "/paciente/form";
+	}
+	
+	@RequestMapping(value="/{pacienteId}", method = RequestMethod.GET)
+	public String mostra(@PathVariable Long pacienteId,Model model){
+		
+		model.addAttribute("paciente",dao.get(pacienteId));
+		return "/paciente/mostra";
+	}
+	
+	@RequestMapping(value="/{pacienteId}/editar", method = RequestMethod.GET)
+	public String editar(@PathVariable Long pacienteId, Model model){
+		
+		model.addAttribute("paciente", dao.get(pacienteId));
 		return "/paciente/form";
 	}
 }

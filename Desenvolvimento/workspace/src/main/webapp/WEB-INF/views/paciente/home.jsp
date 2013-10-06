@@ -28,6 +28,7 @@
 					<td>
 					<a href="/faddvm/atendimento/${paciente.id}">Atender</a>
 					<a href="/faddvm/paciente/${paciente.id}">Mostra</a>
+					<a href="/faddvm/paciente/${paciente.id}/editar">Editar</a>
 					</td>
 				</tr>
 			</c:forEach>
