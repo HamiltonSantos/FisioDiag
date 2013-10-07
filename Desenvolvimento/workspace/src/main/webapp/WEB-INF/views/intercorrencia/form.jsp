@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,8 +9,7 @@
 <body>
 
 	<h3 align="center">Nova Adiciona Intercorrencia</h3>
-	<form:form action="/faddvm/categoria/intercorrencia" commandName="intercorrencia"
-		class="form-horizontal">
+	<form:form action="/faddvm/categoria/intercorrencia" commandName="intercorrencia" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
@@ -24,10 +22,10 @@
 		<div class="form-group">
 			<form:label path="peso" class="col-lg-4 control-label">Peso</form:label>
 			<div class="col-lg-3">
-				<form:input path="peso" class="form-control"/>
+				<form:input path="peso" class="form-control" />
 			</div>
 		</div>
-		<input type="submit" value="Salvar">
+		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>
 

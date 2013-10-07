@@ -19,7 +19,11 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 	@Override
 	public Fisioterapeuta salvar(Fisioterapeuta fisioterapeuta) {
 
-		manager.persist(fisioterapeuta);
+		if (fisioterapeuta.getLogin() == null) {
+			manager.persist(fisioterapeuta);
+		} else {
+			manager.merge(fisioterapeuta);
+		}
 
 		return fisioterapeuta;
 	}
@@ -35,15 +39,21 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 	@Override
 	public Fisioterapeuta validaLogin(Fisioterapeuta fisioterapeuta) {
 		@SuppressWarnings("unchecked")
-		List<Fisioterapeuta> lista= (List<Fisioterapeuta>) manager.createQuery(
-				"from Fisioterapeuta as "
-						+ "f where f.login = ?1 and f.senha = ?2")
+		List<Fisioterapeuta> lista = (List<Fisioterapeuta>) manager
+				.createQuery(
+						"from Fisioterapeuta as "
+								+ "f where f.login = ?1 and f.senha = ?2")
 				.setParameter(1, fisioterapeuta.getLogin())
 				.setParameter(2, fisioterapeuta.getSenha()).getResultList();
-		
-		if(lista.size() > 0) {
+
+		if (lista.size() > 0) {
 			return lista.get(0);
 		}
 		return null;
+	}
+
+	@Override
+	public Fisioterapeuta get(Long id) {
+		return manager.find(Fisioterapeuta.class, id);
 	}
 }

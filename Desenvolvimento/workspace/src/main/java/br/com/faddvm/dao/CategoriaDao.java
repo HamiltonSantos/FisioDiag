@@ -11,4 +11,6 @@ public interface CategoriaDao {
 	public Categoria get(Long id);
 	
 	public List<Categoria> lista();
+	
+	public boolean deletar(Categoria categoria);
 }

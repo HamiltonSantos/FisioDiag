@@ -18,7 +18,11 @@ public class HibernatePacienteDao implements PacienteDao {
 
 	@Override
 	public Paciente salvar(Paciente paciente) {
-		manager.persist(paciente);
+		if (paciente.getId() == null) {
+			manager.persist(paciente);
+		} else {
+			manager.merge(paciente);
+		}
 		return paciente;
 	}
 
@@ -31,13 +35,8 @@ public class HibernatePacienteDao implements PacienteDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Paciente> lista() {
-		return (List<Paciente>) manager.createQuery("FROM Paciente").getResultList();
-	}
-
-	@Override
-	public Paciente atualiza(Paciente paciente) {
-		manager.merge(paciente);
-		return paciente;
+		return (List<Paciente>) manager.createQuery("FROM Paciente")
+				.getResultList();
 	}
 
 }

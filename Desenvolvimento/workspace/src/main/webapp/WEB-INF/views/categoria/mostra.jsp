@@ -28,8 +28,8 @@
 					<form:radiobutton path="tipo" value="R" label="Range" />
 				</div>
 			</div>
-			<input type="submit" value="Adicionar Variavel"
-				class="btn btn-primary">
+			<input type="submit" class="btn" value="Adicionar Variavel"
+				class="btn">
 		</form:form>
 	</div>
 
@@ -89,8 +89,7 @@
 								<input type="text" name="peso" id="peso" class="form-control">
 							</div>
 						</div>
-						<input type="submit" value="Adicionar Faixa"
-							class="btn btn-primary">
+						<input type="submit" value="Adicionar Faixa" class="btn">
 					</form>
 				</div>
 			</div>

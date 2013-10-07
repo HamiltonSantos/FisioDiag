@@ -11,4 +11,6 @@ public interface FisioterapeutaDao {
 	public List<Fisioterapeuta> lista();
 	
 	public Fisioterapeuta validaLogin(Fisioterapeuta fisioterapeuta);
+	
+	public Fisioterapeuta get(Long id);
 }

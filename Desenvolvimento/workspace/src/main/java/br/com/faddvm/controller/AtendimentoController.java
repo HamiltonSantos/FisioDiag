@@ -57,7 +57,7 @@ public class AtendimentoController {
 		
 		model.addAttribute("intercorrencias", faixaValorDao.listaIntercorrencias());
 		
-		model.addAttribute("indicacao", "Indicação não encontrada.");
+		model.addAttribute("indicacao", "Indica����o n��o encontrada.");
 		
 		for(FaixaValor f : faixaValorDao.listaIndices()) {
 			if(paciente.getPontos() >= f.getValorMin() && paciente.getPontos() <= f.getValorMax()) {
@@ -117,8 +117,8 @@ public class AtendimentoController {
 		paciente.getHistorico().add(historico);
 
 		// Atualiza no banco
-		pacienteDao.atualiza(paciente);
-		// //Atualizar Indicação do Paciente
+		pacienteDao.salvar(paciente);
+		// //Atualizar Indica����o do Paciente
 		return "redirect:/atendimento/" + pacienteId;
 	}
 }

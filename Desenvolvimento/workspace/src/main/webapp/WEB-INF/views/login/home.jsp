@@ -4,12 +4,9 @@
 <html>
 <head>
 <title>Login</title>
-<link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css"
-	rel="stylesheet" media="screen">
-<script type="text/javascript"
-	src="/faddvm/webjars/jquery/1.9.1/jquery.js"></script>
-<script type="text/javascript"
-	src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
+<link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/faddvm/webjars/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -22,11 +19,10 @@
 						<form:input path="login" class="form-control" placeholder="Login" />
 					</div>
 					<div class="form-group">
-						<form:password path="senha" class="form-control"
-							placeholder="Senha" />
+						<form:password path="senha" class="form-control" placeholder="Senha" />
 					</div>
 
-					<input type="submit" value="Login" class="btn btn-primary">
+					<input type="submit" value="Login" class="btn">
 				</form:form>
 			</div>
 			<div class="col-md-4"></div>

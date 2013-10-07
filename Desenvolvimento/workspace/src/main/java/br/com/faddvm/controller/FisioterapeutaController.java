@@ -2,9 +2,11 @@ package br.com.faddvm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,5 +49,21 @@ public class FisioterapeutaController {
 		
 		return "/fisioterapeuta/form";
 	}
+	
+	@RequestMapping("/{fisioterapeutaId}")
+	public String mostra(@PathVariable Long fisioterapeutaId, Model model){
+		
+		model.addAttribute("fisioterapeuta", fisioterapeutaDao.get(fisioterapeutaId));
+		
+		return "/fisioterapeuta/mostra";
+	}
 
+	@RequestMapping("/{fisioterapeutaId}/editar")
+	public String editar(@PathVariable Long fisioterapeutaId, Model model){
+		
+		model.addAttribute("fisioterapeuta", fisioterapeutaDao.get(fisioterapeutaId));
+		
+		return "/fisioterapeuta/form";
+	}
+	
 }

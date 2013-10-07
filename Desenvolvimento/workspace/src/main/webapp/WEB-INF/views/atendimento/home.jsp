@@ -7,8 +7,7 @@
 </head>
 <body>
 	<div class="well">
-		Paciente: ${paciente.nome} <br> Pontos: ${paciente.pontos} <br>
-		Indicação: ${indicacao}
+		Paciente: ${paciente.nome} <br> Pontos: ${paciente.pontos} <br> Indicação: ${indicacao}
 	</div>
 	<ul id="myTab" class="nav nav-tabs nav-justified">
 		<li><a href="#historico">Histórico</a></li>
@@ -37,8 +36,7 @@
 							<td>${historico.fisioterapeuta.nome}</td>
 							<td>${historico.variavel.descricao}</td>
 							<c:if test="${historico.variavel.tipo eq 79}">
-								<c:forEach items="${historico.variavel.faixaValores}"
-									var="faixa">
+								<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
 									<c:if test="${faixa.valorMin eq historico.valor}">
 										<td>${faixa.descricao}</td>
 									</c:if>
@@ -52,6 +50,7 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="dataTables_scroll"></div>
 		<div class="tab-pane" id="ocorrencias">
 			<table class="table table-condensed">
 				<thead>
@@ -70,8 +69,7 @@
 								<td>${historico.fisioterapeuta.nome}</td>
 								<td>${historico.variavel.descricao}</td>
 								<c:if test="${historico.variavel.tipo eq 79}">
-									<c:forEach items="${historico.variavel.faixaValores}"
-										var="faixa">
+									<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
 										<c:if test="${faixa.valorMin eq historico.valor}">
 											<td>${faixa.descricao}</td>
 										</c:if>
@@ -85,16 +83,14 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<div class="dataTables_scroll"></div>
 
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
 				<c:forEach items="${ocorrencias}" var="faixa">
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-					<input type="radio" id="faixa_${faixa.id}" name="valor"
-						value="${faixa.valorMin}">
-					<br>
+					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
 				</c:forEach>
-				<br> <input type="hidden" name="variavelId" value="${1}">
-				<input type="submit" value="Salvar">
+				<input type="hidden" name="variavelId" value="${1}"> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
 		<div class="tab-pane" id="intercorrencias">
@@ -115,8 +111,7 @@
 								<td>${historico.fisioterapeuta.nome}</td>
 								<td>${historico.variavel.descricao}</td>
 								<c:if test="${historico.variavel.tipo eq 79}">
-									<c:forEach items="${historico.variavel.faixaValores}"
-										var="faixa">
+									<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
 										<c:if test="${faixa.valorMin eq historico.valor}">
 											<td>${faixa.descricao}</td>
 										</c:if>
@@ -131,15 +126,14 @@
 				</tbody>
 			</table>
 
+			<div class="dataTables_scroll"></div>
+
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
 				<c:forEach items="${intercorrencias}" var="faixa">
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-					<input type="radio" id="faixa_${faixa.id}" name="valor"
-						value="${faixa.valorMin}">
-					<br>
+					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
 				</c:forEach>
-				<br> <input type="hidden" name="variavelId" value="${2}">
-				<input type="submit" value="Salvar">
+				<input type="hidden" name="variavelId" value="${2}"> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
 		<c:forEach items="${categorias}" var="categoria">
@@ -162,8 +156,7 @@
 										<td>${historico.fisioterapeuta.nome}</td>
 										<td>${historico.variavel.descricao}</td>
 										<c:if test="${historico.variavel.tipo eq 79}">
-											<c:forEach items="${historico.variavel.faixaValores}"
-												var="faixa">
+											<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
 												<c:if test="${faixa.valorMin eq historico.valor}">
 													<td>${faixa.descricao}</td>
 												</c:if>
@@ -179,6 +172,8 @@
 					</tbody>
 				</table>
 
+				<div class="dataTables_scroll"></div>
+
 				<c:forEach items="${categoria.variaveis}" var="variavel">
 					<c:if test="${variavel.tipo eq 79}">
 						<form action="/faddvm/atendimento/${paciente.id}" method="post">
@@ -186,21 +181,18 @@
 
 							<c:forEach items="${variavel.faixaValores}" var="faixa">
 								<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-								<input type="radio" id="faixa_${faixa.id}" name="valor"
-									value="${faixa.valorMin}">
+								<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
 							</c:forEach>
-							<br> <input type="hidden" name="variavelId"
-								value="${variavel.id}"> <input type="submit"
+							<input type="hidden" name="variavelId" value="${variavel.id}"> <input type="submit" class="btn"
 								value="Salvar">
 						</form>
 					</c:if>
 
 					<c:if test="${variavel.tipo eq 82}">
 						<form action="/faddvm/atendimento/${paciente.id}" method="post">
-							<label for="var_${variavel.id}"> ${variavel.descricao}</label> <input
-								type="text" id="var_${variavel.id}" name="valor"> <input
-								type="hidden" name="variavelId" value="${variavel.id}">
-							<input type="submit" value="Salvar"> <br>
+							<label for="var_${variavel.id}"> ${variavel.descricao}</label> <input type="text" id="var_${variavel.id}"
+								name="valor"> <input type="hidden" name="variavelId" value="${variavel.id}"> <input
+								type="submit" class="btn" value="Salvar"> <br>
 						</form>
 					</c:if>
 				</c:forEach>
@@ -213,15 +205,34 @@
 		$('#myTab a').click(function(e) {
 			e.preventDefault()
 			$(this).tab('show')
-		})
+		});
 		$(function() {
 			$('#myTab a:first').tab('show')
-		})
-		$(document).ready(function() {
-			for ( var i = 0; i < $('.table').length; i++) {
-				$('.table').dataTable();
-			}
 		});
+
+		$(document)
+				.ready(
+						function() {
+							$('.table')
+									.dataTable(
+											{
+												"oLanguage" : {
+													"sProcessing" : "Aguarde enquanto os dados são carregados ...",
+													"sLengthMenu" : "Mostrar _MENU_ registros",
+													"sZeroRecords" : "Nenhum registro correspondente ao criterio encontrado",
+													"sInfoEmpty" : "Exibindo 0 a 0 de 0 registros",
+													"sInfo" : "Exibindo de _START_ a _END_ de _TOTAL_ registros",
+													"sInfoFiltered" : "",
+													"sSearch" : "Procurar",
+													"oPaginate" : {
+														"sFirst" : "Primeiro",
+														"sPrevious" : "Anterior",
+														"sNext" : "Próximo",
+														"sLast" : "Último"
+													}
+												}
+											});
+						});
 	</script>
 </body>
 </html>

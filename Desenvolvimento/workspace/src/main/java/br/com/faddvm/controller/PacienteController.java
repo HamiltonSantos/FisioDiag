@@ -33,13 +33,14 @@ public class PacienteController {
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
-		
+
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-		
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, true));
+
 		binder.addValidators(new PacienteValidator());
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String get(Model model) {
 		model.addAttribute("pacientes", dao.lista());
@@ -48,17 +49,13 @@ public class PacienteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String add(@Valid Paciente paciente, BindingResult result) {
-		
+
 		if (result.hasErrors()) {
 			return "/paciente/form";
 		}
-		
-		if(paciente.getId() == null){
-			dao.salvar(paciente);
-		}else{
-			dao.atualiza(paciente);
-		}
-		
+
+		dao.salvar(paciente);
+
 		return "redirect:/paciente";
 	}
 
@@ -67,17 +64,17 @@ public class PacienteController {
 		model.addAttribute("paciente", new Paciente());
 		return "/paciente/form";
 	}
-	
-	@RequestMapping(value="/{pacienteId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable Long pacienteId,Model model){
-		
-		model.addAttribute("paciente",dao.get(pacienteId));
+
+	@RequestMapping(value = "/{pacienteId}", method = RequestMethod.GET)
+	public String mostra(@PathVariable Long pacienteId, Model model) {
+
+		model.addAttribute("paciente", dao.get(pacienteId));
 		return "/paciente/mostra";
 	}
-	
-	@RequestMapping(value="/{pacienteId}/editar", method = RequestMethod.GET)
-	public String editar(@PathVariable Long pacienteId, Model model){
-		
+
+	@RequestMapping(value = "/{pacienteId}/editar", method = RequestMethod.GET)
+	public String editar(@PathVariable Long pacienteId, Model model) {
+
 		model.addAttribute("paciente", dao.get(pacienteId));
 		return "/paciente/form";
 	}
