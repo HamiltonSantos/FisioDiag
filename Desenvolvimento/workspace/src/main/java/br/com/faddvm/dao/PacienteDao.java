@@ -11,4 +11,6 @@ public interface PacienteDao {
 	public Paciente get(Long id);
 	
 	public List<Paciente> lista();
+	
+	public int getPontos(Paciente paciente);
 }

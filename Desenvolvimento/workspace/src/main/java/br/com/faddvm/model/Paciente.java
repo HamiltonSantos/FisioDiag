@@ -9,12 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Paciente {
@@ -30,6 +27,7 @@ public class Paciente {
 	private char sexo;
 	private String numRegistro;
 	private Date dataNascimento;
+	@Transient
 	private int pontos;
 
 	public Long getId() {

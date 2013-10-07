@@ -57,7 +57,7 @@ public class AtendimentoController {
 		
 		model.addAttribute("intercorrencias", faixaValorDao.listaIntercorrencias());
 		
-		model.addAttribute("indicacao", "Indica����o n��o encontrada.");
+		model.addAttribute("indicacao", "Indicacao nao encontrada.");
 		
 		for(FaixaValor f : faixaValorDao.listaIndices()) {
 			if(paciente.getPontos() >= f.getValorMin() && paciente.getPontos() <= f.getValorMax()) {
@@ -89,29 +89,6 @@ public class AtendimentoController {
 		historico.setVariavel(variavel);
 		// SetarValor
 		historico.setValor(valorAtendimento.getValor());
-
-		// Falta verificar se ja foi adicionado uma variavel igual para nao
-		// somar 2 vezes
-		// Atualiza a pontuacao do paciente
-		int pontos = paciente.getPontos();
-		// Se esta inserindo uma Opcao
-		if (variavel.getTipo() == 'O') {
-
-			pontos += valorAtendimento.getValor();
-			paciente.setPontos(pontos);
-			System.out.println("adicionado range peso: "
-					+ valorAtendimento.getValor());
-			// Se for Range
-		} else if (variavel.getTipo() == 'R') {
-			for (FaixaValor f : variavel.getFaixaValores()) {
-				if (valorAtendimento.getValor() > f.getValorMin()
-						&& valorAtendimento.getValor() < f.getValorMax()) {
-					pontos += f.getPeso();
-					paciente.setPontos(pontos);
-					System.out.println("adicionado range peso: " + f.getPeso());
-				}
-			}
-		}
 
 		// Adiciona o historico no paciente
 		paciente.getHistorico().add(historico);

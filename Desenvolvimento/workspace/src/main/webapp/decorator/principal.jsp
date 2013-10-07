@@ -16,7 +16,7 @@
 	href="/faddvm/webjars/datatables/1.9.4/media/css/jquery.dataTables.css"
 	rel="stylesheet" media="screen">
 <script type="text/javascript"
-	src="/faddvm/webjars/jquery/1.8.2/jquery.js"></script>
+	src="/faddvm/webjars/jquery/1.10.2/jquery.js"></script>
 <script type="text/javascript"
 	src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
 <script type="text/javascript"
