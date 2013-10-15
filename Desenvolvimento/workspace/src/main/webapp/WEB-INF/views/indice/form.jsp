@@ -9,7 +9,7 @@
 <body>
 
 	<h3 align="center">Novo indice</h3>
-	<form:form action="/faddvm/categoria/indice" commandName="indice" class="form-horizontal">
+	<form:form method="POST" action="/faddvm/categoria/indice" commandName="indice" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<form:label path="valorMin" class="col-lg-4 control-label">valorMin</form:label>
 			<div class="col-lg-3">
-				<form:input path="valorMin" class="form-control" />
+				<form:input readonly="true" path="valorMin" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -31,9 +31,10 @@
 				<form:input path="valorMax" class="form-control" />
 			</div>
 		</div>
+		<form:hidden path="peso"/>
+		<form:hidden path="id"/>
 		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>
-
 </body>
 </html>

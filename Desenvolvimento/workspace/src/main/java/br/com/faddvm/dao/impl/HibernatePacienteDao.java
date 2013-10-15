@@ -62,9 +62,12 @@ public class HibernatePacienteDao implements PacienteDao {
 				.createNativeQuery(
 						"select sum(h.valor) from faddvm.Historico as h inner join (select  max(data) as ultimaData from faddvm.Historico as hh where hh.paciente_id = ? group by hh.variavel_id) hhh ON h.data = hhh.ultimaData")
 				.setParameter(1, paciente.getId());
-		q.getFirstResult();
 		
 		BigDecimal result = (BigDecimal) q.getSingleResult();
+		
+		if(result == null){
+			result = new BigDecimal(0);
+		}
 		
 		return result.intValue();
 	}

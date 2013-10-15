@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +20,9 @@ import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.Categoria;
 import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Variavel;
+import br.com.faddvm.util.validator.CategoriaValidator;
+import br.com.faddvm.util.validator.FaixaValorValidator;
+import br.com.faddvm.util.validator.VariavelValidator;
 
 @Transactional
 @Controller
@@ -41,7 +46,10 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String adicionaCategoria(@Valid Categoria categoria, BindingResult result) {
+	public String adicionaCategoria(Categoria categoria, BindingResult result) {
+
+		ValidationUtils.invokeValidator(new  CategoriaValidator(), categoria, result);
+		
 		if (result.hasErrors()) {
 			return "/categoria/form";
 		}
@@ -52,12 +60,12 @@ public class CategoriaController {
 
 	@RequestMapping("/nova")
 	public String nova(Model model) {
-		
+
 		Categoria categoria = new Categoria();
 		categoria.setStatus('C');
-		
+
 		model.addAttribute("categoria", categoria);
-		
+
 		return "/categoria/form";
 	}
 
@@ -66,6 +74,7 @@ public class CategoriaController {
 		Categoria categoria = dao.get(new Long(categoriaId));
 
 		model.addAttribute("categoria", categoria);
+		
 		model.addAttribute("variavel", new Variavel());
 
 		return "/categoria/mostra";
@@ -73,11 +82,18 @@ public class CategoriaController {
 
 	@RequestMapping("/{categoriaId}/adicionaVariavel")
 	public String adicionaVariavel(@PathVariable String categoriaId,
-			Variavel variavel) {
+			Variavel variavel, BindingResult result) {
+		
 		Categoria categoria = dao.get(new Long(categoriaId));
-
 		variavel.setCategoria(categoria);
-
+		variavel.setStatus('A');
+		
+		ValidationUtils.invokeValidator(new VariavelValidator(), variavel, result);
+		
+		if(result.hasErrors()){
+			return "redirect:/categoria/" + categoriaId;
+		}
+		
 		daoVariavel.salvar(variavel);
 
 		return "redirect:/categoria/" + categoriaId;
@@ -85,8 +101,14 @@ public class CategoriaController {
 
 	@RequestMapping("/{categoriaId}/{variavelId}/adicionaFaixa")
 	public String adicionaRange(@PathVariable String categoriaId,
-			@PathVariable String variavelId, FaixaValor faixaValor) {
+			@PathVariable String variavelId, FaixaValor faixaValor, BindingResult result) {
 
+		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixaValor, result);
+		
+		if(result.hasErrors()){
+			return "redirect:/categoria/" + categoriaId;
+		}
+		
 		Variavel variavel = daoVariavel.get(new Long(variavelId));
 
 		if (variavel.getTipo() == 'O') {
@@ -105,89 +127,97 @@ public class CategoriaController {
 		return "redirect:/categoria/" + categoriaId;
 	}
 
-	@RequestMapping(value="/ocorrencia", method=RequestMethod.GET)
+	@RequestMapping(value = "/ocorrencia", method = RequestMethod.GET)
 	public String ocorrencia(Model model) {
-		
+
 		model.addAttribute("ocorrencias", daoFaixaValor.listOcorrencias());
-		
+
 		return "/ocorrencia/home";
 	}
-	
-	@RequestMapping(value="/ocorrencia", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/ocorrencia", method = RequestMethod.POST)
 	public String salvaOcorrencia(FaixaValor ocorrencia) {
-		
-		//Peso min e Max
+
+		// Peso min e Max
 		ocorrencia.setValorMin(ocorrencia.getPeso());
 		ocorrencia.setValorMax(ocorrencia.getPeso());
-		
-		//Variavel
-		//Variavel
+
+		// Variavel
+		// Variavel
 		ocorrencia.setVariavel(daoVariavel.get(1l));
-		//Insere banco
+		// Insere banco
 		daoFaixaValor.salvar(ocorrencia);
-		
+
 		return "redirect:/categoria/ocorrencia";
 	}
-	
-	@RequestMapping(value="/ocorrencia/nova", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/ocorrencia/nova", method = RequestMethod.GET)
 	public String novaOcorrencia(Model model) {
-		
+
 		model.addAttribute("ocorrencia", new FaixaValor());
 		return "/ocorrencia/form";
 	}
-	
-	@RequestMapping(value="/intercorrencia", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/intercorrencia", method = RequestMethod.GET)
 	public String intercorrencia(Model model) {
-		
-		model.addAttribute("intercorrencias", daoFaixaValor.listaIntercorrencias());
-		
+
+		model.addAttribute("intercorrencias",
+				daoFaixaValor.listaIntercorrencias());
+
 		return "/intercorrencia/home";
 	}
-	
-	@RequestMapping(value="/intercorrencia", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/intercorrencia", method = RequestMethod.POST)
 	public String salvaIntercorrencia(FaixaValor intercorrencia) {
-		
-		//Peso min e Max
+
+		// Peso min e Max
 		intercorrencia.setValorMin(intercorrencia.getPeso());
 		intercorrencia.setValorMax(intercorrencia.getPeso());
-		
-		//Variavel
-		//Variavel
+
+		// Variavel
+		// Variavel
 		intercorrencia.setVariavel(daoVariavel.get(2l));
-		//Insere banco
+		// Insere banco
 		daoFaixaValor.salvar(intercorrencia);
-		
+
 		return "redirect:/categoria/intercorrencia";
 	}
-	
-	@RequestMapping(value="/intercorrencia/nova", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/intercorrencia/nova", method = RequestMethod.GET)
 	public String novaIntercorrencia(Model model) {
-		
+
 		model.addAttribute("intercorrencia", new FaixaValor());
 		return "/intercorrencia/form";
 	}
-	
-	@RequestMapping(value="/indice",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/indice", method = RequestMethod.GET)
 	public String indice(Model model) {
-		
+
 		model.addAttribute("indices", daoFaixaValor.listaIndices());
 		return "/indice/home";
 	}
-	
-	@RequestMapping(value="/indice",method=RequestMethod.POST)
-	public String salvaIndice(FaixaValor faixa) {
+
+	@RequestMapping(value = "/indice", method = RequestMethod.POST)
+	public String salvaIndice(@ModelAttribute("indice") FaixaValor faixa, BindingResult result) {
+		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixa, result);
 		
+		if (result.hasErrors()) {
+			return "/indice/form";
+		}
+
 		faixa.setVariavel(daoVariavel.get(3l));
-		
-		faixa.setPeso(0);
-		
 		daoFaixaValor.salvar(faixa);
 		return "redirect:/categoria/indice";
 	}
-	
-	@RequestMapping(value="/indice/novo", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/indice/novo", method = RequestMethod.GET)
 	public String novoIndice(Model model) {
-		model.addAttribute("indice", new FaixaValor());
+
+		FaixaValor faixa = new FaixaValor();
+		faixa.setPeso(0);
+		faixa.setValorMin(daoFaixaValor.getValorMinIndice());
+
+		model.addAttribute("indice", faixa);
 		return "/indice/form";
 	}
 }

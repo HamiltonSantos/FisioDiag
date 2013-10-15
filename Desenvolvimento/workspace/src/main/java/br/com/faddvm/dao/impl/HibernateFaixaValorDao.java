@@ -1,5 +1,6 @@
 package br.com.faddvm.dao.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -47,5 +48,14 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 				.createQuery("From FaixaValor as f where f.variavel.id = ?1")
 				.setParameter(1, 3l).getResultList();
 		return indices;
+	}
+
+	@Override
+	public int getValorMinIndice() {
+		Integer result = (Integer) manager.createNativeQuery("select max(valorMax) from faddvm.FaixaValor where variavel_id = 3").getSingleResult();
+		if(result != null){
+			return result.intValue() + 1;
+		}
+		return 0;
 	}
 }

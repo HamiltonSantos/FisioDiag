@@ -28,6 +28,7 @@
 					<form:radiobutton path="tipo" value="R" label="Range" />
 				</div>
 			</div>
+			<form:hidden path="status"/>
 			<input type="submit" class="btn" value="Adicionar Variavel"
 				class="btn">
 		</form:form>

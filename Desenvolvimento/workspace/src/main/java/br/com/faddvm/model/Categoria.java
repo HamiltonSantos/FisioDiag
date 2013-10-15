@@ -19,7 +19,6 @@ public class Categoria {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Size(min = 1, max = 100, message = "Nome deve ser preenchido")
 	private String descricao;
 	private Character status;
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

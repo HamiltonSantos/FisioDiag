@@ -13,4 +13,6 @@ public interface FaixaValorDao {
 	public List<FaixaValor> listaIntercorrencias();
 	
 	public List<FaixaValor> listaIndices();
+	
+	public int getValorMinIndice();
 }
