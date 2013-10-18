@@ -2,10 +2,10 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Intercorrencia</title>
+<title>Variavel</title>
 </head>
 <body>
-	<h1>Intercorrencias</h1>
+	<h1>Variavel: ${variavel.descricao} </h1>
 
 	<table id="tabela" class="table">
 		<thead>
@@ -15,10 +15,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${intercorrencias}" var="intercorrencia">
+			<c:forEach items="${variavel.faixaValores}" var="faixa">
 				<tr>
-					<td>${intercorrencia.descricao}</td>
-					<td>${intercorrencia.peso}</td>
+					<td>${faixa.descricao}</td>
+					<td>${faixa.peso}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -26,7 +26,7 @@
 	
 	<div class="dataTables_scroll"></div>
 
-	<a href="/faddvm/intercorrencia/nova" class="btn btn-primary">Nova</a>
+	<a href="/faddvm/faixaValor/nova/${variavel.id}" class="btn btn-primary">Nova Faixa</a>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#tabela').dataTable( {

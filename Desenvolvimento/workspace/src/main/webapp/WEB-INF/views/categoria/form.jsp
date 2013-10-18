@@ -11,10 +11,15 @@
 
 	<form:form action="/faddvm/categoria" commandName="categoria">
 		<div class="form-group">
-			<form:label path="descricao">Descrição:</form:label>
-			<form:input path="descricao" class="form-control" placeholder="Descrição da Categoria" />
-			<form:hidden path="status" />
+			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
+		<div class="form-group">
+			<form:label class="col-lg-3 control-label" path="descricao">Descrição:</form:label>
+			<div class="col-lg-9">
+				<form:input path="descricao" class="form-control" placeholder="Descrição da Categoria" />
+			</div>
+		</div>
+		<form:hidden path="status" />
 		<input type="submit" class="btn" value="Salvar" />
 	</form:form>
 

@@ -46,7 +46,7 @@ public class AtendimentoController {
 	FaixaValorDao faixaValorDao;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String get(@PathVariable Long pacienteId, Model model) {
+	public String home(@PathVariable Long pacienteId, Model model) {
 
 		Paciente paciente = pacienteDao.get(pacienteId);
 		model.addAttribute("paciente", paciente);

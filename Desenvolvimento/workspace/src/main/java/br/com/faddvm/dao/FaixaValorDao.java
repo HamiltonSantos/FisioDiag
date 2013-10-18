@@ -3,6 +3,7 @@ package br.com.faddvm.dao;
 import java.util.List;
 
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Variavel;
 
 public interface FaixaValorDao {
 
@@ -14,5 +15,5 @@ public interface FaixaValorDao {
 	
 	public List<FaixaValor> listaIndices();
 	
-	public int getValorMinIndice();
+	public Integer getValorMinVariavel(Variavel variavel);
 }

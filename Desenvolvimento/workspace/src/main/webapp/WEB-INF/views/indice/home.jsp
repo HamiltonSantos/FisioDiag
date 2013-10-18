@@ -28,7 +28,7 @@
 	
 	<div class="dataTables_scroll"></div>
 
-	<a href="/faddvm/categoria/indice/novo" class="btn btn-primary">Novo</a>
+	<a href="/faddvm/indice/novo" class="btn btn-primary">Novo</a>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#tabela').dataTable( {

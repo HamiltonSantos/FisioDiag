@@ -9,7 +9,7 @@
 <body>
 
 	<h3 align="center">Nova ocorrência</h3>
-	<form:form action="/faddvm/categoria/ocorrencia" commandName="ocorrencia" class="form-horizontal">
+	<form:form action="/faddvm/ocorrencia" commandName="ocorrencia" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>

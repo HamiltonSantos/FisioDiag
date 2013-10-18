@@ -9,7 +9,7 @@
 <body>
 
 	<h3 align="center">Nova Adiciona Intercorrencia</h3>
-	<form:form action="/faddvm/categoria/intercorrencia" commandName="intercorrencia" class="form-horizontal">
+	<form:form action="/faddvm/intercorrencia" commandName="intercorrencia" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>

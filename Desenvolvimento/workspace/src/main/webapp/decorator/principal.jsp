@@ -53,9 +53,9 @@
 						<li><a href="/faddvm/paciente">Pacientes</a></li>
 						<li><a href="/faddvm/categoria">Categorias</a></li>
 						<li><a href="/faddvm/fisioterapeuta">Fisioterapeutas</a></li>
-						<li><a href="/faddvm/categoria/ocorrencia">Ocorrências</a></li>
-						<li><a href="/faddvm/categoria/intercorrencia">Intercorrências</a></li>
-						<li><a href="/faddvm/categoria/indice">Índices</a></li>
+						<li><a href="/faddvm/ocorrencia">Ocorrências</a></li>
+						<li><a href="/faddvm/intercorrencia">Intercorrências</a></li>
+						<li><a href="/faddvm/indice">Índices</a></li>
 					</ul>
 				</div>
 			</div>

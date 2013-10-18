@@ -26,7 +26,7 @@
 
 	<div class="dataTables_scroll"></div>
 	
-	<a href="/faddvm/categoria/ocorrencia/nova" class="btn btn-primary">Nova</a>
+	<a href="/faddvm/ocorrencia/nova" class="btn btn-primary">Nova</a>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#tabela').dataTable( {

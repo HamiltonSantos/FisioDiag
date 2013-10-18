@@ -42,13 +42,13 @@ public class PacienteController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String get(Model model) {
+	public String home(Model model) {
 		model.addAttribute("pacientes", dao.lista());
 		return "/paciente/home";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String add(@Valid Paciente paciente, BindingResult result) {
+	public String salvar(@Valid Paciente paciente, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "/paciente/form";

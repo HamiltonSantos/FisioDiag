@@ -40,6 +40,11 @@ public class HomeController {
 		return "/login/home";
 	}
 
+	@RequestMapping(value = "/teste", method = RequestMethod.GET)
+	public String teste(){
+		return "teste";
+	}
+	
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
 	public String sair(HttpSession session) {
 		session.setAttribute("fisioterapeutaLogado", null);

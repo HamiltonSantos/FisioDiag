@@ -1,6 +1,5 @@
 package br.com.faddvm.dao.impl;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Variavel;
 
 @Repository
 public class HibernateFaixaValorDao implements FaixaValorDao {
@@ -51,11 +51,11 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	}
 
 	@Override
-	public int getValorMinIndice() {
-		Integer result = (Integer) manager.createNativeQuery("select max(valorMax) from faddvm.FaixaValor where variavel_id = 3").getSingleResult();
+	public Integer getValorMinVariavel(Variavel variavel) {
+		Integer result = (Integer) manager.createNativeQuery("select max(valorMax) from faddvm.FaixaValor where variavel_id = ?1").setParameter(1, variavel.getId()).getSingleResult();
 		if(result != null){
 			return result.intValue() + 1;
 		}
-		return 0;
+		return result;
 	}
 }

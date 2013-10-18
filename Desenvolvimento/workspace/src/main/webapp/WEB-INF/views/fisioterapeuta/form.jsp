@@ -11,6 +11,9 @@
 	<h3 align="center">Adicionar Fisioterapeuta</h3>
 	<form:form action="/faddvm/fisioterapeuta" commandName="fisioterapeuta" class="form-horizontal">
 		<div class="form-group">
+			<form:errors path="*" class="alert alert-danger" element="div" />
+		</div>
+		<div class="form-group">
 			<form:label path="nome" class="col-lg-4 control-label">Nome</form:label>
 			<div class="col-lg-4">
 				<form:input path="nome" class="form-control" />
