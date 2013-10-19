@@ -3,7 +3,6 @@ package br.com.faddvm.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -16,7 +15,7 @@ public class Historico {
 	private Long id;
 	@ManyToOne
 	private Fisioterapeuta fisioterapeuta;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	private Paciente paciente;
 	private Long valor;
 	@ManyToOne

@@ -23,7 +23,7 @@ public class CategoriaController {
 	@Autowired
 	@Qualifier("hibernateCategoriaDao")
 	CategoriaDao categoriaDao;
-
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("categorias", categoriaDao.lista());
@@ -56,9 +56,8 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable String categoriaId, Model model) {
-
-		Categoria categoria = categoriaDao.get(new Long(categoriaId));
+	public String mostra(@PathVariable Long categoriaId, Model model) {
+		Categoria categoria = categoriaDao.get(categoriaId);
 		model.addAttribute("categoria", categoria);
 
 		return "/categoria/mostra";

@@ -37,8 +37,8 @@
 				<form:input path="valorMax" class="form-control" />
 			</div>
 		</div>
-		<form:hidden path="peso"/>
-		<form:hidden path="id"/>
+		<form:hidden path="peso" />
+		<form:hidden path="id" />
 		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>

@@ -13,4 +13,5 @@ public interface CategoriaDao {
 	public List<Categoria> lista();
 	
 	public boolean deletar(Categoria categoria);
+	
 }

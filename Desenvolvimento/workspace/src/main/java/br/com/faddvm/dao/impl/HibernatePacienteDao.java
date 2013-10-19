@@ -1,15 +1,17 @@
 package br.com.faddvm.dao.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.PacienteDao;
+import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
 
 @Repository
@@ -32,6 +34,8 @@ public class HibernatePacienteDao implements PacienteDao {
 	public Paciente get(Long id) {
 		Paciente paciente = manager.find(Paciente.class, id);
 		paciente.setPontos(getPontos(paciente));
+		paciente.setIndicacao(getIndicacao(paciente));
+		paciente.setHistoricoIndicacao(getHistoricoIndicacao(paciente));
 		return paciente;
 	}
 
@@ -51,25 +55,43 @@ public class HibernatePacienteDao implements PacienteDao {
 
 	@Override
 	public int getPontos(Paciente paciente) {
-		// Query q =
-		// manager.createQuery("select sum(h.valor) from Historico as h "
-		// + "join select max(hh.data) as ultimaData from Historico as hh "
-		// + "where hh.paciente_id = :pid group by hh.variavel_id as hhh "
-		// + "on h.data = hhh.ultimaData").setParameter("pid",
-		// paciente.getId());
-
-		Query q = manager
+		BigDecimal result = (BigDecimal) manager
 				.createNativeQuery(
 						"select sum(h.valor) from faddvm.Historico as h inner join (select  max(data) as ultimaData from faddvm.Historico as hh where hh.paciente_id = ? group by hh.variavel_id) hhh ON h.data = hhh.ultimaData")
-				.setParameter(1, paciente.getId());
-		
-		BigDecimal result = (BigDecimal) q.getSingleResult();
-		
-		if(result == null){
+				.setParameter(1, paciente.getId()).getSingleResult();
+
+		if (result == null) {
 			result = new BigDecimal(0);
 		}
-		
+
 		return result.intValue();
+	}
+
+	@Override
+	public FaixaValor getIndicacao(Paciente paciente) {
+		FaixaValor faixa = (FaixaValor) manager
+				.createQuery(
+						"From FaixaValor as f where f.variavel.id = 3 and f.valorMin <= ?1 and f.valorMax >= ?2")
+				.setParameter(1, paciente.getPontos())
+				.setParameter(2, paciente.getPontos()).getSingleResult();
+		if (faixa == null) {
+			faixa = new FaixaValor();
+			faixa.setDescricao("Indicacao nao Encontrada");
+		}
+		return faixa;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getHistoricoIndicacao(Paciente paciente) {
+
+		List<Historico> historicoIndicacao = (List<Historico>) manager
+				.createQuery("From Historico h where h.paciente.id = ?1 group by h.variavel.id order by h.data").setParameter(1, paciente.getId()).getResultList();
+
+		if (historicoIndicacao == null) {
+			historicoIndicacao = new ArrayList<Historico>();
+		}
+		return historicoIndicacao;
 	}
 
 }

@@ -7,7 +7,8 @@
 </head>
 <body>
 	<div class="well">
-		Paciente: ${paciente.nome} <br> Pontos: ${paciente.pontos} <br> Indicação: ${indicacao}
+		Paciente: ${paciente.nome} <br> Pontos: ${paciente.pontos} <br> Indicação: ${paciente.indicacao.descricao}
+		<br> <a href="/faddvm/atendimento/${paciente.id}/detalhe">Ver detalhes indicacao</a>
 	</div>
 	<ul id="myTab" class="nav nav-tabs nav-justified">
 		<li><a href="#historico">Histórico</a></li>
@@ -184,15 +185,18 @@
 								<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
 							</c:forEach>
 							<input type="hidden" name="variavelId" value="${variavel.id}"> <input type="submit" class="btn"
-								value="Salvar">
+								value="Salvar"
+							>
 						</form>
 					</c:if>
 
 					<c:if test="${variavel.tipo eq 82}">
 						<form action="/faddvm/atendimento/${paciente.id}" method="post">
 							<label for="var_${variavel.id}"> ${variavel.descricao}</label> <input type="text" id="var_${variavel.id}"
-								name="valor"> <input type="hidden" name="variavelId" value="${variavel.id}"> <input
-								type="submit" class="btn" value="Salvar"> <br>
+								name="valor"
+							> <input type="hidden" name="variavelId" value="${variavel.id}"> <input type="submit" class="btn"
+								value="Salvar"
+							> <br>
 						</form>
 					</c:if>
 				</c:forEach>
@@ -210,25 +214,29 @@
 			$('#myTab a:first').tab('show')
 		});
 
-		$(document).ready( function() {
-			  $('.table').dataTable( {
-			    "oLanguage": {
-			    	"sProcessing": "Aguarde enquanto os dados são carregados ...",
-				    "sLengthMenu": "Mostrar _MENU_ registros",
-				    "sZeroRecords": "Nenhum registro correspondente ao criterio encontrado",
-				    "sInfoEmtpy": "Exibindo 0 a 0 de 0 registros",
-				    "sInfo": "Exibindo de _START_ a _END_ de _TOTAL_ registros",
-				    "sInfoFiltered": "",
-				    "sSearch": "Procurar",
-				    "oPaginate": {
-				       "sFirst":    "Primeiro",
-				       "sPrevious": "Anterior",
-				       "sNext":     "Próximo",
-				       "sLast":     "Último"	
-					}
-			    }
-			  } );
-			} );
+		$(document)
+				.ready(
+						function() {
+							$('.table')
+									.dataTable(
+											{
+												"oLanguage" : {
+													"sProcessing" : "Aguarde enquanto os dados são carregados ...",
+													"sLengthMenu" : "Mostrar _MENU_ registros",
+													"sZeroRecords" : "Nenhum registro correspondente ao criterio encontrado",
+													"sInfoEmtpy" : "Exibindo 0 a 0 de 0 registros",
+													"sInfo" : "Exibindo de _START_ a _END_ de _TOTAL_ registros",
+													"sInfoFiltered" : "",
+													"sSearch" : "Procurar",
+													"oPaginate" : {
+														"sFirst" : "Primeiro",
+														"sPrevious" : "Anterior",
+														"sNext" : "Próximo",
+														"sLast" : "Último"
+													}
+												}
+											});
+						});
 	</script>
 </body>
 </html>

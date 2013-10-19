@@ -32,9 +32,9 @@ public class VariavelController {
 
 	
 	@RequestMapping(value = "/{variavelId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable String variavelId, Model model){
+	public String mostra(@PathVariable Long variavelId, Model model){
 		
-		Variavel variavel = variavelDao.get(new Long(variavelId));
+		Variavel variavel = variavelDao.get(variavelId);
 		
 		model.addAttribute("variavel", variavel);
 		
@@ -42,9 +42,9 @@ public class VariavelController {
 	}
 	
 	@RequestMapping(value = "/nova/{categoriaId}", method = RequestMethod.GET)
-	public String nova(@PathVariable String categoriaId, Model model) {
+	public String nova(@PathVariable Long categoriaId, Model model) {
 
-		Categoria categoria = categoriaDao.get(new Long(categoriaId));
+		Categoria categoria = categoriaDao.get(categoriaId);
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("variavel", new Variavel());
 
@@ -52,10 +52,10 @@ public class VariavelController {
 	}
 
 	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.POST)
-	public String salvar(@PathVariable String categoriaId,
+	public String salvar(@PathVariable Long categoriaId,
 			Variavel variavel, BindingResult result) {
 
-		Categoria categoria = categoriaDao.get(new Long(categoriaId));
+		Categoria categoria = categoriaDao.get(categoriaId);
 		variavel.setCategoria(categoria);
 		variavel.setStatus('A');
 

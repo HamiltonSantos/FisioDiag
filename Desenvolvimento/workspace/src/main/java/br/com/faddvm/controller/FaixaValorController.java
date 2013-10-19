@@ -29,10 +29,10 @@ public class FaixaValorController {
 	VariavelDao variavelDao;
 
 	@RequestMapping(value = "/nova/{variavelId}", method = RequestMethod.GET)
-	public String nova(@PathVariable String variavelId, Model model) {
+	public String nova(@PathVariable Long variavelId, Model model) {
 
 		FaixaValor faixaValor = new FaixaValor();
-		Variavel variavel = variavelDao.get(new Long(variavelId));
+		Variavel variavel = variavelDao.get(variavelId);
 		faixaValor.setVariavel(variavel);
 
 		model.addAttribute("faixaValor", faixaValor);
@@ -41,10 +41,10 @@ public class FaixaValorController {
 	}
 
 	@RequestMapping(value = "/{variavelId}", method = RequestMethod.POST)
-	public String salvar(@PathVariable String variavelId,
-			FaixaValor faixaValor, BindingResult errors) {
+	public String salvar(@PathVariable Long variavelId, FaixaValor faixaValor,
+			BindingResult errors) {
 
-		Variavel variavel = variavelDao.get(new Long(variavelId));
+		Variavel variavel = variavelDao.get(variavelId);
 
 		preencheFaixaValor(faixaValor, variavel);
 

@@ -7,4 +7,5 @@ public interface VariavelDao {
 	public Variavel salvar(Variavel variavel);
 
 	public Variavel get(Long long1);
+
 }

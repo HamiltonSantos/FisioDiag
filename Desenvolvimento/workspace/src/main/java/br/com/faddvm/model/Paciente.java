@@ -29,6 +29,10 @@ public class Paciente {
 	private Date dataNascimento;
 	@Transient
 	private int pontos;
+	@Transient
+	private FaixaValor indicacao;
+	@Transient
+	private List<Historico> historicoIndicacao;
 
 	public Long getId() {
 		return id;
@@ -94,4 +98,19 @@ public class Paciente {
 		this.pontos = pontos;
 	}
 
+	public FaixaValor getIndicacao() {
+		return indicacao;
+	}
+
+	public void setIndicacao(FaixaValor indicacao) {
+		this.indicacao = indicacao;
+	}
+
+	public List<Historico> getHistoricoIndicacao() {
+		return historicoIndicacao;
+	}
+
+	public void setHistoricoIndicacao(List<Historico> historicoIndicacao) {
+		this.historicoIndicacao = historicoIndicacao;
+	}
 }

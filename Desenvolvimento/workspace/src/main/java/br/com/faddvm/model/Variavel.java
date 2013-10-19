@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Variavel {
@@ -22,10 +22,10 @@ public class Variavel {
 	private String descricao;
 	private Character tipo;
 	private Character status;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	private Categoria categoria;
-	@OneToMany(mappedBy = "variavel", cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "variavel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	private List<FaixaValor> faixaValores;
 
 	public Long getId() {

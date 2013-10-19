@@ -2,6 +2,8 @@ package br.com.faddvm.dao;
 
 import java.util.List;
 
+import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
 
 public interface PacienteDao {
@@ -13,4 +15,8 @@ public interface PacienteDao {
 	public List<Paciente> lista();
 	
 	public int getPontos(Paciente paciente);
+	
+	public FaixaValor getIndicacao(Paciente paciente);
+	
+	public List<Historico> getHistoricoIndicacao(Paciente paciente);
 }

@@ -17,7 +17,6 @@ import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.dao.VariavelDao;
-import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Fisioterapeuta;
 import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
@@ -40,7 +39,7 @@ public class AtendimentoController {
 	@Autowired
 	@Qualifier("hibernateVariavelDao")
 	VariavelDao variavelDao;
-	
+
 	@Autowired
 	@Qualifier("hibernateFaixaValorDao")
 	FaixaValorDao faixaValorDao;
@@ -54,17 +53,10 @@ public class AtendimentoController {
 		model.addAttribute("categorias", categoriaDao.lista());
 
 		model.addAttribute("ocorrencias", faixaValorDao.listOcorrencias());
-		
-		model.addAttribute("intercorrencias", faixaValorDao.listaIntercorrencias());
-		
-		model.addAttribute("indicacao", "Indicacao nao encontrada.");
-		
-		for(FaixaValor f : faixaValorDao.listaIndices()) {
-			if(paciente.getPontos() >= f.getValorMin() && paciente.getPontos() <= f.getValorMax()) {
-				model.addAttribute("indicacao", f.getDescricao());
-			}
-		}
-		
+
+		model.addAttribute("intercorrencias",
+				faixaValorDao.listaIntercorrencias());
+
 		return "/atendimento/home";
 	}
 
@@ -95,7 +87,15 @@ public class AtendimentoController {
 
 		// Atualiza no banco
 		pacienteDao.salvar(paciente);
-		// //Atualizar Indica����o do Paciente
+		// //Atualizar Indicacao do Paciente
 		return "redirect:/atendimento/" + pacienteId;
+	}
+
+	@RequestMapping(value = "/detalhe")
+	public String detalhe(@PathVariable Long pacienteId, Model model) {
+
+		model.addAttribute("paciente", pacienteDao.get(pacienteId));
+
+		return "/atendimento/detalhe";
 	}
 }

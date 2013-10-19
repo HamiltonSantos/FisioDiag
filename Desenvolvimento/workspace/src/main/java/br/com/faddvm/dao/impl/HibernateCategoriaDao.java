@@ -32,22 +32,24 @@ public class HibernateCategoriaDao implements CategoriaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Categoria> lista() {
-		return (List<Categoria>) manager.createQuery("FROM Categoria as c where c.status = ?1").setParameter(1, 'C').getResultList();
+		return (List<Categoria>) manager
+				.createQuery("FROM Categoria as c where c.status = ?1")
+				.setParameter(1, 'C').getResultList();
 	}
 
 	@Override
 	public boolean deletar(Categoria categoria) {
-		
+
 		long id = categoria.getId();
-		
+
 		manager.remove(categoria);
-		
+
 		Categoria c = manager.find(Categoria.class, id);
-		
-		if(c.equals(null)){
+
+		if (c.equals(null)) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
