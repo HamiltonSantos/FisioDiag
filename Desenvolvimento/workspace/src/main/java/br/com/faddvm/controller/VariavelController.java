@@ -30,17 +30,16 @@ public class VariavelController {
 	@Qualifier("hibernateVariavelDao")
 	VariavelDao variavelDao;
 
-	
 	@RequestMapping(value = "/{variavelId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable Long variavelId, Model model){
-		
+	public String mostra(@PathVariable Long variavelId, Model model) {
+
 		Variavel variavel = variavelDao.get(variavelId);
-		
+
 		model.addAttribute("variavel", variavel);
-		
+
 		return "/variavel/mostra";
 	}
-	
+
 	@RequestMapping(value = "/nova/{categoriaId}", method = RequestMethod.GET)
 	public String nova(@PathVariable Long categoriaId, Model model) {
 
@@ -52,8 +51,8 @@ public class VariavelController {
 	}
 
 	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.POST)
-	public String salvar(@PathVariable Long categoriaId,
-			Variavel variavel, BindingResult result) {
+	public String salvar(@PathVariable Long categoriaId, Variavel variavel,
+			Model model, BindingResult result) {
 
 		Categoria categoria = categoriaDao.get(categoriaId);
 		variavel.setCategoria(categoria);
@@ -63,7 +62,8 @@ public class VariavelController {
 				result);
 
 		if (result.hasErrors()) {
-			return "redirect:/categoria/" + categoriaId;
+			model.addAttribute("categoria", categoria);
+			return "/variavel/form";
 		}
 
 		variavelDao.salvar(variavel);

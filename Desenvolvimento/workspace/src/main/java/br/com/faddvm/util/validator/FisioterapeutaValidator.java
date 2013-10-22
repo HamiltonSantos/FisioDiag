@@ -16,7 +16,7 @@ public class FisioterapeutaValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 
-		Fisioterapeuta fisioterapeuta = (Fisioterapeuta) obj;
+		// Fisioterapeuta fisioterapeuta = (Fisioterapeuta) obj;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", null,
 				"Nome nao pode ser Vazio");
