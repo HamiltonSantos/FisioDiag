@@ -5,12 +5,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.util.validator.FaixaValorValidator;
 
 @Transactional
 @Controller
@@ -20,13 +24,13 @@ public class IntercorrenciaController {
 	@Autowired
 	@Qualifier("hibernateFaixaValorDao")
 	FaixaValorDao faixaValorDao;
-	
+
 	@Autowired
 	@Qualifier("hibernateVariavelDao")
 	VariavelDao variavelDao;
-	
+
 	Long idIntercorrencia = 2l;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 
@@ -37,11 +41,20 @@ public class IntercorrenciaController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(FaixaValor intercorrencia) {
+	public String salvar(
+			@ModelAttribute("intercorrencia") FaixaValor intercorrencia,
+			BindingResult errors) {
 
 		// Peso min e Max
 		intercorrencia.setValorMin(intercorrencia.getPeso());
 		intercorrencia.setValorMax(intercorrencia.getPeso());
+
+		ValidationUtils.invokeValidator(new FaixaValorValidator(),
+				intercorrencia, errors);
+
+		if (errors.hasErrors()) {
+			return "/intercorrencia/form";
+		}
 
 		// Variavel
 		intercorrencia.setVariavel(variavelDao.get(idIntercorrencia));

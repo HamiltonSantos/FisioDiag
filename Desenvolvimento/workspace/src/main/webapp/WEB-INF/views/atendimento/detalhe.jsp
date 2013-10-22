@@ -25,7 +25,7 @@
 		<ol>
 			<c:forEach items="${paciente.historicoIndicacao}" var="historico">
 
-				<li>${historico.variavel.descricao}</li>
+				<li>${historico.variavel.descricao} - Valor: ${historico.valor}</li>
 
 			</c:forEach>
 		</ol>

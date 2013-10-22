@@ -20,10 +20,18 @@ public class FaixaValorValidator implements Validator {
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descricao", null,
 				"Descricao nao pode ser Vazio");
-		if (faixa.getValorMax() < faixa.getValorMin()) {
-			errors.reject(null,"Valor Maximo tem que ser maior que Valor Minimo");
+
+		if(faixa.getPeso() == null){
+			errors.reject(null,"Peso nao pode ser Vazio");
+		}
+		
+		if (faixa.getValorMin() != null && faixa.getValorMax() != null) {
+
+			if (faixa.getValorMax() < faixa.getValorMin()) {
+				errors.reject(null,
+						"Valor Maximo tem que ser maior que Valor Minimo");
+			}
 		}
 
 	}
-
 }

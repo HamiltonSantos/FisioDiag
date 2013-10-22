@@ -1,16 +1,22 @@
 package br.com.faddvm.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.util.validator.FaixaValorValidator;
 
 @Transactional
 @Controller
@@ -20,13 +26,13 @@ public class OcorrenciaController {
 	@Autowired
 	@Qualifier("hibernateFaixaValorDao")
 	FaixaValorDao faixaValorDao;
-	
+
 	@Autowired
 	@Qualifier("hibernateVariavelDao")
 	VariavelDao variavelDao;
-	
+
 	Long idOcorrencia = 1l;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 
@@ -36,7 +42,9 @@ public class OcorrenciaController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(FaixaValor ocorrencia) {
+	public String salvar(
+			@Valid @ModelAttribute("ocorrencia") FaixaValor ocorrencia,
+			BindingResult errors) {
 
 		// Peso min e Max
 		ocorrencia.setValorMin(ocorrencia.getPeso());
@@ -44,6 +52,14 @@ public class OcorrenciaController {
 
 		// Variavel
 		ocorrencia.setVariavel(variavelDao.get(idOcorrencia));
+
+		ValidationUtils.invokeValidator(new FaixaValorValidator(), ocorrencia,
+				errors);
+
+		if (errors.hasErrors()) {
+			return "/ocorrencia/form";
+		}
+
 		// Insere banco
 		faixaValorDao.salvar(ocorrencia);
 

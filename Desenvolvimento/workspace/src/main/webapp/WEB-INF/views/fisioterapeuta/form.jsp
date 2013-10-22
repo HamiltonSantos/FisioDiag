@@ -28,13 +28,13 @@
 		<div class="form-group">
 			<form:label path="senha" class="col-lg-4 control-label">Senha</form:label>
 			<div class="col-lg-4">
-				<form:input path="senha" class="form-control" />
+				<form:password path="senha" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="contrasenha" class="col-lg-4 control-label">Repita a Senha</label>
 			<div class="col-lg-4">
-				<input type="text" class="form-control" name="contrasenha" />
+				<input type="password" class="form-control" name="contrasenha" />
 			</div>
 		</div>
 		<div class="form-group" align="center">

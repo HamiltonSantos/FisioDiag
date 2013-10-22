@@ -28,6 +28,10 @@ public class FisioterapeutaController {
 	public String salvar(Fisioterapeuta fisioterapeuta, String contrasenha,
 			BindingResult errors) {
 
+		if(!fisioterapeuta.getSenha().equals(contrasenha)){
+			errors.reject(null,"Contra senha deve ser igual a senha");
+		}
+		
 		ValidationUtils.invokeValidator(new FisioterapeutaValidator(),
 				fisioterapeuta, errors);
 
