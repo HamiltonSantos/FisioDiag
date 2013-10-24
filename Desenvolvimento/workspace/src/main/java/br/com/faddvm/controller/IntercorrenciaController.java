@@ -10,6 +10,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.VariavelDao;
@@ -43,7 +44,7 @@ public class IntercorrenciaController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(
 			@ModelAttribute("intercorrencia") FaixaValor intercorrencia,
-			BindingResult errors) {
+			BindingResult errors, RedirectAttributes rAttributes) {
 
 		// Peso min e Max
 		intercorrencia.setValorMin(intercorrencia.getPeso());
@@ -60,7 +61,7 @@ public class IntercorrenciaController {
 		intercorrencia.setVariavel(variavelDao.get(idIntercorrencia));
 		// Insere banco
 		faixaValorDao.salvar(intercorrencia);
-
+		rAttributes.addFlashAttribute("msgSucesso", "Indice cadastrado com Sucesso");
 		return "redirect:/intercorrencia";
 	}
 

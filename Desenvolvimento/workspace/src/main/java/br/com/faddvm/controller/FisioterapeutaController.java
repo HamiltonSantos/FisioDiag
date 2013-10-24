@@ -10,6 +10,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.FisioterapeutaDao;
 import br.com.faddvm.model.Fisioterapeuta;
@@ -26,7 +27,7 @@ public class FisioterapeutaController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(Fisioterapeuta fisioterapeuta, String contrasenha,
-			BindingResult errors) {
+			BindingResult errors, RedirectAttributes rAttributes) {
 
 		if(!fisioterapeuta.getSenha().equals(contrasenha)){
 			errors.reject(null,"Contra senha deve ser igual a senha");
@@ -39,7 +40,7 @@ public class FisioterapeutaController {
 			return "/fisioterapeuta/form";
 		}
 		fisioterapeutaDao.salvar(fisioterapeuta);
-
+		rAttributes.addFlashAttribute("msgSucesso", "Fisioterapeuta cadastrado com Sucesso");
 		return "redirect:/fisioterapeuta";
 	}
 

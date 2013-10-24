@@ -10,6 +10,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.model.Categoria;
@@ -23,7 +24,7 @@ public class CategoriaController {
 	@Autowired
 	@Qualifier("hibernateCategoriaDao")
 	CategoriaDao categoriaDao;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("categorias", categoriaDao.lista());
@@ -31,7 +32,8 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Categoria categoria, BindingResult result) {
+	public String salvar(Categoria categoria, BindingResult result,
+			RedirectAttributes rAttributes) {
 
 		ValidationUtils.invokeValidator(new CategoriaValidator(), categoria,
 				result);
@@ -39,8 +41,9 @@ public class CategoriaController {
 		if (result.hasErrors()) {
 			return "/categoria/form";
 		}
-		categoriaDao.salva(categoria);
-
+		categoriaDao.salvar(categoria);
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Categoria cadastrada com Sucesso");
 		return "redirect:/categoria/" + categoria.getId();
 	}
 

@@ -23,12 +23,7 @@
 		<div class="form-group">
 			<form:label path="valorMin" class="col-lg-4 control-label">valorMin</form:label>
 			<div class="col-lg-3">
-				<c:if test="${indice.valorMin == null}">
-					<form:input path="valorMin" class="form-control" />
-				</c:if>
-				<c:if test="${indice.valorMin != null}">
-					<form:input readonly="true" path="valorMin" class="form-control" />
-				</c:if>
+				<form:input path="valorMin" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">

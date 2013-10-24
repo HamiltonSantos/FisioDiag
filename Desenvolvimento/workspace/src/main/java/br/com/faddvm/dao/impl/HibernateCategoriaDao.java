@@ -17,7 +17,7 @@ public class HibernateCategoriaDao implements CategoriaDao {
 	EntityManager manager;
 
 	@Override
-	public Categoria salva(Categoria categoria) {
+	public Categoria salvar(Categoria categoria) {
 		manager.persist(categoria);
 
 		return categoria;
@@ -38,19 +38,8 @@ public class HibernateCategoriaDao implements CategoriaDao {
 	}
 
 	@Override
-	public boolean deletar(Categoria categoria) {
-
-		long id = categoria.getId();
-
+	public void remover(Categoria categoria) {
 		manager.remove(categoria);
-
-		Categoria c = manager.find(Categoria.class, id);
-
-		if (c.equals(null)) {
-			return true;
-		}
-
-		return false;
 	}
 
 }

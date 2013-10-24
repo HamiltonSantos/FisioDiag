@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<form:label path="dataNascimento" class="col-lg-4 control-label">Data de Nascimento</form:label>
 			<div class="col-lg-3">
-				<form:input path="dataNascimento" id="dataNasicmento" class="form-control" />
+				<form:input path="dataNascimento" readonly="true" id="dataNasicmento" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group">
@@ -57,6 +57,8 @@
 			$("#dataNasicmento").mask("99/99/9999");
 
 			$("#dataNasicmento").datepicker({
+				showOn: "both",
+				buttonText: "Selecionar",
 				yearRange : "1850:2013",
 				autoSize : true,
 				minDate : new Date(1850, 01, 01),

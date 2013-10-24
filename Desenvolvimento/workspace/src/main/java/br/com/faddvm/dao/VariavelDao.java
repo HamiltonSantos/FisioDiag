@@ -4,8 +4,9 @@ import br.com.faddvm.model.Variavel;
 
 public interface VariavelDao {
 
-	public Variavel salvar(Variavel variavel);
+	Variavel salvar(Variavel variavel);
 
-	public Variavel get(Long long1);
+	Variavel get(Long long1);
 
+	void remove(Variavel variavel);
 }

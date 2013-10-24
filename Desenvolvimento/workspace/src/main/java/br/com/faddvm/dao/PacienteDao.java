@@ -8,15 +8,13 @@ import br.com.faddvm.model.Paciente;
 
 public interface PacienteDao {
 
-	public Paciente salvar(Paciente paciente);
-	
-	public Paciente get(Long id);
-	
-	public List<Paciente> lista();
-	
-	public int getPontos(Paciente paciente);
-	
-	public FaixaValor getIndicacao(Paciente paciente);
-	
-	public List<Historico> getHistoricoIndicacao(Paciente paciente);
+	Paciente salvar(Paciente paciente);
+
+	Paciente get(Long id);
+
+	List<Paciente> lista();
+
+	FaixaValor getIndicacao(Paciente paciente);
+
+	List<Historico> getHistoricoIndicacao(Paciente paciente);
 }

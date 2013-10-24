@@ -14,7 +14,7 @@
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
 				<form:form action="/faddvm/login" commandName="fisioterapeuta">
-					<h2>Favor fazer o Login</h2>
+					<h2>Login</h2>
 					<div class="form-group">
 						<form:input path="login" class="form-control" placeholder="Login" />
 					</div>

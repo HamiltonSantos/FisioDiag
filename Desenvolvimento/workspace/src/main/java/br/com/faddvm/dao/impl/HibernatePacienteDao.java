@@ -1,10 +1,10 @@
 package br.com.faddvm.dao.impl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -33,7 +33,6 @@ public class HibernatePacienteDao implements PacienteDao {
 	@Override
 	public Paciente get(Long id) {
 		Paciente paciente = manager.find(Paciente.class, id);
-		paciente.setPontos(getPontos(paciente));
 		paciente.setIndicacao(getIndicacao(paciente));
 		paciente.setHistoricoIndicacao(getHistoricoIndicacao(paciente));
 		return paciente;
@@ -46,34 +45,22 @@ public class HibernatePacienteDao implements PacienteDao {
 		List<Paciente> pacientes = manager.createQuery("FROM Paciente")
 				.getResultList();
 
-		for (Paciente paciente : pacientes) {
-			paciente.setPontos(getPontos(paciente));
-		}
-
 		return pacientes;
 	}
 
 	@Override
-	public int getPontos(Paciente paciente) {
-		BigDecimal result = (BigDecimal) manager
-				.createNativeQuery(
-						"select sum(h.valor) from faddvm.Historico as h inner join (select  max(data) as ultimaData from faddvm.Historico as hh where hh.paciente_id = ? group by hh.variavel_id) hhh ON h.data = hhh.ultimaData")
-				.setParameter(1, paciente.getId()).getSingleResult();
+	public FaixaValor getIndicacao(Paciente paciente) {
+		FaixaValor faixa = null;
+		try {
+			faixa = (FaixaValor) manager
+					.createQuery(
+							"From FaixaValor as f where f.variavel.id = 3 and f.valorMin <= ?1 and f.valorMax >= ?2")
+					.setParameter(1, paciente.getPontos())
+					.setParameter(2, paciente.getPontos()).getSingleResult();
+		} catch (NoResultException ex) {
 
-		if (result == null) {
-			result = new BigDecimal(0);
 		}
 
-		return result.intValue();
-	}
-
-	@Override
-	public FaixaValor getIndicacao(Paciente paciente) {
-		FaixaValor faixa = (FaixaValor) manager
-				.createQuery(
-						"From FaixaValor as f where f.variavel.id = 3 and f.valorMin <= ?1 and f.valorMax >= ?2")
-				.setParameter(1, paciente.getPontos())
-				.setParameter(2, paciente.getPontos()).getSingleResult();
 		if (faixa == null) {
 			faixa = new FaixaValor();
 			faixa.setDescricao("Indicacao nao Encontrada");
@@ -86,7 +73,9 @@ public class HibernatePacienteDao implements PacienteDao {
 	public List<Historico> getHistoricoIndicacao(Paciente paciente) {
 
 		List<Historico> historicoIndicacao = (List<Historico>) manager
-				.createQuery("From Historico h where h.paciente.id = ?1 group by h.variavel.id order by h.data").setParameter(1, paciente.getId()).getResultList();
+				.createQuery(
+						"From Historico h where h.paciente.id = ?1 group by h.variavel.id order by h.dataHistorico")
+				.setParameter(1, paciente.getId()).getResultList();
 
 		if (historicoIndicacao == null) {
 			historicoIndicacao = new ArrayList<Historico>();

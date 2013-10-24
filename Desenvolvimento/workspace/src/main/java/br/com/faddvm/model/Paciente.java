@@ -1,5 +1,6 @@
 package br.com.faddvm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Formula;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-public class Paciente {
+public class Paciente implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -27,8 +33,14 @@ public class Paciente {
 	private char sexo;
 	private String numRegistro;
 	private Date dataNascimento;
-	@Transient
-	private int pontos;
+	@Formula(value = "(select sum(f.peso) "
+			+ "from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f "
+			+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id) "
+			+ "and h.variavel_id = v.id "
+			+ "and v.id = f.variavel_id "
+			+ "and h.valor >= f.valorMin and h.valor < f.valorMax "
+			+ "and h.paciente_id = id)")
+	private Integer pontos;
 	@Transient
 	private FaixaValor indicacao;
 	@Transient
@@ -90,11 +102,11 @@ public class Paciente {
 		this.historico = historico;
 	}
 
-	public int getPontos() {
+	public Integer getPontos() {
 		return pontos;
 	}
 
-	public void setPontos(int pontos) {
+	public void setPontos(Integer pontos) {
 		this.pontos = pontos;
 	}
 

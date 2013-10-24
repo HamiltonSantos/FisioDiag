@@ -5,13 +5,14 @@
 <title>Variavel</title>
 </head>
 <body>
-	<h1>Variavel: ${variavel.descricao} </h1>
+	<h1>${variavel.descricao} </h1>
 
 	<table id="tabela" class="table">
 		<thead>
 			<tr>
 				<th>Descricao</th>
 				<th>Peso</th>
+				<th>Acoes</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,14 +20,16 @@
 				<tr>
 					<td>${faixa.descricao}</td>
 					<td>${faixa.peso}</td>
+					<td><a href="/faddvm/faixaValor/remover/${faixa.id}">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
 	<div class="dataTables_scroll"></div>
-
+	<a href="/faddvm/categoria/${variavel.categoria.id }" class="btn btn-primary">Voltar</a>
 	<a href="/faddvm/faixaValor/nova/${variavel.id}" class="btn btn-primary">Nova Faixa</a>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#tabela').dataTable( {

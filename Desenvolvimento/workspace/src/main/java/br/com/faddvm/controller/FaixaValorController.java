@@ -6,14 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Variavel;
+import br.com.faddvm.util.validator.FaixaValorValidator;
 
 @Transactional
 @Controller
@@ -32,6 +35,7 @@ public class FaixaValorController {
 	public String nova(@PathVariable Long variavelId, Model model) {
 
 		FaixaValor faixaValor = new FaixaValor();
+
 		Variavel variavel = variavelDao.get(variavelId);
 		faixaValor.setVariavel(variavel);
 
@@ -42,19 +46,33 @@ public class FaixaValorController {
 
 	@RequestMapping(value = "/{variavelId}", method = RequestMethod.POST)
 	public String salvar(@PathVariable Long variavelId, FaixaValor faixaValor,
-			BindingResult errors) {
+			BindingResult errors, RedirectAttributes rAttributes) {
 
 		Variavel variavel = variavelDao.get(variavelId);
 
 		preencheFaixaValor(faixaValor, variavel);
-
+		
+		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixaValor,
+				errors);
 		if (errors.hasErrors()) {
 			return "/faixaValor/form";
 		}
 
 		faixaValorDao.salvar(faixaValor);
 
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Faixa cadastrada com Sucesso");
 		return "redirect:/variavel/" + variavel.getId();
+	}
+
+	@RequestMapping(value = "/remover/{faixaId}")
+	public String remover(@PathVariable Long faixaId) {
+		FaixaValor faixaValor = faixaValorDao.get(faixaId);
+
+		Long idVariavel = faixaValor.getVariavel().getId();
+
+		faixaValorDao.remover(faixaValor);
+		return "redirect:/variavel/" + idVariavel;
 	}
 
 	private FaixaValor preencheFaixaValor(FaixaValor faixaValor,

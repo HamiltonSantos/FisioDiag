@@ -12,6 +12,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.VariavelDao;
@@ -44,13 +45,11 @@ public class OcorrenciaController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(
 			@Valid @ModelAttribute("ocorrencia") FaixaValor ocorrencia,
-			BindingResult errors) {
+			BindingResult errors,RedirectAttributes rAttributes) {
 
-		// Peso min e Max
 		ocorrencia.setValorMin(ocorrencia.getPeso());
 		ocorrencia.setValorMax(ocorrencia.getPeso());
 
-		// Variavel
 		ocorrencia.setVariavel(variavelDao.get(idOcorrencia));
 
 		ValidationUtils.invokeValidator(new FaixaValorValidator(), ocorrencia,
@@ -62,7 +61,7 @@ public class OcorrenciaController {
 
 		// Insere banco
 		faixaValorDao.salvar(ocorrencia);
-
+		rAttributes.addFlashAttribute("msgSucesso", "Ocorrencia cadastrada com Sucesso");
 		return "redirect:/ocorrencia";
 	}
 

@@ -1,5 +1,6 @@
 package br.com.faddvm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,8 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Historico {
+public class Historico implements Serializable  {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -20,7 +25,7 @@ public class Historico {
 	private Long valor;
 	@ManyToOne
 	private Variavel variavel;
-	private Date data;
+	private Date dataHistorico;
 
 	public Long getId() {
 		return id;
@@ -46,12 +51,12 @@ public class Historico {
 		this.paciente = paciente;
 	}
 
-	public Date getData() {
-		return data;
+	public Date getDataHistorico() {
+		return dataHistorico;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataHistorico(Date data) {
+		this.dataHistorico = data;
 	}
 
 	public Long getValor() {

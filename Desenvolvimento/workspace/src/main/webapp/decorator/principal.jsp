@@ -52,6 +52,11 @@
 			<div id="conteudo" class="col-md-10">
 				<div class="panel panel-default">
 					<div class="panel-body">
+						<c:if test="${ msgSucesso != null }">
+							<div class="alert alert-success">
+								<strong>${msgSucesso}</strong>
+							</div>
+						</c:if>
 						<decorator:body />
 					</div>
 				</div>

@@ -6,12 +6,12 @@ import br.com.faddvm.model.Categoria;
 
 public interface CategoriaDao {
 
-	public Categoria salva(Categoria categoria);
+	Categoria salvar(Categoria categoria);
 
-	public Categoria get(Long id);
-	
-	public List<Categoria> lista();
-	
-	public boolean deletar(Categoria categoria);
-	
+	Categoria get(Long id);
+
+	List<Categoria> lista();
+
+	void remover(Categoria categoria);
+
 }

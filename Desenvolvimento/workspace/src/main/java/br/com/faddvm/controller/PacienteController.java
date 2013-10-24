@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.Paciente;
@@ -48,14 +49,14 @@ public class PacienteController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Valid Paciente paciente, BindingResult result) {
+	public String salvar(@Valid Paciente paciente, BindingResult result, RedirectAttributes rAttributes) {
 
 		if (result.hasErrors()) {
 			return "/paciente/form";
 		}
 
 		dao.salvar(paciente);
-
+		rAttributes.addFlashAttribute("msgSucesso", "Paciente cadastrado com Sucesso");
 		return "redirect:/paciente";
 	}
 

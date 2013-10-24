@@ -10,6 +10,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.dao.VariavelDao;
@@ -50,9 +51,21 @@ public class VariavelController {
 		return "/variavel/form";
 	}
 
+	@RequestMapping(value = "/remover/{variavelId}")
+	public String remover(@PathVariable Long variavelId) {
+
+		Variavel variavel = variavelDao.get(variavelId);
+
+		Long categoriaId = variavel.getCategoria().getId();
+		
+		variavelDao.remove(variavel);
+		
+		return "redirect:/categoria/" + categoriaId;
+	}
+
 	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.POST)
 	public String salvar(@PathVariable Long categoriaId, Variavel variavel,
-			Model model, BindingResult result) {
+			Model model, BindingResult result, RedirectAttributes rAttributes) {
 
 		Categoria categoria = categoriaDao.get(categoriaId);
 		variavel.setCategoria(categoria);
@@ -67,7 +80,7 @@ public class VariavelController {
 		}
 
 		variavelDao.salvar(variavel);
-
+		rAttributes.addFlashAttribute("msgSucesso", "Variavel cadastrada com Sucesso");
 		return "redirect:/categoria/" + categoriaId;
 	}
 }

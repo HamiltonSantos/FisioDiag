@@ -1,5 +1,6 @@
 package br.com.faddvm.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,10 +13,15 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Formula;
 
 @Entity
-public class Variavel {
+public class Variavel implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -27,6 +33,26 @@ public class Variavel {
 	@OneToMany(mappedBy = "variavel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	private List<FaixaValor> faixaValores;
+	@Formula(value = "( SELECT MIN(F.VALORMIN) FROM FADDVM.FAIXAVALOR F WHERE F.VARIAVEL_ID = ID )")
+	private Integer valorMin;
+	@Formula(value = "( SELECT MAX(F.VALORMAX) FROM FADDVM.FAIXAVALOR F WHERE F.VARIAVEL_ID = ID )")
+	private Integer valorMax;
+
+	public Integer getValorMin() {
+		return valorMin;
+	}
+
+	public void setValorMin(Integer valorMin) {
+		this.valorMin = valorMin;
+	}
+
+	public Integer getValorMax() {
+		return valorMax;
+	}
+
+	public void setValorMax(Integer valorMax) {
+		this.valorMax = valorMax;
+	}
 
 	public Long getId() {
 		return id;

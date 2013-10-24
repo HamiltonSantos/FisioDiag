@@ -31,7 +31,6 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Fisioterapeuta> lista() {
-		// TODO Auto-generated method stub
 		return (List<Fisioterapeuta>) manager
 				.createQuery("From Fisioterapeuta").getResultList();
 	}
