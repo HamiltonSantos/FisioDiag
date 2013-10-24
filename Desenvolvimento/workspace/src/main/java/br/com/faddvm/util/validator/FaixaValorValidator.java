@@ -44,7 +44,7 @@ public class FaixaValorValidator implements Validator {
 		}
 
 		if (faixa.getValorMax() == null) {
-			errors.reject(null, "Valor Maximo nao mode ser Vazio");
+			errors.reject(null, "Valor Maximo nao pode ser Vazio");
 		}
 		if (faixa.getValorMin() < 0) {
 			errors.reject(null, "Valor Minimo nao pode ser menor que 0");
