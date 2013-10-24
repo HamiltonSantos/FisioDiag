@@ -36,9 +36,8 @@ public class Paciente implements Serializable {
 	@Formula(value = "(select sum(f.peso) "
 			+ "from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f "
 			+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id) "
-			+ "and h.variavel_id = v.id "
-			+ "and v.id = f.variavel_id "
-			+ "and h.valor >= f.valorMin and h.valor < f.valorMax "
+			+ "and h.variavel_id = v.id " + "and v.id = f.variavel_id "
+			+ "and h.valor between f.valorMin and f.valorMax "
 			+ "and h.paciente_id = id)")
 	private Integer pontos;
 	@Transient

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +34,7 @@ public class HibernatePacienteDao implements PacienteDao {
 	@Override
 	public Paciente get(Long id) {
 		Paciente paciente = manager.find(Paciente.class, id);
-		paciente.setIndicacao(getIndicacao(paciente));
+		paciente.setIndicacao(indicacaoPaciente(paciente));
 		paciente.setHistoricoIndicacao(getHistoricoIndicacao(paciente));
 		return paciente;
 	}
@@ -46,26 +47,6 @@ public class HibernatePacienteDao implements PacienteDao {
 				.getResultList();
 
 		return pacientes;
-	}
-
-	@Override
-	public FaixaValor getIndicacao(Paciente paciente) {
-		FaixaValor faixa = null;
-		try {
-			faixa = (FaixaValor) manager
-					.createQuery(
-							"From FaixaValor as f where f.variavel.id = 3 and f.valorMin <= ?1 and f.valorMax >= ?2")
-					.setParameter(1, paciente.getPontos())
-					.setParameter(2, paciente.getPontos()).getSingleResult();
-		} catch (NoResultException ex) {
-
-		}
-
-		if (faixa == null) {
-			faixa = new FaixaValor();
-			faixa.setDescricao("Indicacao nao Encontrada");
-		}
-		return faixa;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -83,4 +64,20 @@ public class HibernatePacienteDao implements PacienteDao {
 		return historicoIndicacao;
 	}
 
+	private FaixaValor indicacaoPaciente(Paciente paciente) {
+		FaixaValor faixa = null;
+		Query query = manager
+				.createQuery(
+						"From FaixaValor f "
+								+ "where ?1 between f.valorMin and f.valorMax and f.variavel.id = 3")
+				.setParameter(1, paciente.getPontos());
+
+		try{
+			faixa = (FaixaValor) query.getSingleResult();
+		}catch (NoResultException ex){
+			faixa = new FaixaValor();
+			faixa.setDescricao("Indicacao nao encontrada");
+		}
+		return faixa ;
+	}
 }
