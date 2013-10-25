@@ -1,7 +1,6 @@
 package br.com.faddvm.util.validator;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import br.com.faddvm.model.Paciente;
@@ -15,18 +14,22 @@ public class PacienteValidator implements Validator {
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-		Paciente paciente = (Paciente) obj;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", null,
-				"Nome nao pode ser Vazio");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cpf", null,
-				"CPF naoo pode ser Vazio");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "numRegistro", null,
-				"Numero de Registro nao pode ser Vazio");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataNascimento", null,
-				"Data de Nascimento nao pode ser Vazia");
-		if(paciente.getSexo() == 0) {
-			errors.reject(null,"Sexo nao pode ser Vazio");
+
+		Paciente p = (Paciente) obj;
+
+		p.setNome(p.getNome().trim());
+		p.setNumRegistro(p.getNumRegistro().trim());
+
+		if (p.getNome().length() < 3 || p.getNome().length() > 250) {
+			errors.reject(null, "Nome tem q ter no minimo 3 caracteres");
 		}
+
+		if (p.getNumRegistro().length() < 3
+				|| p.getNumRegistro().length() > 250) {
+			errors.reject(null,
+					"Numero de registro tem q ter no minimo 3 caracteres");
+		}
+
 	}
 
 }

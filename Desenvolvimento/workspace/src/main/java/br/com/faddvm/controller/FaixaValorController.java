@@ -44,14 +44,14 @@ public class FaixaValorController {
 		return "/faixaValor/form";
 	}
 
-	@RequestMapping(value = "/{variavelId}", method = RequestMethod.POST)
-	public String salvar(@PathVariable Long variavelId, FaixaValor faixaValor,
-			BindingResult errors, RedirectAttributes rAttributes) {
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(FaixaValor faixaValor, BindingResult errors,
+			RedirectAttributes rAttributes) {
 
-		Variavel variavel = variavelDao.get(variavelId);
+		Variavel variavel = variavelDao.get(faixaValor.getVariavel().getId());
 
 		preencheFaixaValor(faixaValor, variavel);
-		
+
 		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixaValor,
 				errors);
 		if (errors.hasErrors()) {

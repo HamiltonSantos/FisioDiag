@@ -45,8 +45,11 @@ public class VariavelController {
 	public String nova(@PathVariable Long categoriaId, Model model) {
 
 		Categoria categoria = categoriaDao.get(categoriaId);
-		model.addAttribute("categoria", categoria);
-		model.addAttribute("variavel", new Variavel());
+		Variavel variavel = new Variavel();
+		variavel.setCategoria(categoria);
+		variavel.setStatus('A');
+
+		model.addAttribute("variavel", variavel);
 
 		return "/variavel/form";
 	}
@@ -57,30 +60,29 @@ public class VariavelController {
 		Variavel variavel = variavelDao.get(variavelId);
 
 		Long categoriaId = variavel.getCategoria().getId();
-		
+
 		variavelDao.remove(variavel);
-		
+
 		return "redirect:/categoria/" + categoriaId;
 	}
 
-	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.POST)
-	public String salvar(@PathVariable Long categoriaId, Variavel variavel,
-			Model model, BindingResult result, RedirectAttributes rAttributes) {
+	@RequestMapping(method = RequestMethod.POST)
+	public String salvar(Variavel variavel, BindingResult result,
+			RedirectAttributes rAttributes) {
 
-		Categoria categoria = categoriaDao.get(categoriaId);
+		Categoria categoria = categoriaDao.get(variavel.getCategoria().getId());
 		variavel.setCategoria(categoria);
-		variavel.setStatus('A');
 
 		ValidationUtils.invokeValidator(new VariavelValidator(), variavel,
 				result);
 
 		if (result.hasErrors()) {
-			model.addAttribute("categoria", categoria);
 			return "/variavel/form";
 		}
 
 		variavelDao.salvar(variavel);
-		rAttributes.addFlashAttribute("msgSucesso", "Variavel cadastrada com Sucesso");
-		return "redirect:/categoria/" + categoriaId;
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Variavel cadastrada com Sucesso");
+		return "redirect:/categoria/" + variavel.getCategoria().getId();
 	}
 }

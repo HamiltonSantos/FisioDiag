@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,7 @@ import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
 import br.com.faddvm.model.ValorAtendimento;
 import br.com.faddvm.model.Variavel;
+import br.com.faddvm.util.validator.HistoricoValidator;
 
 @Controller
 @RequestMapping("/atendimento/{pacienteId}")
@@ -64,14 +67,12 @@ public class AtendimentoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@PathVariable Long pacienteId,
 			ValorAtendimento valorAtendimento, HttpSession session,
-			RedirectAttributes rAttributes) {
-		System.out.println(valorAtendimento.getValor() + "Valor - ID"
-				+ valorAtendimento.getVariavelId());
+			RedirectAttributes rAttributes, BindingResult errors) {
 
 		Paciente paciente = pacienteDao.get(pacienteId);
 
 		Historico historico = new Historico();
-		
+
 		historico.setDataHistorico(new Date());
 		historico.setFisioterapeuta((Fisioterapeuta) session
 				.getAttribute("fisioterapeutaLogado"));
@@ -80,8 +81,16 @@ public class AtendimentoController {
 		historico.setVariavel(variavel);
 		historico.setValor(valorAtendimento.getValor());
 
-		paciente.getHistorico().add(historico);
+		ValidationUtils.invokeValidator(new HistoricoValidator(), historico,
+				errors);
 
+		if (errors.hasErrors()) {
+			rAttributes.addFlashAttribute("msgErro", errors.getGlobalError()
+					.getDefaultMessage());
+			return "redirect:/atendimento/" + pacienteId;
+		}
+
+		paciente.getHistorico().add(historico);
 		pacienteDao.salvar(paciente);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Atendimento cadastrado com Sucesso");

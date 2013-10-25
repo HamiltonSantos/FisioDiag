@@ -32,9 +32,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="contrasenha" class="col-lg-4 control-label">Repita a Senha</label>
+			<label for="contraSenha" class="col-lg-4 control-label">Repita a Senha</label>
 			<div class="col-lg-4">
-				<input type="password" class="form-control" name="contrasenha" />
+				<form:password path="contraSenha" class="form-control" />
 			</div>
 		</div>
 		<div class="form-group" align="center">

@@ -6,6 +6,11 @@
 <title>Atendimento</title>
 </head>
 <body>
+	<c:if test="${ msgErro != null }">
+		<div class="alert alert-danger">
+			<strong>${msgErro}</strong>
+		</div>
+	</c:if>
 	<div class="well">
 		<p>
 			<strong>Paciente:</strong> ${paciente.nome}
@@ -212,7 +217,6 @@
 							<script type="text/javascript">
 								$(function() {
 									$("#div_var_${variavel.id}").slider({
-									value : 0,
 									min : parseInt("${variavel.valorMin}"),
 									max : parseInt("${variavel.valorMax}"),
 									slide : function(event, ui) {

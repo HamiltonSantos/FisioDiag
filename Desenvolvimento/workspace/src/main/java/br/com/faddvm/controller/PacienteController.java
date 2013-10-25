@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,8 +39,6 @@ public class PacienteController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				dateFormat, true));
-
-		binder.addValidators(new PacienteValidator());
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -49,14 +48,19 @@ public class PacienteController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Valid Paciente paciente, BindingResult result, RedirectAttributes rAttributes) {
+	public String salvar(@Valid Paciente paciente, BindingResult result,
+			RedirectAttributes rAttributes) {
+
+		ValidationUtils.invokeValidator(new PacienteValidator(), paciente,
+				result);
 
 		if (result.hasErrors()) {
 			return "/paciente/form";
 		}
 
 		dao.salvar(paciente);
-		rAttributes.addFlashAttribute("msgSucesso", "Paciente cadastrado com Sucesso");
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Paciente cadastrado com Sucesso");
 		return "redirect:/paciente";
 	}
 

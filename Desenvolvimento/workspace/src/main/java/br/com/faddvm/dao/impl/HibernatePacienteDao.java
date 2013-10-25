@@ -72,12 +72,13 @@ public class HibernatePacienteDao implements PacienteDao {
 								+ "where ?1 between f.valorMin and f.valorMax and f.variavel.id = 3")
 				.setParameter(1, paciente.getPontos());
 
-		try{
+		try {
 			faixa = (FaixaValor) query.getSingleResult();
-		}catch (NoResultException ex){
+		} catch (NoResultException ex) {
 			faixa = new FaixaValor();
 			faixa.setDescricao("Indicacao nao encontrada");
 		}
-		return faixa ;
+		return faixa;
 	}
+
 }

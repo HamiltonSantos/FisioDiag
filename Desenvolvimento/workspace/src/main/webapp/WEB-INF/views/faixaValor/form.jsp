@@ -10,7 +10,7 @@
 <body>
 
 	<h3 align="center">Nova Faixa de Variavel para: ${faixaValor.variavel.descricao}</h3>
-	<form:form action="/faddvm/faixaValor/${faixaValor.variavel.id}" commandName="faixaValor" class="form-horizontal">
+	<form:form action="/faddvm/faixaValor" commandName="faixaValor" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
@@ -21,6 +21,8 @@
 					<form:input path="descricao" class="form-control" />
 				</div>
 			</div>
+			<form:hidden path="valorMin" />
+			<form:hidden path="valorMax" />
 		</c:if>
 		<c:if test="${faixaValor.variavel.tipo eq 82}">
 			<div class="form-group">
@@ -35,6 +37,7 @@
 					<form:input path="valorMax" class="form-control" />
 				</div>
 			</div>
+			<form:hidden path="descricao" />
 		</c:if>
 		<div class="form-group">
 			<form:label class="col-lg-3 control-label" path="peso">Peso:</form:label>
@@ -42,6 +45,7 @@
 				<form:input path="peso" class="form-control" />
 			</div>
 		</div>
+		<form:hidden path="variavel.id" />
 		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>

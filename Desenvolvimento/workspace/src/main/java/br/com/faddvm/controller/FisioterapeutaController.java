@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,13 +28,9 @@ public class FisioterapeutaController {
 	FisioterapeutaDao fisioterapeutaDao;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Fisioterapeuta fisioterapeuta, String contrasenha,
+	public String salvar(@Valid Fisioterapeuta fisioterapeuta,
 			BindingResult errors, RedirectAttributes rAttributes) {
 
-		if(!fisioterapeuta.getSenha().equals(contrasenha)){
-			errors.reject(null,"Contra senha deve ser igual a senha");
-		}
-		
 		ValidationUtils.invokeValidator(new FisioterapeutaValidator(),
 				fisioterapeuta, errors);
 
@@ -40,7 +38,8 @@ public class FisioterapeutaController {
 			return "/fisioterapeuta/form";
 		}
 		fisioterapeutaDao.salvar(fisioterapeuta);
-		rAttributes.addFlashAttribute("msgSucesso", "Fisioterapeuta cadastrado com Sucesso");
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Fisioterapeuta cadastrado com Sucesso");
 		return "redirect:/fisioterapeuta";
 	}
 

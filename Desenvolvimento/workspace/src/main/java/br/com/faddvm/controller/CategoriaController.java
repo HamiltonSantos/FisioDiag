@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,7 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(Categoria categoria, BindingResult result,
+	public String salvar(@Valid Categoria categoria, BindingResult result,
 			RedirectAttributes rAttributes) {
 
 		ValidationUtils.invokeValidator(new CategoriaValidator(), categoria,

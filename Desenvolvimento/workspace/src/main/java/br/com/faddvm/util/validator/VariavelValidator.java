@@ -1,7 +1,6 @@
 package br.com.faddvm.util.validator;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import br.com.faddvm.model.Variavel;
@@ -18,15 +17,21 @@ public class VariavelValidator implements Validator {
 
 		Variavel variavel = (Variavel) obj;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descricao", null,
-				"Descricao nao pode ser vazia");
+		variavel.setDescricao(variavel.getDescricao().trim());
+
+		if (variavel.getDescricao().length() < 3
+				|| variavel.getDescricao().length() > 250) {
+			errors.reject(null, "Descricao tem que ter no minimo 3 caracteres");
+		}
 
 		if (variavel.getStatus() == null || variavel.getStatus() == 0) {
 			errors.reject(null, "Status nao pode ser vazio");
 		}
-		if (variavel.getTipo() == null || variavel.getTipo() == 0) {
-			errors.reject(null, "Tipo nao pode ser vazio");
+
+		if (variavel.getTipo() == null) {
+			errors.reject(null, "Tipo e obrigatorio");
 		}
+
 	}
 
 }

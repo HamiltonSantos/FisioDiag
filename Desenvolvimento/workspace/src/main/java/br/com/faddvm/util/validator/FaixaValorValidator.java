@@ -1,7 +1,6 @@
 package br.com.faddvm.util.validator;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import br.com.faddvm.model.FaixaValor;
@@ -17,63 +16,97 @@ public class FaixaValorValidator implements Validator {
 	public void validate(Object obj, Errors errors) {
 
 		FaixaValor faixa = (FaixaValor) obj;
-		Integer valorMinVar = faixa.getVariavel().getValorMin();
-		Integer valorMaxVar = faixa.getVariavel().getValorMax();
-		boolean faixaNotNull = faixa.getValorMin() != null
-				&& faixa.getValorMax() != null;
-		boolean isOcorrenciaOrIntercorrencia = faixa.getVariavel().getId() == 1
-				|| faixa.getVariavel().getId() == 2;
-		boolean variavelNotNull = valorMaxVar != null && valorMinVar != null;
-		if (variavelNotNull) {
-			valorMinVar--;
-			valorMaxVar++;
-		} else {
-			valorMinVar = 0;
-			valorMaxVar = 0;
+
+		if (validaFaixa(faixa, errors)) {
+			return;
 		}
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descricao", null,
-				"Descricao nao pode ser Vazio");
-
-		if (faixa.getPeso() == null) {
-			errors.reject(null, "Peso nao pode ser Vazio");
+		if (validaRange(faixa, errors)) {
+			return;
 		}
 
-		if (faixa.getValorMin() == null) {
-			errors.reject(null, "Valor Minimo nao pode ser Vazio");
+	}
+
+	private boolean validaFaixa(FaixaValor f, Errors e) {
+
+		if (f.getPeso() == null) {
+			e.reject(null, "Peso e obrigatorio");
+			return true;
 		}
 
-		if (faixa.getValorMax() == null) {
-			errors.reject(null, "Valor Maximo nao pode ser Vazio");
-		}
-		if (faixa.getValorMin() < 0) {
-			errors.reject(null, "Valor Minimo nao pode ser menor que 0");
+		if (f.getValorMin() == null) {
+			e.reject(null, "Valor minimo e obrigatorio.");
+			return true;
 		}
 
-		if (faixaNotNull && !isOcorrenciaOrIntercorrencia) {
-			boolean faixaValida = faixa.getValorMin() <= faixa.getValorMax();
-			if (faixaValida) {
-				if (variavelNotNull) {
-					if (faixa.getValorMin() < valorMaxVar
-							&& faixa.getValorMax() != valorMinVar) {
-						errors.reject(null,
-								"Faixa invalida, valor maximo pode terminar em: "
-										+ valorMinVar);
-					}
+		if (f.getValorMax() == null) {
+			e.reject(null, "Valor maximo e obrigatorio.");
+			return true;
+		}
 
-					if (faixa.getValorMax() > valorMinVar
-							&& faixa.getValorMin() != valorMaxVar) {
-						errors.reject(null,
-								"Faixa invalida, valor minimo pode iniciar em: "
-										+ valorMaxVar);
-					}
-				}
+		if (f.getValorMin() > f.getValorMax()) {
+			e.reject(null,
+					"Valor minimo tem que ser menor ou igual a valor maximo.");
+			return true;
+		}
 
-			} else {
+		if (f.getValorMin() < 0 || f.getValorMax() < 0) {
+			e.reject(null, "Valor minimo tem que ser menor ou igual a 0");
+			return true;
+		}
+		if (f.getValorMax() < 0) {
+			e.reject(null, "Valor maximo tem que ser menor ou igual a 0");
+			return true;
+		}
+		if (f.getPeso() < 0) {
+			e.reject(null, "Peso tem que ser menor ou igual a 0");
+			return true;
+		}
+
+		if (f.getDescricao() == null) {
+			e.reject(null, "Descricao e obrigatoria.");
+			return true;
+		}
+		f.setDescricao(f.getDescricao().trim());
+		if (f.getDescricao().length() < 3 || f.getDescricao().length() > 250) {
+			e.reject(null, "Descricao tem que ter mais que 3 caracteres");
+			return true;
+		}
+
+		return false;
+	}
+
+	private boolean validaRange(FaixaValor faixa, Errors errors) {
+		Integer vValorMin = faixa.getVariavel().getValorMin();
+		Integer vValorMax = faixa.getVariavel().getValorMax();
+
+		boolean vIniciada = vValorMax != null && vValorMin != null;
+		char vTipo = faixa.getVariavel().getTipo();
+		if (vIniciada && vTipo == 'R') {
+			if (faixa.getValorMax() > vValorMax
+					&& faixa.getValorMin() != (vValorMax + 1)) {
 				errors.reject(null,
-						"Valor Minimo tem que ser menor que Valor Maximo");
+						"Faixa Invalida, valor minimo pode iniciar em "
+								+ (vValorMax + 1));
+				return true;
 			}
-		}
 
+			if (faixa.getValorMin() < vValorMin
+					&& faixa.getValorMax() != (vValorMin - 1)) {
+				errors.reject(null,
+						"Faixa Invalida, valor Maximo pode terminar em "
+								+ (vValorMin - 1));
+				return true;
+			}
+
+			if (faixa.getValorMax() == vValorMax
+					|| faixa.getValorMin() == vValorMin
+					|| (faixa.getValorMin() >= vValorMin && faixa.getValorMax() <= vValorMax)) {
+				errors.reject(null, "Voce nao pode criar essa Faixa");
+				return true;
+			}
+
+		}
+		return false;
 	}
 }

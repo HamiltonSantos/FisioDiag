@@ -25,6 +25,9 @@
 				<form:input path="peso" class="form-control" />
 			</div>
 		</div>
+		<form:hidden path="valorMin" />
+		<form:hidden path="valorMax" />
+		<form:hidden path="id" />
 		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>

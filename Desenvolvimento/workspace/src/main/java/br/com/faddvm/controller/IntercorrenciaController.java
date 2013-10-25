@@ -46,9 +46,10 @@ public class IntercorrenciaController {
 			@ModelAttribute("intercorrencia") FaixaValor intercorrencia,
 			BindingResult errors, RedirectAttributes rAttributes) {
 
-		// Peso min e Max
 		intercorrencia.setValorMin(intercorrencia.getPeso());
 		intercorrencia.setValorMax(intercorrencia.getPeso());
+
+		intercorrencia.setVariavel(variavelDao.get(idIntercorrencia));
 
 		ValidationUtils.invokeValidator(new FaixaValorValidator(),
 				intercorrencia, errors);
@@ -57,11 +58,9 @@ public class IntercorrenciaController {
 			return "/intercorrencia/form";
 		}
 
-		// Variavel
-		intercorrencia.setVariavel(variavelDao.get(idIntercorrencia));
-		// Insere banco
 		faixaValorDao.salvar(intercorrencia);
-		rAttributes.addFlashAttribute("msgSucesso", "Indice cadastrado com Sucesso");
+		rAttributes.addFlashAttribute("msgSucesso",
+				"Indice cadastrado com Sucesso");
 		return "redirect:/intercorrencia";
 	}
 

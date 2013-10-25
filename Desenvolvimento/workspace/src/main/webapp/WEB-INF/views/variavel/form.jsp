@@ -8,8 +8,8 @@
 </head>
 <body>
 
-	<h3 align="center">Nova Variavel para a Categoria: ${categoria.descricao}</h3>
-	<form:form action="/faddvm/variavel/${categoria.id}" commandName="variavel" class="form-horizontal">
+	<h3 align="center">Nova Variavel para a Categoria: ${variavel.categoria.descricao}</h3>
+	<form:form action="/faddvm/variavel" commandName="variavel" class="form-horizontal" method="POST">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
@@ -26,6 +26,9 @@
 				<form:radiobutton path="tipo" value="R" label="Range" />
 			</div>
 		</div>
+		<form:hidden path="status" />
+		<form:hidden path="id" />
+		<form:hidden path="categoria.id" />
 		<input type="submit" class="btn" value="Salvar">
 
 	</form:form>
