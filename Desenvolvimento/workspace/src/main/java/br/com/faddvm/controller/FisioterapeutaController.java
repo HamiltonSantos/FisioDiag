@@ -1,5 +1,6 @@
 package br.com.faddvm.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,12 +70,23 @@ public class FisioterapeutaController {
 	}
 
 	@RequestMapping("/{fisioterapeutaId}/editar")
-	public String editar(@PathVariable Long fisioterapeutaId, Model model) {
+	public String editar(@PathVariable Long fisioterapeutaId, Model model,
+			HttpSession session, RedirectAttributes rAttributes) {
 
-		model.addAttribute("fisioterapeuta",
-				fisioterapeutaDao.get(fisioterapeutaId));
+		Fisioterapeuta fisioterapeutaLogado = (Fisioterapeuta) session
+				.getAttribute("fisioterapeutaLogado");
+		Fisioterapeuta fisioterapeuta = fisioterapeutaDao.get(fisioterapeutaId);
 
-		return "/fisioterapeuta/form";
+		if (fisioterapeuta.getId().equals(fisioterapeutaLogado.getId())) {
+			model.addAttribute("fisioterapeuta", fisioterapeuta);
+
+			return "/fisioterapeuta/form";
+		} else {
+			rAttributes.addFlashAttribute("msgErro",
+					"Você não pode editar esse Fisioterapeuta.");
+			return "redirect:/fisioterapeuta";
+		}
+
 	}
 
 }

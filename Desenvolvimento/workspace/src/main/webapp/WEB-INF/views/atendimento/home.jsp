@@ -6,11 +6,6 @@
 <title>Atendimento</title>
 </head>
 <body>
-	<c:if test="${ msgErro != null }">
-		<div class="alert alert-danger">
-			<strong>${msgErro}</strong>
-		</div>
-	</c:if>
 	<div class="well">
 		<p>
 			<strong>Paciente:</strong> ${paciente.nome}

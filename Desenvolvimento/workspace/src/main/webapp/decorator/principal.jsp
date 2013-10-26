@@ -57,6 +57,11 @@
 								<strong>${msgSucesso}</strong>
 							</div>
 						</c:if>
+						<c:if test="${ msgErro != null }">
+							<div class="alert alert-danger">
+								<strong>${msgErro}</strong>
+							</div>
+						</c:if>
 						<decorator:body />
 					</div>
 				</div>
