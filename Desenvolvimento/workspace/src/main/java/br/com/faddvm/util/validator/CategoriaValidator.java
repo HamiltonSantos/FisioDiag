@@ -20,11 +20,11 @@ public class CategoriaValidator implements Validator {
 
 		if (cat.getDescricao().length() < 3
 				|| cat.getDescricao().length() > 250) {
-			errors.reject(null, "Descricao tem que ter no minimo 3 caracteres");
+			errors.reject(null, "Descrição deve ter no mínimo 3 caracteres");
 		}
 
 		if (cat.getStatus() == 0) {
-			errors.reject(null, "Status nao pode ser Vazio");
+			errors.reject(null, "Status não pode ser Vazio");
 		}
 	}
 

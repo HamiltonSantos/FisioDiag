@@ -21,15 +21,15 @@ public class VariavelValidator implements Validator {
 
 		if (variavel.getDescricao().length() < 3
 				|| variavel.getDescricao().length() > 250) {
-			errors.reject(null, "Descricao tem que ter no minimo 3 caracteres");
+			errors.reject(null, "Descrição deve ter no mínimo 3 caracteres");
 		}
 
 		if (variavel.getStatus() == null || variavel.getStatus() == 0) {
-			errors.reject(null, "Status nao pode ser vazio");
+			errors.reject(null, "Status não pode ser vazio");
 		}
 
 		if (variavel.getTipo() == null) {
-			errors.reject(null, "Tipo e obrigatorio");
+			errors.reject(null, "Tipo é obrigatório");
 		}
 
 	}
