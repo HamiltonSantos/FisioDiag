@@ -12,11 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Formula;
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
@@ -29,8 +26,6 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@NotBlank
-	@Size(min = 6, max = 80, message = "Nome deve deve ter no minimo 6 e no maximo 80 caracteres")
 	private String nome;
 	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Historico> historico;
@@ -38,11 +33,7 @@ public class Paciente implements Serializable {
 	private String cpf;
 	@NotNull(message = "Selecione ao menos 1 Sexo")
 	private Character sexo;
-	@NotBlank
-	@Size(min = 3, max = 80, message = "Numero de registro deve deve ter no minimo 3 e no maximo 80 caracteres")
 	private String numRegistro;
-	@NotNull(message = "Data e obrigatorio")
-	@Past(message = "Data de Nascimento deve estar no passado")
 	private Date dataNascimento;
 	@Formula(value = "(select sum(f.peso) "
 			+ "from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f "

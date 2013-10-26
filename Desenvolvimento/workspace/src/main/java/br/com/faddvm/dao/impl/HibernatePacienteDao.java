@@ -55,7 +55,14 @@ public class HibernatePacienteDao implements PacienteDao {
 
 		List<Historico> historicoIndicacao = (List<Historico>) manager
 				.createQuery(
-						"From Historico h where h.paciente.id = ?1 group by h.variavel.id order by h.dataHistorico")
+						"select h "
+								+ "from Historico h, Variavel v, FaixaValor f "
+								+ "where h.dataHistorico in (select max(hh.dataHistorico) from Historico hh group by hh.variavel.id) "
+								+ "and h.variavel.id = v.id "
+								+ "and v.id = f.variavel.id "
+								+ "and h.valor between f.valorMin and f.valorMax "
+								+ "and h.paciente.id = ?1 "
+								+ "order by f.peso desc ")
 				.setParameter(1, paciente.getId()).getResultList();
 
 		if (historicoIndicacao == null) {

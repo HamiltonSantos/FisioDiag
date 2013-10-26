@@ -21,11 +21,10 @@
 
 	<div class="well">
 		<h1>Indicacao: ${paciente.indicacao.descricao}</h1>
-
 		<ol>
 			<c:forEach items="${paciente.historicoIndicacao}" var="historico">
 
-				<li>${historico.variavel.descricao} - Valor: ${historico.valor}</li>
+				<li>${historico.variavel.descricao}- Valor: ${historico.valor}</li>
 
 			</c:forEach>
 		</ol>
