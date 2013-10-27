@@ -21,13 +21,13 @@ public class PacienteValidator implements Validator {
 		p.setNumRegistro(p.getNumRegistro().trim());
 
 		if (p.getNome().length() < 3 || p.getNome().length() > 250) {
-			errors.reject(null, "Nome deve ter no mínimo 3 caracteres");
+			errors.reject(null, "Nome deve ter no m√≠nimo 3 caracteres");
 		}
 
 		if (p.getNumRegistro().length() < 3
 				|| p.getNumRegistro().length() > 250) {
 			errors.reject(null,
-					"Número de registro deve ter no mínimo 3 caracteres");
+					"N√∫mero de registro deve ter no m√≠nimo 3 caracteres");
 		}
 
 	}

@@ -30,32 +30,32 @@ public class FaixaValorValidator implements Validator {
 	private boolean validaFaixa(FaixaValor f, Errors e) {
 
 		if (f.getPeso() == null) {
-			e.reject(null, "Peso � obrigat�rio");
+			e.reject(null, "Peso é obrigatório");
 			return true;
 		}
 
 		if (f.getValorMin() == null) {
-			e.reject(null, "Valor m�nimo � obrigat�rio.");
+			e.reject(null, "Valor mínimo é obrigatório.");
 			return true;
 		}
 
 		if (f.getValorMax() == null) {
-			e.reject(null, "Valor m�ximo � obrigat�rio.");
+			e.reject(null, "Valor máximo é obrigatório.");
 			return true;
 		}
 
 		if (f.getValorMin() > f.getValorMax()) {
 			e.reject(null,
-					"Valor m�nimo deve ser menor ou igual a valor m�ximo.");
+					"Valor mínimo deve ser menor ou igual a valor máximo.");
 			return true;
 		}
 
 		if (f.getValorMin() < 0 || f.getValorMax() < 0) {
-			e.reject(null, "Valor m�nimo deve ser maior ou igual a 0");
+			e.reject(null, "Valor mínimo deve ser maior ou igual a 0");
 			return true;
 		}
 		if (f.getValorMax() < 0) {
-			e.reject(null, "Valor m�ximo deve ser maior ou igual a 0");
+			e.reject(null, "Valor máximo deve ser maior ou igual a 0");
 			return true;
 		}
 		if (f.getPeso() < 0) {
@@ -63,11 +63,11 @@ public class FaixaValorValidator implements Validator {
 			return true;
 		}
 		if (f.getValorMin() > 100000 || f.getValorMax() > 100000) {
-			e.reject(null, "Valor m�nimo deve ser menor ou igual a 100000");
+			e.reject(null, "Valor mínimo deve ser menor ou igual a 100000");
 			return true;
 		}
 		if (f.getValorMax() > 100000) {
-			e.reject(null, "Valor m�ximo deve ser menor ou igual a 100000");
+			e.reject(null, "Valor máximo deve ser menor ou igual a 100000");
 			return true;
 		}
 		if (f.getPeso() > 100000) {
@@ -76,12 +76,12 @@ public class FaixaValorValidator implements Validator {
 		}
 
 		if (f.getDescricao() == null) {
-			e.reject(null, "Descri��o � obrigat�ria.");
+			e.reject(null, "Descrição é obrigatória.");
 			return true;
 		}
 		f.setDescricao(f.getDescricao().trim());
 		if (f.getDescricao().length() < 3 || f.getDescricao().length() > 250) {
-			e.reject(null, "Descri��o deve ter 3 caracteres ou mais");
+			e.reject(null, "Descrição deve ter 3 caracteres ou mais");
 			return true;
 		}
 
@@ -105,7 +105,7 @@ public class FaixaValorValidator implements Validator {
 			if (faixa.getValorMin() < vValorMin
 					&& faixa.getValorMax() != (vValorMin - 1)) {
 				errors.reject(null,
-						"Faixa Inv�lida, valor M�ximo pode terminar em "
+						"Faixa Inválida, valor Máximo pode terminar em "
 								+ (vValorMin - 1));
 				return true;
 			}
@@ -113,7 +113,7 @@ public class FaixaValorValidator implements Validator {
 			if (faixa.getValorMax() == vValorMax
 					|| faixa.getValorMin() == vValorMin
 					|| (faixa.getValorMin() >= vValorMin && faixa.getValorMax() <= vValorMax)) {
-				errors.reject(null, "Voc� n�o pode criar essa Faixa");
+				errors.reject(null, "Você não pode criar essa Faixa");
 				return true;
 			}
 
