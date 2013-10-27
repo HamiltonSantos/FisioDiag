@@ -30,7 +30,8 @@ public class FisioterapeutaController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Valid Fisioterapeuta fisioterapeuta,
-			BindingResult errors, RedirectAttributes rAttributes) {
+			BindingResult errors, RedirectAttributes rAttributes,
+			HttpSession session) {
 
 		ValidationUtils.invokeValidator(new FisioterapeutaValidator(),
 				fisioterapeuta, errors);
@@ -38,9 +39,17 @@ public class FisioterapeutaController {
 		if (errors.hasErrors()) {
 			return "/fisioterapeuta/form";
 		}
+
 		fisioterapeutaDao.salvar(fisioterapeuta);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Fisioterapeuta cadastrado com Sucesso");
+
+		Fisioterapeuta fisioterapeutaLogado = (Fisioterapeuta) session
+				.getAttribute("fisioterapeutaLogado");
+		if (fisioterapeuta.getId().equals(fisioterapeutaLogado.getId())) {
+			session.setAttribute("fisioterapeutaLogado", fisioterapeuta);
+		}
+
 		return "redirect:/fisioterapeuta";
 	}
 
