@@ -83,7 +83,7 @@ public class HibernatePacienteDao implements PacienteDao {
 			faixa = (FaixaValor) query.getSingleResult();
 		} catch (NoResultException ex) {
 			faixa = new FaixaValor();
-			faixa.setDescricao("Indicacao nao encontrada");
+			faixa.setDescricao("Indicação não encontrada");
 		}
 		return faixa;
 	}
