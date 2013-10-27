@@ -6,7 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -66,7 +68,8 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 		MessageDigest algorithm;
 		try {
 			algorithm = MessageDigest.getInstance("MD5");
-			byte messageDigest[] = algorithm.digest(senhaDescript.getBytes("UTF-8"));
+			byte messageDigest[] = algorithm.digest(senhaDescript
+					.getBytes("UTF-8"));
 
 			StringBuilder hexString = new StringBuilder();
 			for (byte b : messageDigest) {
@@ -79,5 +82,20 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Fisioterapeuta getByLogin(String login) {
+		Fisioterapeuta fisioterapeuta = null;
+		Query query = manager.createQuery(
+				"From Fisioterapeuta f where f.login = ?1").setParameter(1,
+				login);
+
+		try {
+			fisioterapeuta = (Fisioterapeuta) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return fisioterapeuta;
 	}
 }

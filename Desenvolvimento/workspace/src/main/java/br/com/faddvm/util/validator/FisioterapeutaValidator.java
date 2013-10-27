@@ -3,9 +3,12 @@ package br.com.faddvm.util.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import br.com.faddvm.dao.FisioterapeutaDao;
 import br.com.faddvm.model.Fisioterapeuta;
 
 public class FisioterapeutaValidator implements Validator {
+
+	private FisioterapeutaDao dao;
 
 	@Override
 	public boolean supports(Class<?> classe) {
@@ -32,6 +35,16 @@ public class FisioterapeutaValidator implements Validator {
 		if (!fisioterapeuta.getSenha().equals(fisioterapeuta.getContraSenha())) {
 			errors.reject(null, "Senha e contra Senha devem ser iguais");
 		}
+
+		if (dao.getByLogin(fisioterapeuta.getLogin()) != null) {
+			errors.reject(null, "Ja existe Fisioterapeuta com esse login.");
+		}
+
+	}
+
+	public FisioterapeutaValidator(FisioterapeutaDao dao) {
+		super();
+		this.dao = dao;
 	}
 
 }

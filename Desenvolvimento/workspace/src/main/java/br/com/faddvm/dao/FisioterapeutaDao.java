@@ -13,4 +13,6 @@ public interface FisioterapeutaDao {
 	Fisioterapeuta validaLogin(Fisioterapeuta fisioterapeuta);
 
 	Fisioterapeuta get(Long id);
+
+	Fisioterapeuta getByLogin(String login);
 }

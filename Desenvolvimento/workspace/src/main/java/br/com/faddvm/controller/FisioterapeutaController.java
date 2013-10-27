@@ -33,8 +33,8 @@ public class FisioterapeutaController {
 			BindingResult errors, RedirectAttributes rAttributes,
 			HttpSession session) {
 
-		ValidationUtils.invokeValidator(new FisioterapeutaValidator(),
-				fisioterapeuta, errors);
+		ValidationUtils.invokeValidator(new FisioterapeutaValidator(
+				fisioterapeutaDao), fisioterapeuta, errors);
 
 		if (errors.hasErrors()) {
 			return "/fisioterapeuta/form";
