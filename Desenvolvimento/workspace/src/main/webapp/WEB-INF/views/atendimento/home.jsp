@@ -17,7 +17,7 @@
 			<strong>Indicação:</strong> ${paciente.indicacao.descricao}
 		</p>
 		<p>
-			<a href="/faddvm/atendimento/${paciente.id}/detalhe">Ver detalhes indicacao</a>
+			<a href="/faddvm/atendimento/${paciente.id}/detalhe">Ver detalhes indicação</a>
 		</p>
 	</div>
 	<ul id="myTab" class="nav nav-tabs nav-justified">

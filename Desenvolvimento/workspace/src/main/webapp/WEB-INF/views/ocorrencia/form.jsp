@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Adiciona Ocorrencia</title>
+<title>Adiciona Ocorrência</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 			<form:errors path="*" class="alert alert-danger" element="div" />
 		</div>
 		<div class="form-group">
-			<form:label path="descricao" class="col-lg-4 control-label">Descricao</form:label>
+			<form:label path="descricao" class="col-lg-4 control-label">Descrição</form:label>
 			<div class="col-lg-6">
 				<form:input path="descricao" class="form-control" />
 			</div>

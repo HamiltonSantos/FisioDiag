@@ -13,14 +13,14 @@
 			<h2>Pontos: ${paciente.pontos}</h2>
 		</div>
 		<div>CPF: ${paciente.cpf}</div>
-		<div>Numero de Registro: ${paciente.numRegistro}</div>
+		<div>Número de Registro: ${paciente.numRegistro}</div>
 		<div>Data de Nascimento: ${paciente.dataNascimento}</div>
 		<div>Sexo: ${paciente.sexo}</div>
 
 	</div>
 
 	<div class="well">
-		<h1>Indicacao: ${paciente.indicacao.descricao}</h1>
+		<h1>Indicação: ${paciente.indicacao.descricao}</h1>
 		<ol>
 			<c:forEach items="${paciente.historicoIndicacao}" var="historico">
 

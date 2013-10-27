@@ -13,7 +13,7 @@
 				<th>Data de Nascimento</th>
 				<th>CPF</th>
 				<th>Sexo</th>
-				<th>Numero de Registro</th>
+				<th>Número de Registro</th>
 				<th>Ações</th>
 			</tr>
 		</thead>
