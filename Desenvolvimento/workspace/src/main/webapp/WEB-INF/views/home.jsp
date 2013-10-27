@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Pagina Inicial 
+	Página Inicial 
 </h1>
 
 </body>

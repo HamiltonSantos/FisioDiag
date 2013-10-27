@@ -51,15 +51,27 @@ public class FaixaValorValidator implements Validator {
 		}
 
 		if (f.getValorMin() < 0 || f.getValorMax() < 0) {
-			e.reject(null, "Valor m’nimo deve ser menor ou igual a 0");
+			e.reject(null, "Valor m’nimo deve ser maior ou igual a 0");
 			return true;
 		}
 		if (f.getValorMax() < 0) {
-			e.reject(null, "Valor m‡ximo deve ser menor ou igual a 0");
+			e.reject(null, "Valor m‡ximo deve ser maior ou igual a 0");
 			return true;
 		}
 		if (f.getPeso() < 0) {
-			e.reject(null, "Peso deve ser menor ou igual a 0");
+			e.reject(null, "Peso deve ser maior ou igual a 0");
+			return true;
+		}
+		if (f.getValorMin() > 100000 || f.getValorMax() > 100000) {
+			e.reject(null, "Valor m’nimo deve ser menor ou igual a 100000");
+			return true;
+		}
+		if (f.getValorMax() > 100000) {
+			e.reject(null, "Valor m‡ximo deve ser menor ou igual a 100000");
+			return true;
+		}
+		if (f.getPeso() > 100000) {
+			e.reject(null, "Peso deve ser menor ou igual a 100000");
 			return true;
 		}
 
