@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Adiciona Fisioterapeuta Simples</title>
+<title>Adicionar/Editar Fisioterapeuta Simples</title>
 </head>
 <body>
 
-	<h3 align="center">Adicionar Fisioterapeuta</h3>
+	<h3 align="center">Fisioterapeuta</h3>
 	<form:form action="/faddvm/fisioterapeuta" commandName="fisioterapeuta" class="form-horizontal">
 		<div class="form-group">
 			<form:errors path="*" class="alert alert-danger" element="div" />
