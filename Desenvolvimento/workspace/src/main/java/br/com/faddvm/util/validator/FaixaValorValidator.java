@@ -97,7 +97,7 @@ public class FaixaValorValidator implements Validator {
 			if (faixa.getValorMax() > vValorMax
 					&& faixa.getValorMin() != (vValorMax + 1)) {
 				errors.reject(null,
-						"Faixa Inv�lida, valor m�nimo pode iniciar em "
+						"Faixa Inválida, valor mínimo pode iniciar em "
 								+ (vValorMax + 1));
 				return true;
 			}
