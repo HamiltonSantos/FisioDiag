@@ -61,8 +61,16 @@ public class CategoriaController {
 	}
 
 	@RequestMapping(value = "/{categoriaId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable Long categoriaId, Model model) {
+	public String mostra(@PathVariable Long categoriaId, Model model,
+			RedirectAttributes rAttributes) {
 		Categoria categoria = categoriaDao.get(categoriaId);
+
+		if (categoria == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Categoria não encontrada.");
+			return "redirect:/categoria";
+		}
+
 		model.addAttribute("categoria", categoria);
 
 		return "/categoria/mostra";

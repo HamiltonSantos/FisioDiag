@@ -38,13 +38,17 @@ public class PacienteValidator implements Validator {
 					"Número de registro deve ter no mínimo 3 caracteres");
 		}
 
-		if (dao.getByCPF(p.getCpf()) != null) {
-			errors.reject(null, "Ja existe paciente com esse CPF");
+		if (p.getId() == null) {
+			if (dao.getByCPF(p.getCpf()) != null) {
+				errors.reject(null, "Ja existe paciente com esse CPF");
+			}
+
+			if (dao.getByNumRegistro(p.getNumRegistro()) != null) {
+				errors.reject(null,
+						"Ja existe paciente com esse Numero de Registro");
+			}
 		}
 
-		if (dao.getByNumRegistro(p.getNumRegistro()) != null) {
-			errors.reject(null, "Ja existe paciente com esse Numero de Registro");
-		}
 	}
 
 }

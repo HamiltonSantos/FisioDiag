@@ -36,7 +36,8 @@ public class FisioterapeutaValidator implements Validator {
 			errors.reject(null, "Senha e contra Senha devem ser iguais");
 		}
 
-		if (dao.getByLogin(fisioterapeuta.getLogin()) != null) {
+		if (dao.getByLogin(fisioterapeuta.getLogin()) != null
+				&& fisioterapeuta.getId() == null) {
 			errors.reject(null, "Ja existe Fisioterapeuta com esse login.");
 		}
 

@@ -70,10 +70,18 @@ public class FisioterapeutaController {
 	}
 
 	@RequestMapping("/{fisioterapeutaId}")
-	public String mostra(@PathVariable Long fisioterapeutaId, Model model) {
+	public String mostra(@PathVariable Long fisioterapeutaId, Model model,
+			RedirectAttributes rAttributes) {
 
-		model.addAttribute("fisioterapeuta",
-				fisioterapeutaDao.get(fisioterapeutaId));
+		Fisioterapeuta fisioterapeuta = fisioterapeutaDao.get(fisioterapeutaId);
+
+		if (fisioterapeuta == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Fisioterapeuta não encontrado.");
+			return "redirect:/fisioterapeuta";
+		}
+
+		model.addAttribute("fisioterapeuta", fisioterapeuta);
 
 		return "/fisioterapeuta/mostra";
 	}
@@ -82,9 +90,16 @@ public class FisioterapeutaController {
 	public String editar(@PathVariable Long fisioterapeutaId, Model model,
 			HttpSession session, RedirectAttributes rAttributes) {
 
+		Fisioterapeuta fisioterapeuta = fisioterapeutaDao.get(fisioterapeutaId);
+
+		if (fisioterapeuta == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Fisioterapeuta não encontrado.");
+			return "redirect:/fisioterapeuta";
+		}
+
 		Fisioterapeuta fisioterapeutaLogado = (Fisioterapeuta) session
 				.getAttribute("fisioterapeutaLogado");
-		Fisioterapeuta fisioterapeuta = fisioterapeutaDao.get(fisioterapeutaId);
 
 		if (fisioterapeuta.getId().equals(fisioterapeutaLogado.getId())) {
 			model.addAttribute("fisioterapeuta", fisioterapeuta);

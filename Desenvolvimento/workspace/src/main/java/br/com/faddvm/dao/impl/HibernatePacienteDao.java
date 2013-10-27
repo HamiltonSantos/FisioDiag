@@ -34,6 +34,9 @@ public class HibernatePacienteDao implements PacienteDao {
 	@Override
 	public Paciente get(Long id) {
 		Paciente paciente = manager.find(Paciente.class, id);
+		if (paciente == null) {
+			return null;
+		}
 		paciente.setIndicacao(indicacaoPaciente(paciente));
 		paciente.setHistoricoIndicacao(getHistoricoIndicacao(paciente));
 		return paciente;
@@ -106,8 +109,9 @@ public class HibernatePacienteDao implements PacienteDao {
 	@Override
 	public Paciente getByNumRegistro(String numRegistro) {
 		Paciente paciente = null;
-		Query query = manager.createQuery("From Paciente p where p.numRegistro = ?1")
-				.setParameter(1, numRegistro);
+		Query query = manager.createQuery(
+				"From Paciente p where p.numRegistro = ?1").setParameter(1,
+				numRegistro);
 
 		try {
 			paciente = (Paciente) query.getSingleResult();

@@ -71,16 +71,28 @@ public class PacienteController {
 	}
 
 	@RequestMapping(value = "/{pacienteId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable Long pacienteId, Model model) {
+	public String mostra(@PathVariable Long pacienteId, Model model,
+			RedirectAttributes rAttributes) {
 
-		model.addAttribute("paciente", dao.get(pacienteId));
+		Paciente paciente = dao.get(pacienteId);
+		if (paciente == null) {
+			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
+			return "redirect:/paciente";
+		}
+		model.addAttribute("paciente", paciente);
 		return "/paciente/mostra";
 	}
 
 	@RequestMapping(value = "/{pacienteId}/editar", method = RequestMethod.GET)
-	public String editar(@PathVariable Long pacienteId, Model model) {
+	public String editar(@PathVariable Long pacienteId, Model model,
+			RedirectAttributes rAttributes) {
 
-		model.addAttribute("paciente", dao.get(pacienteId));
+		Paciente paciente = dao.get(pacienteId);
+		if (paciente == null) {
+			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
+			return "redirect:/paciente";
+		}
+		model.addAttribute("paciente", paciente);
 		return "/paciente/form";
 	}
 }
