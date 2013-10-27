@@ -38,10 +38,10 @@ public class FaixaValorValidator implements Validator {
 	private boolean validaFaixa(FaixaValor f, Errors e) {
 
 		if (f.getId() == null) {
-			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(1)) != null) {
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(1)) != null && f.getVariavel().getId() == 1) {
 				e.reject(null, "Esta ocorrência já existe");
 			}
-			if (dao.getByDescricaoAndVariavel(f.getDescricao(),new Long(2)) != null) {
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(),new Long(2)) != null && f.getVariavel().getId() == 2) {
 				e.reject(null, "Esta intercorrência já existe");
 			}
 
