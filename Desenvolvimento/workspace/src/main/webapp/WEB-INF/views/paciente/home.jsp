@@ -25,7 +25,7 @@
 					<td>${paciente.cpf}</td>
 					<td>${paciente.sexo}</td>
 					<td>${paciente.numRegistro}</td>
-					<td><a href="/faddvm/atendimento/${paciente.id}">Atender</a> <a href="/faddvm/paciente/${paciente.id}">Mostra</a>
+					<td><a href="/faddvm/atendimento/${paciente.id}">Atender</a> <a href="/faddvm/paciente/${paciente.id}">Mostrar</a>
 						<a href="/faddvm/paciente/${paciente.id}/editar">Editar</a></td>
 				</tr>
 			</c:forEach>

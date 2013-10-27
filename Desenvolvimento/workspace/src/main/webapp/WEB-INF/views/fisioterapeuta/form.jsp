@@ -40,7 +40,7 @@
 		<div class="form-group" align="center">
 			<form:hidden path="id" />
 			<button type="submit" class="btn">
-				<span class="glyphicon glyphicon-user"></span> Adicionar
+				<span class="glyphicon glyphicon-user"></span> Salvar
 			</button>
 		</div>
 
