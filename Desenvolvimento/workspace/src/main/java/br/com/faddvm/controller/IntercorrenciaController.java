@@ -51,7 +51,7 @@ public class IntercorrenciaController {
 
 		intercorrencia.setVariavel(variavelDao.get(idIntercorrencia));
 
-		ValidationUtils.invokeValidator(new FaixaValorValidator(),
+		ValidationUtils.invokeValidator(new FaixaValorValidator(faixaValorDao),
 				intercorrencia, errors);
 
 		if (errors.hasErrors()) {

@@ -17,4 +17,6 @@ public interface FaixaValorDao {
 	void remover(FaixaValor faixaValor);
 
 	FaixaValor get(Long id);
+	
+	FaixaValor getByDescricaoAndVariavel(String descricao, Long idVariavel);
 }

@@ -3,10 +3,13 @@ package br.com.faddvm.util.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import br.com.faddvm.dao.FaixaValorDao;
+import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.FaixaValor;
 
 public class FaixaValorValidator implements Validator {
 
+	FaixaValorDao dao;
 	@Override
 	public boolean supports(Class<?> classe) {
 		return FaixaValor.class.equals(classe);
@@ -26,9 +29,23 @@ public class FaixaValorValidator implements Validator {
 		}
 
 	}
+	
+	public FaixaValorValidator(FaixaValorDao dao) {
+		super();
+		this.dao = dao;
+	}
 
 	private boolean validaFaixa(FaixaValor f, Errors e) {
 
+		if (f.getId() == null) {
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(1)) != null) {
+				e.reject(null, "Esta ocorrência já existe");
+			}
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(),new Long(2)) != null) {
+				e.reject(null, "Esta intercorrência já existe");
+			}
+
+		}
 		if (f.getPeso() == null) {
 			e.reject(null, "Peso é obrigatório");
 			return true;

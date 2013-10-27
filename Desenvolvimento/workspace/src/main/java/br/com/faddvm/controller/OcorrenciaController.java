@@ -46,13 +46,13 @@ public class OcorrenciaController {
 	public String salvar(
 			@Valid @ModelAttribute("ocorrencia") FaixaValor ocorrencia,
 			BindingResult errors,RedirectAttributes rAttributes) {
-
+		ocorrencia.setPeso(0);
 		ocorrencia.setValorMin(ocorrencia.getPeso());
 		ocorrencia.setValorMax(ocorrencia.getPeso());
 
 		ocorrencia.setVariavel(variavelDao.get(idOcorrencia));
 
-		ValidationUtils.invokeValidator(new FaixaValorValidator(), ocorrencia,
+		ValidationUtils.invokeValidator(new FaixaValorValidator(faixaValorDao), ocorrencia,
 				errors);
 
 		if (errors.hasErrors()) {
@@ -61,7 +61,7 @@ public class OcorrenciaController {
 
 		// Insere banco
 		faixaValorDao.salvar(ocorrencia);
-		rAttributes.addFlashAttribute("msgSucesso", "Ocorrencia cadastrada com Sucesso");
+		rAttributes.addFlashAttribute("msgSucesso", "Ocorrência cadastrada com Sucesso");
 		return "redirect:/ocorrencia";
 	}
 

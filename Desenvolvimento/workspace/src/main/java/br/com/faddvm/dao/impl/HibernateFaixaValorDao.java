@@ -3,12 +3,15 @@ package br.com.faddvm.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Paciente;
 
 @Repository
 public class HibernateFaixaValorDao implements FaixaValorDao {
@@ -57,5 +60,22 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	@Override
 	public FaixaValor get(Long id) {
 		return manager.find(FaixaValor.class, id);
+	}
+
+	@Override
+	public FaixaValor getByDescricaoAndVariavel(String descricao, Long idVariavel) {
+		FaixaValor faixaValor = null;
+		Query query = manager.createQuery("From FaixaValor f where f.descricao = ?1"
+										+ " And f.variavel.id = ?2")
+										.setParameter(1, descricao).
+										setParameter(2, idVariavel);
+
+		try {
+			faixaValor = (FaixaValor) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return faixaValor;
 	}
 }

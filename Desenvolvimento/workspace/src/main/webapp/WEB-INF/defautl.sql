@@ -1,5 +1,5 @@
 -- Admin
-insert into faddvm.Fisioterapeuta (id,login,nome,senha) values (1,"admin","21232F297A57A5A743894A0E4A801FC3","admin");
+insert into faddvm.Fisioterapeuta (id,login,nome,senha) values (1,"admin","admin","21232F297A57A5A743894A0E4A801FC3");
 
 -- Categorias
 insert into faddvm.Categoria (id,descricao,status) values (1,"ocorrencia",'A');

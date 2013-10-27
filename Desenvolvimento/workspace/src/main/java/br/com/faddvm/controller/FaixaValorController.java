@@ -60,7 +60,7 @@ public class FaixaValorController {
 
 		preencheFaixaValor(faixaValor, variavel);
 
-		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixaValor,
+		ValidationUtils.invokeValidator(new FaixaValorValidator(faixaValorDao), faixaValor,
 				errors);
 		if (errors.hasErrors()) {
 			return "/faixaValor/form";

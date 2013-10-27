@@ -46,7 +46,7 @@ public class IndiceController {
 		faixa.setPeso(0);
 		faixa.setVariavel(variavelDao.get(idIndice));
 
-		ValidationUtils.invokeValidator(new FaixaValorValidator(), faixa,
+		ValidationUtils.invokeValidator(new FaixaValorValidator(faixaValorDao), faixa,
 				result);
 
 		if (result.hasErrors()) {
