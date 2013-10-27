@@ -17,7 +17,7 @@ public class HistoricoValidator implements Validator {
 		Historico historico = (Historico) obj;
 		
 		if(historico.getValor() == null){
-			errors.reject(null, "Não é permitido inserir histórico com valor vazio.");
+			errors.reject(null, "N√£o √© permitido inserir hist√≥rico com valor vazio.");
 		}
 		
 	}
