@@ -3,13 +3,21 @@ package br.com.faddvm.util.validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.Paciente;
 
 public class PacienteValidator implements Validator {
 
+	PacienteDao dao;
+
 	@Override
 	public boolean supports(Class<?> classe) {
 		return Paciente.class.equals(classe);
+	}
+
+	public PacienteValidator(PacienteDao dao) {
+		super();
+		this.dao = dao;
 	}
 
 	@Override
@@ -30,6 +38,13 @@ public class PacienteValidator implements Validator {
 					"Número de registro deve ter no mínimo 3 caracteres");
 		}
 
+		if (dao.getByCPF(p.getCpf()) != null) {
+			errors.reject(null, "Ja existe paciente com esse CPF");
+		}
+
+		if (dao.getByNumRegistro(p.getNumRegistro()) != null) {
+			errors.reject(null, "Ja existe paciente com esse Numero de Registro");
+		}
 	}
 
 }

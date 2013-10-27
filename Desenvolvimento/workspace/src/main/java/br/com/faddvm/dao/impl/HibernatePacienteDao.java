@@ -88,4 +88,34 @@ public class HibernatePacienteDao implements PacienteDao {
 		return faixa;
 	}
 
+	@Override
+	public Paciente getByCPF(String cpf) {
+		Paciente paciente = null;
+		Query query = manager.createQuery("From Paciente p where p.cpf = ?1")
+				.setParameter(1, cpf);
+
+		try {
+			paciente = (Paciente) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return paciente;
+	}
+
+	@Override
+	public Paciente getByNumRegistro(String numRegistro) {
+		Paciente paciente = null;
+		Query query = manager.createQuery("From Paciente p where p.numRegistro = ?1")
+				.setParameter(1, numRegistro);
+
+		try {
+			paciente = (Paciente) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return paciente;
+	}
+
 }

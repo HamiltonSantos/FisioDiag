@@ -51,7 +51,7 @@ public class PacienteController {
 	public String salvar(@Valid Paciente paciente, BindingResult result,
 			RedirectAttributes rAttributes) {
 
-		ValidationUtils.invokeValidator(new PacienteValidator(), paciente,
+		ValidationUtils.invokeValidator(new PacienteValidator(dao), paciente,
 				result);
 
 		if (result.hasErrors()) {

@@ -14,4 +14,8 @@ public interface PacienteDao {
 	List<Paciente> lista();
 
 	List<Historico> getHistoricoIndicacao(Paciente paciente);
+
+	Paciente getByCPF(String cpf);
+	
+	Paciente getByNumRegistro(String numRegistro);
 }
