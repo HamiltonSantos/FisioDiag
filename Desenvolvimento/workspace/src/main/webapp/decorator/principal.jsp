@@ -9,12 +9,17 @@
 <link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/datatables/1.9.4/media/css/jquery.dataTables.css" rel="stylesheet" media="screen">
+<link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css">
 <script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/i18n/jquery.ui.datepicker-pt-BR.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jquery-maskedinput/1.3.1/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.dateAxisRenderer.min.js"></script>
 <title><decorator:title default="Welcome!" /></title>
 </head>
 <body>
