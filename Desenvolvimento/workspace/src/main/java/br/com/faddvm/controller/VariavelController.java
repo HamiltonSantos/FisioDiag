@@ -32,9 +32,16 @@ public class VariavelController {
 	VariavelDao variavelDao;
 
 	@RequestMapping(value = "/{variavelId}", method = RequestMethod.GET)
-	public String mostra(@PathVariable Long variavelId, Model model) {
+	public String mostra(@PathVariable Long variavelId, Model model,
+			RedirectAttributes rAttributes) {
 
 		Variavel variavel = variavelDao.get(variavelId);
+
+		if (variavel == null) {
+			rAttributes
+					.addFlashAttribute("msgErro", "Variavel não Encontrada.");
+			return "redirect:/categoria";
+		}
 
 		model.addAttribute("variavel", variavel);
 
@@ -42,9 +49,17 @@ public class VariavelController {
 	}
 
 	@RequestMapping(value = "/nova/{categoriaId}", method = RequestMethod.GET)
-	public String nova(@PathVariable Long categoriaId, Model model) {
+	public String nova(@PathVariable Long categoriaId, Model model,
+			RedirectAttributes rAttributes) {
 
 		Categoria categoria = categoriaDao.get(categoriaId);
+
+		if (categoria == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Categoria não Encontrada.");
+			return "redirect:/categoria";
+		}
+
 		Variavel variavel = new Variavel();
 		variavel.setCategoria(categoria);
 		variavel.setStatus('A');

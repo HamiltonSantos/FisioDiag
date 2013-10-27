@@ -49,9 +49,16 @@ public class AtendimentoController {
 	FaixaValorDao faixaValorDao;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String home(@PathVariable Long pacienteId, Model model) {
+	public String home(@PathVariable Long pacienteId, Model model,
+			RedirectAttributes rAttributes) {
 
 		Paciente paciente = pacienteDao.get(pacienteId);
+
+		if (paciente == null) {
+			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
+			return "redirect:/paciente";
+		}
+
 		model.addAttribute("paciente", paciente);
 
 		model.addAttribute("categorias", categoriaDao.lista());
@@ -98,9 +105,16 @@ public class AtendimentoController {
 	}
 
 	@RequestMapping(value = "/detalhe")
-	public String detalhe(@PathVariable Long pacienteId, Model model) {
+	public String detalhe(@PathVariable Long pacienteId, Model model,
+			RedirectAttributes rAttributes) {
 
-		model.addAttribute("paciente", pacienteDao.get(pacienteId));
+		Paciente paciente = pacienteDao.get(pacienteId);
+
+		if (paciente == null) {
+			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
+			return "redirect:/paciente";
+		}
+		model.addAttribute("paciente", paciente);
 
 		return "/atendimento/detalhe";
 	}

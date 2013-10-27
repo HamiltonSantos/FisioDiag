@@ -32,11 +32,19 @@ public class FaixaValorController {
 	VariavelDao variavelDao;
 
 	@RequestMapping(value = "/nova/{variavelId}", method = RequestMethod.GET)
-	public String nova(@PathVariable Long variavelId, Model model) {
+	public String nova(@PathVariable Long variavelId, Model model,
+			RedirectAttributes rAttributes) {
 
 		FaixaValor faixaValor = new FaixaValor();
 
 		Variavel variavel = variavelDao.get(variavelId);
+
+		if (variavel == null) {
+			rAttributes
+					.addFlashAttribute("msgErro", "Variavel não Encontrada.");
+			return "redirect:/categoria";
+		}
+
 		faixaValor.setVariavel(variavel);
 
 		model.addAttribute("faixaValor", faixaValor);
