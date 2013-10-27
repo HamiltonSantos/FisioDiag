@@ -37,7 +37,7 @@ public class CategoriaController {
 	public String salvar(@Valid Categoria categoria, BindingResult result,
 			RedirectAttributes rAttributes) {
 
-		ValidationUtils.invokeValidator(new CategoriaValidator(), categoria,
+		ValidationUtils.invokeValidator(new CategoriaValidator(categoriaDao), categoria,
 				result);
 
 		if (result.hasErrors()) {

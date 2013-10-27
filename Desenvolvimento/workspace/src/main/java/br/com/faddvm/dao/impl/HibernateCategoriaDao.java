@@ -3,7 +3,9 @@ package br.com.faddvm.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +42,23 @@ public class HibernateCategoriaDao implements CategoriaDao {
 	@Override
 	public void remover(Categoria categoria) {
 		manager.remove(categoria);
+	}
+
+	@Override
+	public Categoria getByDescricao(String descricao) {
+
+		Categoria categoria = null;
+
+		Query query = manager.createQuery(
+				"FROM Categoria as c where c.descricao = ?1").setParameter(1,
+				descricao);
+
+		try {
+			categoria = (Categoria) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return categoria;
 	}
 
 }

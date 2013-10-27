@@ -14,7 +14,7 @@ insert into faddvm.Variavel (id,descricao,status,tipo,categoria_id) values (3,"i
 -- Pontos de um paciente
 select sum(f.peso)
 	from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f
-	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id)
+	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh where hh.paciente_id = 9 group by hh.variavel_id)
 	and h.variavel_id = v.id
 	and v.id = f.variavel_id
 	and h.valor between f.valorMin and f.valorMax 

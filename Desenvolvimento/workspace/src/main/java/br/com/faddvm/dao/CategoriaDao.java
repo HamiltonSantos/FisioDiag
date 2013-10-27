@@ -14,4 +14,5 @@ public interface CategoriaDao {
 
 	void remover(Categoria categoria);
 
+	Categoria getByDescricao(String descricao);
 }
