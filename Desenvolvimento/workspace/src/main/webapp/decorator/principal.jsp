@@ -12,18 +12,26 @@
 <link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/css/datetimepicker.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datepicker/1.2.0/css/datepicker.css" rel="stylesheet" media="screen">
-<script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0-rc.2/js/bootstrap.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/i18n/jquery.ui.datepicker-pt-BR.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jquery-maskedinput/1.3.1/jquery.maskedinput.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.cursor.min.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0-rc.2/js/bootstrap.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/i18n/jquery.ui.datepicker-pt-BR.js"
+	charset="UTF-8"
+></script>
+<script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/jquery-ui.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jquery-maskedinput/1.3.1/jquery.maskedinput.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.highlighter.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.cursor.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.dateAxisRenderer.min.js"
+	charset="UTF-8"
+></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/js/bootstrap-datetimepicker.js"
+	charset="UTF-8"
+></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.js"
+	charset="UTF-8"
+></script>
 <script type="text/javascript"
 	src="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/js/locales/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"
 ></script>

@@ -1,6 +1,9 @@
 -- Admin // administrador - 123456
 insert into faddvm.Fisioterapeuta (id,login,nome,senha) values (1,"administrador","Administrador do Sistema","E10ADC3949BA59ABBE56E057F20F883E");
 
+-- Paciente 
+insert into faddvm.Paciente (id,cpf,dataNascimento,nome,numRegistro,sexo) values (1,'020.401.371-22','1992-02-25','Talles Henrique Souza Borges','10203040','M');
+
 -- Categorias
 insert into faddvm.Categoria (id,descricao,status) values (1,"ocorrencia",'A');
 insert into faddvm.Categoria (id,descricao,status) values (2,"intercorrencia",'A');
@@ -10,6 +13,17 @@ insert into faddvm.Categoria (id,descricao,status) values (3,"indice",'A');
 insert into faddvm.Variavel (id,descricao,status,tipo,categoria_id) values (1,"ocorrencia",'A','O',1);
 insert into faddvm.Variavel (id,descricao,status,tipo,categoria_id) values (2,"intercorrencia",'A','O',2);
 insert into faddvm.Variavel (id,descricao,status,tipo,categoria_id) values (3,"indice",'A','R',3);
+
+-- Faixas de valores - Ocorrencias
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (1,'Entrada UTI',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (2,'Saida UTI',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (3,'Inicio Ventilação Mecanica Invasiva',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (4,'Inicio Desmame',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (5,'Extubação',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (6,'Reintubação',0,0,0,1);
+
+-- Faixas de Valores -- Intercorrencias
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (7,'Óbito',0,0,0,2);
 
 -- Pontos de um paciente
 select sum(f.peso)

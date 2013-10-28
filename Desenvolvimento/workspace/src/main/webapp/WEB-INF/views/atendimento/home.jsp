@@ -48,7 +48,7 @@
 							<td>${historico.variavel.descricao}</td>
 							<c:if test="${historico.variavel.tipo eq 79}">
 								<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
-									<c:if test="${faixa.valorMin eq historico.valor}">
+									<c:if test="${faixa.id eq historico.valor}">
 										<td>${faixa.descricao}</td>
 									</c:if>
 								</c:forEach>
@@ -81,7 +81,7 @@
 								<td>${historico.variavel.descricao}</td>
 								<c:if test="${historico.variavel.tipo eq 79}">
 									<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
-										<c:if test="${faixa.valorMin eq historico.valor}">
+										<c:if test="${faixa.id eq historico.valor}">
 											<td>${faixa.descricao}</td>
 										</c:if>
 									</c:forEach>
@@ -99,11 +99,11 @@
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
 				<c:forEach items="${ocorrencias}" var="faixa">
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
+					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.id}">
 					<br />
 				</c:forEach>
-				<input type="text" name="dataHistorico" readonly class="form_datetime dataHistorico"> <input type="hidden"
-					name="variavelId" value="${1}"
+				<input type="text" name="dataHistorico" readonly="readonly" class="form_datetime dataHistorico"> <input
+					type="hidden" name="variavelId" value="${1}"
 				> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
@@ -126,7 +126,7 @@
 								<td>${historico.variavel.descricao}</td>
 								<c:if test="${historico.variavel.tipo eq 79}">
 									<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
-										<c:if test="${faixa.valorMin eq historico.valor}">
+										<c:if test="${faixa.id eq historico.valor}">
 											<td>${faixa.descricao}</td>
 										</c:if>
 									</c:forEach>
@@ -145,10 +145,10 @@
 			<form action="/faddvm/atendimento/${paciente.id}" method="post">
 				<c:forEach items="${intercorrencias}" var="faixa">
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
+					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.id}">
 				</c:forEach>
-				<input type="text" name="dataHistorico" readonly class="form_datetime dataHistorico"> <input type="hidden"
-					name="variavelId" value="${2}"
+				<input type="text" name="dataHistorico" readonly="readonly" class="form_datetime dataHistorico"> <input
+					type="hidden" name="variavelId" value="${2}"
 				> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
@@ -173,7 +173,7 @@
 										<td>${historico.variavel.descricao}</td>
 										<c:if test="${historico.variavel.tipo eq 79}">
 											<c:forEach items="${historico.variavel.faixaValores}" var="faixa">
-												<c:if test="${faixa.valorMin eq historico.valor}">
+												<c:if test="${faixa.id eq historico.valor}">
 													<td>${faixa.descricao}</td>
 												</c:if>
 											</c:forEach>
@@ -197,7 +197,7 @@
 
 							<c:forEach items="${variavel.faixaValores}" var="faixa">
 								<label for="faixa_${faixa.id}">${faixa.descricao}</label>
-								<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
+								<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.id}">
 							</c:forEach>
 							<input type="hidden" name="variavelId" value="${variavel.id}"> <input type="submit" class="btn"
 								value="Salvar"
