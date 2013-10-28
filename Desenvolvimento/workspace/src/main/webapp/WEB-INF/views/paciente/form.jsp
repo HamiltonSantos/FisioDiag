@@ -54,18 +54,26 @@
 		$(document).ready(function() {
 
 			$("#cpf").mask("999.999.999-99");
-			$("#dataNasicmento").mask("99/99/9999");
+			// 			$("#dataNasicmento").mask("99/99/9999");
 
-			$("#dataNasicmento").datepicker({
-				showOn: "both",
-				buttonText: "Selecionar",
-				yearRange : "1850:2013",
-				autoSize : true,
-				minDate : new Date(1850, 01, 01),
-				maxDate : new Date(),
-				changeMonth : true,
-				changeYear : true
+			$('#dataNasicmento').datepicker({
+			format : 'dd/mm/yyyy',
+			autoclose : 'true',
+			language : 'pt-BR',
+			startDate : '-120y',
+			endDate : new Date()
 			});
+
+			// 			$("#dataNasicmento").datepicker({
+			// 			showOn : "both",
+			// 			buttonText : "Selecionar",
+			// 			yearRange : "1850:2013",
+			// 			autoSize : true,
+			// 			minDate : new Date(1850, 01, 01),
+			// 			maxDate : new Date(),
+			// 			changeMonth : true,
+			// 			changeYear : true
+			// 			});
 
 		});
 	</script>

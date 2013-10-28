@@ -29,7 +29,7 @@ public class Paciente implements Serializable {
 	private String nome;
 	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Historico> historico;
-	@CPF(message="CPF inválido")
+	@CPF(message = "CPF inválido")
 	private String cpf;
 	@NotNull(message = "Selecione ao menos 1 Sexo")
 	private Character sexo;

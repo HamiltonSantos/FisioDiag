@@ -1,16 +1,20 @@
 package br.com.faddvm.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +52,14 @@ public class AtendimentoController {
 	@Qualifier("hibernateFaixaValorDao")
 	FaixaValorDao faixaValorDao;
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, true));
+	}
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(@PathVariable Long pacienteId, Model model,
 			RedirectAttributes rAttributes) {
@@ -80,7 +92,11 @@ public class AtendimentoController {
 
 		Historico historico = new Historico();
 
-		historico.setDataHistorico(new Date());
+		if (valorAtendimento.getDataHistorico() == null) {
+			historico.setDataHistorico(new Date());
+		} else {
+			historico.setDataHistorico(valorAtendimento.getDataHistorico());
+		}
 		historico.setFisioterapeuta((Fisioterapeuta) session
 				.getAttribute("fisioterapeutaLogado"));
 		historico.setPaciente(paciente);

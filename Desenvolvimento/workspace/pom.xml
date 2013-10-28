@@ -15,6 +15,18 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- Datetime -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-datepicker</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- Datetimerpicker -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-datetimepicker</artifactId>
+			<version>6aa746736d</version>
+		</dependency>
 		<!-- jqplot -->
 		<dependency>
 			<groupId>org.webjars</groupId>

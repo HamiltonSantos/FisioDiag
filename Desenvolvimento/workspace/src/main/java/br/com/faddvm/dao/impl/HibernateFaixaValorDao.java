@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.model.FaixaValor;
-import br.com.faddvm.model.Paciente;
 
 @Repository
 public class HibernateFaixaValorDao implements FaixaValorDao {

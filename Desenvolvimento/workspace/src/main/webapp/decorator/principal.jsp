@@ -6,12 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/faddvm/webjars/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/faddvm/webjars/bootstrap/3.0.0-rc.2/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/datatables/1.9.4/media/css/jquery.dataTables.css" rel="stylesheet" media="screen">
-<link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css">
+<link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css" rel="stylesheet" media="screen">
+<link href="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/css/datetimepicker.css" rel="stylesheet" media="screen">
+<link href="/faddvm/webjars/bootstrap-datepicker/1.2.0/css/datepicker.css" rel="stylesheet" media="screen">
 <script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js"></script>
-<script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0/js/bootstrap.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0-rc.2/js/bootstrap.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/i18n/jquery.ui.datepicker-pt-BR.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
@@ -20,6 +22,14 @@
 <script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.highlighter.min.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.cursor.min.js"></script>
 <script type="text/javascript" src="/faddvm/webjars/jqplot/1.0.8r1250/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript"
+	src="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/js/locales/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"
+></script>
+<script type="text/javascript" src="/faddvm/webjars/bootstrap-datepicker/1.2.0/js/locales/bootstrap-datepicker.pt-BR.js"
+	charset="UTF-8"
+></script>
 <title><decorator:title default="Welcome!" /></title>
 </head>
 <body>

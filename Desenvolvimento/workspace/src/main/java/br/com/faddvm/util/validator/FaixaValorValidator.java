@@ -4,7 +4,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import br.com.faddvm.dao.FaixaValorDao;
-import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.FaixaValor;
 
 public class FaixaValorValidator implements Validator {

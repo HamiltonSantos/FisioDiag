@@ -100,8 +100,11 @@
 				<c:forEach items="${ocorrencias}" var="faixa">
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
 					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
+					<br />
 				</c:forEach>
-				<input type="hidden" name="variavelId" value="${1}"> <input type="submit" class="btn" value="Salvar">
+				<input type="text" name="dataHistorico" readonly class="form_datetime dataHistorico"> <input type="hidden"
+					name="variavelId" value="${1}"
+				> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
 		<div class="tab-pane" id="intercorrencias">
@@ -144,7 +147,9 @@
 					<label for="faixa_${faixa.id}">${faixa.descricao}</label>
 					<input type="radio" id="faixa_${faixa.id}" name="valor" value="${faixa.valorMin}">
 				</c:forEach>
-				<input type="hidden" name="variavelId" value="${2}"> <input type="submit" class="btn" value="Salvar">
+				<input type="text" name="dataHistorico" readonly class="form_datetime dataHistorico"> <input type="hidden"
+					name="variavelId" value="${2}"
+				> <input type="submit" class="btn" value="Salvar">
 			</form>
 		</div>
 		<c:forEach items="${categorias}" var="categoria">
@@ -236,6 +241,15 @@
 		});
 		$(function() {
 			$('#myTab a:first').tab('show')
+		});
+
+		$('.dataHistorico').datetimepicker({
+		format : 'dd/mm/yyyy hh:ii',
+		autoclose : 'true',
+		language : 'pt-BR',
+		todayBtn : true,
+		startDate : '-120y',
+		endDate : new Date()
 		});
 
 		$(document)
