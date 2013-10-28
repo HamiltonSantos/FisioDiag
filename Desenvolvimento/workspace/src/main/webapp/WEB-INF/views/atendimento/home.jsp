@@ -31,7 +31,7 @@
 
 	<div class="tab-content">
 		<div class="tab-pane" id="historico">
-			<table id="tabelaHistorico" class="tabela table table-condensed">
+			<table id="tabelaHistorico" class="datatable table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Data</th>
@@ -63,7 +63,7 @@
 		</div>
 		<div class="dataTables_scroll"></div>
 		<div class="tab-pane" id="ocorrencias">
-			<table class="table table-condensed">
+			<table class="datatable table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Data</th>
@@ -108,7 +108,7 @@
 			</form>
 		</div>
 		<div class="tab-pane" id="intercorrencias">
-			<table class="table table-condensed">
+			<table class="datatable table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Data</th>
@@ -154,7 +154,7 @@
 		</div>
 		<c:forEach items="${categorias}" var="categoria">
 			<div class="tab-pane" id="cat_${categoria.id}">
-				<table class="table table-condensed">
+				<table class="datatable table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th>Data</th>
@@ -251,30 +251,6 @@
 		startDate : '-120y',
 		endDate : new Date()
 		});
-
-		$(document)
-				.ready(
-						function() {
-							$('.table')
-									.dataTable(
-											{
-												"oLanguage" : {
-												"sProcessing" : "Aguarde enquanto os dados são carregados ...",
-												"sLengthMenu" : "Mostrar _MENU_ registros",
-												"sZeroRecords" : "Nenhum registro correspondente ao criterio encontrado",
-												"sInfoEmtpy" : "Exibindo 0 a 0 de 0 registros",
-												"sInfo" : "Exibindo de _START_ a _END_ de _TOTAL_ registros",
-												"sInfoFiltered" : "",
-												"sSearch" : "Procurar",
-												"oPaginate" : {
-												"sFirst" : "Primeiro",
-												"sPrevious" : "Anterior",
-												"sNext" : "Próximo",
-												"sLast" : "Último"
-												}
-												}
-											});
-						});
 	</script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 <link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/css/datetimepicker.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datepicker/1.2.0/css/datepicker.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="/faddvm/resources/css/datatables.css" media="screen">
 <script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0-rc.2/js/bootstrap.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js" charset="UTF-8"></script>
@@ -38,7 +39,9 @@
 <script type="text/javascript" src="/faddvm/webjars/bootstrap-datepicker/1.2.0/js/locales/bootstrap-datepicker.pt-BR.js"
 	charset="UTF-8"
 ></script>
+<script src="/faddvm/resources/js/datatables.js"></script>
 <title><decorator:title default="Welcome!" /></title>
+
 </head>
 <body>
 	<div class="container">
@@ -91,5 +94,57 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$('.datatable')
+									.dataTable(
+											{
+												"oLanguage" : {
+												"sProcessing" : "Aguarde enquanto os dados são carregados ...",
+												"sLengthMenu" : "Mostrar _MENU_ registros",
+												"sZeroRecords" : "Nenhum registro correspondente ao critério encontrado",
+												"sInfoEmpty" : "Exibindo 0 a 0 de 0 registros",
+												"sInfo" : "Exibindo de _START_ a _END_ de _TOTAL_ registros",
+												"sInfoFiltered" : "",
+												"sSearch" : "Procurar",
+												"oPaginate" : {
+												"sFirst" : "Primeiro",
+												"sPrevious" : "Anterior",
+												"sNext" : "Próximo",
+												"sLast" : "Último"
+												}
+												}
+											});
+
+							$('.datatable')
+									.each(
+											function() {
+												var datatable = $(this);
+												// SEARCH - Add the placeholder for Search and Turn this into in-line form control
+												var search_input =
+														datatable
+																.closest(
+																		'.dataTables_wrapper')
+																.find(
+																		'div[id$=_filter] input');
+												search_input
+														.attr('placeholder',
+																'Search');
+												search_input
+														.addClass('form-control input-sm');
+												// LENGTH - Inline-Form control
+												var length_sel =
+														datatable
+																.closest(
+																		'.dataTables_wrapper')
+																.find(
+																		'div[id$=_length] select');
+												length_sel
+														.addClass('form-control input-sm');
+											});
+						});
+	</script>
 </body>
 </html>
