@@ -17,7 +17,7 @@ insert into faddvm.Variavel (id,descricao,status,tipo,categoria_id) values (3,"i
 -- Faixas de valores - Ocorrencias
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (1,'Entrada UTI',0,0,0,1);
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (2,'Saida UTI',0,0,0,1);
-insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (3,'Inicio Ventilação Mecanica Invasiva',0,0,0,1);
+insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (3,'Inicio Ventilação Mecanica',0,0,0,1);
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (4,'Inicio Desmame',0,0,0,1);
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (5,'Extubação',0,0,0,1);
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (6,'Reintubação',0,0,0,1);
