@@ -4,7 +4,17 @@ import java.util.Date;
 
 public class ValorAtendimento {
 
+	private Long faixaId;
 	private Long variavelId;
+
+	public Long getVariavelId() {
+		return variavelId;
+	}
+
+	public void setVariavelId(Long variavelId) {
+		this.variavelId = variavelId;
+	}
+
 	private Long valor;
 	private Date dataHistorico;
 
@@ -16,12 +26,12 @@ public class ValorAtendimento {
 		this.dataHistorico = dataHistorico;
 	}
 
-	public Long getVariavelId() {
-		return variavelId;
+	public Long getFaixaId() {
+		return faixaId;
 	}
 
-	public void setVariavelId(Long variavelId) {
-		this.variavelId = variavelId;
+	public void setFaixaId(Long faixaId) {
+		this.faixaId = faixaId;
 	}
 
 	public Long getValor() {

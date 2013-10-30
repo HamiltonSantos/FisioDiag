@@ -7,28 +7,30 @@
 <title>Paciente</title>
 </head>
 <body>
-	<div class="well">
-		<h1>Paciente: ${paciente.nome}</h1>
-		<div>
-			<h2>Pontos: ${paciente.pontos}</h2>
+	<div class="panel">
+		<div class="panel-body">
+			<h1>Paciente: ${paciente.nome}</h1>
+			<div>
+				<h2>Pontos: ${paciente.pontos}</h2>
+			</div>
+			<div>CPF: ${paciente.cpf}</div>
+			<div>Número de Registro: ${paciente.numRegistro}</div>
+			<div>Data de Nascimento: ${paciente.dataNascimento}</div>
+			<div>Sexo: ${paciente.sexo}</div>
 		</div>
-		<div>CPF: ${paciente.cpf}</div>
-		<div>Número de Registro: ${paciente.numRegistro}</div>
-		<div>Data de Nascimento: ${paciente.dataNascimento}</div>
-		<div>Sexo: ${paciente.sexo}</div>
-
 	</div>
 
-	<div class="well">
-		<h1>Indicação: ${paciente.indicacao.descricao}</h1>
-		<ol>
-			<c:forEach items="${paciente.historicoIndicacao}" var="historico">
+	<div class="panel">
+		<div class="panel-body">
+			<h1>Indicação: ${indicacao.descricao}</h1>
+			<ol>
+				<c:forEach items="${historicoIndicacao}" var="historico">
 
-				<li>${historico.variavel.descricao}- Valor: ${historico.valor}</li>
+					<li>${historico.faixa.variavel.descricao}-Valor:${historico.valor}</li>
 
-			</c:forEach>
-		</ol>
-
+				</c:forEach>
+			</ol>
+		</div>
 	</div>
 </body>
 </html>

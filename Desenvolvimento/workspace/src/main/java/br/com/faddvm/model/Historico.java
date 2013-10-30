@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Historico implements Serializable  {
+public class Historico implements Serializable {
 
 	/**
 	 * 
@@ -24,7 +24,16 @@ public class Historico implements Serializable  {
 	private Paciente paciente;
 	private Long valor;
 	@ManyToOne
-	private Variavel variavel;
+	private FaixaValor faixa;
+
+	public FaixaValor getFaixa() {
+		return faixa;
+	}
+
+	public void setFaixa(FaixaValor faixa) {
+		this.faixa = faixa;
+	}
+
 	private Date dataHistorico;
 
 	public Long getId() {
@@ -65,13 +74,5 @@ public class Historico implements Serializable  {
 
 	public void setValor(Long valor) {
 		this.valor = valor;
-	}
-
-	public Variavel getVariavel() {
-		return variavel;
-	}
-
-	public void setVariavel(Variavel variavel) {
-		this.variavel = variavel;
 	}
 }

@@ -19,4 +19,6 @@ public interface FaixaValorDao {
 	FaixaValor get(Long id);
 	
 	FaixaValor getByDescricaoAndVariavel(String descricao, Long idVariavel);
+	
+	FaixaValor getByValor(Long valor, Long variavelId);
 }

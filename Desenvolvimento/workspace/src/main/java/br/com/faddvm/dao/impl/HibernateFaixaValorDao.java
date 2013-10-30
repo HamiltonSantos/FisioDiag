@@ -62,12 +62,32 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 	}
 
 	@Override
-	public FaixaValor getByDescricaoAndVariavel(String descricao, Long idVariavel) {
+	public FaixaValor getByDescricaoAndVariavel(String descricao,
+			Long idVariavel) {
 		FaixaValor faixaValor = null;
-		Query query = manager.createQuery("From FaixaValor f where f.descricao = ?1"
-										+ " And f.variavel.id = ?2")
-										.setParameter(1, descricao).
-										setParameter(2, idVariavel);
+		Query query = manager
+				.createQuery(
+						"From FaixaValor f where f.descricao = ?1"
+								+ " And f.variavel.id = ?2")
+				.setParameter(1, descricao).setParameter(2, idVariavel);
+
+		try {
+			faixaValor = (FaixaValor) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return faixaValor;
+	}
+
+	@Override
+	public FaixaValor getByValor(Long valor, Long variavelId) {
+		FaixaValor faixaValor = null;
+		String queryString = "SELECT f.* FROM faddvm.FaixaValor f "
+				+ "where f.variavel_id = ?1 "
+				+ "and ?2 between f.valorMin and f.valorMax";
+		Query query = manager.createNativeQuery(queryString, FaixaValor.class)
+				.setParameter(1, variavelId).setParameter(2, valor);
 
 		try {
 			faixaValor = (FaixaValor) query.getSingleResult();

@@ -24,11 +24,11 @@ import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.dao.VariavelDao;
+import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Fisioterapeuta;
 import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
 import br.com.faddvm.model.ValorAtendimento;
-import br.com.faddvm.model.Variavel;
 import br.com.faddvm.util.validator.HistoricoValidator;
 
 @Controller
@@ -72,6 +72,8 @@ public class AtendimentoController {
 		}
 
 		model.addAttribute("paciente", paciente);
+		model.addAttribute("indicacao",
+				pacienteDao.getIndicacaoPaciente(paciente));
 
 		model.addAttribute("categorias", categoriaDao.lista());
 
@@ -89,6 +91,13 @@ public class AtendimentoController {
 			RedirectAttributes rAttributes, BindingResult errors) {
 
 		Paciente paciente = pacienteDao.get(pacienteId);
+		FaixaValor faixa = null;
+		if (valorAtendimento.getFaixaId() != null) {
+			faixa = faixaValorDao.get(valorAtendimento.getFaixaId());
+		} else {
+			faixa = faixaValorDao.getByValor(valorAtendimento.getValor(),
+					valorAtendimento.getVariavelId());
+		}
 
 		Historico historico = new Historico();
 
@@ -100,11 +109,15 @@ public class AtendimentoController {
 		historico.setFisioterapeuta((Fisioterapeuta) session
 				.getAttribute("fisioterapeutaLogado"));
 		historico.setPaciente(paciente);
-		Variavel variavel = variavelDao.get(valorAtendimento.getVariavelId());
-		historico.setVariavel(variavel);
-		historico.setValor(valorAtendimento.getValor());
+		historico.setFaixa(faixa);
 
-		ValidationUtils.invokeValidator(new HistoricoValidator(), historico,
+		if (faixa != null && faixa.getVariavel().getTipo() == 'O') {
+			historico.setValor(new Long(faixa.getPeso()));
+		} else {
+			historico.setValor(valorAtendimento.getValor());
+		}
+
+		ValidationUtils.invokeValidator(new HistoricoValidator(pacienteDao), historico,
 				errors);
 
 		if (errors.hasErrors()) {
@@ -131,6 +144,10 @@ public class AtendimentoController {
 			return "redirect:/paciente";
 		}
 		model.addAttribute("paciente", paciente);
+		model.addAttribute("indicacao",
+				pacienteDao.getIndicacaoPaciente(paciente));
+		model.addAttribute("historicoIndicacao",
+				pacienteDao.getHistoricoIndicacao(paciente));
 
 		return "/atendimento/detalhe";
 	}

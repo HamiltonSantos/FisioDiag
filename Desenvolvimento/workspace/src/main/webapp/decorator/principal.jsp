@@ -48,11 +48,12 @@
 		<div class="row">
 			<div class="col-md-8"></div>
 			<div class="col-md-4">
-				<div class="panel well">
-
-					Seja bem vindo,
-					<c:out value="${sessionScope.fisioterapeutaLogado.nome}" />
-					<br> <a href="/faddvm/sair">Sair</a>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Seja bem vindo,
+						<c:out value="${sessionScope.fisioterapeutaLogado.nome}" />
+						<br> <a href="/faddvm/sair">Sair</a>
+					</div>
 				</div>
 
 			</div>
@@ -61,7 +62,7 @@
 		<div class="row">
 			<!--div para o menu esquerdo-->
 			<div id="menu" class="col-md-2">
-				<div class="well">
+				<div class="panel panel-default">
 					<ul class="nav">
 						<li><a href="/faddvm">Home</a></li>
 						<li><a href="/faddvm/paciente">Pacientes</a></li>
@@ -131,7 +132,7 @@
 																		'div[id$=_filter] input');
 												search_input
 														.attr('placeholder',
-																'Search');
+																'Pesquisar');
 												search_input
 														.addClass('form-control input-sm');
 												// LENGTH - Inline-Form control

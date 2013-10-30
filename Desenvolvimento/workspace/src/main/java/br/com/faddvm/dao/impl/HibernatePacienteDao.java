@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -37,8 +38,6 @@ public class HibernatePacienteDao implements PacienteDao {
 		if (paciente == null) {
 			return null;
 		}
-		paciente.setIndicacao(indicacaoPaciente(paciente));
-		paciente.setHistoricoIndicacao(getHistoricoIndicacao(paciente));
 		return paciente;
 	}
 
@@ -56,16 +55,18 @@ public class HibernatePacienteDao implements PacienteDao {
 	@Override
 	public List<Historico> getHistoricoIndicacao(Paciente paciente) {
 
-		List<Historico> historicoIndicacao = (List<Historico>) manager
-				.createQuery(
-						"select h "
-								+ "from Historico h, Variavel v, FaixaValor f "
-								+ "where h.dataHistorico in (select max(hh.dataHistorico) from Historico hh group by hh.variavel.id) "
-								+ "and h.variavel.id = v.id "
-								+ "and v.id = f.variavel.id "
-								+ "and h.valor between f.valorMin and f.valorMax "
-								+ "and h.paciente.id = ?1 "
-								+ "order by f.peso desc ")
+		List<Historico> historicoIndicacao = null;
+
+		String sqlQuery = "select h.*, f.peso "
+				+ "from faddvm.Historico h, faddvm.FaixaValor f "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh, faddvm.FaixaValor ff, faddvm.Variavel vv "
+				+ "where hh.paciente_id = ?1 and hh.faixa_id = ff.id and ff.variavel_id = vv.id group by vv.id) "
+				+ "and h.faixa_id = f.id "
+				+ "and h.valor between f.valorMin and f.valorMax "
+				+ "and h.paciente_id = ?1 " + "order by f.peso desc";
+
+		historicoIndicacao = manager
+				.createNativeQuery(sqlQuery, Historico.class)
 				.setParameter(1, paciente.getId()).getResultList();
 
 		if (historicoIndicacao == null) {
@@ -74,7 +75,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		return historicoIndicacao;
 	}
 
-	private FaixaValor indicacaoPaciente(Paciente paciente) {
+	public FaixaValor getIndicacaoPaciente(Paciente paciente) {
 		FaixaValor faixa = null;
 		Query query = manager
 				.createQuery(
@@ -120,6 +121,154 @@ public class HibernatePacienteDao implements PacienteDao {
 		}
 
 		return paciente;
+	}
+
+	@Override
+	public Historico getEntradaUTIRecente(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 1 and h.paciente.id = ?1 "
+								+ "and h.dataHistorico = (select max(hh.dataHistorico) from Historico hh where hh.paciente.id = ?1 and hh.faixa.id = 1)")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getEntradaSaidaRecente(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.paciente.id = ?1 "
+								+ "and h.dataHistorico = (select max(hh.dataHistorico) from Historico hh where hh.paciente.id = ?1 and hh.faixa.id = 1 or hh.faixa.id = 2)")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getEntradaVMRecente(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 3 "
+								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 and hh.paciente.id = ?1) "
+								+ "order by h.dataHistorico desc")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		} catch (NonUniqueResultException ex) {
+			historico = (Historico) query.getResultList().get(0);
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getExtubacaoRecente(Paciente paciente) {
+		Historico historico = null;
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 5 "
+								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 or hh.faixa.id = 6 and hh.paciente.id = ?1) "
+								+ "order by h.dataHistorico desc")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		} catch (NonUniqueResultException ex) {
+			historico = (Historico) query.getResultList().get(0);
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getDesmameRecente(Paciente paciente) {
+		Historico historico = null;
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 4 "
+								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 or hh.faixa.id = 6 and hh.paciente.id = ?1) "
+								+ "order by h.dataHistorico desc")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		} catch (NonUniqueResultException ex) {
+			historico = (Historico) query.getResultList().get(0);
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getReintubacaoRecente(Paciente paciente) {
+		Historico historico = null;
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 6 "
+								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 and hh.paciente.id = ?1) "
+								+ "order by h.dataHistorico desc")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		} catch (NonUniqueResultException ex) {
+			historico = (Historico) query.getResultList().get(0);
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getMorreu(Paciente paciente) {
+		Historico historico = null;
+		Query query = manager.createQuery(
+				"From Historico h "
+						+ "where h.faixa.id = 7 and h.paciente.id = ?1 ")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		} catch (NonUniqueResultException ex) {
+			historico = (Historico) query.getResultList().get(0);
+		}
+
+		return historico;
 	}
 
 }

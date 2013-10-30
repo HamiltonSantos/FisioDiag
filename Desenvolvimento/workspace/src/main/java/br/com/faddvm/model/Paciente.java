@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Formula;
@@ -36,16 +35,13 @@ public class Paciente implements Serializable {
 	private String numRegistro;
 	private Date dataNascimento;
 	@Formula(value = "(select sum(f.peso) "
-			+ "from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f "
-			+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id) "
-			+ "and h.variavel_id = v.id " + "and v.id = f.variavel_id "
+			+ "from faddvm.Historico h, faddvm.FaixaValor f "
+			+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh, faddvm.FaixaValor ff, faddvm.Variavel vv "
+			+ "where hh.paciente_id = id and hh.faixa_id = ff.id and ff.variavel_id = vv.id group by vv.id) "
+			+ "and h.faixa_id = f.id "
 			+ "and h.valor between f.valorMin and f.valorMax "
 			+ "and h.paciente_id = id)")
 	private Integer pontos;
-	@Transient
-	private FaixaValor indicacao;
-	@Transient
-	private List<Historico> historicoIndicacao;
 
 	public Long getId() {
 		return id;
@@ -111,19 +107,4 @@ public class Paciente implements Serializable {
 		this.pontos = pontos;
 	}
 
-	public FaixaValor getIndicacao() {
-		return indicacao;
-	}
-
-	public void setIndicacao(FaixaValor indicacao) {
-		this.indicacao = indicacao;
-	}
-
-	public List<Historico> getHistoricoIndicacao() {
-		return historicoIndicacao;
-	}
-
-	public void setHistoricoIndicacao(List<Historico> historicoIndicacao) {
-		this.historicoIndicacao = historicoIndicacao;
-	}
 }

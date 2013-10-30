@@ -25,34 +25,47 @@ insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) 
 -- Faixas de Valores -- Intercorrencias
 insert into faddvm.FaixaValor (id,descricao,peso,valorMax,valorMin,variavel_id) values (7,'Óbito',0,0,0,2);
 
--- Pontos de um paciente
+-- Pontos de um paciente. parametro(paciente_id)
 select sum(f.peso)
-	from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f
-	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh where hh.paciente_id = 9 group by hh.variavel_id)
-	and h.variavel_id = v.id
-	and v.id = f.variavel_id
+	from faddvm.Historico h, faddvm.FaixaValor f
+	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh, faddvm.FaixaValor ff, faddvm.Variavel vv where hh.paciente_id = ?1 and hh.faixa_id = ff.id and ff.variavel_id = vv.id group by vv.id)
+	and h.faixa_id = f.id
 	and h.valor between f.valorMin and f.valorMax 
-	and h.paciente_id = 9
+	and h.paciente_id = ?1
 		
--- Pega Indicacao (FaixaValor) de um paciente atraves dos pontos dele
-select ff.*
-	from faddvm.FaixaValor ff
-	where ( 
-		select sum(f.peso)
-			from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f
-			where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id)
-			and h.variavel_id = v.id
-			and v.id = f.variavel_id
-			and h.valor between f.valorMin and f.valorMax 
-			and h.paciente_id = 9
-		) between ff.valorMin and ff.valorMax and ff.variavel_id = 3
+-- Pega Indicacao (FaixaValor) de um paciente atraves dos pontos dele. parametro (pontos)
+select * from faddvm.FaixaValor f where ?1 between f.valorMin and f.valorMax and f.variavel.id = 3
 		
--- Lista Historico do paciente que estao contandos na pontuacao.
+-- Lista Historico do paciente que estao contandos na pontuacao. parametros(paciente_id)
 select h.*, f.peso
-	from faddvm.Historico h, faddvm.Variavel v, faddvm.FaixaValor f
-	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh group by hh.variavel_id)
-	and h.variavel_id = v.id
-	and v.id = f.variavel_id
+	from faddvm.Historico h, faddvm.FaixaValor f
+	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh, faddvm.FaixaValor ff, faddvm.Variavel vv where hh.paciente_id = ?1 and hh.faixa_id = ff.id and ff.variavel_id = vv.id group by vv.id)
+	and h.faixa_id = f.id
 	and h.valor between f.valorMin and f.valorMax 
-	and h.paciente_id = 1
+	and h.paciente_id = ?1
 	order by f.peso desc
+	
+-- Pega qual faixa eh de acordo com um valor de uma variavel. parametro(variavel_id,valor)
+SELECT * FROM faddvm.FaixaValor f 
+	where f.variavel_id = ?1
+	and ?2 between f.valorMin and f.valorMax
+	
+-- Pega um Historico de quando foi a ultima entrada do paciente na UTI. paremtro(paciente_id)
+select h.* from faddvm.Historico h 
+	where faixa_id = 1 and h.paciente_id = 1
+	and h.dataHistorico = (select max(hh.dataHistorico) from faddvm.Historico hh where hh.paciente_id = 1 and hh.faixa_id = 1 )
+	
+-- Pega o Historico mais recente, entrada ou saida. parametro(paciente_id)
+select h.* from faddvm.Historico h 
+	where h.paciente_id = 1
+	and h.dataHistorico = (select max(hh.dataHistorico) from faddvm.Historico hh where hh.paciente_id = 1 and hh.faixa_id = 1 or hh.faixa_id = 2)
+	
+-- Pega o Historico Inicio de VM mais recente. parametro(paciente_id)
+select h.* from faddvm.Historico h 
+	where h.faixa_id = 3 and h.paciente_id = 1
+	and h.dataHistorico >= (select max(hh.dataHistorico) from faddvm.Historico hh where hh.faixa_id = 1 and hh.paciente_id = 1)
+	
+-- Pega o Historico Extubacao mais recente. parametro(paciente_id)
+select h.* from faddvm.Historico h 
+	where h.faixa_id = 5
+	and h.dataHistorico >= (select max(hh.dataHistorico) from faddvm.Historico hh where hh.faixa_id = 1 and hh.paciente_id = 1)
