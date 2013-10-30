@@ -151,7 +151,7 @@ public class HibernatePacienteDao implements PacienteDao {
 				.createQuery(
 						"From Historico h "
 								+ "where h.paciente.id = ?1 "
-								+ "and h.dataHistorico = (select max(hh.dataHistorico) from Historico hh where hh.paciente.id = ?1 and hh.faixa.id = 1 or hh.faixa.id = 2)")
+								+ "and h.dataHistorico = (select max(hh.dataHistorico) from Historico hh where hh.paciente.id = ?1 and (hh.faixa.id = 1 or hh.faixa.id = 2))")
 				.setParameter(1, paciente.getId());
 
 		try {
@@ -170,7 +170,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		Query query = manager
 				.createQuery(
 						"From Historico h "
-								+ "where h.faixa.id = 3 "
+								+ "where h.faixa.id = 3 and h.paciente.id = ?1 "
 								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 and hh.paciente.id = ?1) "
 								+ "order by h.dataHistorico desc")
 				.setParameter(1, paciente.getId());
@@ -192,7 +192,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		Query query = manager
 				.createQuery(
 						"From Historico h "
-								+ "where h.faixa.id = 5 "
+								+ "where h.faixa.id = 5 and h.paciente.id = ?1 "
 								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 or hh.faixa.id = 6 and hh.paciente.id = ?1) "
 								+ "order by h.dataHistorico desc")
 				.setParameter(1, paciente.getId());
@@ -214,8 +214,8 @@ public class HibernatePacienteDao implements PacienteDao {
 		Query query = manager
 				.createQuery(
 						"From Historico h "
-								+ "where h.faixa.id = 4 "
-								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 or hh.faixa.id = 6 and hh.paciente.id = ?1) "
+								+ "where h.faixa.id = 4 and h.paciente.id = ?1 "
+								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where (hh.faixa.id = 1 or hh.faixa.id = 6) and hh.paciente.id = ?1) "
 								+ "order by h.dataHistorico desc")
 				.setParameter(1, paciente.getId());
 
@@ -236,7 +236,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		Query query = manager
 				.createQuery(
 						"From Historico h "
-								+ "where h.faixa.id = 6 "
+								+ "where h.faixa.id = 6 and h.paciente.id = ?1 "
 								+ "and h.dataHistorico >= (select max(hh.dataHistorico) from Historico hh where hh.faixa.id = 1 and hh.paciente.id = ?1) "
 								+ "order by h.dataHistorico desc")
 				.setParameter(1, paciente.getId());
@@ -268,6 +268,115 @@ public class HibernatePacienteDao implements PacienteDao {
 			historico = (Historico) query.getResultList().get(0);
 		}
 
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getPacientesVM() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
+				+ "where (hh.faixa_id = 3 or hh.faixa_id = 6 or hh.faixa_id = 4) "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where (hhh.faixa_id = 5 or hhh.faixa_id = 2) and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
+				+ "group by hh.paciente_id )";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getPacientesDesmame() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
+				+ "where hh.faixa_id = 4 "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where (hhh.faixa_id = 5 or hhh.faixa_id = 2) and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
+				+ "group by hh.paciente_id )";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getPacientesReintubados() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
+				+ "where hh.faixa_id = 6 "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where (hhh.faixa_id = 5 or hhh.faixa_id = 2) and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
+				+ "group by hh.paciente_id )";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getPacientesUTI() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
+				+ "where hh.faixa_id = 1 or hh.faixa_id = 3 or hh.faixa_id = 4 or hh.faixa_id = 5 or hh.faixa_id = 6 "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where hhh.faixa_id = 2 and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
+				+ "group by hh.paciente_id )";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getPacientesExtubados() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h "
+				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
+				+ "where hh.faixa_id = 5 "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where hhh.faixa_id = 2 and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
+				+ "group by hh.paciente_id )";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getUltimosAtendimentos() {
+		List<Historico> historico = null;
+		String sql = "select h.* from faddvm.Historico h order by h.dataHistorico DESC ";
+
+		historico = manager.createNativeQuery(sql, Historico.class)
+				.getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
 		return historico;
 	}
 

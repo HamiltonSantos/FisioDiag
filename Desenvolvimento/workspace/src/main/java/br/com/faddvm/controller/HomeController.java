@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.faddvm.dao.FisioterapeutaDao;
+import br.com.faddvm.dao.PacienteDao;
 import br.com.faddvm.model.Fisioterapeuta;
 
 /**
@@ -26,13 +27,17 @@ public class HomeController {
 
 	@ExceptionHandler(Exception.class)
 	public String handleExceptions(Exception anExc) {
-		logger.error("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFUUUUUUUUUUUUUUUUUUUU");
+		logger.error("Exception");
 		return "redirect:/erro";
 	}
 
 	@Autowired
 	@Qualifier("hibernateFisioterapeutaDao")
 	FisioterapeutaDao fisioterapeutaDao;
+
+	@Autowired
+	@Qualifier("hibernatePacienteDao")
+	PacienteDao pacienteDao;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLogin(Model model) {
@@ -41,10 +46,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-	public String teste(){
+	public String teste() {
 		return "teste";
 	}
-	
+
 	@RequestMapping(value = "/sair", method = RequestMethod.GET)
 	public String sair(HttpSession session) {
 		session.setAttribute("fisioterapeutaLogado", null);
@@ -63,10 +68,26 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(Model model) {
+
+		model.addAttribute("pacientesVM", pacienteDao.getPacientesVM());
+
+		model.addAttribute("pacientesDesmame",
+				pacienteDao.getPacientesDesmame());
+
+		model.addAttribute("pacientesExtubados",
+				pacienteDao.getPacientesExtubados());
+
+		model.addAttribute("pacientesReintubados",
+				pacienteDao.getPacientesReintubados());
+
+		model.addAttribute("atendimentosRealizados",
+				pacienteDao.getUltimosAtendimentos());
+
+		model.addAttribute("pacientesUTI", pacienteDao.getPacientesUTI());
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/erro", method = RequestMethod.GET)
 	public String erro() {
 		return "erro";

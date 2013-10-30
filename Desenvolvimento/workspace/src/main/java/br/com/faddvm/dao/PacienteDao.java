@@ -33,6 +33,18 @@ public interface PacienteDao {
 	Historico getDesmameRecente(Paciente paciente);
 
 	Historico getReintubacaoRecente(Paciente paciente);
-	
+
 	Historico getMorreu(Paciente paciente);
+
+	List<Historico> getPacientesVM();
+
+	List<Historico> getPacientesDesmame();
+
+	List<Historico> getPacientesExtubados();
+
+	List<Historico> getPacientesReintubados();
+
+	List<Historico> getPacientesUTI();
+
+	List<Historico> getUltimosAtendimentos();
 }

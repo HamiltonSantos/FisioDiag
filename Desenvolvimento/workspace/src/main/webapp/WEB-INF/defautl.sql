@@ -69,3 +69,11 @@ select h.* from faddvm.Historico h
 select h.* from faddvm.Historico h 
 	where h.faixa_id = 5
 	and h.dataHistorico >= (select max(hh.dataHistorico) from faddvm.Historico hh where hh.faixa_id = 1 and hh.paciente_id = 1)
+	
+-- Lista todos os pacientes que estao em VM
+select h.* from faddvm.Historico h
+	where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh
+	where (hh.faixa_id != 2 or hh.faixa_id != 5)
+	and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where (hhh.faixa_id = 5 or hhh.faixa_id = 2) and hhh.paciente_id = hh.paciente_id), 0)
+	and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7)
+group by hh.paciente_id )
