@@ -40,6 +40,7 @@
 	charset="UTF-8"
 ></script>
 <script src="/faddvm/resources/js/datatables.js"></script>
+<script src="/faddvm/resources/js/bootbox.js"></script>
 <title><decorator:title default="Welcome!" /></title>
 
 </head>

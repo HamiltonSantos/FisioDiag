@@ -23,8 +23,7 @@
 				<tr>
 					<td>${ variavel.descricao }</td>
 					<td>${ variavel.tipo }</td>
-					<td><a href="/faddvm/variavel/${variavel.id}">Mostrar</a> <a href="/faddvm/variavel/remover/${variavel.id}">Deletar</a>
-					</td>
+					<td><a href="/faddvm/variavel/${variavel.id}">Mostrar</a> <a onclick="myFunction(${variavel.id})">Deletar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -32,6 +31,17 @@
 	<div class="dataTables_scroll"></div>
 	<a href="/faddvm/categoria" class="btn btn-primary">Voltar</a>
 	<a href="/faddvm/variavel/nova/${categoria.id}" class="btn btn-primary">Nova Variavel</a>
+
+	<script>
+		function myFunction(id) {
+			bootbox.confirm("Voce tem certeza que quer deletar essa variavel?", function(result) {
+				if(result){
+					var url = "http://localhost:8080/faddvm/variavel/remover/"+id;    
+					$(location).attr('href',url);
+					}
+				}); 
+		};
+	</script>
 
 </body>
 </html>

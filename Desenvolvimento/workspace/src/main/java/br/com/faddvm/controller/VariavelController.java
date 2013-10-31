@@ -91,7 +91,7 @@ public class VariavelController {
 		if (faixas != null && faixas.size() > 0) {
 			rAttributes
 					.addFlashAttribute("msgErro",
-							"Você não pode deletar essa Variavel, dele as faixas dela primeiro.");
+							"Você não pode deletar essa Variavel, delete as faixas dela primeiro.");
 			return "redirect:/categoria/" + categoriaId;
 		}
 
