@@ -9,6 +9,14 @@
 	<div class="panel">
 		<div class="panel-body">
 			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-info">
+						<strong>Indicação: </strong>${indicacao.descricao}
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
 				<div class="col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">Paciente</div>
@@ -18,8 +26,8 @@
 								<dd>${paciente.nome}</dd>
 								<dt>Pontos</dt>
 								<dd>${paciente.pontos}</dd>
-								<dt>Indicação</dt>
-								<dd>${indicacao.descricao}</dd>
+								<dt>Status</dt>
+								<dd>${ultimaOcorrencia.faixa.descricao}</dd>
 								<dd>
 									<a href="/faddvm/paciente/${paciente.id}">Mais informações</a>
 								</dd>

@@ -79,6 +79,8 @@ select h.* from faddvm.Historico h
 group by hh.paciente_id )
 
 -- Pega a ocorrencia mais recente. paramentro (paciente_id)
-select h.* from faddvm.Historico h 
-	where (h.faixa_id = 1 or h.faixa_id = 2 or h.faixa_id = 3 or h.faixa_id = 4 or h.faixa_id = 5 or h.faixa_id = 6)
-	and h.dataHistorico >= (select max(hh.dataHistorico) from faddvm.Historico hh where hh.faixa_id = 1 and hh.paciente_id = 1)
+select h.* from faddvm.Historico h
+where h.dataHistorico = 
+	( select max(h1.dataHistorico) from faddvm.Historico h1
+		where (h1.faixa_id = 1 or h1.faixa_id = 2 or h1.faixa_id = 3 or h1.faixa_id = 4 or h1.faixa_id = 5 or h1.faixa_id = 6 or h1.faixa_id = 7) and h1.paciente_id = 1
+		and h1.dataHistorico >= (select max(hh.dataHistorico) from faddvm.Historico hh where hh.faixa_id = 1 and hh.paciente_id = 1) )

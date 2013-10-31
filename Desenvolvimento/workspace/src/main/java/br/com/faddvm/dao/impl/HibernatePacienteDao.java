@@ -444,4 +444,24 @@ public class HibernatePacienteDao implements PacienteDao {
 
 	}
 
+	@Override
+	public Historico getUltimaOcorrencia(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h where h.dataHistorico = "
+								+ "( select max(h1.dataHistorico) from Historico h1 "
+								+ "where (h1.faixa.id = 1 or h1.faixa.id = 2 or h1.faixa.id = 3 or h1.faixa.id = 4 or h1.faixa.id = 5 or h1.faixa.id = 6 or h1.faixa.id = 7) and h1.paciente.id = ?1 "
+								+ "and h1.dataHistorico >= (select max(h2.dataHistorico) from Historico h2 where h2.faixa.id = 1 and h2.paciente.id = ?1) )")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return historico;
+	}
+
 }

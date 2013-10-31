@@ -96,6 +96,7 @@ public class AtendimentoController {
 
 		model.addAttribute("ultimoAtendimento",
 				pacienteDao.getUltimoAtendimento(paciente));
+		model.addAttribute("ultimaOcorrencia", pacienteDao.getUltimaOcorrencia(paciente));
 
 		return "/atendimento/home";
 	}

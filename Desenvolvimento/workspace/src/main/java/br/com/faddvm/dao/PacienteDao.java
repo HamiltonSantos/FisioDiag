@@ -41,6 +41,8 @@ public interface PacienteDao {
 	Historico getUltimoAtendimento(Paciente paciente);
 	
 	Historico getAtendimento(Long atendimentoId);
+	
+	Historico getUltimaOcorrencia(Paciente paciente);
 
 	List<Historico> getPacientesVM();
 
