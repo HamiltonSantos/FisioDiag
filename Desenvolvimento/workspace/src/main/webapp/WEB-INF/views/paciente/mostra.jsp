@@ -46,6 +46,14 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-info">
+						<strong>Indicação: </strong>${indicacaoPaciente.descricao}
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
 				<div class="col-md-6">
 					<dl class="dl-horizontal">
 						<dt>Data entrada na UTI</dt>
@@ -79,8 +87,6 @@
 						<dd>
 							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${dataSaidaUTI}" />
 						</dd>
-						<dt>Indicação</dt>
-						<dd>${indicacaoPaciente.descricao}</dd>
 					</dl>
 				</div>
 			</div>
