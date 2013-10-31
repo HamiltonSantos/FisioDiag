@@ -5,7 +5,7 @@
 <title>Variavel</title>
 </head>
 <body>
-	<h1>${variavel.descricao}</h1>
+	<h1>Faixas de ${variavel.descricao}</h1>
 
 	<table id="tabela" class="datatable table table-striped table-bordered">
 		<thead>

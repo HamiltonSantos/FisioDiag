@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.model.Categoria;
+import br.com.faddvm.model.Variavel;
 
 @Repository
 public class HibernateCategoriaDao implements CategoriaDao {
@@ -59,6 +60,21 @@ public class HibernateCategoriaDao implements CategoriaDao {
 
 		}
 		return categoria;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Variavel> getVariaveisCategoria(Categoria categoria) {
+
+		List<Variavel> variaveis = null;
+
+		Query query = manager.createQuery(
+				"from Variavel v where v.categoria.id = ?1").setParameter(1,
+				categoria.getId());
+
+		variaveis = query.getResultList();
+
+		return variaveis;
 	}
 
 }

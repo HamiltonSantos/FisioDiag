@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.model.Categoria;
+import br.com.faddvm.model.Variavel;
 import br.com.faddvm.util.validator.CategoriaValidator;
 
 @Transactional
@@ -37,8 +40,8 @@ public class CategoriaController {
 	public String salvar(@Valid Categoria categoria, BindingResult result,
 			RedirectAttributes rAttributes) {
 
-		ValidationUtils.invokeValidator(new CategoriaValidator(categoriaDao), categoria,
-				result);
+		ValidationUtils.invokeValidator(new CategoriaValidator(categoriaDao),
+				categoria, result);
 
 		if (result.hasErrors()) {
 			return "/categoria/form";
@@ -74,5 +77,32 @@ public class CategoriaController {
 		model.addAttribute("categoria", categoria);
 
 		return "/categoria/mostra";
+	}
+
+	@RequestMapping(value = "/remover/{categoriaId}", method = RequestMethod.GET)
+	public String remover(@PathVariable Long categoriaId,
+			RedirectAttributes rAttributes) {
+		Categoria categoria = categoriaDao.get(categoriaId);
+
+		if (categoria == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Categoria não encontrada.");
+			return "redirect:/categoria";
+		}
+
+		List<Variavel> variaveis = categoriaDao
+				.getVariaveisCategoria(categoria);
+
+		if (variaveis != null && variaveis.size() > 0) {
+			rAttributes
+					.addFlashAttribute("msgErro",
+							"Você não pode deletar essa Categoria, delete as váriaveis dela primeiro.");
+			return "redirect:/categoria";
+		}
+
+		categoriaDao.remover(categoria);
+		rAttributes.addFlashAttribute("msgSucesso", "Categoria deletada.");
+
+		return "redirect:/categoria";
 	}
 }

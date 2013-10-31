@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.FaixaValorDao;
 import br.com.faddvm.model.FaixaValor;
+import br.com.faddvm.model.Historico;
 
 @Repository
 public class HibernateFaixaValorDao implements FaixaValorDao {
@@ -53,7 +54,12 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 
 	@Override
 	public void remover(FaixaValor faixaValor) {
-		manager.remove(get(faixaValor.getId()));
+
+		Query query = manager.createQuery(
+				"delete from FaixaValor where id = ?1").setParameter(1,
+				faixaValor.getId());
+
+		query.executeUpdate();
 	}
 
 	@Override
@@ -96,5 +102,17 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 		}
 
 		return faixaValor;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getHistoricoByFaixa(FaixaValor faixaValor) {
+		List<Historico> historico = null;
+		Query query = manager.createQuery(
+				"From Historico as h where h.faixa.id = ?1").setParameter(1,
+				faixaValor.getId());
+
+		historico = query.getResultList();
+		return historico;
 	}
 }

@@ -17,8 +17,9 @@
 			<c:forEach items="${categorias}" var="categoria">
 				<tr>
 					<td>${categoria.descricao}</td>
-					<td><a href="/faddvm/categoria/${categoria.id}">Mostrar</a> <a href="/faddvm/categoria/${categoria.id}">Deletar</a>
-					</td>
+					<td><a href="/faddvm/categoria/${categoria.id}">Mostrar</a> <a
+						href="/faddvm/categoria/remover/${categoria.id}"
+					>Deletar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -26,6 +27,6 @@
 
 	<div class="dataTables_scroll"></div>
 
-	<a href="/faddvm/categoria/nova" class="btn btn-primary">Novo</a>
+	<a href="/faddvm/categoria/nova" class="btn btn-primary">Nova</a>
 </body>
 </html>

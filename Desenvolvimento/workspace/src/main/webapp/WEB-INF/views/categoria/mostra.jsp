@@ -9,7 +9,7 @@
 <title>Categoria</title>
 </head>
 <body>
-	<h1>${categoria.descricao}</h1>
+	<h1>Variáveis de ${categoria.descricao}</h1>
 	<table id="tabela" class="datatable table table-striped table-bordered">
 		<thead>
 			<tr>

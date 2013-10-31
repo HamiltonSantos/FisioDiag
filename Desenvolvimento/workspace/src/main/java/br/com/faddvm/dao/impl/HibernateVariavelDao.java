@@ -1,12 +1,16 @@
 package br.com.faddvm.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.faddvm.dao.VariavelDao;
+import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Variavel;
 
 @Transactional
@@ -32,8 +36,22 @@ public class HibernateVariavelDao implements VariavelDao {
 
 	@Override
 	public void remove(Variavel variavel) {
-		Variavel variavelDeletar = get(variavel.getId());
-		manager.remove(variavelDeletar);
-		manager.flush();
+		Query query = manager.createQuery("delete from Variavel where id = ?1").setParameter(1, variavel.getId());
+		
+		query.executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FaixaValor> getFaixasByVariavel(Variavel variavel) {
+		List<FaixaValor> faixas = null;
+
+		Query query = manager.createQuery(
+				"from FaixaValor f where f.variavel.id = ?1").setParameter(1,
+				variavel.getId());
+
+		faixas = query.getResultList();
+
+		return faixas;
 	}
 }

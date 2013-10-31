@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.faddvm.dao.CategoriaDao;
 import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.Categoria;
+import br.com.faddvm.model.FaixaValor;
 import br.com.faddvm.model.Variavel;
 import br.com.faddvm.util.validator.VariavelValidator;
 
@@ -70,13 +73,30 @@ public class VariavelController {
 	}
 
 	@RequestMapping(value = "/remover/{variavelId}")
-	public String remover(@PathVariable Long variavelId) {
+	public String remover(@PathVariable Long variavelId,
+			RedirectAttributes rAttributes) {
 
 		Variavel variavel = variavelDao.get(variavelId);
 
+		if (variavel == null) {
+			rAttributes
+					.addFlashAttribute("msgErro", "Variavel não Encontrada.");
+			return "redirect:/categoria";
+		}
+
 		Long categoriaId = variavel.getCategoria().getId();
 
+		List<FaixaValor> faixas = variavelDao.getFaixasByVariavel(variavel);
+
+		if (faixas != null && faixas.size() > 0) {
+			rAttributes
+					.addFlashAttribute("msgErro",
+							"Você não pode deletar essa Variavel, dele as faixas dela primeiro.");
+			return "redirect:/categoria/" + categoriaId;
+		}
+
 		variavelDao.remove(variavel);
+		rAttributes.addFlashAttribute("msgSucesso", "Váriavel deletada.");
 
 		return "redirect:/categoria/" + categoriaId;
 	}
