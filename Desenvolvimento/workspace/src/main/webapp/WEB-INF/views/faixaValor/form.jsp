@@ -28,13 +28,13 @@
 			<div class="form-group">
 				<form:label class="col-lg-3 control-label" path="valorMin">Valor Mínimo:</form:label>
 				<div class="col-lg-9">
-					<form:input path="valorMin" class="form-control" />
+					<form:input path="valorMin" maxlength="6" class="form-control" />
 				</div>
 			</div>
 			<div class="form-group">
 				<form:label class="col-lg-3 control-label" path="valorMax">Valor Máximo:</form:label>
 				<div class="col-lg-9">
-					<form:input path="valorMax" class="form-control" />
+					<form:input path="valorMax" maxlength="6" class="form-control" />
 				</div>
 			</div>
 			<form:hidden path="descricao" />
@@ -42,7 +42,7 @@
 		<div class="form-group">
 			<form:label class="col-lg-3 control-label" path="peso">Peso:</form:label>
 			<div class="col-lg-9">
-				<form:input path="peso" class="form-control" />
+				<form:input path="peso" maxlength="6" class="form-control" />
 			</div>
 		</div>
 		<form:hidden path="variavel.id" />

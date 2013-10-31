@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Historico implements Serializable {
@@ -25,6 +26,16 @@ public class Historico implements Serializable {
 	private Long valor;
 	@ManyToOne
 	private FaixaValor faixa;
+	@Transient
+	private Long tempoExtubacao;
+
+	public Long getTempoExtubacao() {
+		return new Date().getTime() - dataHistorico.getTime() ;
+	}
+
+	public void setTempoExtubacao(Long tempoExtubacao) {
+		this.tempoExtubacao = tempoExtubacao;
+	}
 
 	public FaixaValor getFaixa() {
 		return faixa;

@@ -71,6 +71,7 @@
 				<tr>
 					<th>Nome Paciente</th>
 					<th>Data</th>
+					<th>Tempo em Extubacao</th>
 					<th>Ação</th>
 				</tr>
 			</thead>
@@ -79,6 +80,7 @@
 					<tr>
 						<td>${historico.paciente.nome}</td>
 						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
+						<td>${historico.tempoExtubacao}</td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
 						>Mostrar</a></td>
