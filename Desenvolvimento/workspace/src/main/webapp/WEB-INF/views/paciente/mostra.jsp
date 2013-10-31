@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +28,9 @@
 				<div class="col-md-6">
 					<dl class="dl-horizontal">
 						<dt>Data de Nascimento</dt>
-						<dd>${paciente.dataNascimento}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${paciente.dataNascimento}" />
+						</dd>
 						<dt>Sexo</dt>
 						<dd>${paciente.sexo}</dd>
 					</dl>
@@ -46,11 +49,17 @@
 				<div class="col-md-6">
 					<dl class="dl-horizontal">
 						<dt>Data entrada na UTI</dt>
-						<dd>${entradaUTI}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${entradaUTI}" />
+						</dd>
 						<dt>Data inicio VM</dt>
-						<dd>${inicioVM}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${inicioVM}" />
+						</dd>
 						<dt>Data inicio Desmame</dt>
-						<dd>${inicioDesmame}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${inicioDesmame}" />
+						</dd>
 						<dt>Pontos</dt>
 						<dd>${paciente.pontos}</dd>
 
@@ -59,11 +68,17 @@
 				<div class="col-md-6">
 					<dl class="dl-horizontal">
 						<dt>Data Extubação</dt>
-						<dd>${dataExtubacao}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${dataExtubacao}" />
+						</dd>
 						<dt>Data Reintubação</dt>
-						<dd>${dataReintubacao}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${dataReintubacao}" />
+						</dd>
 						<dt>Data Saida UTI</dt>
-						<dd>${dataSaidaUTI}</dd>
+						<dd>
+							<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${dataSaidaUTI}" />
+						</dd>
 						<dt>Indicação</dt>
 						<dd>${indicacaoPaciente.descricao}</dd>
 					</dl>
@@ -91,7 +106,7 @@
 						<tr>
 							<td>${historico.faixa.descricao}</td>
 							<td>${historico.valor}</td>
-							<td>${historico.dataHistorico}</td>
+							<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 							<td>${historico.fisioterapeuta.nome}</td>
 						</tr>
 					</c:forEach>
@@ -119,7 +134,7 @@
 						<tr>
 							<td>${historico.faixa.descricao}</td>
 							<td>${historico.valor}</td>
-							<td>${historico.dataHistorico}</td>
+							<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 							<td>${historico.fisioterapeuta.nome}</td>
 						</tr>
 					</c:forEach>

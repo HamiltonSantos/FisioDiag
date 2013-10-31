@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -21,7 +22,7 @@
 			<c:forEach items="${pacientes}" var="paciente">
 				<tr>
 					<td>${paciente.nome}</td>
-					<td>${paciente.dataNascimento}</td>
+					<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${paciente.dataNascimento}" /></td>
 					<td>${paciente.cpf}</td>
 					<td>${paciente.sexo}</td>
 					<td>${paciente.numRegistro}</td>

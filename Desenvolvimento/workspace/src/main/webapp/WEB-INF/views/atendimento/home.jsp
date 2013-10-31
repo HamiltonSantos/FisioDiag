@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false"%>
 <html>
@@ -46,7 +47,9 @@
 								<dt>Fisioterapeuta</dt>
 								<dd>${ultimoAtendimento.fisioterapeuta.nome}</dd>
 								<dt>Data</dt>
-								<dd>${ultimoAtendimento.dataHistorico}</dd>
+								<dd>
+									<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${ultimoAtendimento.dataHistorico}" />
+								</dd>
 							</dl>
 							<c:if test="${ultimoAtendimento != null }">
 								<a class="btn btn-danger btn-sm" onclick="myFunction(${ultimoAtendimento.id})">Desfazer</a>
@@ -84,7 +87,7 @@
 						<tbody>
 							<c:forEach items="${paciente.historico}" var="historico">
 								<tr>
-									<td>${historico.dataHistorico}</td>
+									<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 									<td>${historico.fisioterapeuta.nome}</td>
 									<td>${historico.faixa.variavel.descricao}</td>
 									<c:if test="${historico.faixa.variavel.tipo eq 79}">
@@ -152,7 +155,7 @@
 							<c:forEach items="${paciente.historico}" var="historico">
 								<c:if test="${1 == historico.faixa.variavel.id}">
 									<tr>
-										<td>${historico.dataHistorico}</td>
+										<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 										<td>${historico.fisioterapeuta.nome}</td>
 										<td>${historico.faixa.variavel.descricao}</td>
 										<c:if test="${historico.faixa.variavel.tipo eq 79}">
@@ -222,7 +225,7 @@
 							<c:forEach items="${paciente.historico}" var="historico">
 								<c:if test="${2 == historico.faixa.variavel.id}">
 									<tr>
-										<td>${historico.dataHistorico}</td>
+										<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 										<td>${historico.fisioterapeuta.nome}</td>
 										<td>${historico.faixa.variavel.descricao}</td>
 										<c:if test="${historico.faixa.variavel.tipo eq 79}">
@@ -340,7 +343,7 @@
 									<c:forEach items="${categoria.variaveis}" var="variavel">
 										<c:if test="${variavel.id == historico.faixa.variavel.id}">
 											<tr>
-												<td>${historico.dataHistorico}</td>
+												<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 												<td>${historico.fisioterapeuta.nome}</td>
 												<td>${historico.faixa.variavel.descricao}</td>
 												<c:if test="${historico.faixa.variavel.tipo eq 79}">

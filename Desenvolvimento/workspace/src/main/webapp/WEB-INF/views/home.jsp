@@ -1,4 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@ page session="false"%>
 <html>
 <head>
@@ -22,7 +24,7 @@
 				<c:forEach items="${pacientesVM}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td>${historico.faixa.descricao}</td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
@@ -49,7 +51,7 @@
 				<c:forEach items="${pacientesDesmame}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
 						>Mostrar</a></td>
@@ -76,7 +78,7 @@
 				<c:forEach items="${pacientesExtubados}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
 						>Mostrar</a></td>
@@ -103,7 +105,7 @@
 				<c:forEach items="${pacientesReintubados}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
 						>Mostrar</a></td>
@@ -131,7 +133,7 @@
 				<c:forEach items="${pacientesUTI}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td>${historico.faixa.descricao}</td>
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
@@ -162,7 +164,7 @@
 				<c:forEach items="${atendimentosRealizados}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
-						<td>${historico.dataHistorico}</td>
+						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td>${historico.fisioterapeuta.nome}</td>
 						<td>${historico.faixa.variavel.descricao}</td>
 						<td>${historico.faixa.descricao}</td>
