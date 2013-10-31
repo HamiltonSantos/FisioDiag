@@ -41,7 +41,7 @@
 								<dd>${ultimoAtendimento.dataHistorico}</dd>
 							</dl>
 							<c:if test="${ultimoAtendimento != null }">
-								<a class="btn btn-danger btn-sm" href="/faddvm/atendimento/${paciente.id}/${ultimoAtendimento.id}/remover">Desfazer</a>
+								<a class="btn btn-danger btn-sm" onclick="myFunction(${ultimoAtendimento.id})">Desfazer</a>
 							</c:if>
 
 						</div>
@@ -357,7 +357,21 @@
 			</div>
 		</c:forEach>
 	</div>
-
+	<script>
+		function myFunction(id) {
+			bootbox
+					.confirm(
+							"Voce tem certeza que quer deseja desfazer essa Atendimento?",
+							function(result) {
+								if (result) {
+									var url =
+											"/faddvm/atendimento/${paciente.id}/"
+													+ id + "/remover";
+									$(location).attr('href', url);
+								}
+							});
+		};
+	</script>
 
 	<script type="text/javascript">
 		$('#myTab a').click(function(e) {

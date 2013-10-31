@@ -34,7 +34,7 @@
 
 	<script>
 		function myFunction(id) {
-			bootbox.confirm("Voce tem certeza que quer deletar essa variavel?", function(result) {
+			bootbox.confirm("Voce tem certeza que quer deletar essa Variável?", function(result) {
 				if(result){
 					var url = "http://localhost:8080/faddvm/variavel/remover/"+id;    
 					$(location).attr('href',url);
