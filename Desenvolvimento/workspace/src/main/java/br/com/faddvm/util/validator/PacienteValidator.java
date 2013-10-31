@@ -28,14 +28,14 @@ public class PacienteValidator implements Validator {
 		p.setNome(p.getNome().trim());
 		p.setNumRegistro(p.getNumRegistro().trim());
 
-		if (p.getNome().length() < 3 || p.getNome().length() > 250) {
-			errors.reject(null, "Nome deve ter no mínimo 3 caracteres e no Maximo 250");
+		if (p.getNome().length() < 3 || p.getNome().length() > 60) {
+			errors.reject(null,
+					"Nome deve ter no mínimo 3 caracteres e no Maximo 60");
 		}
 
-		if (p.getNumRegistro().length() < 3
-				|| p.getNumRegistro().length() > 250) {
+		if (p.getNumRegistro().length() < 3 || p.getNumRegistro().length() > 60) {
 			errors.reject(null,
-					"Número de registro deve ter no mínimo 3 caracteres e no Maximo 250");
+					"Número de registro deve ter no mínimo 3 caracteres e no Maximo 60");
 		}
 
 		if (p.getId() == null) {

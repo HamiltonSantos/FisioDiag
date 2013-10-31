@@ -23,13 +23,13 @@ public class FisioterapeutaValidator implements Validator {
 		fisioterapeuta.setLogin(fisioterapeuta.getLogin().trim());
 
 		if (fisioterapeuta.getLogin().length() < 3
-				|| fisioterapeuta.getLogin().length() > 250) {
-			errors.reject(null, "Login deve ter no mínimo 3 caracteres e no Maximo 250");
+				|| fisioterapeuta.getLogin().length() > 60) {
+			errors.reject(null, "Login deve ter no mínimo 3 caracteres e no Maximo 60");
 		}
 
 		if (fisioterapeuta.getNome().length() < 3
-				|| fisioterapeuta.getNome().length() > 250) {
-			errors.reject(null, "Nome deve ter no mínimo 3 caracteres e no Maximo 250");
+				|| fisioterapeuta.getNome().length() > 60) {
+			errors.reject(null, "Nome deve ter no mínimo 3 caracteres e no Maximo 60");
 		}
 
 		if (!fisioterapeuta.getSenha().equals(fisioterapeuta.getContraSenha())) {
