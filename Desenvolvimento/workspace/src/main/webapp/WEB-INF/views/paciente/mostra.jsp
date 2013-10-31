@@ -134,12 +134,8 @@
 						<tr>
 							<td>${historico.faixa.variavel.descricao}</td>
 							<td>${historico.faixa.descricao}</td>
-<<<<<<< HEAD
 							<td>${historico.valor}</td>
 							<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
-=======
-							<td>${historico.dataHistorico}</td>
->>>>>>> branch 'master' of https://github.com/HamiltonSantos/TCC.git
 							<td>${historico.fisioterapeuta.nome}</td>
 						</tr>
 					</c:forEach>
