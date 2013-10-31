@@ -20,7 +20,7 @@
 				<tr>
 					<td>${faixa.descricao}</td>
 					<td>${faixa.peso}</td>
-					<td><a href="/faddvm/faixaValor/remover/${faixa.id}">Excluir</a></td>
+					<td><a onclick="myFunction(${faixa.id})">Deletar</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -29,6 +29,19 @@
 	<div class="dataTables_scroll"></div>
 	<a href="/faddvm/categoria/${variavel.categoria.id }" class="btn btn-primary">Voltar</a>
 	<a href="/faddvm/faixaValor/nova/${variavel.id}" class="btn btn-primary">Nova Faixa</a>
+
+	<script>
+		function myFunction(id) {
+			bootbox.confirm(
+					"Voce tem certeza que quer deseja deletar essa Faixa?",
+					function(result) {
+						if (result) {
+							var url = "/faddvm/faixaValor/remover/" + id;
+							$(location).attr('href', url);
+						}
+					});
+		};
+	</script>
 
 </body>
 </html>
