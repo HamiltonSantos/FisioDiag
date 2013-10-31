@@ -46,7 +46,7 @@
 		</div>
 
 		<form:hidden path="id" />
-		<input type="submit" class="btn" value="Salvar">
+		<input type="submit" class="btn btn-primary" value="Salvar">
 
 	</form:form>
 

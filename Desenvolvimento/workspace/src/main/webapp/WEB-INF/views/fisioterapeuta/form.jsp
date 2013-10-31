@@ -39,7 +39,7 @@
 		</div>
 		<div class="form-group" align="center">
 			<form:hidden path="id" />
-			<button type="submit" class="btn">
+			<button type="submit" class="btn btn-primary">
 				<span class="glyphicon glyphicon-user"></span> Salvar
 			</button>
 		</div>

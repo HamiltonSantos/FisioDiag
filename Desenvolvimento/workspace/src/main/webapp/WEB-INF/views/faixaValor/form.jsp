@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<form:hidden path="variavel.id" />
-		<input type="submit" class="btn" value="Salvar">
+		<input type="submit" class="btn btn-primary" value="Salvar">
 
 	</form:form>
 

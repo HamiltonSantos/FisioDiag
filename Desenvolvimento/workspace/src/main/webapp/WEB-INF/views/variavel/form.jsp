@@ -29,7 +29,7 @@
 		<form:hidden path="status" />
 		<form:hidden path="id" />
 		<form:hidden path="categoria.id" />
-		<input type="submit" class="btn" value="Salvar">
+		<input type="submit" class="btn btn-primary" value="Salvar">
 
 	</form:form>
 

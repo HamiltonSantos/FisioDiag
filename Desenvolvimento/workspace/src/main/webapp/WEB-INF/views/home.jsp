@@ -125,7 +125,6 @@
 				<tr>
 					<th>Nome Paciente</th>
 					<th>Data</th>
-					<th>Ocorrência</th>
 					<th>Ação</th>
 				</tr>
 			</thead>
@@ -133,8 +132,12 @@
 				<c:forEach items="${pacientesUTI}" begin="0" end="4" var="historico">
 					<tr>
 						<td>${historico.paciente.nome}</td>
+<<<<<<< HEAD
 						<td><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${historico.dataHistorico}" /></td>
 						<td>${historico.faixa.descricao}</td>
+=======
+						<td>${historico.dataHistorico}</td>
+>>>>>>> branch 'master' of https://github.com/HamiltonSantos/TCC.git
 						<td><a href="/faddvm/atendimento/${historico.paciente.id}">Atender</a> <a
 							href="/faddvm/paciente/${historico.paciente.id}"
 						>Mostrar</a></td>
