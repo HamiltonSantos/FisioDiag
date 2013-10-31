@@ -117,8 +117,8 @@
 				<tbody>
 					<c:forEach items="${paciente.historico}" var="historico">
 						<tr>
+							<td>${historico.faixa.variavel.descricao}</td>
 							<td>${historico.faixa.descricao}</td>
-							<td>${historico.valor}</td>
 							<td>${historico.dataHistorico}</td>
 							<td>${historico.fisioterapeuta.nome}</td>
 						</tr>
