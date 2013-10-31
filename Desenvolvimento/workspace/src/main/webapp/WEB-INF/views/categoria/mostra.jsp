@@ -13,7 +13,7 @@
 	<table id="tabela" class="datatable table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Descricao</th>
+				<th>Descrição</th>
 				<th>Tipo</th>
 				<th>Ações</th>
 			</tr>
@@ -30,7 +30,7 @@
 	</table>
 	<div class="dataTables_scroll"></div>
 	<a href="/faddvm/categoria" class="btn btn-primary">Voltar</a>
-	<a href="/faddvm/variavel/nova/${categoria.id}" class="btn btn-primary">Nova Variavel</a>
+	<a href="/faddvm/variavel/nova/${categoria.id}" class="btn btn-primary">Nova Variável</a>
 
 	<script>
 		function myFunction(id) {

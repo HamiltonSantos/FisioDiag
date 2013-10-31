@@ -2,15 +2,15 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Intercorrencia</title>
+<title>Intercorrência</title>
 </head>
 <body>
-	<h1>Intercorrencias</h1>
+	<h1>Intercorrências</h1>
 
 	<table id="tabela" class="datatable table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Descricao</th>
+				<th>Descrição</th>
 				<th>Peso</th>
 			</tr>
 		</thead>

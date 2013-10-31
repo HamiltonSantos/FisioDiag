@@ -9,7 +9,7 @@
 	<table id="tabela" class="datatable table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Descricao</th>
+				<th>Descrição</th>
 				<th>Ação</th>
 			</tr>
 		</thead>
