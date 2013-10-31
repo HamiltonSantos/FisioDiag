@@ -40,6 +40,13 @@ public class Historico implements Serializable {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Historico [id=" + id + ", fisioterapeuta=" + fisioterapeuta
+				+ ", paciente=" + paciente + ", valor=" + valor + ", faixa="
+				+ faixa + ", dataHistorico=" + dataHistorico + "]";
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}

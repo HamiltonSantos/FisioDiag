@@ -61,4 +61,10 @@ public class Categoria implements Serializable {
 		this.variaveis = variaveis;
 	}
 
+	@Override
+	public String toString() {
+		return "Categoria [id=" + id + ", descricao=" + descricao + ", status="
+				+ status + ", variaveis=" + variaveis + "]";
+	}
+
 }

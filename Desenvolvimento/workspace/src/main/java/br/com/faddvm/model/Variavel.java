@@ -46,6 +46,14 @@ public class Variavel implements Serializable {
 		this.valorMin = valorMin;
 	}
 
+	@Override
+	public String toString() {
+		return "Variavel [id=" + id + ", descricao=" + descricao + ", tipo="
+				+ tipo + ", status=" + status + ", categoria=" + categoria
+				+ ", faixaValores=" + faixaValores + ", valorMin=" + valorMin
+				+ ", valorMax=" + valorMax + "]";
+	}
+
 	public Integer getValorMax() {
 		return valorMax;
 	}

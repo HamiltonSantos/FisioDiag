@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +28,15 @@ import br.com.faddvm.util.validator.CategoriaValidator;
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(CategoriaController.class);
+
+	@ExceptionHandler(Exception.class)
+	public String handleExceptions(Exception anExc) {
+		logger.error("Exception", anExc);
+		return "redirect:/erro";
+	}
 
 	@Autowired
 	@Qualifier("hibernateCategoriaDao")
@@ -49,6 +61,7 @@ public class CategoriaController {
 		categoriaDao.salvar(categoria);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Categoria cadastrada com Sucesso");
+		logger.info("Categoria salva", categoria);
 		return "redirect:/categoria/" + categoria.getId();
 	}
 
@@ -100,6 +113,7 @@ public class CategoriaController {
 			return "redirect:/categoria";
 		}
 
+		logger.info("Categoria removida", categoria);
 		categoriaDao.remover(categoria);
 		rAttributes.addFlashAttribute("msgSucesso", "Categoria deletada.");
 

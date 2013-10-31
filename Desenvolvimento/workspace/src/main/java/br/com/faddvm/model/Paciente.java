@@ -43,6 +43,14 @@ public class Paciente implements Serializable {
 			+ "and h.paciente_id = id)")
 	private Integer pontos;
 
+	@Override
+	public String toString() {
+		return "Paciente [id=" + id + ", nome=" + nome + ", historico="
+				+ historico + ", cpf=" + cpf + ", sexo=" + sexo
+				+ ", numRegistro=" + numRegistro + ", dataNascimento="
+				+ dataNascimento + ", pontos=" + pontos + "]";
+	}
+
 	public Long getId() {
 		return id;
 	}

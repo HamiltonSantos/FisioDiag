@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,15 @@ import br.com.faddvm.util.validator.FaixaValorValidator;
 @Controller
 @RequestMapping("/intercorrencia")
 public class IntercorrenciaController {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(IntercorrenciaController.class);
+
+	@ExceptionHandler(Exception.class)
+	public String handleExceptions(Exception anExc) {
+		logger.error("Exception", anExc);
+		return "redirect:/erro";
+	}
 
 	@Autowired
 	@Qualifier("hibernateFaixaValorDao")
@@ -58,6 +70,7 @@ public class IntercorrenciaController {
 			return "/intercorrencia/form";
 		}
 
+		logger.info("Intercorrencia Salva", intercorrencia);
 		faixaValorDao.salvar(intercorrencia);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Indice cadastrado com Sucesso");

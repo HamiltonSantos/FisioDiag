@@ -32,6 +32,13 @@ public class FaixaValor implements Serializable {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "FaixaValor [id=" + id + ", valorMin=" + valorMin
+				+ ", valorMax=" + valorMax + ", peso=" + peso + ", descricao="
+				+ descricao + ", variavel=" + variavel + "]";
+	}
+
 	public Integer getValorMin() {
 		return valorMin;
 	}

@@ -26,6 +26,13 @@ public class ValorAtendimento {
 		this.dataHistorico = dataHistorico;
 	}
 
+	@Override
+	public String toString() {
+		return "ValorAtendimento [faixaId=" + faixaId + ", variavelId="
+				+ variavelId + ", valor=" + valor + ", dataHistorico="
+				+ dataHistorico + "]";
+	}
+
 	public Long getFaixaId() {
 		return faixaId;
 	}

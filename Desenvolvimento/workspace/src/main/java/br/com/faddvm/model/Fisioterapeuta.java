@@ -31,6 +31,13 @@ public class Fisioterapeuta implements Serializable {
 		this.contraSenha = contraSenha;
 	}
 
+	@Override
+	public String toString() {
+		return "Fisioterapeuta [id=" + id + ", login=" + login + ", senha="
+				+ senha + ", nome=" + nome + ", contraSenha=" + contraSenha
+				+ "]";
+	}
+
 	public Long getId() {
 		return id;
 	}

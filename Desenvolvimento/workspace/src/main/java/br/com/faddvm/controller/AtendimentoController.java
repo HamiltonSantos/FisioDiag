@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +38,15 @@ import br.com.faddvm.util.validator.HistoricoValidator;
 @RequestMapping("/atendimento/{pacienteId}")
 @Transactional
 public class AtendimentoController {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(AtendimentoController.class);
+
+	@ExceptionHandler(Exception.class)
+	public String handleExceptions(Exception anExc) {
+		logger.error("Exception", anExc);
+		return "redirect:/erro";
+	}
 
 	@Autowired
 	@Qualifier("hibernatePacienteDao")
@@ -121,10 +133,10 @@ public class AtendimentoController {
 			return "redirect:/atendimento/" + pacienteId;
 		}
 
+		logger.info("Atendimento Desfeito", atendimento);
 		pacienteDao.removerAtendimento(atendimento);
 
 		rAttributes.addFlashAttribute("msgSucesso", "Atendimento desfeito.");
-
 		return "redirect:/atendimento/" + pacienteId;
 	}
 
@@ -173,6 +185,7 @@ public class AtendimentoController {
 		pacienteDao.salvar(paciente);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Atendimento cadastrado com Sucesso");
+		logger.info("Atendimento Salvo", historico);
 		return "redirect:/atendimento/" + pacienteId;
 	}
 

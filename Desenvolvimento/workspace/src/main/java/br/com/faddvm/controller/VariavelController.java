@@ -2,6 +2,8 @@ package br.com.faddvm.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +28,15 @@ import br.com.faddvm.util.validator.VariavelValidator;
 @Controller
 @RequestMapping("/variavel")
 public class VariavelController {
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(VariavelController.class);
+
+	@ExceptionHandler(Exception.class)
+	public String handleExceptions(Exception anExc) {
+		logger.error("Exception", anExc);
+		return "redirect:/erro";
+	}
 
 	@Autowired
 	@Qualifier("hibernateCategoriaDao")
@@ -95,6 +107,7 @@ public class VariavelController {
 			return "redirect:/categoria/" + categoriaId;
 		}
 
+		logger.info("Removendo variavel", variavel);
 		variavelDao.remove(variavel);
 		rAttributes.addFlashAttribute("msgSucesso", "Váriavel deletada.");
 
@@ -115,6 +128,7 @@ public class VariavelController {
 			return "/variavel/form";
 		}
 
+		logger.info("Variavel salva", variavel);
 		variavelDao.salvar(variavel);
 		rAttributes.addFlashAttribute("msgSucesso",
 				"Variavel cadastrada com Sucesso");

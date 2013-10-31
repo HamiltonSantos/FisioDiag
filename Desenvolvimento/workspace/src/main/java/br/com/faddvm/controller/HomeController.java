@@ -1,5 +1,7 @@
 package br.com.faddvm.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,7 +29,7 @@ public class HomeController {
 
 	@ExceptionHandler(Exception.class)
 	public String handleExceptions(Exception anExc) {
-		logger.error("Exception");
+		logger.error("Exception", anExc);
 		return "redirect:/erro";
 	}
 
@@ -61,6 +63,7 @@ public class HomeController {
 		Fisioterapeuta loginFisioterapeuta = fisioterapeutaDao
 				.validaLogin(fisioterapeuta);
 		if (loginFisioterapeuta != null) {
+			logger.info("Fisioterapeuta Login", loginFisioterapeuta);
 			session.setAttribute("fisioterapeutaLogado", loginFisioterapeuta);
 			return "redirect:/";
 		}
@@ -90,6 +93,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/erro", method = RequestMethod.GET)
 	public String erro() {
+		logger.info("Erro", new Date());
 		return "erro";
 	}
 
