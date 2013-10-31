@@ -3,6 +3,7 @@ package br.com.faddvm.dao.impl;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.faddvm.dao.FisioterapeutaDao;
 import br.com.faddvm.model.Fisioterapeuta;
+import br.com.faddvm.model.Historico;
 
 @Repository
 public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
@@ -97,5 +99,100 @@ public class HibernateFisioterapeutaDao implements FisioterapeutaDao {
 
 		}
 		return fisioterapeuta;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Historico> getAtendimentosFisioterapeuta(
+			Fisioterapeuta fisioterapeuta) {
+		List<Historico> historico = null;
+		String sql = "From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.variavel.id != 1 and h.faixa.variavel.id != 2 order by h.dataHistorico DESC ";
+
+		historico = manager.createQuery(sql)
+				.setParameter(1, fisioterapeuta.getId()).getResultList();
+		if (historico == null) {
+			historico = new ArrayList<Historico>();
+		}
+		return historico;
+	}
+
+	@Override
+	public Long getNumeroAtendimentos(Fisioterapeuta fisioterapeuta) {
+		Long result = null;
+		Query query = manager
+				.createQuery(
+						"select count(h.id) From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.variavel.id != 1 and h.faixa.variavel.id != 2")
+				.setParameter(1, fisioterapeuta.getId());
+
+		try {
+			result = (Long) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return result;
+	}
+
+	@Override
+	public Long getNumeroDesmames(Fisioterapeuta fisioterapeuta) {
+		Long result = null;
+		Query query = manager
+				.createQuery(
+						"select count(h.id) From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.id = 4")
+				.setParameter(1, fisioterapeuta.getId());
+
+		try {
+			result = (Long) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return result;
+	}
+
+	@Override
+	public Long getNumeroExtubacoes(Fisioterapeuta fisioterapeuta) {
+		Long result = null;
+		Query query = manager
+				.createQuery(
+						"select count(h.id) From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.id = 5")
+				.setParameter(1, fisioterapeuta.getId());
+
+		try {
+			result = (Long) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return result;
+	}
+
+	@Override
+	public Long getNumeroReintubacoes(Fisioterapeuta fisioterapeuta) {
+		Long result = null;
+		Query query = manager
+				.createQuery(
+						"select count(h.id) From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.id = 6")
+				.setParameter(1, fisioterapeuta.getId());
+
+		try {
+			result = (Long) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return result;
+	}
+
+	@Override
+	public Long getNumeroIntubacoes(Fisioterapeuta fisioterapeuta) {
+		Long result = null;
+		Query query = manager
+				.createQuery(
+						"select count(h.id) From Historico h where h.fisioterapeuta.id = ?1 and h.faixa.id = 3")
+				.setParameter(1, fisioterapeuta.getId());
+
+		try {
+			result = (Long) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+		return result;
 	}
 }

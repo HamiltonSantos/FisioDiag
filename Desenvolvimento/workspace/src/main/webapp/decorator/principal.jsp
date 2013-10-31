@@ -12,7 +12,7 @@
 <link href="/faddvm/webjars/jqplot/1.0.8r1250/jquery.jqplot.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datetimepicker/6aa746736d/css/datetimepicker.css" rel="stylesheet" media="screen">
 <link href="/faddvm/webjars/bootstrap-datepicker/1.2.0/css/datepicker.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="/faddvm/resources/css/datatables.css" media="screen">
+<link href="/faddvm/resources/css/datatables.css" rel="stylesheet" media="screen">
 <script type="text/javascript" src="/faddvm/webjars/jquery/1.10.2/jquery.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/faddvm/webjars/bootstrap/3.0.0-rc.2/js/bootstrap.js" charset="UTF-8"></script>
 <script type="text/javascript" src="/faddvm/webjars/datatables/1.9.4/media/js/jquery.dataTables.js" charset="UTF-8"></script>
@@ -130,9 +130,9 @@
 																		'.dataTables_wrapper')
 																.find(
 																		'div[id$=_filter] input');
-												search_input
-														.attr('placeholder',
-																'Pesquisar');
+												search_input.attr(
+														'placeholder',
+														'Pesquisar');
 												search_input
 														.addClass('form-control input-sm');
 												// LENGTH - Inline-Form control

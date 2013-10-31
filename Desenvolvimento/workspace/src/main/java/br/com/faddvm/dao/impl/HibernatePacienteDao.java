@@ -60,7 +60,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		String sqlQuery = "select h.*, f.peso "
 				+ "from faddvm.Historico h, faddvm.FaixaValor f "
 				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh, faddvm.FaixaValor ff, faddvm.Variavel vv "
-				+ "where hh.paciente_id = ?1 and hh.faixa_id = ff.id and ff.variavel_id = vv.id group by vv.id) "
+				+ "where hh.paciente_id = ?1 and hh.faixa_id = ff.id and vv.id != 1 and vv.id != 2 and ff.variavel_id = vv.id group by vv.id) "
 				+ "and h.faixa_id = f.id "
 				+ "and h.valor between f.valorMin and f.valorMax "
 				+ "and h.paciente_id = ?1 " + "order by f.peso desc";
@@ -377,6 +377,71 @@ public class HibernatePacienteDao implements PacienteDao {
 			historico = new ArrayList<Historico>();
 		}
 		return historico;
+	}
+
+	@Override
+	public Historico getSaidaUTIRecente(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h "
+								+ "where h.faixa.id = 2 and h.paciente.id = ?1 "
+								+ "and h.dataHistorico = (select max(hh.dataHistorico) from Historico hh where hh.paciente.id = ?1 and hh.faixa.id = 2)")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getUltimoAtendimento(Paciente paciente) {
+		Historico historico = null;
+
+		Query query = manager
+				.createQuery(
+						"From Historico h where h.id = "
+								+ "(select max(h1.id) from Historico h1 where h1.paciente.id = ?1)")
+				.setParameter(1, paciente.getId());
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return historico;
+	}
+
+	@Override
+	public Historico getAtendimento(Long atendimentoId) {
+		Historico historico = null;
+
+		Query query = manager.createQuery("From Historico h where h.id = ?1")
+				.setParameter(1, atendimentoId);
+
+		try {
+			historico = (Historico) query.getSingleResult();
+		} catch (NoResultException ex) {
+
+		}
+
+		return historico;
+	}
+
+	@Override
+	public void removerAtendimento(Historico historico) {
+
+		Query query = manager.createQuery("delete Historico where id = ?1")
+				.setParameter(1, historico.getId());
+
+		query.executeUpdate();
+
 	}
 
 }

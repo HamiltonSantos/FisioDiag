@@ -82,7 +82,50 @@ public class AtendimentoController {
 		model.addAttribute("intercorrencias",
 				faixaValorDao.listaIntercorrencias());
 
+		model.addAttribute("ultimoAtendimento",
+				pacienteDao.getUltimoAtendimento(paciente));
+
 		return "/atendimento/home";
+	}
+
+	@RequestMapping(value = "/{atendimentoId}/remover ", method = RequestMethod.GET)
+	public String removerAtendimento(@PathVariable Long pacienteId,
+			@PathVariable Long atendimentoId, RedirectAttributes rAttributes) {
+
+		Paciente paciente = pacienteDao.get(pacienteId);
+
+		if (paciente == null) {
+			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
+			return "redirect:/paciente";
+		}
+
+		Historico atendimento = pacienteDao.getAtendimento(atendimentoId);
+
+		if (atendimento == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Atendimento não encontrado");
+			return "redirect:/atendimento/" + pacienteId;
+		}
+		Historico ultimoAtendimento = pacienteDao
+				.getUltimoAtendimento(paciente);
+
+		if (ultimoAtendimento == null) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Não é possivel realizar essa operação");
+			return "redirect:/atendimento/" + pacienteId;
+		}
+
+		if (ultimoAtendimento.getId() != atendimento.getId()) {
+			rAttributes.addFlashAttribute("msgErro",
+					"Só é possivel desfazer o ultimo Atendimento");
+			return "redirect:/atendimento/" + pacienteId;
+		}
+
+		pacienteDao.removerAtendimento(atendimento);
+
+		rAttributes.addFlashAttribute("msgSucesso", "Atendimento desfeito.");
+
+		return "redirect:/atendimento/" + pacienteId;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -117,8 +160,8 @@ public class AtendimentoController {
 			historico.setValor(valorAtendimento.getValor());
 		}
 
-		ValidationUtils.invokeValidator(new HistoricoValidator(pacienteDao), historico,
-				errors);
+		ValidationUtils.invokeValidator(new HistoricoValidator(pacienteDao),
+				historico, errors);
 
 		if (errors.hasErrors()) {
 			rAttributes.addFlashAttribute("msgErro", errors.getGlobalError()
@@ -133,22 +176,4 @@ public class AtendimentoController {
 		return "redirect:/atendimento/" + pacienteId;
 	}
 
-	@RequestMapping(value = "/detalhe")
-	public String detalhe(@PathVariable Long pacienteId, Model model,
-			RedirectAttributes rAttributes) {
-
-		Paciente paciente = pacienteDao.get(pacienteId);
-
-		if (paciente == null) {
-			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
-			return "redirect:/paciente";
-		}
-		model.addAttribute("paciente", paciente);
-		model.addAttribute("indicacao",
-				pacienteDao.getIndicacaoPaciente(paciente));
-		model.addAttribute("historicoIndicacao",
-				pacienteDao.getHistoricoIndicacao(paciente));
-
-		return "/atendimento/detalhe";
-	}
 }

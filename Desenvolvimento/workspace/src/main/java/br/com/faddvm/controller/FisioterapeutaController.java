@@ -82,6 +82,18 @@ public class FisioterapeutaController {
 		}
 
 		model.addAttribute("fisioterapeuta", fisioterapeuta);
+		model.addAttribute("atendimentos",
+				fisioterapeutaDao.getAtendimentosFisioterapeuta(fisioterapeuta));
+		model.addAttribute("numAtendimentos",
+				fisioterapeutaDao.getNumeroAtendimentos(fisioterapeuta));
+		model.addAttribute("numDesmames",
+				fisioterapeutaDao.getNumeroDesmames(fisioterapeuta));
+		model.addAttribute("numExtubacoes",
+				fisioterapeutaDao.getNumeroDesmames(fisioterapeuta));
+		model.addAttribute("numReintubacoes",
+				fisioterapeutaDao.getNumeroReintubacoes(fisioterapeuta));
+		model.addAttribute("numIntubacoes",
+				fisioterapeutaDao.getNumeroIntubacoes(fisioterapeuta));
 
 		return "/fisioterapeuta/mostra";
 	}

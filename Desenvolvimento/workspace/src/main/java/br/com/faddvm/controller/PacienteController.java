@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.faddvm.dao.PacienteDao;
+import br.com.faddvm.model.Historico;
 import br.com.faddvm.model.Paciente;
 import br.com.faddvm.util.validator.PacienteValidator;
 
@@ -75,11 +76,38 @@ public class PacienteController {
 			RedirectAttributes rAttributes) {
 
 		Paciente paciente = dao.get(pacienteId);
+
 		if (paciente == null) {
 			rAttributes.addFlashAttribute("msgErro", "Paciente não encontrado");
 			return "redirect:/paciente";
 		}
+
+		Historico entradaUTI = dao.getEntradaUTIRecente(paciente);
+		Historico inicioVM = dao.getEntradaVMRecente(paciente);
+		Historico inicioDesmame = dao.getDesmameRecente(paciente);
+		Historico dataExtubacao = dao.getExtubacaoRecente(paciente);
+		Historico dataReintubacao = dao.getReintubacaoRecente(paciente);
+		Historico dataSaidaUTI = dao.getSaidaUTIRecente(paciente);
+
 		model.addAttribute("paciente", paciente);
+		model.addAttribute("entradaUTI", (entradaUTI == null) ? null
+				: entradaUTI.getDataHistorico());
+		model.addAttribute("inicioVM",
+				(inicioVM == null) ? null : inicioVM.getDataHistorico());
+		model.addAttribute("inicioDesmame", (inicioDesmame == null) ? null
+				: inicioDesmame.getDataHistorico());
+		model.addAttribute("dataExtubacao", (dataExtubacao == null) ? null
+				: dataExtubacao.getDataHistorico());
+		model.addAttribute("dataReintubacao", (dataReintubacao == null) ? null
+				: dataReintubacao.getDataHistorico());
+		model.addAttribute("dataSaidaUTI", (dataSaidaUTI == null) ? null
+				: dataSaidaUTI.getDataHistorico());
+
+		model.addAttribute("historicoIndicacao",
+				dao.getHistoricoIndicacao(paciente));
+		model.addAttribute("indicacaoPaciente",
+				dao.getIndicacaoPaciente(paciente));
+
 		return "/paciente/mostra";
 	}
 

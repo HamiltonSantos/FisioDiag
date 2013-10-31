@@ -8,18 +8,47 @@
 <body>
 	<div class="panel">
 		<div class="panel-body">
-			<p>
-				<strong>Paciente:</strong> ${paciente.nome}
-			</p>
-			<p>
-				<strong>Pontos:</strong> ${paciente.pontos}
-			</p>
-			<p>
-				<strong>Indicação:</strong> ${indicacao.descricao}
-			</p>
-			<p>
-				<a href="/faddvm/atendimento/${paciente.id}/detalhe">Ver detalhes indicação</a>
-			</p>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Paciente</div>
+						<div class="panel-body">
+							<dl class="dl-horizontal">
+								<dt>Nome</dt>
+								<dd>${paciente.nome}</dd>
+								<dt>Pontos</dt>
+								<dd>${paciente.pontos}</dd>
+								<dt>Indicação</dt>
+								<dd>${indicacao.descricao}</dd>
+								<dd>
+									<a href="/faddvm/paciente/${paciente.id}">Mais informações</a>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Ultimo Atendimento</div>
+						<div class="panel-body">
+							<dl class="dl-horizontal">
+								<dt>Descrição</dt>
+								<dd>${ultimoAtendimento.faixa.descricao}</dd>
+								<dt>Fisioterapeuta</dt>
+								<dd>${ultimoAtendimento.fisioterapeuta.nome}</dd>
+								<dt>Data</dt>
+								<dd>${ultimoAtendimento.dataHistorico}</dd>
+							</dl>
+							<c:if test="${ultimoAtendimento != null }">
+								<a class="btn btn-danger btn-sm" href="/faddvm/atendimento/${paciente.id}/${ultimoAtendimento.id}/remover">Desfazer</a>
+							</c:if>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 	</div>
 	<ul id="myTab" class="nav nav-tabs nav-justified">
@@ -218,60 +247,64 @@
 
 					<div class="panel-body">
 
-						<div>
+						<div class="row">
 							<c:forEach items="${categoria.variaveis}" var="variavel">
 								<c:if test="${variavel.tipo eq 79}">
-									<div class="panel panel-default">
-										<div class="panel-heading">${variavel.descricao}</div>
-										<div class="panel-body">
-											<form class="form-inline" action="/faddvm/atendimento/${paciente.id}" method="post">
-												<div class="form-group">
-													<select name="faixaId" class="form-control">
-														<c:forEach items="${variavel.faixaValores}" var="faixa">
-															<option value="${faixa.id}">${faixa.descricao}</option>
-														</c:forEach>
-													</select>
-												</div>
-												<input type="submit" class="btn" value="Salvar">
-											</form>
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-heading">${variavel.descricao}</div>
+											<div class="panel-body">
+												<form class="form-inline" action="/faddvm/atendimento/${paciente.id}" method="post">
+													<div class="form-group">
+														<select name="faixaId" class="form-control">
+															<c:forEach items="${variavel.faixaValores}" var="faixa">
+																<option value="${faixa.id}">${faixa.descricao}</option>
+															</c:forEach>
+														</select>
+													</div>
+													<input type="submit" class="btn" value="Salvar">
+												</form>
+											</div>
 										</div>
 									</div>
+
 								</c:if>
 
 								<c:if test="${variavel.tipo eq 82}">
-									<div class="panel panel-default">
-										<div class="panel-heading">${variavel.descricao}</div>
-										<div class="panel-body">
-											<form action="/faddvm/atendimento/${paciente.id}" method="post">
-												<div id="div_var_${variavel.id}"></div>
-												<input type="text" readonly="readonly" id="var_${variavel.id}" name="valor"> <input type="hidden"
-													name="variavelId" value="${variavel.id}"
-												> <input type="submit" class="btn" value="Salvar"> <br>
-												<!-- Cria o spnnier para cada input  -->
-												<script type="text/javascript">
-													$(function() {
-														$(
-																"#div_var_${variavel.id}")
-																.slider(
-																		{
-																		min : parseInt("${variavel.valorMin}"),
-																		max : parseInt("${variavel.valorMax}"),
-																		slide : function(
-																				event,
-																				ui) {
-																			$(
-																					"#var_${variavel.id}")
-																					.val(
-																							ui.value);
-																		}
-																		});
-													});
-												</script>
-												<!-- Fim do scpript spinner -->
-											</form>
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-heading">${variavel.descricao}</div>
+											<div class="panel-body">
+												<form action="/faddvm/atendimento/${paciente.id}" method="post">
+													<div id="div_var_${variavel.id}"></div>
+													<input type="text" readonly="readonly" id="var_${variavel.id}" name="valor"> <input type="hidden"
+														name="variavelId" value="${variavel.id}"
+													> <input type="submit" class="btn" value="Salvar"> <br>
+													<!-- Cria o spnnier para cada input  -->
+													<script type="text/javascript">
+														$(function() {
+															$(
+																	"#div_var_${variavel.id}")
+																	.slider(
+																			{
+																			min : parseInt("${variavel.valorMin}"),
+																			max : parseInt("${variavel.valorMax}"),
+																			slide : function(
+																					event,
+																					ui) {
+																				$(
+																						"#var_${variavel.id}")
+																						.val(
+																								ui.value);
+																			}
+																			});
+														});
+													</script>
+													<!-- Fim do scpript spinner -->
+												</form>
+											</div>
 										</div>
 									</div>
-
 								</c:if>
 							</c:forEach>
 						</div>

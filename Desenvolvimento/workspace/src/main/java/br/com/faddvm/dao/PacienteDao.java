@@ -24,6 +24,8 @@ public interface PacienteDao {
 
 	Historico getEntradaUTIRecente(Paciente paciente);
 
+	Historico getSaidaUTIRecente(Paciente paciente);
+
 	Historico getEntradaSaidaRecente(Paciente paciente);
 
 	Historico getEntradaVMRecente(Paciente paciente);
@@ -35,6 +37,10 @@ public interface PacienteDao {
 	Historico getReintubacaoRecente(Paciente paciente);
 
 	Historico getMorreu(Paciente paciente);
+	
+	Historico getUltimoAtendimento(Paciente paciente);
+	
+	Historico getAtendimento(Long atendimentoId);
 
 	List<Historico> getPacientesVM();
 
@@ -47,4 +53,7 @@ public interface PacienteDao {
 	List<Historico> getPacientesUTI();
 
 	List<Historico> getUltimosAtendimentos();
+	
+	void removerAtendimento(Historico historico);
+
 }
