@@ -129,7 +129,7 @@
 								</c:forEach>
 							</select>
 						</div>
-						<input type="submit" class="btn" value="Salvar">
+						<input type="submit" class="btn btn-primary" value="Salvar">
 					</form>
 				</div>
 			</div>
@@ -199,7 +199,7 @@
 								</c:forEach>
 							</select>
 						</div>
-						<input type="submit" class="btn" value="Salvar">
+						<input type="submit" class="btn btn-primary" value="Salvar">
 					</form>
 				</div>
 			</div>
@@ -270,7 +270,7 @@
 															</c:forEach>
 														</select>
 													</div>
-													<input type="submit" class="btn" value="Salvar">
+													<input type="submit" class="btn btn-primary" value="Salvar">
 												</form>
 											</div>
 										</div>
@@ -287,7 +287,7 @@
 													<div id="div_var_${variavel.id}"></div>
 													<input type="text" readonly="readonly" id="var_${variavel.id}" name="valor"> <input type="hidden"
 														name="variavelId" value="${variavel.id}"
-													> <input type="submit" class="btn" value="Salvar"> <br>
+													> <input type="submit" class="btn btn-primary" value="Salvar"> <br>
 													<!-- Cria o spnnier para cada input  -->
 													<script type="text/javascript">
 														$(function() {
