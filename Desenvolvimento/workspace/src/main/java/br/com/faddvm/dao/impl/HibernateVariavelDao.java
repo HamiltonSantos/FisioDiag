@@ -36,8 +36,9 @@ public class HibernateVariavelDao implements VariavelDao {
 
 	@Override
 	public void remove(Variavel variavel) {
-		Query query = manager.createQuery("delete from Variavel where id = ?1").setParameter(1, variavel.getId());
-		
+		Query query = manager.createQuery("delete from Variavel where id = ?1")
+				.setParameter(1, variavel.getId());
+
 		query.executeUpdate();
 	}
 
@@ -53,5 +54,21 @@ public class HibernateVariavelDao implements VariavelDao {
 		faixas = query.getResultList();
 
 		return faixas;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Variavel> getVariaveisCategoriaByName(Variavel variavel) {
+		List<Variavel> variaveis = null;
+
+		Query query = manager
+				.createQuery(
+						"from Variavel v where v.descricao = ?1 and v.categoria.id = ?2")
+				.setParameter(1, variavel.getDescricao())
+				.setParameter(2, variavel.getCategoria().getId());
+
+		variaveis = query.getResultList();
+
+		return variaveis;
 	}
 }

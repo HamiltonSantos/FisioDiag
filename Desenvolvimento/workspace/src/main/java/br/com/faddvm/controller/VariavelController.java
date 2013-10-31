@@ -108,8 +108,8 @@ public class VariavelController {
 		Categoria categoria = categoriaDao.get(variavel.getCategoria().getId());
 		variavel.setCategoria(categoria);
 
-		ValidationUtils.invokeValidator(new VariavelValidator(), variavel,
-				result);
+		ValidationUtils.invokeValidator(new VariavelValidator(variavelDao),
+				variavel, result);
 
 		if (result.hasErrors()) {
 			return "/variavel/form";

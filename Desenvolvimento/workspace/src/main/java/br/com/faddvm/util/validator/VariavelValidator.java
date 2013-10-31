@@ -1,11 +1,16 @@
 package br.com.faddvm.util.validator;
 
+import java.util.List;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import br.com.faddvm.dao.VariavelDao;
 import br.com.faddvm.model.Variavel;
 
 public class VariavelValidator implements Validator {
+
+	VariavelDao dao;
 
 	@Override
 	public boolean supports(Class<?> classe) {
@@ -19,8 +24,8 @@ public class VariavelValidator implements Validator {
 
 		variavel.setDescricao(variavel.getDescricao().trim());
 
-		if (variavel.getDescricao().length() < 3
-				|| variavel.getDescricao().length() > 250) {
+		if (variavel.getDescricao().length() < 2
+				|| variavel.getDescricao().length() > 30) {
 			errors.reject(null, "Descrição deve ter no mínimo 3 caracteres");
 		}
 
@@ -32,6 +37,19 @@ public class VariavelValidator implements Validator {
 			errors.reject(null, "Tipo é obrigatório");
 		}
 
+		List<Variavel> variaveisByName = dao
+				.getVariaveisCategoriaByName(variavel);
+
+		if (variaveisByName != null && variaveisByName.size() > 0) {
+			errors.reject(null,
+					"Já existe uma Váriavel com esse nome nessa Categoria.");
+		}
+
+	}
+
+	public VariavelValidator(VariavelDao dao) {
+		super();
+		this.dao = dao;
 	}
 
 }

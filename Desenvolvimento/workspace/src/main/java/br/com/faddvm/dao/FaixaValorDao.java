@@ -24,4 +24,6 @@ public interface FaixaValorDao {
 	FaixaValor getByValor(Long valor, Long variavelId);
 
 	List<Historico> getHistoricoByFaixa(FaixaValor faixaValor);
+
+	List<FaixaValor> getFaixasVariavelByName(FaixaValor faixa);
 }

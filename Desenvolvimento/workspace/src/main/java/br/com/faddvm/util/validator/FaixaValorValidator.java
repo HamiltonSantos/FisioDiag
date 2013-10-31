@@ -1,5 +1,7 @@
 package br.com.faddvm.util.validator;
 
+import java.util.List;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -9,6 +11,7 @@ import br.com.faddvm.model.FaixaValor;
 public class FaixaValorValidator implements Validator {
 
 	FaixaValorDao dao;
+
 	@Override
 	public boolean supports(Class<?> classe) {
 		return FaixaValor.class.equals(classe);
@@ -28,7 +31,7 @@ public class FaixaValorValidator implements Validator {
 		}
 
 	}
-	
+
 	public FaixaValorValidator(FaixaValorDao dao) {
 		super();
 		this.dao = dao;
@@ -37,10 +40,12 @@ public class FaixaValorValidator implements Validator {
 	private boolean validaFaixa(FaixaValor f, Errors e) {
 
 		if (f.getId() == null) {
-			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(1)) != null && f.getVariavel().getId() == 1) {
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(1)) != null
+					&& f.getVariavel().getId() == 1) {
 				e.reject(null, "Esta ocorrência já existe");
 			}
-			if (dao.getByDescricaoAndVariavel(f.getDescricao(),new Long(2)) != null && f.getVariavel().getId() == 2) {
+			if (dao.getByDescricaoAndVariavel(f.getDescricao(), new Long(2)) != null
+					&& f.getVariavel().getId() == 2) {
 				e.reject(null, "Esta intercorrência já existe");
 			}
 
@@ -96,13 +101,20 @@ public class FaixaValorValidator implements Validator {
 			return true;
 		}
 		f.setDescricao(f.getDescricao().trim());
-		if (f.getDescricao().length() < 3 || f.getDescricao().length() > 250) {
-			e.reject(null, "Descrição deve ter 3 caracteres ou mais");
+		if (f.getDescricao().length() < 2 || f.getDescricao().length() > 40) {
+			e.reject(null, "Descrição deve ter 2 caracteres e no maximo 40.");
+			return true;
+		}
+
+		List<FaixaValor> faixasByName = dao.getFaixasVariavelByName(f);
+		if (faixasByName != null && faixasByName.size() > 0) {
+			e.reject(null, "Já existe uma faixa com esse nome nessa Váriavel.");
 			return true;
 		}
 
 		return false;
 	}
+
 	private boolean validaRange(FaixaValor faixa, Errors errors) {
 		Integer vValorMin = faixa.getVariavel().getValorMin();
 		Integer vValorMax = faixa.getVariavel().getValorMax();

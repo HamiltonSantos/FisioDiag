@@ -115,4 +115,19 @@ public class HibernateFaixaValorDao implements FaixaValorDao {
 		historico = query.getResultList();
 		return historico;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<FaixaValor> getFaixasVariavelByName(FaixaValor faixa) {
+		List<FaixaValor> faixas = null;
+
+		Query query = manager
+				.createQuery(
+						"From FaixaValor f where f.descricao = ?1 and f.variavel.id = ?2")
+				.setParameter(1, faixa.getDescricao())
+				.setParameter(2, faixa.getVariavel().getId());
+
+		faixas = query.getResultList();
+
+		return faixas;
+	}
 }

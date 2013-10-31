@@ -14,4 +14,6 @@ public interface VariavelDao {
 	void remove(Variavel variavel);
 
 	List<FaixaValor> getFaixasByVariavel(Variavel variavel);
+	
+	List<Variavel> getVariaveisCategoriaByName(Variavel variavel);
 }
