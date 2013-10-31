@@ -19,8 +19,8 @@ public class VariavelValidator implements Validator {
 
 		variavel.setDescricao(variavel.getDescricao().trim());
 
-		if (variavel.getDescricao().length() < 3
-				|| variavel.getDescricao().length() > 250) {
+		if (variavel.getDescricao().length() < 2
+				|| variavel.getDescricao().length() > 30) {
 			errors.reject(null, "Descrição deve ter no mínimo 3 caracteres");
 		}
 

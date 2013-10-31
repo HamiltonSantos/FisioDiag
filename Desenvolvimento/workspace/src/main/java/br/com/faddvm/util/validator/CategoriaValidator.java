@@ -21,8 +21,8 @@ public class CategoriaValidator implements Validator {
 
 		cat.setDescricao(cat.getDescricao().trim());
 
-		if (cat.getDescricao().length() < 3
-				|| cat.getDescricao().length() > 250) {
+		if (cat.getDescricao().length() < 2
+				|| cat.getDescricao().length() > 30) {
 			errors.reject(null, "Descrição deve ter no mínimo 3 caracteres");
 		}
 
