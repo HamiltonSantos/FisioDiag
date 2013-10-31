@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+s<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -26,7 +26,7 @@
 
 	<div class="dataTables_scroll"></div>
 
-	<a href="/faddvm/ocorrencia/nova" class="btn btn-primary">Nova</a>
+<!-- 	<a href="/faddvm/ocorrencia/nova" class="btn btn-primary">Nova</a> -->
 
 </body>
 </html>
