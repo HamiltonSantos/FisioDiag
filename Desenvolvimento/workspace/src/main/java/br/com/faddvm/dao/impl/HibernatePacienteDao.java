@@ -353,7 +353,7 @@ public class HibernatePacienteDao implements PacienteDao {
 		String sql = "select h.* from faddvm.Historico h "
 				+ "where h.dataHistorico in (select max(hh.dataHistorico) from faddvm.Historico hh "
 				+ "where hh.faixa_id = 5 "
-				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where hhh.faixa_id = 2 and hhh.paciente_id = hh.paciente_id), 0) "
+				+ "and hh.dataHistorico > COALESCE ((select max(hhh.dataHistorico) from faddvm.Historico hhh where (hhh.faixa_id = 2 or hhh.faixa_id = 6 ) and hhh.paciente_id = hh.paciente_id), 0) "
 				+ "and hh.paciente_id not in (select h4.paciente_id from faddvm.Historico h4 where h4.faixa_id = 7) "
 				+ "group by hh.paciente_id )";
 

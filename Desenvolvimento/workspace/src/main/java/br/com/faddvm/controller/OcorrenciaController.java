@@ -83,7 +83,8 @@ public class OcorrenciaController {
 	public String nova(Model model) {
 
 		model.addAttribute("ocorrencia", new FaixaValor());
-		return "/ocorrencia/form";
+		// return "/ocorrencia/form";
+		return "redirect:/ocorrencia";
 	}
 
 }
