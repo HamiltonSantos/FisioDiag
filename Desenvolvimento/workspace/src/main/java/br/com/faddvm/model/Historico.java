@@ -30,7 +30,7 @@ public class Historico implements Serializable {
 	private Long tempoExtubacao;
 
 	public Long getTempoExtubacao() {
-		return new Date().getTime() - dataHistorico.getTime() ;
+		return (new Date().getTime() - dataHistorico.getTime()) / (1000 * 60) ;
 	}
 
 	public void setTempoExtubacao(Long tempoExtubacao) {
