@@ -296,7 +296,7 @@
        <version>2.2</version>
        <configuration>
          <outputDirectory>deployments</outputDirectory>
-         <warName>ROOT</warName>
+         <warName>faddvm</warName>
        </configuration>
      </plugin>
    </plugins>
